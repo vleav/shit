@@ -3161,7 +3161,7 @@ end)
 
 print([[Lua has been loaded from instance
 
-————— Last update [12/15/2024] ————— 
+     Last update [12/15/2024]
         —> Lua release
 ]])
 
