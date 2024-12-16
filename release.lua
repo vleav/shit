@@ -3159,8 +3159,9 @@ end, function ()
     return inter["Trashtalk"].ref:get()
 end)
 
-print([[
-Last update [12/15/2024]
-    - Lua release
+print([[Lua has been loaded from instance
+
+    > Last update [12/15/2024]
+        - Lua release
 ]])
 
