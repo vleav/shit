@@ -1,14 +1,3 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.8) ~  Much Love, Ferib 
-
-]]--
-
 local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v30,v31) local v32={};for v473=1, #v30 do v6(v32,v0(v4(v1(v2(v30,v473,v473 + 1 )),v1(v2(v31,1 + (v473% #v31) ,1 + (v473% #v31) + 1 )))%256 ));end return v5(v32);end ffi=require(v7("\215\197\210","\126\177\163\187\69\134\219\167"));bit=require(v7("\33\196\62","\156\67\173\74\165"));ffi.cdef([[
     // 3d vector struct
     typedef struct
