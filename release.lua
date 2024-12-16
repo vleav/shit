@@ -3163,5 +3163,8 @@ print([[Lua has been loaded from instance
 
      Last update [12/15/2024]
         —> Lua release
+
+     Remember:
+        —> Please save and load the config bc the cheat doesn't save the data (I will fix this soon)
 ]])
 
