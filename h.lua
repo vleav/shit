@@ -1,4 +1,10 @@
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v30,v31) local v32={};for v468=1, #v30 do v6(v32,v0(v4(v1(v2(v30,v468,v468 + 1 )),v1(v2(v31,1 + (v468% #v31) ,1 + (v468% #v31) + 1 )))%256 ));end return v5(v32);end ffi=require(v7("\215\197\210","\126\177\163\187\69\134\219\167"));bit=require(v7("\33\196\62","\156\67\173\74\165"));ffi.cdef([[
+
+
+ffi = require ("ffi")
+bit = require ("bit")
+
+
+ffi.cdef [[
     // 3d vector struct
     typedef struct
     {
@@ -67,7 +73,1298 @@ local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or 
 
     typedef void*(__thiscall* get_client_entity_t)(void*, int);
     typedef uintptr_t (__thiscall* GetClientEntityHandle_4242425_t)(void*, uintptr_t);
-]]);math.clamp=function(v33,v34,v35) local v36=1019 -(499 + 520) ;while true do if (v36==(731 -(387 + 344))) then if (v34>v35) then v34,v35=v35,v34;end if (v33>v35) then return v35;end v36=975 -(654 + 320) ;end if (v36==1) then if (v33<v34) then return v33;end return v33;end end end;math.vec_length2d=function(v37) local v38=0 -0 ;local v39;while true do if (v38==(431 -(276 + 155))) then v39=0;while true do if ((2 -1)==v39) then root=math.sqrt(sqst);return root;end if (v39==(0 + 0)) then root=0 + 0 ;sqst=(v37.x * v37.x) + (v37.y * v37.y) ;v39=1;end end break;end end end;math.angle_diff=function(v40,v41) local v42=774 -(65 + 709) ;local v43;while true do if (v42==1) then if (v40>v41) then if (v43>=(114 + 66)) then v43=v43-360 ;end elseif (v43<= -180) then v43=v43 + 360 ;end return v43;end if ((1744 -(884 + 860))==v42) then local v1345=0 -0 ;while true do if (v1345==(681 -(492 + 188))) then v42=1 + 0 ;break;end if (v1345==0) then v43=0;v43=math.fmod(v40-v41 ,1242 -882 );v1345=1 + 0 ;end end end end end;math.angle_normalize=function(v44) local v45=0 + 0 ;v45=math.fmod(v44,248 + 112 );if (v45<(0 -0)) then v45=v45 + (497 -137) ;end return v45;end;math.anglemod=function(v46) local v47=0 -0 ;local v48;while true do if (v47==(0 + 0)) then v48=((80 + 280)/(210294 -144758)) * bit.band(math.floor(v46 * ((10128 + 55408)/360) ,65535)) ;return v48;end end end;math.approach_angle=function(v49,v50,v51) local v52=0 + 0 ;local v53;while true do if ((7 -4)==v52) then return v50;end if (v52==(0 + 0)) then v49=math.anglemod(v49);v50=math.anglemod(v50);v52=1;end if (v52==(1 + 1)) then if (v53< -180) then v53=v53 + (530 -170) ;elseif (v53>(697 -517)) then v53=v53-(562 -202) ;end if (v53>v51) then v50=v50 + v51 ;elseif (v53< -v51) then v50=v50-v51 ;else v50=v49;end v52=5 -2 ;end if (v52==1) then local v1346=1251 -(1190 + 61) ;while true do if (v1346==1) then v52=2;break;end if (v1346==(0 + 0)) then v53=v49-v50 ;if (v51<(1693 -(1448 + 245))) then v51= -v51;end v1346=1;end end end end end;math.yaw_to_player=function(v54,v55) local v56=0 -0 ;local v57;local v58;local v59;local v60;local v61;while true do if (v56==(2 -1)) then v58=v57:get_render_origin();v59=engine.get_view_angles();v56=2;end if (v56==(0 -0)) then v57=entity_list.get_local_player();if ( not v57 or  not v54) then return 0 -0 ;end v56=1 -0 ;end if ((826 -(528 + 295))==v56) then if (v61>=(239 -59)) then v61=(1707 -(1224 + 123)) -v61 ;v61= -v61;end return v61;end if ((1 + 1)==v56) then v60=v54:get_render_origin();v61=((( -math.atan2(v60.x-v58.x ,v60.y-v58.y )/3.14) * (817 -(97 + 540))) + (2148 -(484 + 1484))) -((v55 and (1642 -(1398 + 154))) or  -(76 + 14)) ;v56=7 -4 ;end end end;eui=(function() local v62={};v62.__type={[v7("\51\165\70\3\172","\38\84\215\41\118\220\70")]= -1,[v7("\82\3\54\6\241\94","\158\48\118\66\114")]=0,[v7("\160\33\9\52\122\171\255","\155\203\68\112\86\19\197")]=3 -2 ,[v7("\82\216\46\232\127\113\235\232\83\201","\152\38\189\86\156\32\24\133")]=2,[v7("\232\82\191\82","\38\156\55\199")]=3,[v7("\187\120\108\41\1\117\238\76\186","\35\200\29\28\72\115\20\154")]=4,[v7("\21\182\194\203","\84\121\223\177\191\237\76")]=535 -(354 + 176) ,[v7("\184\94\204\163\49\82\63\217","\161\219\54\169\192\90\48\80")]=6,[v7("\74\77\12\42\91\125\16\44\74\73\5\55","\69\41\34\96")]=17 -10 ,[v7("\177\214\219\30\11\20\175\198\219\15\1\63\181\204\217","\75\220\163\183\106\98")]=1 + 7 ,[v7("\17\191\135\50\218\22\179\132\57","\185\98\218\235\87")]=12 -3 ,[v7("\216\48\46\226\219\184","\202\171\92\71\134\190")]=6 + 4 };v62.__metasave=true;v62.__data={};v62.create=function(v469,v470) local v471=0;local v472;while true do if (v471==1) then local v1396=0 + 0 ;while true do if ((1430 -(649 + 781))==v1396) then v62.__index=v62;return setmetatable(v472,v62);end end end if (v471==(0 + 0)) then v472={[v7("\46\211\35\157\57","\232\73\161\76")]=v469,[v7("\184\214\78\72\19\181","\126\219\185\34\61")]=v470,[v7("\5\202","\135\108\174\62\18\30\23\147")]=v62.__type.group};menu.set_group_column(v469,v470);v471=1 -0 ;end end end;v62.create_element=function(v473,v474,v475,v476) local v477=nil;if (v474==v62.__type.button) then v477=menu.add_button(v473.group,v475,v476.fn);elseif (v474==v62.__type.checkbox) then v477=menu.add_checkbox(v473.group,v475,v476.default_value);elseif (v474==v62.__type.color_picker) then v477=v476.parent.ref:add_color_picker(v475,v476.default_value,v476.alpha);elseif (v474==v62.__type.keybind) then v477=v476.parent.ref:add_keybind(v475,v476.default_value);elseif (v474==v62.__type.list) then v477=menu.add_list(v473.group,v475,v476.items,v476.visible_count);elseif (v474==v62.__type.multi_selection) then v477=menu.add_multi_selection(v473.group,v475,v476.items,v476.visible_count);elseif (v474==v62.__type.selection) then v477=menu.add_selection(v473.group,v475,v476.items,v476.visible_count);elseif (v474==v62.__type.slider) then v477=menu.add_slider(v473.group,v475,v476.min,v476.max,v476.step,v476.precision,v476.suffix);elseif (v474==v62.__type.text_input) then v477=menu.add_text_input(v473.group,v475);elseif (v474==v62.__type.text) then v477=menu.add_text(v473.group,v475);elseif (v474==v62.__type.separator) then v477=menu.add_separator(v473.group);end local v478={[v7("\184\232\39\206","\167\214\137\74\171\120\206\83")]=v475,[v7("\130\244","\199\235\144\82\61\152")]=v474,[v7("\21\19\191","\75\103\118\217")]=v477,[v7("\192\70\127\1\169","\126\167\52\16\116\217")]=v473.group,[v7("\207\43\52","\156\168\78\64\224\212\121")]=function(v1090,v1091) if (v1090.id==v62.__type.multi_selection) then return v1090.ref:get(v1091);else return v1090.ref:get();end end};if  not v62.__data[v473.group] then v62.__data[v473.group]={};end v62.__data[v473.group][v475]=v478;if v62.__metasave then local v1348=0 -0 ;while true do if ((777 -(126 + 651))==v1348) then if  not v62[v473.group] then v62[v473.group]={};end v62[v473.group][v475]=v478;v1348=1 -0 ;end if (v1348==(1 + 0)) then v473[v475]=v478;break;end end end return setmetatable(v478,v62);end;v62.button=function(v480,v481,v482) local v483=0;local v484;while true do if (v483==(0 + 0)) then v484=0;while true do if (v484==(0 -0)) then local v1767=0;while true do if (v1767==(0 -0)) then v482=v482 or function() end ;return v480:create_element(v62.__type.button,v481,{[v7("\1\224","\174\103\142\197")]=v482});end end end end break;end end end;v62.checkbox=function(v485,v486,v487) return v485:create_element(v62.__type.checkbox,v486,{[v7("\82\45\89\57\48\82\236\105\62\94\52\48\91","\152\54\72\63\88\69\62")]=v487});end;v62.color_picker=function(v488,v489,v490,v491,v492) return v488:create_element(v62.__type.color_picker,v490,{[v7("\196\197\252\89\218\208","\60\180\164\142")]=v489,[v7("\92\91\3\40\50\225\6\103\72\4\37\50\232","\114\56\62\101\73\71\141")]=v491,[v7("\185\229\203\204\185","\164\216\137\187")]=v492});end;v62.keybind=function(v493,v494,v495,v496) return v493:create_element(v62.__type.keybind,v495,{[v7("\194\231\35\183\168\234","\107\178\134\81\210\198\158")]=v494,[v7("\60\11\132\199\191\52\26\189\208\171\52\27\135","\202\88\110\226\166")]=v496});end;v62.list=function(v497,v498,v499,v500) return v497:create_element(v62.__type.list,v498,{[v7("\202\27\135\250\217","\170\163\111\226\151")]=v499,[v7("\7\57\161\49\76\59\44\46\51\189\45\64\35","\73\113\80\210\88\46\87")]=v500});end;v62.multi_selection=function(v501,v502,v503,v504) return v501:create_element(v62.__type.multi_selection,v502,{[v7("\136\56\200\31\244","\135\225\76\173\114")]=v503,[v7("\12\228\171\185\174\177\162\37\238\183\165\162\169","\199\122\141\216\208\204\221")]=v504});end;v62.selection=function(v505,v506,v507,v508) return v505:create_element(v62.__type.selection,v506,{[v7("\164\201\21\253\107","\150\205\189\112\144\24")]=v507,[v7("\51\141\172\69\6\132\20\47\38\139\170\66\16","\112\69\228\223\44\100\232\113")]=v508});end;v62.slider=function(v509,v510,v511,v512,v513,v514,v515) return v509:create_element(v62.__type.slider,v510,{[v7("\217\22\9","\230\180\127\103\179\214\28")]=v511,[v7("\129\4\71","\128\236\101\63\38\132\33")]=v512,[v7("\191\189\20\84","\175\204\201\113\36\214\139")]=v513,[v7("\87\222\48\223\13\84\197\58\210","\100\39\172\85\188")]=v514,[v7("\190\109\191\134\58\181","\83\205\24\217\224")]=v515});end;v62.text_input=function(v516,v517) return v516:create_element(v62.__type.text_input,v517);end;v62.text=function(v518,v519,v520) return v518:create_element(v62.__type.text,v519,v520);end;v62.separator=function(v521) return v521:create_element(v62.__type.separator,v7("\245\192\221\60\244\196\217\50\244","\93\134\165\173"));end;v62.export=function() local v522={};for v1092,v1093 in pairs(v62.__data) do v522[v1092]={};for v1349,v1350 in pairs(v1093) do if  not (v1350.id<v62.__type.checkbox) then if (v1350.id==v62.__type.multi_selection) then local v1768=0;local v1769;while true do if (v1768==(1 + 0)) then table.insert(v522[v1092],{v1350.name,v1769});break;end if (v1768==(784 -(34 + 750))) then local v1935=0;while true do if ((306 -(302 + 3))==v1935) then v1768=1;break;end if (0==v1935) then v1769={};for v2038,v2039 in pairs(v1350.ref:get_items()) do table.insert(v1769,{v2039,v1350.ref:get(v2039)});end v1935=1 + 0 ;end end end end elseif (v1350.id==v62.__type.color_picker) then local v1913=0 -0 ;local v1914;while true do if (v1913==(0 -0)) then v1914=v1350.ref:get();table.insert(v522[v1092],{v1350.name,v1914.r,v1914.g,v1914.b,v1914.a});break;end end else table.insert(v522[v1092],{v1350.name,v1350.ref:get()});end end end end return json.encode(v522);end;v62.import=function(v523) local v524=0;local v525;while true do if (v524==(0 -0)) then v525=json.parse(v523);for v1504,v1505 in pairs(v525) do for v1695,v1696 in pairs(v1505) do if  not ((v62.__data[v1504]==nil) or (v62.__data[v1504][v1696[1 + 0 ]]==nil)) then if (v62.__data[v1504][v1696[105 -(56 + 48) ]].id==v62.__type.multi_selection) then for v1988,v1989 in pairs(v1696[2]) do v62.__data[v1504][v1696[1 + 0 ]].ref:set(v1989[1 + 0 ],v1989[2 -0 ]);end elseif (v62.__data[v1504][v1696[1]].id==v62.__type.color_picker) then v62.__data[v1504][v1696[83 -(7 + 75) ]].ref:set(color_t(v1696[1 + 1 ],v1696[10 -7 ],v1696[259 -(170 + 85) ],v1696[5]));else v62.__data[v1504][v1696[350 -(288 + 61) ]].ref:set(v1696[2 + 0 ]);end end end end break;end end end;v62.depend=function(v526,...) local v527=0 + 0 ;local v528;local v529;local v530;while true do if (v527==1) then v530=nil;while true do if (v528==(1 + 0)) then for v1838,v1839 in pairs(v529) do local v1840=0 + 0 ;local v1841;while true do if (v1840==0) then v1841=nil;if (type(v1839[1])==v7("\188\253\206\206\63\207\188","\30\222\146\161\162\90\174\210")) then v1841=v1839[1];else v1841=v1839[1].ref:get()==v1839[4 -2 ] ;end v1840=1;end if (v1840==(738 -(330 + 407))) then if (v530~=nil) then v530=v530 and v1841 ;else v530=v1841;end break;end end end if (v526.id== -(189 -(29 + 159))) then menu.set_group_visibility(v526.group,v530);else v526.ref:set_visible(v530);end break;end if ((0 -0)==v528) then local v1770=0 -0 ;while true do if (v1770==(0 -0)) then v529={...};v530=nil;v1770=1 + 0 ;end if (v1770==(758 -(15 + 742))) then v528=451 -(414 + 36) ;break;end end end end break;end if (v527==0) then v528=1506 -(745 + 761) ;v529=nil;v527=1;end end end;return v62;end)();base64=(function() local v82={};local v83,v84,v85=bit.lshift,bit.rshift,bit.band;local v86,v87,v88,v89,v90,v91,v92,v93,v94=string.char,string.byte,string.gsub,string.sub,string.format,table.concat,tostring,error,pairs;local v95=function(v531,v532,v533) return v85(v84(v531,v532),v83(1,v533) -(1 + 0) );end;local function v96(v534) local v535=0 + 0 ;local v536;local v537;local v538;while true do if (v535==(0 + 0)) then v536=0;v537=nil;v535=1 -0 ;end if (v535==(1 + 0)) then v538=nil;while true do if (v536==(1080 -(126 + 953))) then return v537,v538;end if (v536==0) then v537,v538={},{};for v1842=1701 -(759 + 941) ,34 + 31  do local v1843=0;local v1844;while true do if (1==v1843) then v537[v1842-1 ]=v1844;v538[v1844]=v1842-(1605 -(896 + 708)) ;break;end if (v1843==0) then v1844=v87(v89(v534,v1842,v1842)) or 32 ;if (v538[v1844]~=nil) then v93(v7("\236\64\102\11\233\71\116\74\228\66\96\2\228\76\117\30\191\14\116\31\245\66\121\9\228\90\117\74\230\70\113\24\228\77\100\15\247\14","\106\133\46\16")   .. v92(v1844) ,1 + 2 );end v1843=1578 -(555 + 1022) ;end end end v536=1 + 0 ;end end break;end end end local v97,v98={},{};v97[v7("\90\33\96\249\12\20","\32\56\64\19\156\58")],v98[v7("\88\201\246\83\12\166","\224\58\168\133\54\58\146")]=v96(v7("\120\116\104\217\80\160\160\35\112\124\96\209\88\168\168\59\104\100\120\201\64\176\176\51\96\108\74\255\118\130\130\13\94\94\66\247\126\138\138\5\86\70\90\239\102\146\146\29\78\78\82\231\37\215\213\88\13\3\29\170\45\223\204\68\4","\107\57\54\43\157\21\230\231"));v97[v7("\217\138\2\240\239\136\218\201\135","\175\187\235\113\149\217\188")],v98[v7("\62\174\146\73\181\45\109\46\163","\24\92\207\225\44\131\25")]=v96(v7("\106\241\155\104\62\91\108\251\145\102\48\81\102\253\151\124\42\79\120\231\141\122\44\69\114\233\185\78\24\121\78\213\191\68\18\119\64\223\181\66\20\109\90\193\171\88\14\107\92\203\161\86\75\44\25\128\236\25\77\42\19\138\245\115","\29\43\179\216\44\123"));local v103={[v7("\130\230\41\66\185\220\56","\44\221\185\64")]=function(v539,v540) if (((type(v540)==v7("\18\243\90\86\125\6","\19\97\135\40\63")) and (v540:len()==(205 -(14 + 127)))) or (v540:len()==65)) then local v1351=0 + 0 ;while true do if ((795 -(141 + 654))==v1351) then v97[v540],v98[v540]=v96(v540);return v539[v540];end end end end};setmetatable(v97,v103);setmetatable(v98,v103);v82.encode=function(v541,v542) v542=v97[v542 or v7("\172\93\32\62\121\101","\81\206\60\83\91\79") ] or v93(v7("\71\165\198\115\35\202\73\228\79\167\192\122\46\193\72\176\14\184\192\119\44\202\75\173\75\175","\196\46\203\176\18\79\163\45"),2) ;v541=v92(v541);local v543,v544,v545={},932 -(156 + 775) , #v541;local v546=v545%3 ;local v547={};for v1095=1591 -(167 + 1423) ,v545-v546 ,8 -5  do local v1096=0;local v1097;local v1098;local v1099;local v1100;local v1101;while true do if (v1096==(2 -1)) then v1101=v547[v1100];if  not v1101 then local v1771=0;local v1772;while true do if (v1771==0) then v1772=0 + 0 ;while true do if (v1772==(0 + 0)) then v1101=v86(v542[v95(v1100,18,12 -6 )],v542[v95(v1100,12,6)],v542[v95(v1100,4 + 2 ,6)],v542[v95(v1100,0,6)]);v547[v1100]=v1101;break;end end break;end end end v1096=1882 -(1625 + 255) ;end if (v1096==(0 + 0)) then v1097,v1098,v1099=v87(v541,v1095,v1095 + 2 );v1100=(v1097 * 65536) + (v1098 * 256) + v1099 ;v1096=1;end if (v1096==2) then v543[v544]=v1101;v544=v544 + 1 + 0 ;break;end end end if (v546==2) then local v1352=1516 -(1026 + 490) ;local v1353;local v1354;local v1355;while true do if (v1352==0) then v1353,v1354=v87(v541,v545-(1 + 0) ,v545);v1355=(v1353 * 65536) + (v1354 * (1990 -(16 + 1718))) ;v1352=1 + 0 ;end if (v1352==1) then v543[v544]=v86(v542[v95(v1355,18,6 + 0 )],v542[v95(v1355,12,6)],v542[v95(v1355,17 -11 ,6)],v542[95 -31 ]);break;end end elseif (v546==(579 -(168 + 410))) then local v1508=v87(v541,v545) * 65536 ;v543[v544]=v86(v542[v95(v1508,18,3 + 3 )],v542[v95(v1508,12,6)],v542[284 -220 ],v542[64]);end return v91(v543);end;v82.decode=function(v548,v549) local v550=807 -(134 + 673) ;local v551;local v552;local v553;local v554;local v555;local v556;while true do if (v550==(1 + 0)) then v552={};v553,v554={},1 -0 ;v555= #v548;v556=((v89(v548, -(1910 -(1174 + 734)))==v7("\160\238","\191\157\211\48\37\28")) and 2) or ((v89(v548, -(1 -0))=="=") and (1 + 0)) or (0 -0) ;v550=2;end if (v550==(4 -2)) then for v1510=1,((v556>(0 -0)) and (v555-4)) or v555 ,2 + 2  do local v1511=0 -0 ;local v1512;local v1513;local v1514;local v1515;local v1516;local v1517;while true do if (v1511==0) then local v1845=0 + 0 ;while true do if (v1845==(0 -0)) then v1512,v1513,v1514,v1515=v87(v548,v1510,v1510 + 2 + 1 );v1516=(v1512 * (64978762 -48201546)) + (v1513 * 65536) + (v1514 * (426 -170)) + v1515 ;v1845=1;end if (v1845==(1 -0)) then v1511=1 + 0 ;break;end end end if (v1511==(5 -3)) then v553[v554]=v1517;v554=v554 + 1 + 0 ;break;end if ((2 -1)==v1511) then v1517=v552[v1516];if  not v1517 then local v1936=0;local v1937;while true do if (0==v1936) then v1937=(v549[v1512] * 262144) + (v549[v1513] * 4096) + (v549[v1514] * (576 -(289 + 223))) + v549[v1515] ;v1517=v86(v95(v1937,28 -12 ,4 + 4 ),v95(v1937,5 + 3 ,648 -(514 + 126) ),v95(v1937,0 + 0 ,7 + 1 ));v1936=1 -0 ;end if ((1 + 0)==v1936) then v552[v1516]=v1517;break;end end end v1511=6 -4 ;end end end if (v556==(1 + 0)) then local v1700,v1701,v1702=v87(v548,v555-3 ,v555-(1 + 0) );local v1703=(v549[v1700] * (46255 + 215889)) + (v549[v1701] * 4096) + (v549[v1702] * 64) ;v553[v554]=v86(v95(v1703,38 -22 ,8),v95(v1703,6 + 2 ,7 + 1 ));elseif (v556==(2 + 0)) then local v1848=0;local v1849;local v1850;local v1851;while true do if (v1848==(0 + 0)) then v1849,v1850=v87(v548,v555-3 ,v555-(610 -(4 + 604)) );v1851=(v549[v1849] * (869269 -607125)) + (v549[v1850] * (14629 -10533)) ;v1848=4 -3 ;end if (v1848==(1 + 0)) then v553[v554]=v86(v95(v1851,1 + 15 ,31 -23 ));break;end end end return v91(v553);end if (v550==(1445 -(344 + 1101))) then v549=v98[v549 or v7("\186\35\109\27\114\175","\143\216\66\30\126\68\155") ] or v93(v7("\163\198\27\202\201\170\211\161\171\196\29\195\196\161\210\245\234\219\29\206\198\170\209\232\175\204","\129\202\168\109\171\165\195\183"),2) ;v551=v7("\25\102\114\207\155\95\163\109\29\106\229","\134\66\56\87\184\190\116");if v549 then local v1705=0 -0 ;local v1706;local v1707;while true do if (v1705==(1 -0)) then v551=v90(v7("\7\15\76\254\14\174\100\112\47\116\76\254\10\174\100\104\1","\85\92\81\105\219\121\139\65"),v86(v1706),v86(v1707));break;end if (v1705==0) then v1706,v1707=nil;for v1938,v1939 in v94(v549) do if (v1939==62) then v1706=v1938;elseif (v1939==(52 + 11)) then v1707=v1938;end end v1705=3 -2 ;end end end v548=v88(v92(v548),v551,"");v550=4 -3 ;end end end;return v82;end)();json=(function() local v106={[v7("\224\9\241\14\41\214\16\250","\90\191\127\148\124")]=v7("\40\201\127\89\42","\119\24\231\78")};local v107;local v108={["\\"]="\\",['\"']='\"',["\b"]="b",["\f"]="f",["\n"]="n",["\r"]="r",["\t"]="t"};local v109={["/"]="/"};for v557,v558 in pairs(v108) do v109[v558]=v557;end local function v110(v560) return "\\"   .. (v108[v560] or string.format(v7("\151\104\245\30\196","\113\226\77\197\42\188\32"),v560:byte())) ;end local function v111(v561) return v7("\52\3\248\185","\213\90\118\148");end local function v112(v562,v563) local v564=0;local v565;while true do if (v564==(0 -0)) then v565={};v563=v563 or {} ;v564=1 + 0 ;end if (v564==1) then if v563[v562] then error(v7("\88\39\166\85\88\87\47\166\22\95\94\40\177\68\72\85\45\177","\45\59\78\212\54"));end v563[v562]=true;v564=303 -(57 + 244) ;end if (v564==2) then if ((rawget(v562,1 + 0 )~=nil) or (next(v562)==nil)) then local v1708=0 + 0 ;for v1773 in pairs(v562) do if (type(v1773)~=v7("\30\67\142\137\131\60","\144\112\54\227\235\230\78\205")) then error(v7("\186\38\25\253\220\82\183\104\27\253\210\87\182\114\79\241\217\67\182\44\79\243\194\27\186\38\25\253\220\82\183\104\4\249\201\27\167\49\31\249\195","\59\211\72\111\156\176"));end v1708=v1708 + (2 -1) ;end if (v1708~= #v562) then error(v7("\71\137\245\44\66\142\231\109\90\134\225\33\75\221\163\62\94\134\241\62\75\199\226\63\92\134\250","\77\46\231\131"));end for v1774,v1775 in ipairs(v562) do table.insert(v565,v107(v1775,v563));end v563[v562]=nil;return "["   .. table.concat(v565,",")   .. "]" ;else local v1710=1963 -(883 + 1080) ;while true do if (1==v1710) then return "{"   .. table.concat(v565,",")   .. "}" ;end if (0==v1710) then for v1940,v1941 in pairs(v562) do local v1942=0;while true do if ((200 -(138 + 62))==v1942) then if (type(v1940)~=v7("\169\64\164\73\180\83","\32\218\52\214")) then error(v7("\71\25\39\169\253\185\65\26\90\22\51\164\244\234\5\87\71\15\52\172\177\191\87\26\71\25\39\169\253\185\65\26\69\18\40\232\229\169\85\95\93","\58\46\119\81\200\145\208\37"));end table.insert(v565,v107(v1940,v563)   .. ":"   .. v107(v1941,v563) );break;end end end v563[v562]=nil;v1710=1 + 0 ;end end end break;end end end local function v113(v566) return '"'   .. v566:gsub('[%z\1-\31\\"]',v110)   .. '"' ;end local function v114(v567) local v568=0;while true do if (v568==(0 -0)) then if ((v567~=v567) or (v567<= -math.huge) or (v567>=math.huge)) then error("unexpected number value '"   .. tostring(v567)   .. "'" );end return string.format(v7("\110\194\97\248\174","\86\75\236\80\204\201\221"),v567);end end end local v115={[v7("\124\72\123","\235\18\33\23\229\158")]=v111,[v7("\68\187\195\183\85","\219\48\218\161")]=v112,[v7("\247\101\110\64\213\72","\128\132\17\28\41\187\47")]=v113,[v7("\15\39\11\56\88\19","\61\97\82\102\90")]=v114,[v7("\174\33\164\71\194\86\16","\105\204\78\203\43\167\55\126")]=tostring};function v107(v569,v570) local v571=0;local v572;local v573;local v574;while true do if (v571==1) then v574=nil;while true do if (v572==(83 -(62 + 21))) then v573=type(v569);v574=v115[v573];v572=1;end if (v572==1) then if v574 then return v574(v569,v570);end error("unexpected type '"   .. v573   .. "'" );break;end end break;end if (v571==(0 + 0)) then v572=1449 -(1036 + 413) ;v573=nil;v571=1 -0 ;end end end v106.encode=function(v575) return (v107(v575));end;local v117;local function v118(...) local v576={};for v1102=1 + 0 ,select("#",...) do v576[select(v1102,...)]=true;end return v576;end local v119=v118(" ","\t","\r","\n");local v120=v118(" ","\t","\r","\n","]","}",",");local v121=v118("\\","/",'"',"b","f","n","r","t","u");local v122=v118(v7("\177\184\54\27","\49\197\202\67\126\115\100\167"),v7("\49\90\211\58\133","\62\87\59\191\73\224\54"),v7("\233\23\246\197","\169\135\98\154"));local v123={[v7("\223\101\49\81","\168\171\23\68\52\157\83")]=true,[v7("\242\112\249\190\32","\231\148\17\149\205\69\77")]=false,[v7("\142\178\203\247","\159\224\199\167\155\55")]=nil};local function v124(v577,v578,v579,v580) for v1104=v578, #v577 do if (v579[v577:sub(v1104,v1104)]~=v580) then return v1104;end end return  #v577 + (2 -1) ;end local function v125(v581,v582,v583) local v584=3 -2 ;local v585=3 -2 ;for v1105=1 -0 ,v582-(1 -0)  do local v1106=0 -0 ;while true do if (v1106==(1472 -(649 + 823))) then v585=v585 + (1 -0) ;if (v581:sub(v1105,v1105)=="\n") then v584=v584 + (1564 -(1202 + 361)) ;v585=3 -2 ;end break;end end end error(string.format(v7("\178\224\124\211\227\179\48\219\249\246\124\151\243\179\63\221\251\179\121\214","\178\151\147\92"),v583,v584,v585));end local function v126(v586) local v587=math.floor;if (v586<=(253 -126)) then return string.char(v586);elseif (v586<=2047) then return string.char(v587(v586/(1773 -(263 + 1446)) ) + 192 ,(v586%64) + 128 );elseif (v586<=(45734 + 19801)) then return string.char(v587(v586/4096 ) + 37 + 187 ,v587((v586%(2847 + 1249))/64 ) + 34 + 94 ,(v586%(807 -(387 + 356))) + (205 -77) );elseif (v586<=(4100473 -2986362)) then return string.char(v587(v586/(170771 + 91373) ) + (488 -248) ,v587((v586%(263860 -(646 + 1070)))/(1193 + 2903) ) + 102 + 26 ,v587((v586%4096)/64 ) + 22 + 106 ,(v586%(239 -175)) + 128 );end error(string.format("invalid unicode codepoint '%x'",v586));end local function v127(v588) local v589=tonumber(v588:sub(1,2 + 2 ),37 -21 );local v590=tonumber(v588:sub(1104 -(288 + 809) ,1663 -(471 + 1182) ),1511 -(385 + 1110) );if v590 then return v126(((v589-(56905 -(1201 + 408))) * (2871 -(747 + 1100))) + (v590-56320) + 65536 );else return v126(v589);end end local function v128(v591,v592) local v593="";local v594=v592 + 1 ;local v595=v594;while v594<= #v591  do local v1107=v591:byte(v594);if (v1107<(18 + 14)) then v125(v591,v594,v7("\143\242\66\38\0\67\118\204\254\68\51\0\77\121\152\248\94\114\27\66\58\159\233\94\59\28\75","\26\236\157\44\82\114\44"));elseif (v1107==(703 -(269 + 342))) then local v1711=0 -0 ;local v1712;while true do if ((2 -1)==v1711) then v1712=v591:sub(v594,v594);if (v1712=="u") then local v1993=0;local v1994;while true do if (v1993==(346 -(263 + 83))) then local v2040=0;while true do if (v2040==(1 -0)) then v1993=3 -2 ;break;end if (v2040==(821 -(659 + 162))) then v1994=v591:match("^[dD][89aAbB]%x%x\\u%x%x%x%x",v594 + (2 -1) ) or v591:match(v7("\20\107\205\30\50\107\205\30\50","\59\74\78\181"),v594 + 1 ) or v125(v591,v594-(216 -(109 + 106)) ,v7("\44\223\76\91\191\44\213\26\79\189\44\210\85\94\182\101\212\73\89\178\53\212\26\83\189\101\194\78\72\186\43\214","\211\69\177\58\58")) ;v593=v593   .. v127(v1994) ;v2040=1;end end end if (v1993==(1 -0)) then v594=v594 +  #v1994 ;break;end end else local v1995=1165 -(1157 + 8) ;while true do if (v1995==0) then if  not v121[v1712] then v125(v591,v594-(512 -(179 + 332)) ,"invalid escape char '"   .. v1712   .. "' in string" );end v593=v593   .. v109[v1712] ;break;end end end v1711=839 -(705 + 132) ;end if (0==v1711) then v593=v593   .. v591:sub(v595,v594-(1 + 0) ) ;v594=v594 + 1 + 0 ;v1711=1 + 0 ;end if (v1711==2) then v595=v594 + (3 -2) ;break;end end elseif (v1107==34) then v593=v593   .. v591:sub(v595,v594-(1 + 0) ) ;return v593,v594 + (44 -(17 + 26)) ;end v594=v594 + 1 ;end v125(v591,v592,v7("\178\253\105\240\234\223\178\225\57\246\229\196\164\236\119\242\169\218\162\234\109\240\169\205\184\247\57\230\253\217\190\235\126","\171\215\133\25\149\137"));end local function v129(v596,v597) local v598=1962 -(1866 + 96) ;local v599;local v600;local v601;while true do if (v598==(1 + 1)) then return v601,v599;end if (v598==0) then v599=v124(v596,v597,v120);v600=v596:sub(v597,v599-(2 -1) );v598=1 -0 ;end if (v598==(2 -1)) then v601=tonumber(v600);if  not v601 then v125(v596,v597,"invalid number '"   .. v600   .. "'" );end v598=2;end end end local function v130(v602,v603) local v604=0 -0 ;local v605;local v606;while true do if (v604==(2 -1)) then if  not v122[v606] then v125(v602,v603,"invalid literal '"   .. v606   .. "'" );end return v123[v606],v605;end if (v604==(0 + 0)) then v605=v124(v602,v603,v120);v606=v602:sub(v603,v605-(3 -2) );v604=1;end end end local function v131(v607,v608) local v609=0;local v610;local v611;local v612;while true do if (v609==(1132 -(725 + 406))) then v612=nil;while true do if (v610==(0 -0)) then v611={};v612=1 + 0 ;v610=376 -(198 + 177) ;end if (v610==(2 -1)) then v608=v608 + (1 -0) ;while 1 + 0  do local v1852;v608=v124(v607,v608,v119,true);if (v607:sub(v608,v608)=="]") then v608=v608 + (3 -2) ;break;end v1852,v608=v117(v607,v608);v611[v612]=v1852;v612=v612 + 1 + 0 ;v608=v124(v607,v608,v119,true);local v1854=v607:sub(v608,v608);v608=v608 + 1 ;if (v1854=="]") then break;end if (v1854~=",") then v125(v607,v608,"expected ']' or ','");end end v610=1 + 1 ;end if (v610==(2 + 0)) then return v611,v608;end end break;end if (v609==(0 + 0)) then v610=0 -0 ;v611=nil;v609=1721 -(1082 + 638) ;end end end local function v132(v613,v614) local v615={};v614=v614 + (1363 -(1322 + 40)) ;while 2 -1  do local v1108,v1109;v614=v124(v613,v614,v119,true);if (v613:sub(v614,v614)=="}") then v614=v614 + (1649 -(435 + 1213)) ;break;end if (v613:sub(v614,v614)~='"') then v125(v613,v614,v7("\228\208\34\255\236\36\249\70\161\219\38\232\230\62\251\2\231\199\32\186\228\53\229","\34\129\168\82\154\143\80\156"));end v1108,v614=v117(v613,v614);v614=v124(v613,v614,v119,true);if (v613:sub(v614,v614)~=":") then v125(v613,v614,"expected ':' after key");end v614=v124(v613,v614 + 1 + 0 ,v119,true);v1109,v614=v117(v613,v614);v615[v1108]=v1109;v614=v124(v613,v614,v119,true);local v1111=v613:sub(v614,v614);v614=v614 + (989 -(696 + 292)) ;if (v1111=="}") then break;end if (v1111~=",") then v125(v613,v614,"expected '}' or ','");end end return v615,v614;end local v133={['"']=v128,["0"]=v129,["1"]=v129,["2"]=v129,["3"]=v129,["4"]=v129,["5"]=v129,["6"]=v129,["7"]=v129,["8"]=v129,["9"]=v129,["-"]=v129,t=v130,f=v130,n=v130,["["]=v131,["{"]=v132};function v117(v616,v617) local v618=0;local v619;local v620;local v621;while true do if (v618==(2 -1)) then v621=nil;while true do if (v619==(0 -0)) then v620=v616:sub(v617,v617);v621=v133[v620];v619=4 -3 ;end if (v619==(4 -3)) then if v621 then return v621(v616,v617);end v125(v616,v617,"unexpected character '"   .. v620   .. "'" );break;end end break;end if (v618==0) then v619=1465 -(731 + 734) ;v620=nil;v618=1572 -(1286 + 285) ;end end end v106.parse=function(v622) local v623=0 -0 ;local v624;local v625;while true do if (v623==(0 + 0)) then if (type(v622)~=v7("\150\166\33\2\70\73","\233\229\210\83\107\40\46")) then error(v7("\196\90\34\211\6\213\71\54\150\4\211\69\39\219\0\207\86\114\217\3\129\86\43\198\0\129\81\38\196\12\207\69\126\150\2\206\86\114","\101\161\34\82\182")   .. type(v622) );end v624,v625=v117(v622,v124(v622,2 -1 ,v119,true));v623=1 + 0 ;end if (v623==2) then return v624;end if (v623==(3 -2)) then v625=v124(v622,v625,v119,true);if (v625<= #v622) then v125(v622,v625,v7("\252\31\88\247\215\235\140\41\168\10\88\236\217\227\133\43","\78\136\109\57\158\187\130\226"));end v623=1263 -(1048 + 213) ;end end end;return v106;end)();dragsystem=(function() local v135=false;local v136=function() v135=menu.is_open();end;callbacks.add(e_callbacks.PAINT,v136);local v137={};local v138=render.get_screen_size();v137.list={};v137.windows={};v137.__index=v137;v137.register=function(v626,v627,v628,v629) local v630=0 -0 ;local v631;while true do if (v630==(0 + 0)) then local v1398=0;while true do if ((0 + 0)==v1398) then v631={[v7("\45\54\227\244","\145\94\95\153")]=v627,[v7("\237\194\7\220\90\190\242\195","\215\157\173\116\181\46")]=vec2_t(v626[1 + 0 ]:get(),v626[2]:get()),[v7("\60\167\180\246\200\52\179\140\251\212\50","\186\85\212\235\146")]=false,[v7("\198\147\23\249\6\254\87\209\136\2\247\54\224","\56\162\225\118\158\89\142")]={x=1357 -(223 + 1134) ,y=0 -0 },[v7("\91\9\207\173\35\212\99\11\193\162\39","\184\60\101\160\207\66")]=v628,[v7("\56\140\111\131\55\151\114\191\37\139\115\178","\220\81\226\28")]=v629,[v7("\6\220\189\248\235\203\31\215\131\248\225\212","\167\115\181\226\155\138")]={x=v626[1882 -(982 + 899) ],y=v626[2 -0 ]}};table.insert(v137.windows,v631);v1398=1 + 0 ;end if (v1398==(1 -0)) then v630=1 + 0 ;break;end end end if (v630==1) then return setmetatable(v631,v137);end end end;v137.limit_positions=function(v632) local v633=0 -0 ;while true do if ((1 -0)==v633) then if (v632.position.y<=(1483 -(310 + 1173))) then v632.position.y=0 + 0 ;end if ((v632.position.y + v632.size.y)>=(v138.y-(3 -2))) then v632.position.y=(v138.y-v632.size.y) -1 ;end break;end if ((1451 -(968 + 483))==v633) then if (v632.position.x<=0) then v632.position.x=224 -(37 + 187) ;end if ((v632.position.x + v632.size.x)>=(v138.x-(1 + 0))) then v632.position.x=(v138.x-v632.size.x) -(1 -0) ;end v633=495 -(204 + 290) ;end end end;v137.is_in_area=function(v634,v635) return (v635.x>=v634.position.x) and (v635.x<=(v634.position.x + v634.size.x)) and (v635.y>=v634.position.y) and (v635.y<=(v634.position.y + v634.size.y)) ;end;v137.update=function(v636,...) local v637=0;while true do if (v637==0) then if v135 then local v1717=841 -(680 + 161) ;local v1718;local v1719;local v1720;local v1721;while true do if (v1717==(0 + 0)) then v1718=input.get_mouse_pos();v1719=v636:is_in_area(v1718);v1717=1069 -(979 + 89) ;end if (v1717==1) then v1720=v137.list;v1721=input.is_key_held(e_keys.MOUSE_LEFT);v1717=1876 -(802 + 1072) ;end if (v1717==(5 -3)) then if ((v1719 or v636.is_dragging) and v1721 and ((v1720.target=="") or (v1720.target==v636.global_name))) then local v1996=0 + 0 ;local v1997;while true do if (0==v1996) then v1997=0 + 0 ;while true do if ((0 + 0)==v1997) then v1720.target=v636.global_name;if  not v636.is_dragging then local v2076=0 -0 ;while true do if (v2076==(0 + 0)) then v636.is_dragging=true;v636.drag_position=v1718-v636.position ;break;end end else local v2077=0 -0 ;local v2078;while true do if (v2077==0) then v2078=0 -0 ;while true do if (v2078==(1995 -(1413 + 581))) then v636.ui_callbacks.x.ref:set(math.floor(v636.position.x));v636.ui_callbacks.y.ref:set(math.floor(v636.position.y));break;end if (v2078==(1214 -(630 + 584))) then v636.position=v1718-v636.drag_position ;v636:limit_positions();v2078=3 -2 ;end end break;end end end break;end end break;end end elseif  not v1721 then local v2026=1128 -(184 + 944) ;while true do if ((0 + 0)==v2026) then v1720.target="";v636.is_dragging=false;v2026=954 -(927 + 26) ;end if (1==v2026) then v636.drag_position={x=0 -0 ,y=640 -(284 + 356) };break;end end end break;end end end v636.ins_function(v636,...);break;end end end;v137.on_config_load=function() for v1112,v1113 in pairs(v137.windows) do v1113.position=vec2_t(v1113.ui_callbacks.x:get(),v1113.ui_callbacks.y:get());end end;return v137;end)();bettercall=(function() local v147=0;local v148;while true do if (2==v147) then v148.add=function(v1399,v1400,v1401,v1402) local v1403=0 + 0 ;local v1404;while true do if (v1403==(4 -2)) then if  not v1399.__global_callbacks[v1400] then v1399.__global_callbacks[v1400]={};end table.insert(v1399.__global_callbacks[v1400],v1404);v1403=3 + 0 ;end if (v1403==0) then v1399:ensure_global_event_registered(v1400);v1404={[v7("\77\17\59\118\76\17\52\113","\26\46\112\87")]=v1401,[v7("\170\55\170\96\186","\212\217\67\203\20\223\223\37")]=v1402 or function() return true;end };v1403=1 + 0 ;end if (v1403==3) then return v1404;end if (1==v1403) then if  not v1399.bettercall_callbacks[v1400] then v1399.bettercall_callbacks[v1400]={};end table.insert(v1399.bettercall_callbacks[v1400],v1404);v1403=2;end end end;v148.set_state=function(v1405,v1406,v1407) if v1406 then v1406.state=v1407;end end;v147=3 + 0 ;end if (v147==(1 + 2)) then v148.remove=function(v1408,v1409,v1410) local v1411=0;local v1412;while true do if ((1128 -(211 + 917))==v1411) then v1412=v1408.bettercall_callbacks[v1409];if v1412 then for v1943= #v1412,1 + 0 , -(1796 -(1151 + 644)) do if (v1412[v1943].callback==v1410) then table.remove(v1412,v1943);break;end end end break;end end end;v148.clear=function(v1413,v1414) v1413.bettercall_callbacks[v1414]=nil;end;v147=2 + 2 ;end if (v147==(1 + 0)) then v148.ensure_global_event_registered=function(v1416,v1417) if  not v1416.__global_callbacks[v1417] then local v1723=0;while true do if (0==v1723) then v1416.__global_callbacks[v1417]={};callbacks.add(v1417,function(...) local v1944=v1416.__global_callbacks[v1417];for v1998,v1999 in ipairs(v1944) do if v1999.state() then v1999.callback(...);end end end);break;end end end end;v148.new=function(v1418) local v1419={[v7("\224\39\243\72\126\99\197\227\46\235\99\120\112\202\238\32\230\95\112\98","\166\130\66\135\60\27\17")]={}};setmetatable(v1419,{[v7("\123\117\199\123\52\65\82","\80\36\42\174\21")]=v1418});return v1419;end;v147=2;end if (v147==(5 -1)) then local v1362=0;while true do if (v1362==0) then v148.clear_all=function(v1779) v1779.bettercall_callbacks={};end;return v148;end end end if (v147==(1900 -(745 + 1155))) then v148={};v148.__global_callbacks={};v147=2 -1 ;end end end)();animation=(function() local v149={};local v150=function(v638,v639,v640) local v641=314 -(27 + 287) ;while true do if (v641==(0 -0)) then if (type(v638)==v7("\175\158\173\192\190\140\188\211","\178\218\237\200")) then local v1725=0 -0 ;local v1726;while true do if (v1725==(2 -1)) then return color_t(unpack(v1726));end if (v1725==(0 -0)) then v1726={0 + 0 ,0 + 0 ,0 + 0 ,0};for v1945,v1946 in ipairs({"r","g","b","a"}) do v1726[v1945]=v150(v638[v1946],v639[v1946],v640);end v1725=20 -(9 + 10) ;end end end return v638 + ((v639-v638) * v640) ;end end end;local v151=function(v642,v643,v644) if (v149[v642]==nil) then v149[v642]=0 + 0 ;end v149[v642]=v150(v149[v642],v643,global_vars.frame_time() * v644 );return v149[v642];end;local v152=function(v646) return v149[v646];end;return {[v7("\184\176\241","\176\214\213\134")]=v151,[v7("\243\168\162","\57\148\205\214\180\200\54")]=v152};end)();clipboard=(function() local v153=v7("\36\218\0\29\73\33\228\38\32\115\31\173\100\100","\22\114\157\85\84");local v154=v7("\210\204\6\205\15\184\172\200\199","\200\164\171\115\164\61\150");local v155=function(v647,v648,v649,v650) local v651=0;local v652;local v653;local v654;local v655;local v656;while true do local v1115=0;while true do if (v1115==(1895 -(1219 + 676))) then if (1==v651) then v654,v655=pcall(ffi.typeof,v650);if  not v654 then error(v655,2);end v651=1143 -(130 + 1011) ;end if (v651==(1971 -(1639 + 332))) then local v1781=0;while true do if (v1781==(1 -0)) then v651=1;break;end if (v1781==(0 + 0)) then v652=memory.create_interface(v647,v648) or error(v648   .. v7("\228\180\10\75\149\191\248\10\65\195\183\250\23\64\145\184\245\0\64","\227\222\148\99\37") ) ;v653=memory.get_vfunc(v652,v649) or error(index   .. v7("\105\18\91\248\239\50\94\91\242\185\58\92\86\243\225","\153\83\50\50\150") ) ;v1781=1;end end end v1115=1 + 0 ;end if (1==v1115) then if (v651==2) then v656=ffi.cast(v655,v653) or error(v650   .. v7("\7\54\122\18\101\170\65\84\114\51\8\106\187\72\94\119\96\8","\45\61\22\19\124\19\203") ) ;return function(...) return v656(tonumber(ffi.cast(v7("\215\29\4\241\72\58\243","\217\161\114\109\149\98\16"),v652)),...);end;end break;end end end end;local v156=v155(v154,v153,255 -(229 + 19) ,v7("\27\46\44\52\131\75\6\40\49\111\191\117\30\44\114\53\244\98\29\41\60\54\245","\20\114\64\88\28\220"));local v157=v155(v154,v153,9,v7("\39\14\219\176\176\239\130\37\9\219\167\251\209\177\61\75\155\252\238\223\180\53\75\158\244\251\223\179\34\21\146\183\240\209\175\123\77\146\189\246\196\244","\221\81\97\178\212\152\176"));local v158=v155(v154,v153,134 -(21 + 102) ,v7("\196\233\9\179\37\242\243\21\242\9\206\230\17\247\80\132\175\11\244\19\201\173\81\187\19\195\243\81\187\25\194\233\14\239\90\206\239\28\233\80\129\167\20\245\14\132","\122\173\135\125\155"));return {[v7("\131\196\20","\168\228\161\96\217\95\81")]=function() local v657=v156();if (v657>(1185 -(931 + 254))) then local v1365=ffi.typeof(v7("\216\217\47\78\20\8\230","\55\187\177\78\60\79"))(v657);v158(0 + 0 ,v1365,v657);return ffi.string(v1365,v657-(446 -(428 + 17)) );end end,[v7("\62\203\75","\224\77\174\63\139\38\175")]=function(v658) local v659=0 -0 ;while true do if (v659==0) then v658=tostring(v658);v157(v658,string.len(v658));break;end end end};end)();fonts=(function() local v159=88 -(26 + 62) ;local v160;while true do if ((1082 -(173 + 907))==v159) then v160.get=function(v1420) return v160.fonts[v1420];end;v160.get_or_register=function(v1421,v1422,v1423,v1424,...) return v160.register(v1421,v1422,v1423,v1424,...);end;v159=3 + 0 ;end if (v159==3) then return v160;end if (v159==0) then v160={};v160.fonts={};v159=1;end if (v159==(1 + 0)) then v160.register=function(v1425,v1426,v1427,v1428,...) local v1429=0;while true do if (v1429==(131 -(71 + 60))) then if  not v160.fonts[v1425] then v160.fonts[v1425]=render.create_font(v1426,v1427 or 12 ,v1428 or 400 ,...);end return v160.fonts[v1425];end end end;v160.default=function() return render.get_default_font();end;v159=4 -2 ;end end end)();filesystem=(function() local v161={};v161.__index={};v161.class=ffi.cast(ffi.typeof(v7("\146\78\81\42\206\11\18","\78\228\33\56")),memory.create_interface(v7("\200\119\190\6\150\215\109\166\6\136\241\109\166\7\140\193\48\182\15\137","\229\174\30\210\99"),v7("\45\207\135\66\232\27\48\23\232\181\72\254\41\60\22\189\215\0","\89\123\141\230\49\141\93")));v161.v_table=v161.class[0];v161.full_class=ffi.cast(v7("\229\126\255\8\90\0\185","\42\147\17\150\108\112"),memory.create_interface(v7("\9\175\33\122\244\241\28\178\40\114\216\251\27\162\36\112\169\236\3\170","\136\111\198\77\31\135"),v7("\52\47\174\90\184\215\14\186\22\12\170\6\236\179","\201\98\105\199\54\221\132\119")));v161.v_fltable=v161.full_class[0];v161.casts={[v7("\171\9\130\37\61\51\165\181\9","\204\217\108\227\65\98\85")]=ffi.cast(v7("\87\205\225\165\100\255\97\215\253\236\63\195\95\207\249\175\101\136\72\204\252\225\102\140\30\213\250\236\40\138\18\131\252\235\56\140\30\213\250\236\40\138\23","\160\62\163\149\133\76"),v161.v_table[1228 -(774 + 454) ]),[v7("\193\178\4\59\198\233\166\4\35\198","\163\182\192\109\79")]=ffi.cast(v7("\61\40\20\128\189\11\25\20\200\252\39\37\1\204\249\126\111\72\214\250\61\34\74\140\181\34\41\9\196\181\55\41\14\211\225\126\106\64\201\251\32\106\64\214\250\61\34\74\137","\149\84\70\96\160"),v161.v_table[1603 -(849 + 753) ]),[v7("\55\22\8\227\7\0\4\225\61","\141\88\102\109")]=ffi.cast(v7("\165\92\195\116\80\125\29\254\140\71\194\121\9\62\84\205\191\25\131\56\12\50\92\197\249\31\138\115\21\51\70\213\243\80\194\113\8\119\25\129\176\92\196\99\14\125\86\201\178\65\128\60\90\62\90\207\160\71\138\115\18\60\71\139\250","\161\211\51\170\16\122\93\53"),v161.v_table[2]),[v7("\248\162\189\59\254\145\180\33\247\171","\72\155\206\210")]=ffi.cast(v7("\80\117\93\10\115\14\69\107\26\59\79\105\87\15\63\74\48\29\70\37\73\115\80\68\127\6\108\91\7\55\12\51","\83\38\26\52\110"),v161.v_table[7 -4 ]),[v7("\94\30\43\67\103\4\46\92\93","\38\56\119\71")]=ffi.cast(v7("\230\225\75\223\34\88\246\235\24\223\43\66\179\167\103\233\49\94\250\252\91\215\41\90\185\166\16\192\42\95\247\165\20\150\51\89\250\235\18\159","\54\147\143\56\182\69"),v161.v_table[7]),[v7("\208\136\243\76\224\211\153\246\90\203\197","\191\182\225\159\41")]=ffi.cast(v7("\41\29\39\89\203\207\253\20\6\32\92\152\132\195\39\30\98\28\195\145\205\34\22\98\25\203\132\205\37\1\60\21\136\143\195\57\88\100\21\136\136\204\56\6\104\86\131\134\208\97\91","\162\75\114\72\53\235\231"),v161.v_table[23 -13 ]),[v7("\136\57\72\231\71\7\179\58\77\238\86","\98\236\92\36\130\51")]=ffi.cast(v7("\178\22\5\190\5\224\138\15\176\17\5\169\70\169\185\60\238\80\68\172\74\161\177\122\232\89\15\181\75\187\161\112\167\17\13\168\15\228\245\51\171\23\31\174\5\171\189\49\182\83\69","\80\196\121\108\218\37\200\213"),v161.v_fltable[1236 -(861 + 355) ]),[v7("\18\118\12\126\70\11\181\6\122\14\122","\234\96\19\98\31\43\110")]=ffi.cast(v7("\4\16\93\203\236\58\180\57\11\90\206\191\113\138\10\19\24\142\228\100\132\15\27\24\139\236\113\132\8\12\70\135\175\122\138\20\85\30\135\175\125\133\21\11\18\196\164\115\153\76\83\18\196\163\124\152\18\95\81\207\173\96\193\79","\235\102\127\50\167\204\18"),v161.v_fltable[21]),[v7("\83\179\240\34\80\43\111\165\252\49","\78\48\193\149\67\36")]=ffi.cast(v7("\38\17\137\28\1\120\33\191\12\73\57\13\131\25\77\60\84\201\80\87\63\23\132\82\13\112\29\143\22\82\36\94\131\16\64\34\84\204\88\66\63\16\147\12\1\51\22\129\10\11\121","\33\80\126\224\120"),v161.v_fltable[22]),[v7("\229\187\60\192\85\254","\60\140\200\99\164")]=ffi.cast(v7("\133\251\11\42\226\207\203\59\50\170\142\231\7\39\174\139\190\77\110\180\136\253\0\108\238\199\247\11\40\177\147\180\7\46\163\149\190\72\102\161\136\250\23\50\226\132\252\5\52\232\206","\194\231\148\100\70"),v161.v_fltable[23])};local v170=memory.create_interface(v7("\64\69\205\166\229\209\85\88\196\174\201\219\82\72\200\172\184\204\74\64","\168\38\44\161\195\150"),v7("\182\218\139\122\53\219\175\5\148\249\143\38\97\191","\118\224\156\226\22\80\136\214"));local v171=ffi.cast(ffi.typeof(v7("\84\225\80\132\8\164\19","\224\34\142\57")),v170);ffi.cdef(v7("\180\231\133\157\51\177\29\78\158\179\220\205\118\245\88\8\158\177\202\212\119\177\21\49\225\179\205\212\96\242\92\2\210\237\133\252\119\245\110\11\223\181\198\213\67\240\73\6\151\239\211\210\122\245\23\66\158\164\202\211\96\229\29\13\214\166\215\151\63\177\94\1\208\180\209\157\112\249\92\28\148\238\158\183\51\177\29\78\158\231\133\157\103\232\77\11\218\162\195\157\101\254\84\10\158\239\250\226\103\249\84\29\221\166\201\209\57\177\111\11\211\168\211\216\64\244\92\28\221\175\245\220\103\249\78\71\150\177\202\212\119\187\17\78\221\168\203\206\103\177\94\6\223\181\143\148\40\155\29\78\158\231\133\157\51\177\73\23\206\162\193\216\117\177\94\1\208\180\209\157\112\249\92\28\148\231\141\226\76\229\85\7\205\164\196\209\127\187\29\40\215\169\193\243\118\233\73\71\150\177\202\212\119\187\17\78\215\169\209\148\40\155\29\78\158\231\133\157\51\177\73\23\206\162\193\216\117\177\95\1\209\171\133\149\76\206\73\6\215\180\198\220\127\253\23\78\248\174\203\217\90\226\121\7\204\162\198\201\124\227\68\71\150\177\202\212\119\187\17\78\215\169\209\148\40\155\29\78\158\231\133\157\51\177\73\23\206\162\193\216\117\177\75\1\215\163\133\149\76\206\73\6\215\180\198\220\127\253\23\78\248\174\203\217\80\253\82\29\219\238\141\203\124\248\89\68\146\231\204\211\103\184\6\100\158\231\133\157\51\177\29\78\202\190\213\216\119\244\91\78\221\168\203\206\103\177\94\6\223\181\143\157\59\206\98\26\214\174\214\222\114\253\81\68\158\129\204\211\119\215\84\28\205\179\224\197\58\185\75\1\215\163\143\145\51\242\82\0\205\179\133\222\123\240\79\68\146\231\198\210\125\226\73\78\221\175\196\207\57\189\29\7\208\179\143\148\40\155\29\78\158\231\133\157\51\177\73\23\206\162\193\216\117\177\81\1\208\160\133\149\76\206\73\6\215\180\198\220\127\253\23\78\249\162\209\251\122\253\88\58\215\170\192\148\59\231\82\7\218\237\137\157\112\254\83\29\202\231\198\213\114\227\23\66\158\164\202\211\96\229\29\13\214\166\215\151\58\170\55\78\158\231\133","\110\190\199\165\189\19\145\61"));local v172=ffi.cast(v7("\251\239\115\219\142\198\200\232\127\216\138\211\210","\167\186\139\23\136\235"),v171[0][17 -6 ]);local v173=ffi.cast(v7("\40\176\133\2\12\176\187\8\27\167\139\5\42\180\156\5\9","\109\122\213\232"),v171[0 + 0 ][42 -28 ]);local v174=ffi.cast(v7("\200\254\172\52\192\242\186\36","\80\142\151\194"),v171[0][10 + 23 ]);local v175=ffi.cast(v7("\37\207\121\72\42\213\83\69\17\195\116\88\12\212\110","\44\99\166\23"),v171[0][77 -43 ]);local v176=ffi.cast(v7("\90\254\39\50\16\168\115\228\44","\196\28\151\73\86\83"),v171[0][1178 -(455 + 688) ]);local v177=ffi.cast(v7("\213\10\39\20\164\81\10\101\231\38\49","\22\147\99\73\112\226\56\120"),v171[0][1380 -(481 + 863) ]);v161.modes={r="r",w="w",a="a",[v7("\170\62","\237\216\21\130\149")]=v7("\144\5","\62\226\46\63\63\208\169"),[v7("\242\82","\62\133\121\53\227\127\109\79")]=v7("\7\95","\194\112\116\82\149\182\206"),[v7("\56\227","\110\89\200\44\120\160\130")]=v7("\170\136","\45\203\163\43\38\35\42\91"),[v7("\192\135","\52\178\229\188\67\231\201")]=v7("\51\67","\67\65\33\48\100\151\60"),[v7("\200\229","\147\191\135\206\184")]=v7("\147\42","\210\228\72\198\161\184\51"),[v7("\55\75","\174\86\41\147\112\19")]=v7("\90\2","\203\59\96\237\107\69\111\113"),[v7("\54\20\231","\183\68\118\204\129\81\144")]=v7("\28\175\59","\226\110\205\16\132\107"),[v7("\252\193\171","\33\139\163\128\185")]=v7("\64\90\79","\190\55\56\100"),[v7("\87\173\119","\147\54\207\92\126\115\131")]=v7("\12\51\126","\30\109\81\85\29\109")};v161.open=function(v660,v661,v662) local v663=0 + 0 ;while true do if (v663==(0 + 0)) then local v1430=0 -0 ;while true do if (v1430==0) then if  not v161.modes[v661] then error(v7("\217\120\88\179\118\211\243\251\116\20\179\36\204\243\237\48","\156\159\17\52\214\86\190"));end return setmetatable({[v7("\168\230\177\185","\220\206\143\221")]=v660,[v7("\139\114\41\18","\178\230\29\77\119\184\172")]=v661,[v7("\229\191\30\19\72\241\241","\152\149\222\106\123\23")]=v662,[v7("\213\39\248\71\185\216","\213\189\70\150\35")]=v161.casts.open_file(v161.class,v660,v661,v662)},v161);end end end end end;v161.close=function(v664) v161.casts.close_file(v161.class,v664.handle);end;v161.exists=function(v665,v666) return v161.casts.file_exists(v161.class,v665,v666);end;v161.get_size=function(v667) return v161.casts.file_size(v161.class,v667.handle);end;v161.write_binary=function(v668,v669) local v670=1968 -(896 + 1072) ;local v671;while true do if (v670==(0 -0)) then v671=v161.open(v668,v7("\88\87","\104\47\53\20"),v7("\142\99\165","\111\195\44\225\124\220"));v161.casts.write_file(v161.class,v669, #v669,v671.handle);v670=1 + 0 ;end if (v670==(2 -1)) then v161.close(v671);break;end end end;v161.read_binary=function(v672) local v673=788 -(50 + 738) ;local v674;local v675;local v676;while true do local v1116=0 + 0 ;while true do if (v1116==(2 -1)) then if (v673==(2 -1)) then v676=ffi.new(v7("\44\26\83\92\204\216\54","\107\79\114\50\46\151\231"),v675);v161.casts.read_file(v161.class,v676,v675,v674.handle);v673=1555 -(1128 + 425) ;end break;end if (v1116==(0 + 0)) then if (v673==(456 -(398 + 58))) then v674=v161.open(v672,v7("\202\68","\203\184\38\96\19\203"),v7("\20\92\93","\174\89\19\25\33"));v675=v161.get_size(v674);v673=713 -(194 + 518) ;end if ((377 -(42 + 333))==v673) then local v1782=1444 -(1308 + 136) ;while true do if (v1782==0) then v161.close(v674);return ffi.string(v676,v675);end end end v1116=1;end end end end;v161.write=function(v677,v678) local v679=0 + 0 ;local v680;while true do if (v679==(121 -(56 + 64))) then v161.close(v680);break;end if (v679==(696 -(251 + 445))) then v680=v161.open(v677,"w",v7("\20\137\145","\160\89\198\213\73\234\89\215"));v161.casts.write_file(v161.class,v678, #v678,v680.handle);v679=1 + 0 ;end end end;v161.append=function(v681,v682) local v683=0;local v684;while true do if (v683==1) then v161.close(v684);break;end if (v683==(0 + 0)) then local v1431=0 + 0 ;while true do if (v1431==(1570 -(999 + 570))) then v683=1 -0 ;break;end if (v1431==(0 -0)) then v684=v161.open(v681,"a",v7("\101\94\144","\165\40\17\212\158"));v161.casts.write_file(v161.class,v682, #v682,v684.handle);v1431=1 -0 ;end end end end end;v161.read=function(v685) local v686=1699 -(1476 + 223) ;local v687;local v688;local v689;while true do if ((1837 -(597 + 1239))==v686) then v689=ffi.new(v7("\7\77\69\56\242\91\120","\169\100\37\36\74"),v688 + (3 -2) );v161.casts.read_file(v161.class,v689,v688,v687.handle);v686=2;end if (v686==(0 + 0)) then v687=v161.open(v685,"r",v7("\200\246\44","\70\133\185\104\83"));v688=v161.get_size(v687);v686=885 -(590 + 294) ;end if (v686==2) then v161.close(v687);return ffi.string(v689);end end end;v161.rename=function(v690,v691,v692) return v161.casts.rename_file(v161.full_class,v690,v691,v692);end;v161.delete=function(v693,v694) v161.casts.delete_file(v161.full_class,v693,v694);end;v161.create_directory=function(v695,v696) v161.casts.create_dir(v161.full_class,v695,v696);end;v161.is_directory=function(v697,v698) return v161.casts.is_dir(v161.full_class,v697,v698);end;return v161;end)();panorama=(function() local v192,v193,v194,v195,v196,v197,v198,v199,v200,v201,v202,v203,v204,v205,v206,v207,v208,v209,v210,v211,v212,v213,v214,v215,v216,v217,v218,v219,v220,v221,v222,v223,v224,v225,v226,v227,v228,v229,v230,v231,v232,v233,v234,v235,v236,v237,v238,v239,v240,v241,v242,v243,v244,v245,v246,v247,v248,v249,v250,v251,v252,v253,v254,v255,v256,v257,v258,v259,v260,v261,v262,v263,v264,v265,v266,v267,v268,v269,v270,v271,v272;v192={[v7("\63\177\135\98\51\174\141\126","\48\96\231\194")]=1.7 -0 };setmetatable(v192,{[v7("\247\101\13\44\21\212","\227\168\58\110\77\121\184\207")]=function(v699) return v699._VERSION;end,[v7("\68\3\171\79\162\207\99\172\117\59","\197\27\92\223\32\209\187\17")]=function(v700) return v700._VERSION;end});v193=require(v7("\5\89\202","\155\99\63\163"));do local v701=v193;v194,v195,v196,v197,v198=v701.cast,v701.typeof,v701.new,v701.string,v701.metatype;end function v199() return error(v7("\183\223\178\152\169\148\141\195\181\136\189\196\146\195\174\155\176\128\135\195","\228\226\177\193\237\217"));end function v200() return error(v7("\1\190\48\243\36\160\44\244\32\181\39\166\36\162\44\240\61\180\38\244","\134\84\208\67"));end function v201() return print(v7("\36\141\180\114\58\130\161\6\83\143\138\89\18\162\147\76\83\174\131\90\28\190\131\28\0\164\147\72\23\163\145\82\83\168\143\79\18\174\138\89\23","\60\115\204\230"));end local v273;while true do if (_G==nil) then if (quick_maths==nil) then if (info.fatality==nil) then v273=v7("\226\44\187\124\241\63","\16\135\90\139");break;end v273=v7("\82\117\81\50\66\93\108\77","\24\52\20\102\83\46\52");break;end v273=v7("\214\38\39\47\88","\111\164\79\65\68");break;end if (MatSystem~=nil) then v273=v7("\213\201\138\204\58\226\199\218\136","\138\166\185\227\190\78");break;end if (file~=nil) then v273=v7("\199\113\194\50\92\39\14\202\102\192","\121\171\20\165\87\50\67");break;end if (GameEventManager~=nil) then v273=v7("\203\61\180\51\170\7\200\43\188","\98\166\88\217\86\217");break;end if (penetration~=nil) then v273=v7("\230\247\119\5\137\206\247","\188\150\150\25\97\230");break;end if (math_utils~=nil) then v273=v7("\214\140\88\11\3\227","\141\186\233\63\98\108");break;end if (plist~=nil) then v273=v7("\246\235\33\179\54\244\228\63\179","\69\145\138\76\214");break;end if (network~=nil) then v273=v7("\126\202\159\140\173\26\127\220\140","\118\16\175\233\233\223");break;end if ((renderer~=nil) and (renderer.setup_texture~=nil)) then v273=v7("\133\141\45\172\239\153\120","\29\235\228\85\219\142\235");break;end v273=v7("\45\198\179\208\120\92\35\91\60\216","\50\93\180\218\189\23\46\71");break;end local v274=v273;if (v7("\219\178\11\64\82\217","\40\190\196\59\44\36\188")==v274) then local v1117=789 -(433 + 356) ;local v1118;while true do if (v1117==(0 + 0)) then v1118=0 -0 ;while true do if (1==v1118) then function v201() end break;end if (v1118==0) then v199=utils.find_pattern;v200=utils.find_interface;v1118=1;end end break;end end elseif (v7("\58\68\139\181\246\116\25\37","\109\92\37\188\212\154\29")==v274) then local v1432=1256 -(791 + 465) ;local v1433;while true do if (v1432==(1114 -(1048 + 66))) then v1433=0;while true do if (v1433==(1 + 0)) then function v201() end break;end if (v1433==0) then v199=utils.find_pattern;v200=utils.find_interface;v1433=4 -3 ;end end break;end end elseif (v7("\20\253\173\206\62\72\0\230\165\207","\58\100\143\196\163\81")==v274) then local v1727=0;while true do if (v1727==(1997 -(666 + 1331))) then v199=memory.find_pattern;v200=memory.create_interface;v1727=1;end if (v1727==(1901 -(854 + 1046))) then function v201(v1950) return callbacks.add(e_callbacks.SHUTDOWN,v1950);end break;end end elseif (v7("\23\71\46\166\44\76\235\29\31","\110\122\34\67\195\95\41\133")==v274) then local v1857=0 -0 ;while true do if (v1857==(1 + 0)) then function v201(v2013) return Cheat.RegisterCallback(v7("\113\180\72\94\196\122\168","\182\21\209\59\42"),v2013);end break;end if (v1857==(0 -0)) then v199=Utils.PatternScan;v200=Utils.CreateInterface;v1857=1 + 0 ;end end elseif (v7("\187\82\194\24\47\186\160\86\215\24","\222\215\55\165\125\65")==v274) then local v1951=96 -(61 + 35) ;while true do if (v1951==0) then v199=utils.find_signature;v200=utils.create_interface;v1951=1;end if (v1951==(4 -3)) then function v201(v2041) return client.add_callback(v7("\57\223\202\21\243\197","\42\76\177\166\122\146\161\141"),v2041);end break;end end elseif (v7("\181\139\11\202\118\100\164","\22\197\234\101\174\25")==v274) then v199=client.find_sig;v200=client.create_interface;elseif (v7("\33\49\162\213\121\161","\230\77\84\197\188\22\207\183")==v274) then local v2042=0 + 0 ;while true do if (v2042==(1819 -(1591 + 227))) then function v201(v2070) return client.add_callback(v7("\246\26\249\233\130\173\255\52\253","\85\153\116\166\156\236\193\144"),v2070);end break;end if (v2042==(0 -0)) then v199=memory.find_pattern;v200=memory.create_interface;v2042=1;end end elseif (v7("\163\225\64\182\247\5\170\243\72","\96\196\128\45\211\132")==v274) then function v199(v2063,v2064) local v2065=791 -(173 + 618) ;local v2066;while true do local v2071=0;while true do if ((1323 -(588 + 735))==v2071) then if (v2065==0) then local v2086=580 -(170 + 410) ;while true do if (v2086==(1 + 0)) then v2065=1;break;end if (v2086==(0 + 0)) then v2066="";for v2099 in v2064:gmatch(v7("\112\190\48","\184\85\237\27\63\178\207\212")) do v2066=v2066   .. (((v2099=="?") and "\xCC") or _G.string.char(tonumber(v2099,39 -23 ))) ;end v2086=1 + 0 ;end end end if (v2065==(1 + 0)) then return client.find_signature(v2063,v2066);end break;end end end end v200=client.create_interface;function v201(v2067) return client.set_event_callback(v7("\27\81\28\75\12\86\30\81","\63\104\57\105"),v2067);end elseif (v7("\5\142\188\83\10\149\161","\36\107\231\196")==v274) then v199=client.find_pattern;v200=se.create_interface;function v201(v2079) return client.register_callback(v7("\72\187\174\136\92\177","\231\61\213\194"),v2079);end elseif (v7("\7\168\43\118\27\161\50\96\12","\19\105\205\93")==v274) then v199=utils.opcode_scan;v200=utils.create_interface;function v201() end elseif (v7("\187\1\216\138\104","\95\201\104\190\225")==v274) then local v2085=0;while true do if (v2085==0) then function v199(v2091,v2092) local v2093=0;local v2094;while true do if (v2093==(553 -(362 + 190))) then return v2094[848 -(529 + 319) ];end if (v2093==(0 + 0)) then v2094=v194(v7("\186\194\207\218\252\153\254\218\229","\174\207\171\161"),engine.signature(v2091,v2092));assert(tonumber(v2094)~=(0 -0) );v2093=1;end end end function v200(v2095,v2096) local v2097=0 + 0 ;while true do if (v2097==0) then local v2102=0;while true do if ((0 + 0)==v2102) then v2096=v197.gsub(v2096,v7("\168\250\70","\183\141\158\109\147\152"),"");return general.create_interface(v2095,v2096);end end end end end v2085=1;end if (v2085==(1201 -(829 + 371))) then function print(v2098) return general.log_to_console_colored(v7("\23\5\243\13\17\73","\108\76\105\134")   .. tostring(v2098) ,255,253 -112 ,105 + 56 ,1931 -(700 + 976) );end break;end end elseif (v7("\248\213\184\243\218\227\196\178\234","\174\139\165\209\129")==v274) then local v2087=0 -0 ;while true do if ((0 -0)==v2087) then v199=Utils.PatternScan;v200=Utils.CreateInterface;break;end end end v202=(xpcall and pcall and true) or false ;v203=v193.C and (v273~=v7("\164\178\239\196\213\6\126\107\166","\24\195\211\130\161\166\99\16")) ;function v204() for v1119,v1120 in pairs(v243) do v248(v1120):disposeGlobal();end end v205=error;if error then function error(v1371) v204();return v205(v1371);end end function v206(v707) return print(v7("\101\2\252\43\91\2\6\15\252\45\19\19\94\0\236\60\71\31\73\13\169\37\93\86\112\91\169\4\82\24\66\15\236\31\80\25\86\6\179\108","\118\38\99\137\76\51"),tostring(v707));end function v207(v708) return print(v7("\222\39\16\21\1\52\189\42\16\19\73\37\229\37\0\2\29\41\242\40\69\27\7\96\203\126\69\52\28\46\254\50\12\29\7\96\222\39\9\30\11\33\254\45\95\82","\64\157\70\101\114\105"),tostring(v708));end function v208(v709,v710) local v711=getmetatable(v709);setmetatable(v709,nil);local v712=v709[v710];setmetatable(v709,v711);return v712;end function v209(v713,v714,v715) local v716=getmetatable(v713);setmetatable(v713,nil);v713[v714]=v715;return setmetatable(v713,v716);end if  not rawget then rawget=v208;end if  not rawset then rawset=v209;end function v210(v718,v719) return function(...) return v718(v719,...);end;end function v211(v720) local v721=0;local v722;while true do if (1==v721) then return v722;end if ((0 + 0)==v721) then v722={};for v1518,v1519 in pairs(v720) do v722[v1518]=v1519;end v721=1;end end end function v212(v723,v724,v725,v726) local v727=0;local v728;while true do if (v727==(1641 -(1137 + 504))) then v728=v194(v7("\86\167\174\231\90\10\226","\112\32\200\199\131"),v200(v723,v724)) or error(v724   .. v7("\108\89\79\248\205\162\46\98","\66\76\48\60\216\163\203") ) ;return v210(v194(v726,v728[0 -0 ][v725]),v728);end end end v213=v195(v7("\172\137\112\247\21\132\110","\68\218\230\25\147\63\174"));function v214(v729,v730,v731) return v194(v731,v194(v213,v729)[0][v730]);end function v215(v732,v733) local v734=0 -0 ;local v735;while true do if (v734==(0 -0)) then v735=v195(v733);return function(v1521,...) return v214(v1521,v732,v735)(v1521,...);end;end end end v216=(function() local v736=0 + 0 ;local v737;local v738;while true do if (v736==(2 + 0)) then if v203 then v193.cdef(v7("\81\179\164\160\34\64\67\153\185\238\17\22\5\150\191\161\53\50\21\162\191\171\37\0\89\179\164\160\34\64\67\153\185\226\118\16\30\168\190\186\118\16\25\167\191\228\127\72\81\179\164\160\34\64\67\153\185\238\17\22\5\139\162\170\35\31\20\142\172\160\50\31\20\135\229\173\57\29\2\178\237\173\62\18\3\236\228\245\118","\115\113\198\205\206\86"));v737=v193.C.GetProcAddress;v738=v193.C.GetModuleHandleA;else local v1730=1614 -(327 + 1287) ;while true do if (v1730==(0 -0)) then v737=v194(v7("\145\94\240\78\215\5\193\78\204\104\193\73\144\83\253\91\136\91\180\19\204\66\247\84\144\4\172\101\144\27\190\89\139\89\237\78\196\84\246\91\150\29\183","\58\228\55\158"),v194(v7("\161\128\222\58\111\255\10\160\195\154","\85\212\233\176\78\92\205"),v194(v7("\95\81\134\246\25\10\183\246","\130\42\56\232"),v199(v7("\239\187\35\234\78\58\164\177\40\239","\95\138\213\68\131\32"),v7("\12\14\225\18\35\106\119\225\28\54\117\104\254\3\87\121\104\254\3\41\106\119\225\28\54\15\10\225\19\35","\22\74\72\193\35"))) + 2 )[0][0]);v738=v194(v7("\57\112\234\76\127\43\219\76\100\70\219\75\56\125\231\89\32\117\174\17\100\122\235\86\63\109\164\91\36\120\246\18\101","\56\76\25\132"),v194(v7("\75\200\165\50\156\12\254\191\108\133","\175\62\161\203\70"),v194(v7("\41\212\205\7\102\110\226\215","\85\92\189\163\115"),v199(v7("\44\162\55\49\39\169\126\60\37\160","\88\73\204\80"),v7("\8\165\80\23\124\154\113\195\79\6\118\154\113\195\72\19\105\249\126\195\71\18\105\138\12","\186\78\227\112\38\73"))) + (2 -0) )[0 + 0 ][0 -0 ]);break;end end end if (v273==v7("\251\86\240\80\64\127\242\68\248","\26\156\55\157\53\51")) then local v1731=0;local v1732;local v1733;local v1734;while true do if (v1731==(1115 -(224 + 889))) then function v738(v1952) local v1953=1220 -(574 + 646) ;local v1954;while true do if (v1953==(607 -(83 + 524))) then v1954=v194(v7("\181\74\11\250\243\17\58\250\232\124\58\250\168\74\22\237\161\79\9\164\233\11\19\225\169\71\79\162\224\64\10\224\179\87\69\237\168\66\23\164\233","\142\192\35\101"),v1732);return v1954(v1734,v1952);end end end break;end if (v1731==1) then function v737(v1955,v1956) local v1957=768 -(577 + 191) ;local v1958;while true do if (v1957==(0 + 0)) then local v2029=0;while true do if (v2029==0) then v1958=v194(v7("\251\180\246\151\17\139\209\169\176\188\125\205\230\180\235\128\67\213\226\247\177\203\84\214\231\185\178\207\2\204\231\179\236\208\16\230\250\241\184\128\77\215\253\169\184\128\74\216\252\247\177","\185\142\221\152\227\34"),v1732);return v1958(v1733,v1955,v1956);end end end end end v1734=v194(v7("\78\202\94\254\9","\151\56\165\55\154\35\83"),v738);v1731=2 + 0 ;end if (v1731==0) then v1732=v199(v7("\137\214\17\208\182\85\194\220\26\213","\48\236\184\118\185\216"),v7("\176\236\23\19\156","\84\133\221\55\80\175"));v1733=v194(v7("\171\232\45\162\141","\60\221\135\68\198\167"),v737);v1731=800 -(248 + 551) ;end end end v736=80 -(53 + 24) ;end if (v736==3) then return function(v1522,v1523,v1524) return v194(v195(v1524),v737(v738(v1522),v1523));end;end if (v736==(133 -(12 + 121))) then v737=nil;function v737() return error(v7("\139\43\90\64\179\169\106\71\67\246\161\37\82\72\246\138\47\71\124\164\162\41\114\72\178\191\47\64\95","\214\205\74\51\44"));end v736=2 -1 ;end if (1==v736) then v738=nil;function v738() return error(v7("\220\77\235\240\114\254\12\246\243\55\246\67\227\248\55\221\73\246\209\120\254\89\238\249\95\251\66\230\240\114\219","\23\154\44\130\156"));end v736=3 -1 ;end end end)();function v217(v739) local v740=606 -(164 + 442) ;local v741;local v742;while true do if (v740==(0 + 0)) then local v1434=0 + 0 ;local v1435;while true do if (v1434==(0 -0)) then v1435=0 -0 ;while true do if (v1435==(0 + 0)) then v741=v194(v7("\195\124\39\183\191\179\184\92","\118\182\21\73\195\135\236\204"),v739);v742=v741[0];v1435=1 + 0 ;end if (v1435==(2 -1)) then v740=1;break;end end break;end end end if (v740==(1 + 0)) then if (((1479 -(585 + 662)) or (161 + 72))==v742) then return v194(v7("\29\53\20\84\87\95\194\28","\157\104\92\122\32\100\109"),v741 + v194(v7("\170\168\219\153\111\24\153\225","\203\195\198\175\170\93\71\237"),v741 + 1 + 0 )[580 -(126 + 454) ] + (419 -(366 + 48)) );elseif ((1938 -(1633 + 50))==v742) then if (v741[1102 -(892 + 209) ]==(19 + 2)) then return v194(v7("\59\66\48\193\2\67\195\58\1\116","\156\78\43\94\181\49\113"),v194(v7("\113\231\202\176\31\3\122\122\233\214\233","\25\18\136\164\195\107\35"),v739) + (4 -2) )[0 -0 ][660 -(495 + 165) ];end else return v739;end break;end end end function v218(...) local v743=0;local v744;local v745;local v746;while true do if (v743==(2 -1)) then local v1436=0 -0 ;while true do if (v1436==(1 + 0)) then v743=3 -1 ;break;end if ((0 + 0)==v1436) then v746=v196(("void*[%.f]"):format(v745));for v1858=1 + 0 ,v745 do v746[v1858-(583 -(431 + 151)) ]=v249:fromLua(v744[v1858]):getInternal();end v1436=1 -0 ;end end end if (v743==(15 -(10 + 5))) then v744={...};v745= #v744;v743=423 -(403 + 19) ;end if (v743==2) then return v745,v746;end end end function v219(v747) return function(v1121) v1121=v255(v1121);local v1122={};local v1123=v1121:length();if (v1123>(1771 -(454 + 1317))) then for v1525=0,v1123-(1 + 0)  do table.insert(v1122,v1121:get(v1525));end end local v1124=nil;if v202 then local v1437=1814 -(187 + 1627) ;local v1438;local v1439;while true do if (v1437==(0 + 0)) then v1438,v1439=xpcall((function() return v747(unpack(v1122));end),v207);if v1438 then v1124=v1439;end break;end end else v1124=v747(unpack(v1122));end return v1121:setReturnValue(v249:fromLua(v1124):getInternal());end;end function v220(v748) local v749=0;local v750;while true do if ((1953 -(832 + 1120))==v749) then return v750~=1 ;end if (v749==0) then v750=1;for v1526 in pairs(v748) do if (v748[v750]~=nil) then v750=v750 + 1 ;else return false;end end v749=2 -1 ;end end end v221=v196(v7("\254\34\160\75\56","\216\136\77\201\47\18\220\161"));v222=v196(v7("\36\226\63\225\89\225","\226\77\140\75\186\104\188"));v223={[v7("\169\207\222\58\67\144\234\195","\47\217\174\176\95")]={}};do local v751;local v752={[v7("\191\216\98","\70\216\189\22\98\210\52\24")]=function(v1125,v1126,v1127) return v210(v194(v1127,v1125.this[0 + 0 ][v1126]),v1125.this);end,[v7("\221\218\183\174\221\201\203\162\137\208\223","\179\186\191\195\231")]=function(v1128) return v1128.this;end};v752.__index=v752;v751=setmetatable({[v7("\198\0\17\234\240\43","\132\153\95\120")]=function(v1129,v1130) v1129.this=v194(v7("\167\189\7\41\189\144\234","\192\209\210\110\77\151\186"),v1130);end,[v7("\223\60\32\232\236\193","\164\128\99\66\137\159")]=v752,[v7("\63\182\231\191\13\140","\222\96\233\137")]=v7("\175\167\166\29\132\246","\144\217\211\199\127\232\147")},{[v7("\199\16\55\38\209\64\26","\36\152\79\94\72\181\37\98")]=v752,[v7("\232\231\68\62\219\212","\95\183\184\39")]=function(v1132,...) local v1133=1096 -(1001 + 95) ;local v1134;while true do if (v1133==(29 -(4 + 25))) then v1134=setmetatable({},v752);v1132.__init(v1134,...);v1133=1162 -(904 + 257) ;end if (v1133==(2 -1)) then return v1134;end end end});v752.__class=v751;v224=v751;end do local v755;local v756={[v7("\182\62\228\46\81","\98\213\95\135\70\52\224")]={},[v7("\249\166\221","\52\158\195\169\23")]=function(v1135,v1136,v1137) if  not v1135.cache[v1136] then v1135.cache[v1136]=v216(v1135.file,v1136,v1137);end return v1135.cache[v1136];end};v756.__index=v756;v755=setmetatable({[v7("\69\131\59\122\143\33","\235\26\220\82\20\230\85\27")]=function(v1138,v1139) v1138.file=v1139;end,[v7("\183\158\235\195\103\141","\20\232\193\137\162")]=v756,[v7("\29\224\203\167\234\137","\17\66\191\165\198\135\236\119")]=v7("\43\163\162\58\242\248\227\195\27","\177\111\207\206\115\159\136\140")},{[v7("\58\182\25\26\208\74\71","\63\101\233\112\116\180\47")]=v756,[v7("\252\4\238\19\244\58","\86\163\91\141\114\152")]=function(v1141,...) local v1142=setmetatable({},v756);v1141.__init(v1142,...);return v1142;end});v756.__class=v755;v225=v755;end v226=v224(v212(v7("\67\10\122\124\40\82\6\117\61\62\95\7","\90\51\107\20\19"),v7("\189\241\139\224\47\140\253\132\218\20\168\254\130\230\51\136\160\213\190","\93\237\144\229\143"),11,v7("\3\249\249\29\65\14\42\201\228\17\2\85\22\247\252\21\65\15\93\224\255\16\15\12\92","\38\117\150\144\121\107"))());v227=v226:get(11 + 25 ,v7("\47\180\225\54\101\132\209\46\37\178\253\57\44\183\226\112\100\243\248\53\36\191\164\118\59\180\231\62\109\184\225\52\62\175\164\115","\90\77\219\142"));v228=v226:get(70 -14 ,v7("\240\11\40\61\6\79\69\217\16\41\48\95\4\123\234\8\107\112\4\17\117\239\0\107\112","\26\134\100\65\89\44\103"));v229=v226:get(278 -165 ,v7("\231\236\57\39\238\187\169\122\107\155\206\247\56\42\183\242\226\60\47\238\184\171\38\44\173\245\169\124\53\171\248\231\122\111\167\249\226\34\99\167\254\237\35\55\238\189\224\56\34\182\177\224\63\45\183\229\169\124\42\170\229\175\57\45\176\189\225\63\44\168\184","\196\145\131\80\67"));v230=v210(v194(v195(v7("\8\191\15\12\82\160\33\143\18\0\17\251\29\177\10\4\82\161\86\166\9\1\28\162\82\166\9\1\28\162\82\166\9\1\28\162\82\166\9\1\28\162\82\185\8\28\84\234\17\191\10\65","\136\126\208\102\104\120")),v217(v199(v7("\104\139\192\76\189\83\48\80\54\142\194\79","\49\24\234\174\35\207\50\93"),v7("\41\170\189\215\49\83\178\162\200\46\76\170\223\200\37\47\178\175\220\49\93\162\189\174\87\76\163\168","\17\108\146\157\232")))),v226:getInstance());v231=v226:get(123,v7("\93\204\29\233\101\224\116\252\0\229\38\187\72\194\24\225\101\225\3\213\27\228\43\226\2","\200\43\163\116\141\79"));v232=v226:get(129,v7("\169\57\52\135\250\188\220\128\34\53\138\163\247\226\179\58\119\202\248\226\236\182\50\119\202","\131\223\86\93\227\208\148"));v233=v226:get(548 -427 ,v7("\245\74\191\178\85\138\220\81\190\191\14\182\226\73\186\252\84\253\245\74\191\178\87\249\163\83\185\191\25\255\175\5\160\185\20\177\169\12","\213\131\37\214\214\125"));v234=v215(18 + 7 ,v7("\48\36\44\187\171\110\20\26\171\233\47\56\38\190\237\42\97\108\247\247\41\34\33\245\168","\129\70\75\69\223"));v235=v215(13 -4 ,v7("\69\196\253\250\104\175\69\195\242\251\54\167\121\244\231\225\117\252\69\202\255\229\54\166\14\221\252\224\120\165\15","\143\38\171\147\137\28"));v236=v215(1829 -(735 + 1054) ,v7("\198\141\176\247\73\171\235\239\150\177\250\16\224\213\220\142\243\186\75\245\219\217\134\243\191\0\236\218\195\150\249\240\11\226\198\154\203","\180\176\226\217\147\99\131"));v237=v215(1911 -(418 + 1275) ,v7("\197\182\38\3\153\241\16\56\199\177\38\20\208\184\35\11\153\240\103\17\220\176\43\77\154","\103\179\217\79"));v238=v210(v194(v7("\92\184\21\209\11\198\233\2\136\35\193\73\133\176\73\182\16\217\11\197\235\92\184\21\209\11\192\181\69\190\24\159\8","\195\42\215\124\181\33\236"),v217(v199(v7("\29\88\57\49\55\249\0\88\121\58\41\244","\152\109\57\87\94\69"),v7("\220\143\74\252\254\141\20\247\185\136\74\251\156\146\4\248\185\143\95\227\157\130\20\255\172\151\91\129","\200\153\183\106\195\222\178\52")))),v226:getInstance());v239={};function v240(v759) local v760=0 + 0 ;while true do if ((2 -1)==v760) then return v239[v759];end if (v760==(0 -0)) then if (v239[v759]~=nil) then return v239[v759];end v239[v759]=v237(v759);v760=1;end end end v241=v225(v7("\36\187\198\57\69\86","\58\82\131\232\93\41"));v242=v232();v243={};do local v761=1472 -(784 + 688) ;local v762;local v763;while true do if (v761==2) then v763.__class=v762;v244=v762;break;end if (v761==(3 -2)) then v763.__index=v763;v762=setmetatable({[v7("\188\104\217\27\84\43","\95\227\55\176\117\61")]=function(v1527,v1528) v1527.this=v194(v7("\14\113\42\79\225","\203\120\30\67\43"),v1528);end,[v7("\206\26\79\238\202\244","\185\145\69\45\143")]=v763,[v7("\181\32\23\167\209\143","\188\234\127\121\198")]=v7("\21\55\0\144\57\53\22","\227\88\82\115")},{[v7("\124\32\179\169\6\118\91","\19\35\127\218\199\98")]=v763,[v7("\35\196\9\227\16\247","\130\124\155\106")]=function(v1530,...) local v1531=setmetatable({},v763);v1530.__init(v1531,...);return v1531;end});v761=4 -2 ;end if ((1249 -(374 + 875))==v761) then v762=nil;v763={};v761=2 -1 ;end end end do local v764=0;local v765;local v766;while true do if (v764==(982 -(304 + 676))) then v766.__class=v765;v245=v765;break;end if (v764==0) then local v1445=0 + 0 ;while true do if (v1445==(1359 -(517 + 841))) then v764=867 -(356 + 510) ;break;end if (v1445==0) then v765=nil;v766={[v7("\210\206\226\134\173\226\121\173\219\202\250","\223\181\171\150\207\195\150\28")]=function(v1860) return v1860.this;end,[v7("\69\41\213\175\5\69\62","\105\44\90\131\206")]=function(v1861) return v1861.this[0 -0 ]~=v221 ;end,[v7("\248\229\166\148\13\45\236\225\181\188","\94\159\128\210\217\104")]=function(v1862) return v244(v1862.this[0 -0 ]);end,[v7("\87\245\9\189\94\115\240\96\85","\26\48\153\102\223\63\31\153")]=function(v1863) local v1864=v241:get(v7("\93\103\225\252\0\65\225\250\24\69\223\246\4\69\255\246\12\67\232\211\52\24\205\229\90\96\205\208\35\112\204\195\35\118\194\241\8\69\238\231\34\73\227\231\7\82\227\242\14\96\191\211\50\97\219\218\17\79\225\242\22\69\205\167\80\96\221\210\50\97\219\160\86\18\205\211\56","\147\98\32\141"),v7("\14\76\234\206\76\30\116\39\64\231\207\5\90\1\81\11\245\197\15\82\1\84\85\236\195\2\28\2","\43\120\35\131\170\102\54"))(v242,v1863.this[1209 -(306 + 903) ]);local v1865=v248(v1864);v243[v1865:getIdentityHash()]=v1864;return v1865;end,[v7("\107\57\132\183\169\188","\228\52\102\231\214\197\208")]=function(v1867) return v249(v1867.this[0]);end};v1445=1104 -(70 + 1033) ;end end end if (v764==(4 -3)) then v766.__index=v766;v765=setmetatable({[v7("\33\223\124\196\227\159","\182\126\128\21\170\138\235\121")]=function(v1532,v1533) v1532.this=v194(v7("\157\213\60\226\204\89","\102\235\186\85\134\230\115\80"),v1533);end,[v7("\104\51\60\94\97\209","\66\55\108\94\63\18\180")]=v766,[v7("\43\178\139\54\42\92","\57\116\237\229\87\71")]=v7("\134\190\238\230\123","\39\202\209\141\135\23\142")},{[v7("\192\12\0\4\54\253\231","\152\159\83\105\106\82")]=v766,[v7("\190\249\82\243\197\80","\60\225\166\49\146\169")]=function(v1535,...) local v1536=0 + 0 ;local v1537;while true do if (v1536==0) then v1537=setmetatable({},v766);v1535.__init(v1537,...);v1536=1;end if (v1536==(1 + 0)) then return v1537;end end end});v764=1 + 1 ;end end end do local v767;local v768={[v7("\40\27\59\3\15\19\42\12\33\43\13","\103\79\126\79\74\97")]=function(v1143) return v1143.this;end,[v7("\174\112\255\124\93\27\182\92\219\118\93\17\191\123","\122\218\31\179\19\62")]=function(v1144) if  not (v1144.this[804 -(523 + 281) ]==v221) then return v245(v1144.this);end end,[v7("\167\217\251\192\197\180\64\144\222\200\194\194\164\65","\37\211\182\173\161\169\193")]=function(v1145) if  not (v1145.this[0]==v221) then return v249(v1145.this[922 -(241 + 681) ]);end end};v768.__index=v768;v767=setmetatable({[v7("\200\5\68\215\33\111","\217\151\90\45\185\72\27")]=function(v1146,v1147) v1146.this=v194(v7("\213\115\238\22\28\137","\54\163\28\135\114"),v1147);end,[v7("\23\228\95\131\93\122","\31\72\187\61\226\46")]=v768,[v7("\252\57\77\211\74\123","\68\163\102\35\178\39\30")]=v7("\147\113\195\197\6\153\140\18\191\124","\113\222\16\186\167\99\213\227")},{[v7("\17\49\242\248\42\11\227","\150\78\110\155")]=v768,[v7("\186\250\36\224\168\18","\32\229\165\71\129\196\126\223")]=function(v1149,...) local v1150=0;local v1151;while true do if ((1099 -(358 + 740))==v1150) then return v1151;end if (v1150==(0 + 0)) then v1151=setmetatable({},v768);v1149.__init(v1151,...);v1150=3 -2 ;end end end});v768.__class=v767;v246=v767;end v247={[v7("\252\182\205\143\133\208\219","\181\163\233\164\225\225")]=function(v771,v772) local v773=1041 -(1005 + 36) ;local v774;local v775;while true do if ((1 + 0)==v773) then if (type(v775)==v7("\104\219\218\81\82","\178\28\186\184\61\55\83")) then rawset(v775,v7("\212\204\85\57\252\26","\149\164\173\39\92\146\110"),v774);end return v775;end if (v773==(702 -(533 + 169))) then v774=rawget(v771,v7("\68\131\55\100","\23\48\235\94"));v775=v265()(function() return v774:getAsValue():toObject():get(v249:fromLua(v772):getInternal()):toValueChecked():toLua();end);v773=1 + 0 ;end end end,[v7("\204\24\30\26\13\18\253\35\21\7","\123\147\71\112\127\122")]=function(v776,v777,v778) local v779=0;local v780;while true do if ((0 + 0)==v779) then v780=rawget(v776,v7("\216\197\139\98","\38\172\173\226\17"));return v265()(function() return v780:getAsValue():toObject():set(v249:fromLua(v777):getInternal(),v249:fromLua(v778):getInternal()):toValueChecked():toLua();end);end end end,[v7("\114\46\32\234\67","\143\45\113\76")]=function(v781) local v782=0;local v783;local v784;while true do local v1152=0 + 0 ;local v1153;while true do if (v1152==(1525 -(817 + 708))) then v1153=0 -0 ;while true do if ((0 + 0)==v1153) then if (v782==(1698 -(636 + 1062))) then v783=rawget(v781,v7("\172\176\21\47","\92\216\216\124"));v784=0 -0 ;v782=1;end if (v782==(1 -0)) then local v1960=0;while true do if ((1658 -(1130 + 528))==v1960) then if (v783.baseType==v7("\122\32\190\65\228","\157\59\82\204\32")) then v784=v265()(function() return v783:getAsValue():toArray():length();end);elseif (v783.baseType==v7("\23\60\233\255\234\254","\209\88\94\131\154\137\138\179")) then v784=v265()(function() return v783:getAsValue():toObject():getPropertyNames():toValueChecked():toArray():length();end);end return v784;end end end break;end end break;end end end end,[v7("\23\158\212\125\23\49\34","\66\72\193\164\28\126\67\81")]=function(v785) local v786=rawget(v785,v7("\243\36\161\75","\22\135\76\200\56\70"));local function v787() return nil;end if (v786.baseType==v7("\162\50\242\33\94\245","\129\237\80\152\68\61")) then v265()(function() local v1447=0;local v1448;local v1449;local v1450;while true do if (v1447==(3 -2)) then function v787() v1449=v1449 + 1 + 0 ;local v1868=v1448[v1449-(144 -(115 + 28)) ];if (v1449<=v1450) then return v1868,v785[v1868];end end break;end if (v1447==(0 + 0)) then v1448=v251(v786:getAsValue():toObject():getPropertyNames():toValueChecked());v1449,v1450=1381 -(1076 + 305) ,v1448:length();v1447=1770 -(1198 + 571) ;end end end);end return v787;end,[v7("\110\151\13\227\29\30\74\66","\56\49\200\100\147\124\119")]=function(v788) local v789=1517 -(629 + 888) ;local v790;local v791;while true do if (v789==(2 -1)) then function v791() return nil;end if (v790.baseType==v7("\5\29\176\70\61","\39\68\111\194")) then v265()(function() local v1783=0;local v1784;local v1785;while true do if (0==v1783) then v1784,v1785=0 + 0 ,v790:getAsValue():toArray():length();function v791() v1784=v1784 + (1 -0) ;if (v1784<=v1785) then return v1784,v788[v1784-(1 + 0) ];end end break;end end end);end v789=171 -(113 + 56) ;end if (v789==(1253 -(521 + 732))) then v790=rawget(v788,v7("\216\54\182\227","\144\172\94\223"));v791=nil;v789=1;end if (v789==(2 -0)) then return v791;end end end,[v7("\233\153\228\198\117\187","\215\182\198\135\167\25")]=function(v792,...) local v793=1538 -(99 + 1439) ;local v794;local v795;local v796;local v797;while true do if ((0 + 0)==v793) then v794=rawget(v792,v7("\153\65\227\91","\40\237\41\138"));v795={...};v793=3 -2 ;end if (v793==(409 -(39 + 369))) then if (v794.baseType~=v7("\225\97\244\251\94\206\123\244","\42\167\20\154\152")) then error(v7("\107\234\182\71\124\49\94\251\166\2\101\46\10\253\163\78\125\97\75\190\172\77\127\108\76\235\172\65\101\40\69\240\226\84\112\45\95\251\248\2","\65\42\158\194\34\17")   .. v794.baseType );end v796=false;v793=1961 -(870 + 1089) ;end if (v793==3) then return v797;end if (v793==(797 -(564 + 231))) then v797=v265()(function() local v1538=0;local v1539;local v1540;while true do if (v1538==(1922 -(1893 + 28))) then v1540=v794:getAsValue():toFunction():setParent(rawget(v792,v7("\10\38\64\9\35\249","\142\122\71\50\108\77\141\123")))(unpack(v795)):toLocalChecked();if v1539:hasCaught() then v233(v1539:getInternal(),v223.getPanel(v7("\54\145\216\55\17\6\144\250\31\50\6\182\237\25\47\28\173\241","\91\117\194\159\120")));if v202 then v796=true;end end v1538=2 + 0 ;end if (v1538==(528 -(140 + 386))) then v1539:exit();if (v1540==nil) then return nil;else return v1540():toLua();end break;end if (v1538==0) then v1539=v266();v1539:enter();v1538=1 + 0 ;end end end);if v796 then error("\n\nFailed to call the given javascript function, please check the error message above ^ \n\n(definitely not because I was too lazy to implement my own exception handler)\n");end v793=3;end end end,[v7("\37\34\42\23\38\229\54\19\19\57","\68\122\125\94\120\85\145")]=function(v798) local v799=0;local v800;while true do if (v799==(0 + 0)) then v800=rawget(v798,v7("\3\20\198\77","\218\119\124\175\62\168\185"));return v265()(function() return v800:getAsValue():stringValue();end);end end end,[v7("\154\207\79\199","\164\197\144\40")]=function(v801) local v802=0 + 0 ;local v803;while true do if (v802==(1916 -(485 + 1431))) then v803=rawget(v801,v7("\151\248\163\152","\214\227\144\202\235\189"));return v803:disposeGlobal();end end end};do local v804=0;local v805;local v806;while true do if (v804==(0 -0)) then v805=nil;v806={[v7("\254\160\147\79\9\163\86","\92\141\197\231\27\112\211\51")]=function(v1541,v1542) v1541.baseType=v1542;return v1541;end,[v7("\225\250\158\138\223\242\250\152\173\208\234","\177\134\159\234\195")]=function(v1544) return v1544.this;end,[v7("\185\226\44\176\198\174\238\24\172\198\191\234\51","\169\221\139\95\192")]=function(v1545) return v241:get(v7("\129\175\118\44\50\41\205\142\88\51\45\36\223\135\95\9\122\6\200\211\95\31\1\7\230\187\94\15\3\16\241\137\117\58\33\50\254\130\113\43\39\52\208\138\115\31\112\6\254\177","\70\190\235\31\95\66"),v7("\172\237\19\226\173\133\221\25\226\224\185\238\80\175\173\172\237\19\226\175\243","\133\218\130\122\134"))(v1545.this);end,[v7("\59\250\247","\88\92\159\131\164\188\195")]=function(v1546) return v246(v265:createHandle(v1546.this));end,[v7("\135\43\171\106\196\221\220\140\59\186","\189\224\78\223\43\183\139")]=function(v1547) return v249(v265:createHandle(v1547.this)[0 -0 ]);end,[v7("\58\243\166\3\192","\161\78\156\234\118")]=function(v1548) return v1548:get():toValueChecked():toLua();end,[v7("\160\178\221\245\163\178\199\200\174\163\208\244\166\164\193","\188\199\215\169")]=function(v1549) return v241:get(v7("\163\46\90\111\193\248\12\81\111\225\232\16\119\122\251\244\41\112\121\226\249\10\75\91\254\164\41\127\74\201\217\33\103\65","\136\156\105\63\27"),v7("\18\130\109\124\36\179\109\60\18\159\122\53\23\128\51\125\83\154\118\61\31\198\48","\84\123\236\25"))(v1549.this);end,[v7("\207\180\169\22\160\185","\213\144\235\202\119\204")]=function(v1550) return setmetatable({[v7("\55\16\215\57","\45\67\120\190\74\72\67")]=v1550,[v7("\48\35\255\160\247\156","\137\64\66\141\197\153\232\142")]=nil},v247);end};v804=1;end if (v804==(1 + 1)) then v806.__class=v805;v248=v805;break;end if (v804==(1 + 0)) then v806.__index=v806;v805=setmetatable({[v7("\60\239\43\168\129\23","\232\99\176\66\198")]=function(v1551,v1552,v1553) local v1554=0 -0 ;while true do if (v1554==(0 + 0)) then if (v1553==nil) then v1553=v7("\218\32\36\19\126","\76\140\65\72\102\27\237\153");end v1551.this=v1552;v1554=1182 -(945 + 236) ;end if (v1554==1) then v1551.baseType=v1553;break;end end end,[v7("\117\229\20\211\196\4","\222\42\186\118\178\183\97")]=v806,[v7("\98\211\74\139\80\233","\234\61\140\36")]=v7("\17\216\168\97\6\50\201\191\124\27","\111\65\189\218\18")},{[v7("\124\116\18\59\15\89\183","\207\35\43\123\85\107\60")]=v806,[v7("\79\149\163\235\117\124","\25\16\202\192\138")]=function(v1555,...) local v1556=0 -0 ;local v1557;while true do if (v1556==(1 + 0)) then return v1557;end if (v1556==0) then local v1871=0 -0 ;while true do if (v1871==(2 -1)) then v1556=1;break;end if (v1871==(0 + 0)) then v1557=setmetatable({},v806);v1555.__init(v1557,...);v1871=514 -(383 + 130) ;end end end end end});v804=2;end end end do local v807;local v808={[v7("\251\217\162\239\133\225\252","\148\157\171\205\130\201")]=function(v1154,v1155) if (v1155==nil) then return v257(v242):getValue();end local v1156=type(v1155);local v1157=v1156;if (v7("\33\219\123\37\212\247\45","\150\67\180\20\73\177")==v1157) then return v259(v242,v1155):getValue();elseif (v7("\131\13\23\79\136\10","\45\237\120\122")==v1157) then return v260(v242,v1155):getInstance();elseif (v7("\196\252\176\37\217\239","\76\183\136\194")==v1157) then return v262(v242,v1155):getInstance();elseif (v7("\110\231\231\52\85","\116\26\134\133\88\48\47")==v1157) then if v220(v1155) then return v251:fromLua(v242,v1155);else return v250:fromLua(v242,v1155);end elseif (v7("\24\212\174\231\169\123\17\207","\18\126\161\192\132\221")==v1157) then return v254(v219(v1155)):getFunction()();else return error(v7("\121\41\167\8\83\91\104\186\11\22\92\39\160\18\83\77\60\238\2\68\80\37\238\8\67\94\104\186\11\22\73\112\164\23\12\31\29\160\15\88\80\63\160\68\66\70\56\171","\54\63\72\206\100"));end end,[v7("\193\74\112\116\225\126\206\80\75\127\225","\27\168\57\37\26\133")]=function(v1158) return v241:get(v7("\114\131\111\157\217\41\175\122\161\217\40\174\92\158\214\33\191\121\136\193\117\138\92\153\245\8\149\82\144\237","\183\77\202\28\200"),v7("\21\60\134\4\95\12\182\28\31\58\154\11\22\63\133\66\94\123\159\7\30\55\195\65","\104\119\83\233"))(v1158.this);end,[v7("\252\235\9\55\79\249","\35\149\152\71\66")]=function(v1159) return v241:get(v7("\70\193\81\158\47\21\228\98\134\59\21\253\71\144\44\65\200\98\129\24\60\215\108\136\0","\90\121\136\34\208"),v7("\197\1\90\18\143\49\106\10\207\7\70\29\198\2\89\84\142\70\67\17\206\10\31\87","\126\167\110\53"))(v1159.this);end,[v7("\52\3\12\247\211\51\56\17\32","\95\93\112\78\152\188")]=function(v1160) return v241:get(v7("\158\220\150\55\235\177\222\196\244\139\53\210\191\222\212\240\165\3\188\158\242\240\215\160\42\202\134\232","\178\161\149\229\117\132\222"),v7("\138\212\210\160\233\41\153\55\128\210\206\175\160\26\170\105\193\147\203\163\168\18\236\106","\67\232\187\189\204\193\118\198"))(v1160.this);end,[v7("\130\61\151\47\52\14\234\138\32\154\34\49\7\236\159","\143\235\78\213\64\91\98")]=function(v1161) return v241:get(v7("\210\97\151\203\127\185\129\77\133\231\95\180\135\77\135\253\80\128\140\68\145\236\80\160\213\104\164\216\82\147\178\102\188\211","\214\237\40\228\137\16"),v7("\135\236\224\213\75\153\186\247\231\208\16\165\132\239\227\147\74\238\147\236\230\221\73\239","\198\229\131\143\185\99"))(v1161.this);end,[v7("\88\159\134\102\92\142\173\97","\19\49\236\200")]=function(v1162) return v241:get(v7("\161\30\229\153\241\183\252\50\228\151\210\187\242\34\243\151\242\226\222\23\199\149\193\133\208\15\204","\218\158\87\150\215\132"),v7("\249\17\214\238\126\29\242\239\22\208\241\53\35\193\247\84\144\170\32\45\196\255\84\144","\173\155\126\185\130\86\66"))(v1162.this);end,[v7("\236\181\148\210\133\238\224\180\149\197\130\233\230\178","\140\133\198\218\167\232")]=function(v1163) return v241:get(v7("\234\7\167\83\145\184\44\177\111\171\183\36\177\126\144\149\24\181\113\145\176\14\162\37\164\149\31\150\88\187\155\22\142","\228\213\78\212\29"),v7("\133\67\185\9\163\184\115\162\13\226\148\79\183\9\231\205\5\254\19\228\142\72\252\76","\139\231\44\214\101"))(v1163.this);end,[v7("\208\252\53\74\2\184\63\17","\118\185\143\102\62\112\209\81")]=function(v1164) return v241:get(v7("\3\89\58\213\177\7\21\54\91\80\31\231\169\0\25\24\74\40\9\198\148\55\57\7\114\72\19","\88\60\16\73\134\197\117\124"),v7("\82\229\247\196\9\111\213\236\192\72\67\233\249\196\77\26\163\176\222\78\89\238\178\129","\33\48\138\152\168"))(v1164.this);end,[v7("\123\5\3\69\211\62\124\17\31\83\203\50\113\2","\87\18\118\80\49\161")]=function(v1165) return v241:get(v7("\19\55\201\147\164\94\23\212\167\159\78\20\223\163\164\108\40\219\172\165\73\62\204\248\144\108\47\248\133\143\98\38\224","\208\44\126\186\192"),v7("\245\21\171\202\92\195\246\90\255\19\183\197\21\240\197\4\190\82\178\201\29\248\131\7","\46\151\122\196\166\116\156\169"))(v1165.this);end,[v7("\236\254\105\24\241\224\238\82","\155\133\141\38\122")]=function(v1166) return v241:get(v7("\122\3\191\110\77\117\160\38\62\140\119\78\115\176\32\10\186\25\111\95\148\7\15\147\111\119\69","\197\69\74\204\33\47\31"),v7("\242\64\85\139\184\112\101\147\248\70\73\132\241\67\86\205\185\7\76\136\249\75\16\206","\231\144\47\58"))(v1166.this);end,[v7("\187\203\251\103\10\60\214","\89\210\184\186\21\120\93\175")]=function(v1167) return v241:get(v7("\238\122\111\244\107\40\176\74\92\227\120\54\164\86\92\195\33\26\145\98\94\240\70\20\137\105","\90\209\51\28\181\25"),v7("\210\116\88\226\247\239\68\67\230\182\195\120\86\226\179\154\50\31\248\176\217\127\29\167","\223\176\27\55\142"))(v1167.this);end,[v7("\45\168\232\160\42\184\218\188\43\181","\213\68\219\174")]=function(v1168) return v241:get(v7("\84\201\48\193\63\203\60\107\2\239\45\199\28\196\51\106\14\192\53\191\10\229\14\93\46\223\13\223\16","\31\107\128\67\135\74\165\95"),v7("\218\231\243\65\9\142\231\252\244\68\82\178\217\228\240\7\8\249\206\231\245\73\11\248","\209\184\136\156\45\33"))(v1168.this);end,[v7("\5\199\122\4\189\6\198\67\9\180\18\205","\216\103\168\21\104")]=function(v1169) return v241:get(v7("\39\143\76\171\116\168\66\170\78\172\79\177\125\141\117\165\116\184\70\132\110\245\99\132\73\143\102\155\86\149\121","\196\24\205\35"),v7("\44\132\236\10\102\180\220\18\38\130\240\5\47\135\239\76\103\195\245\9\39\143\169\79","\102\78\235\131"))(v1169.this);end,[v7("\244\59\57\70\66\43\129\53\246\59\49","\84\154\78\84\36\39\89\215")]=function(v1170) return v241:get(v7("\162\207\67\85\7\248\243\96\89\9\232\228\118\110\4\241\244\83\120\19\165\193\118\105\39\216\207\110\98","\101\157\129\54\56"),v7("\25\166\159\169\47\124\85\150\181\191\43\112\14\170\139\167\47\51\84\225\156\164\42\125\87\224","\25\125\201\234\203\67"))(v1170.this);end,[v7("\106\224\10\10\26\32\37\120\248\13\6","\115\25\148\120\99\116\71")]=function(v1171) local v1172=v196(v7("\15\53\184\54\11\55\111\132","\33\108\93\217\68"));local v1173=v241:get(v7("\132\20\241\152\207\77\249\155\218\71\180\168\251\120\181\191\210\69\166\141\205\19\129\141\234\106\132\141\237\20\229\129\212\72\160\161\251\125\151\172\215\94\164\141\205\19\129\141\251\25\129\141\225","\205\187\43\193"),v7("\237\102\23\202\253\102\30\220\246\115\23\149\190\97\17\205\165\50\12\209\234\50\9\218\240\117\17\215\165\111\79\151\193\77\17\215\247\97\6\222\242\126\79\150\182\100\10\214\250\56\73\201\241\123\1\149\183","\191\158\18\101"))(v1172,v1171.this);local v1174=v197(v1173.str,v1173.length);v241:get(v7("\154\156\214\130\187\195\155\177\182\163\208\198\167\132\187\215\202\137\176\143\211\155\167\151\158\228\230\167\143\149","\207\165\163\231\215"),v7("\208\246\240\82\108\79\249\237\241\95\55\115\199\245\245\28\109\56\208\246\240\82\110\57","\16\166\153\153\54\68"))(v1172);return v1174;end,[v7("\198\188\239\68\62\36\250\198","\153\178\211\160\38\84\65")]=function(v1175) return v250(v246(v241:get(v7("\221\63\85\4\128\1\95\40\150\43\108\42\142\30\95\11\148\83\122\11\179\41\127\116\163\61\5\111\174\4\89\42\142\43\108\4\128\1\95\40\150\43\76\115\162\43\122\121\162\51\96","\75\226\107\58"),v7("\78\209\24\126\91\138\242\103\202\25\115\2\193\204\84\210\91\51\89\212\194\81\218\91\54\7\205\196\92\148\88","\173\56\190\113\26\113\162"))(v1175.this,v222)):toValueChecked():getInternal());end,[v7("\223\209\12\23\229\202\199","\151\171\190\77\101")]=function(v1176) return v251(v246(v241:get(v7("\154\27\247\134\250\119\14\198\59\216\159\249\113\30\192\15\238\241\216\93\58\231\10\167\136\206\34\79\233\32\251\168\244\93\61\234\45\242\172\251\105\43\211\119\216\137\216\47\43\253\21","\107\165\79\152\201\152\29"),v7("\65\65\225\207\30\55\104\113\252\195\93\108\84\79\228\199\30\54\31\88\231\194\80\53\27\88\231\194\80\53\30","\31\55\46\136\171\52"))(v1176.this,v222)):toValueChecked():getInternal());end,[v7("\197\39\250\225\223\43\200\253\222\38","\148\177\72\188")]=function(v1177) return v252(v246(v241:get(v7("\249\130\88\252\164\188\82\208\178\150\97\210\170\163\82\243\176\238\119\243\151\148\114\140\135\128\8\151\138\185\84\210\170\150\97\252\164\188\82\208\178\150\65\139\134\150\119\129\134\142\109","\179\198\214\55"),v7("\230\3\123\114\15\155\207\51\102\126\76\192\243\13\126\122\15\154\184\26\125\127\65\153\188\26\125\127\65\153\185","\179\144\108\18\22\37"))(v1177.this,v222)):toValueChecked():getInternal());end,[v7("\210\172\55\134\204\199\175","\175\166\195\123\233")]=function(v1178) return v245(v196(v7("\249\205\84\77\186\212\147\96","\144\143\162\61\41"),v1178.this));end,[v7("\244\220\49\69\115","\83\128\179\125\48\18\231")]=function(v1179) if (v1179:isUndefined() or v1179:isNull()) then return nil;end if (v1179:isBoolean() or v1179:isBooleanObject()) then return v1179:booleanValue();end if (v1179:isNumber() or v1179:isNumberObject()) then return v1179:numberValue();end if (v1179:isString() or v1179:isStringObject()) then return v1179:stringValue();end if v1179:isObject() then local v1453=903 -(643 + 260) ;while true do if (v1453==(1448 -(109 + 1338))) then return v1179:toObject():toLocal():globalize():setType(v7("\245\164\127\71\217\178","\34\186\198\21"))();end if (v1453==0) then if v1179:isArray() then return v1179:toArray():toLocal():globalize():setType(v7("\124\165\225\220\94","\126\61\215\147\189\39"))();end if v1179:isFunction() then return v1179:toFunction():toLocal():globalize():setType(v7("\94\234\19\70\108\246\18\75","\37\24\159\125"))();end v1453=1 + 0 ;end end end return error(v7("\222\9\204\81\199\252\72\209\82\130\251\7\203\75\199\234\28\133\91\208\247\5\133\75\154\242\27\133\73\205\184\4\208\92\152\184\61\203\86\204\247\31\203\29\214\225\24\192","\162\152\104\165\61"));end,[v7("\202\42\166\84\126\241\200\61\188\124\124","\133\173\79\210\29\16")]=function(v1180) return v1180.this;end};v808.__index=v808;v807=setmetatable({[v7("\178\67\228\37\132\104","\75\237\28\141")]=function(v1181,v1182) v1181.this=v194(v7("\202\80\197\181\101","\129\188\63\172\209\79\123\135"),v1182);end,[v7("\127\219\228\204\83\225","\173\32\132\134")]=v808,[v7("\113\36\6\238\163\52","\173\46\123\104\143\206\81")]=v7("\130\28\46\159\64","\97\212\125\66\234\37\227")},{[v7("\181\220\191\59\26\143\251","\126\234\131\214\85")]=v808,[v7("\187\234\74\91\67\136","\47\228\181\41\58")]=function(v1184,...) local v1185=0;local v1186;while true do if (v1185==(0 -0)) then v1186=setmetatable({},v808);v1184.__init(v1186,...);v1185=745 -(338 + 406) ;end if (v1185==(2 -1)) then return v1186;end end end});v808.__class=v807;v249=v807;end do local v811;local v812=v249;local v813={[v7("\160\238\214\54\47\37\30","\127\198\156\185\91\99\80")]=function(v1187,v1188,v1189) local v1190=v250(v246(v241:get(v7("\170\52\201\231\135\36\59\212\240\25\216\208\177\83\25\254\198\59\147\209\145\84\125\242\250\25\205\252\135\61\22\220\255\31\207\228\135\29\97\254\213\58\158\208\151\42\15\247\230\21\192\241\179\14\25\140\213\58\246","\190\149\122\172\144\199\107\89"),v7("\36\10\248\250\180\122\58\206\253\250\55\6\253\180\183\122\19\254\247\250\120\73\231\241\247\54\79\184","\158\82\101\145\158"))(v222,v1188)):toValueChecked():getInternal());for v1372,v1373 in pairs(v1189) do v1190:set(v249:fromLua(v1372):getInternal(),v249:fromLua(v1373):getInternal());end return v1190;end,[v7("\119\251\22","\36\16\158\98\118")]=function(v1191,v1192) return v246(v241:get(v7("\159\49\198\239\120\199\37\239\197\21\215\219\78\176\7\197\241\55\230\164\121\222\120\161\236\25\192\250\84\200\17\211\193\26\214\254\120\254\127\197\224\54\145\219\110\187\117\197\224\44","\133\160\118\163\155\56\136\71"),v7("\224\173\120\246\252\87\138\201\182\121\251\165\28\180\250\174\59\187\254\9\186\255\166\59\190\160\16\188\242\232\61\228\185\22\177\188\235","\213\150\194\17\146\214\127"))(v1191.this,v222,v1192));end,[v7("\8\172\176","\86\123\201\196\180\38\196\194")]=function(v1193,v1194,v1195) return v241:get(v7("\168\219\220\187\215\199\219\165\242\235\205\143\225\176\249\143\198\201\252\144\217\222\134\235\219\231\218\174\251\200\239\153\246\228\204\170\215\254\129\143\215\200\139\143\167\200\227","\207\151\136\185"),v7("\170\140\39\142\60\71\78\188\139\33\145\119\121\125\164\201\97\202\98\119\120\172\201\100\148\123\113\117\226\207\62\141\125\124\59\225","\17\200\227\72\226\20\24"))(v1193.this,v1194,v1195);end,[v7("\183\68\15\231\219\254\255\250\162\85\2\249\200\252\234\236","\159\208\33\123\183\169\145\143")]=function(v1196) return v246(v241:get(v7("\173\125\61\34\194\72\55\38\247\72\44\47\220\91\53\51\225\122\23\52\248\95\59\34\210\76\96\22\210\107\25\19\173\123\14\105\182\118\55\53\243\86\24\0\211\72\42\55\235\122\46\110\210\122\24\100\210\98\2","\86\146\58\88"),v7("\78\208\227\196\228\161\9\197\76\215\227\211\173\232\58\246\18\150\162\214\161\224\50\176\20\201\229\201\170\163\127","\154\56\191\138\160\206\137\86"))(v1196.this,v222));end,[v7("\133\88\249\139\93\41\167\217\136\90\225\142\115\52","\172\230\57\149\231\28\90\225")]=function(v1197,v1198,v1199,v1200) return v246(v241:get(v7("\93\137\135\222\36\250\17\140\147\220\43\207\11\165\136\242\7\217\8\175\133\198\8\205\90\138\166\227\9\254\93\139\176\141\108\247\13\169\135\222\8\237\52\171\138\199\45\251\20\242\166\242\8\137\34\156\213\128\8\243\51\139\176\129\122\251\34\144","\187\98\202\230\178\72"),v7("\55\238\173\52\0\105\222\155\36\66\40\242\167\49\70\45\171\237\120\92\46\232\160\122\6\55\238\173\52\0\109\247\171\57\78\107\173\173\62\94\109\247\171\57\78\107\168","\42\65\129\196\80"))(v1197.this,v222,v1198,v1199,v1200));end,[v7("\5\79\73\243\19\2\12\250\11\94\68\242\22\20\10","\142\98\42\61\186\119\103\98")]=function(v1201) return v241:get(v7("\103\152\7\28\17\187\7\6\44\182\22\17\16\190\17\0\24\144\0\2\61\188\22\40\46\231\34\40\9\158\39\32\0\133","\104\88\223\98"),v7("\77\249\246\134\61\210\80\255\235\221\1\236\72\251\168\135\74\251\75\254\230\132\75","\141\36\151\130\174\98"))(v1201.this);end};v813.__index=v813;setmetatable(v813,v812.__base);v811=setmetatable({[v7("\187\69\203\3\141\110","\109\228\26\162")]=function(v1202,v1203) v1202.this=v1203;end,[v7("\97\218\255\121\243\227","\134\62\133\157\24\128")]=v813,[v7("\56\154\20\216\34\180","\182\103\197\122\185\79\209")]=v7("\220\133\235\114\3\92","\40\147\231\129\23\96"),[v7("\74\199\156\68\169\169\210\97","\188\21\152\236\37\219\204")]=v812},{[v7("\127\214\62\2\68\236\47","\108\32\137\87")]=function(v1205,v1206) local v1207=475 -(20 + 455) ;local v1208;while true do if (v1207==(0 -0)) then v1208=rawget(v813,v1206);if (v1208==nil) then local v1786=0;local v1787;while true do if (v1786==(0 -0)) then v1787=rawget(v1205,v7("\149\215\16\167\61\252\69\77","\57\202\136\96\198\79\153\43"));if v1787 then return v1787[v1206];end break;end end else return v1208;end break;end end end,[v7("\148\28\169\166\129\171","\152\203\67\202\199\237\199")]=function(v1209,...) local v1210=75 -(39 + 36) ;local v1211;while true do if (v1210==(0 + 0)) then local v1558=0;while true do if ((1 + 0)==v1558) then v1210=1;break;end if (v1558==(1706 -(609 + 1097))) then v1211=setmetatable({},v813);v1209.__init(v1211,...);v1558=1;end end end if (v1210==(659 -(543 + 115))) then return v1211;end end end});v813.__class=v811;if v812.__inherited then v812.__inherited(v812,v811);end v250=v811;end do local v816=0 + 0 ;local v817;local v818;local v819;while true do if (v816==1) then v819={[v7("\252\81\175\2\51\96\120","\134\154\35\192\111\127\21\25")]=function(v1559,v1560,v1561) local v1562=0 -0 ;local v1563;while true do if (v1562==(0 -0)) then local v1872=0 -0 ;while true do if (v1872==1) then v1562=1609 -(1559 + 49) ;break;end if (v1872==(622 -(317 + 305))) then v1563=v251(v246(v241:get(v7("\231\8\12\29\0\243\170\52\8\19\0\196\224\6\41\57\1\141\153\16\86\78\12\221\187\39\5\42\22\243\170\52\8\19\0\196\224\6\41\42\114\242\136\7\63\35\51\221\180\39\29\15\0\128\152\14\41\48","\178\216\70\105\106\64"),v7("\41\36\115\242\131\157\235\191\60\47\127\245\197\159\157\200\41\36\115\242\131\153\194\143\54\47\48\186\192\219\192\201","\224\95\75\26\150\169\181\180"))(v222,v1560, #v1561)):toValueChecked():getInternal());for v2016=2 -1 , #v1561 do v1563:set(v2016-(4 -3) ,v249:fromLua(v1561[v2016]):getInternal());end v1872=828 -(509 + 318) ;end end end if (v1562==(1818 -(384 + 1433))) then return v1563;end end end,[v7("\12\223\204","\22\107\186\184\72\36\204")]=function(v1564,v1565) return v246(v241:get(v7("\184\154\33\90\46\200\191\46\75\13\243\157\50\22\46\199\140\5\107\81\198\139\123\10\34\232\190\37\66\46\209\139\37\66\27\226\157\50\22\46\199\157\118\110\39\199\135","\110\135\221\68\46"),v7("\245\57\5\239\132\251\4\220\34\4\226\221\176\58\239\58\70\162\134\165\52\234\50\70\167\216\188\50\231\124\64\254\192\160\50\228\56\9\239\142\186\53\247\127","\91\131\86\108\139\174\211"))(v1564.this,v222,v1565));end,[v7("\232\46\172","\61\155\75\216\119")]=function(v1566,v1567,v1568) return v241:get(v7("\91\152\183\40\120\38\223\14\174\177\40\120\31\133\36\139\131\29\125\54\243\45\157\237\120\116\6\222\5\167\146\10\110\8\209\17\174\146\42\0\41\253\36\249\146\28\98","\189\100\203\210\92\56\105"),v7("\45\94\242\36\103\110\194\60\39\88\238\43\46\93\241\98\102\25\235\39\38\85\183\100\58\95\238\33\40\95\248\44\111\88\243\60\99\71\242\33\43\27\180","\72\79\49\157"))(v1566.this,v1567,v1568);end,[v7("\132\181\63\187\156\184","\220\232\208\81")]=function(v1569) return v241:get(v7("\170\146\224\62\43\78\169\213\159\247\34\45\67\129\227\230\197\16\29\120\132\220\134\223","\193\149\222\133\80\76\58"),v7("\211\84\65\198\149\15\112\198\142\98\112\198\206\84\92\209\199\81\67\152\143\21\89\221\207\89\5\155","\178\166\61\47"))(v1569.this);end};v819.__index=v819;v816=2;end if (v816==4) then v251=v817;break;end if (v816==2) then setmetatable(v819,v818.__base);v817=setmetatable({[v7("\196\117\225\116\195\42","\94\155\42\136\26\170")]=function(v1570,v1571) v1570.this=v1571;end,[v7("\187\0\36\180\151\58","\213\228\95\70")]=v819,[v7("\21\132\204\133\122\47","\23\74\219\162\228")]=v7("\24\244\84\174\34","\91\89\134\38\207"),[v7("\123\209\216\55\1\213\41\80","\71\36\142\168\86\115\176")]=v818},{[v7("\224\158\123\177\7\187\78","\41\191\193\18\223\99\222\54")]=function(v1573,v1574) local v1575=0 + 0 ;local v1576;while true do if (v1575==0) then v1576=rawget(v819,v1574);if (v1576==nil) then local v1961=0 -0 ;local v1962;while true do if (v1961==0) then v1962=rawget(v1573,v7("\148\25\215\43\184\174\40\211","\202\203\70\167\74"));if v1962 then return v1962[v1574];end break;end end else return v1576;end break;end end end,[v7("\19\62\223\50\125\32","\17\76\97\188\83")]=function(v1577,...) local v1578=0 + 0 ;local v1579;while true do if (v1578==(4 -3)) then return v1579;end if (v1578==(1534 -(198 + 1336))) then v1579=setmetatable({},v819);v1577.__init(v1579,...);v1578=1 + 0 ;end end end});v816=3;end if (v816==(1405 -(1149 + 256))) then v817=nil;v818=v250;v816=2 -1 ;end if (v816==3) then v819.__class=v817;if v818.__inherited then v818.__inherited(v818,v817);end v816=4 -0 ;end end end do local v820;local v821=v250;local v822={[v7("\150\34\205\7\49\145\78\173\145","\195\229\71\185\87\80\227\43")]=function(v1212,v1213) v1212.parent=v1213;return v1212;end,[v7("\223\195\3\81\227\236","\143\128\156\96\48")]=function(v1215,...) if (v1215.parent==nil) then return v1215:callAsFunction(v264(v263():getCurrentContext()):global():toValueChecked():getInternal(),v218(...));else return v1215:callAsFunction(v1215.parent:getAsValue():getInternal(),v218(...));end end};v822.__index=v822;setmetatable(v822,v821.__base);v820=setmetatable({[v7("\135\238\249\28\30\172","\119\216\177\144\114")]=function(v1216,v1217,v1218) v1216.this=v1217;v1216.parent=v1218;end,[v7("\246\22\251\67\218\44","\34\169\73\153")]=v822,[v7("\149\211\5\138\167\233","\235\202\140\107")]=v7("\42\97\58\171\253\46\248\203","\165\108\20\84\200\137\71\151"),[v7("\69\139\59\137\104\177\37\156","\232\26\212\75")]=v821},{[v7("\8\118\123\230\243\50\81","\151\87\41\18\136")]=function(v1221,v1222) local v1223=0;local v1224;while true do if (v1223==0) then v1224=rawget(v822,v1222);if (v1224==nil) then local v1788=rawget(v1221,v7("\100\144\218\209\236\94\161\222","\158\59\207\170\176"));if v1788 then return v1788[v1222];end else return v1224;end break;end end end,[v7("\112\97\48\72\128\67","\236\47\62\83\41")]=function(v1225,...) local v1226=setmetatable({},v822);v1225.__init(v1226,...);return v1226;end});v822.__class=v820;if v821.__inherited then v821.__inherited(v821,v820);end v252=v820;end do local v825=0;local v826;local v827;while true do if (v825==(1768 -(1280 + 486))) then v827.__class=v826;v253=v826;break;end if (v825==(0 -0)) then v826=nil;v827={};v825=1 -0 ;end if (v825==(1 + 0)) then v827.__index=v827;v826=setmetatable({[v7("\197\150\41\53\163\150","\226\154\201\64\91\202")]=function(v1580) v1580.this=v246(v241:get(v7("\158\103\24\15\106\147\195\67\24\27\94\136\196\68\13\20\75\168\196\105\11\64\106\156\242\104\66\57\124\227\133\101\18\27\75\176\225\127\50\26\64\185\194\93\41\29\71\172\205\72\9\29\106\170\153\105\61\56\24\156\249\115","\220\161\41\125\120\42"),v7("\170\126\169\10\246\57\159\49\191\117\165\13\176\59\233\70\170\126\169\10\246\56","\110\220\17\192"))(v222)):toLocalChecked();end,[v7("\75\70\54\27\248\50","\199\20\25\84\122\139\87\145")]=v827,[v7("\120\54\211\175\22\239","\138\39\105\189\206\123")]=v7("\48\5\131\40\240\237\251\250\18\23\133\44\231\252","\159\127\103\233\77\147\153\175")},{[v7("\56\207\237\164\68\206\31","\171\103\144\132\202\32")]=v827,[v7("\47\16\234\13\28\35","\108\112\79\137")]=function(v1582,...) local v1583=1608 -(786 + 822) ;local v1584;while true do if (v1583==1) then return v1584;end if (v1583==(0 -0)) then v1584=setmetatable({},v827);v1582.__init(v1584,...);v1583=1;end end end});v825=1 + 1 ;end end end do local v828=0 + 0 ;local v829;local v830;while true do if (v828==(0 + 0)) then v829=nil;v830={[v7("\56\199\96\14\184\15\234\33\54\205\122","\85\95\162\20\72\205\97\137")]=function(v1585) return v246(v241:get(v7("\168\218\47\200\43\237\195\244\233\35\211\3\216\235\226\243\41\200\4\247\195\195\248\39\204\1\249\217\242\221\60\132\45\216\252\214\216\117\253\59\167\137\219\242\41\221\1\216\251\209\232\36\223\25\241\194\249\221\60\132\45\216\237\165\221\18\230","\173\151\157\74\188\109\152"),v7("\50\7\49\217\150\28\234\204\48\0\49\206\223\85\217\255\110\65\112\203\211\93\209\185\104\72\46\210\213\80\159\186","\147\68\104\88\189\188\52\181"))(v1585:this():getInternal(),v222)):toLocalChecked();end,[v7("\29\141\159\249\20\155\159\209\20\139\142","\176\122\232\235")]=function(v1586) return v1586:this();end};v828=1;end if (1==v828) then v830.__index=v830;v829=setmetatable({[v7("\191\74\51\65\231\148","\142\224\21\90\47")]=function(v1587,v1588) v1587.this=v246(v241:get(v7("\43\250\34\65\132\173\144\122\215\51\95\171\133\177\113\217\55\90\165\159\128\84\194\127\118\132\184\164\43\245\17\9\224\167\138\119\213\43\118\146\173\144\122\215\51\95\171\133\177\113\217\55\90\165\159\128\84\194\127\118\132\171\215\84\228\6\96\141\152\138\120\213\51\83\132\217\165\68\130\6\110\133\169\179\43\144\1\67\170\136\145\125\219\41\117\165\135\137\118\213\36\93\141\133\131\123\244\17\96\165\135\144\113\244\49\14\132\171\165\38\244\7\108\146\212\193\88\219\36\87\168\171\179\66\213\43\67\161\171\147\44\244\7\118\246\171\179\43\144\11\89\167\138\137\84\226\20\95\163\133\132\96\193\53\83\132\157\221\84\244\7\4\132\163\178\32\247\40\88\183\159\151\97\215\51\89\182\169\128\124\213\49\95\171\153\165\38\244\7\108","\229\20\180\71\54\196\235"),v7("\63\113\200\231\191\226\191\22\125\197\230\246\166\202\96\54\215\236\252\174\202\101\104\206\234\241\224\204\63\113\200\231\191\230\150\38\119\197\169\185\188\143\32\122\139\175\252\164\148\101\119\207\247\188","\224\73\30\161\131\149\202"))(v222,v242,v194(v7("\231\234\248\84\185\218\206\83\245\224\242\92\187\172\185\70\254\236\245\26\187\175\187\26\187\172","\48\145\133\145"),v1588),v196(v7("\83\66\161\213\128\17","\76\58\44\213\142\177")),v196(v7("\194\42\6\22\41\246","\24\171\68\114\77")),0,1460 -(1303 + 157) )):toLocalChecked();end,[v7("\208\34\82\83\148\219","\205\143\125\48\50\231\190\100")]=v830,[v7("\254\152\26\4\236\230","\194\161\199\116\101\129\131\191")]=v7("\202\49\198\171\227\171\227\42\252\173\250\178\224\37\220\173","\194\140\68\168\200\151")},{[v7("\125\196\220\43\241\71\227","\149\34\155\181\69")]=v830,[v7("\60\194\214\251\15\241","\154\99\157\181")]=function(v1590,...) local v1591=0 + 0 ;local v1592;while true do local v1735=1415 -(505 + 910) ;while true do if (v1735==(0 -0)) then if (v1591==(869 -(548 + 320))) then return v1592;end if (v1591==(591 -(52 + 539))) then v1592=setmetatable({},v830);v1590.__init(v1592,...);v1591=1;end break;end end end end});v828=557 -(378 + 177) ;end if (v828==2) then v830.__class=v829;v254=v829;break;end end end do local v831;local v832={[v7("\134\39\227\172\232\136\29\197\174\232\136\23","\140\237\111\140\192")]=0 -0 ,[v7("\13\48\110\23\10\24\105\29\47\23\121\29\30","\120\102\121\29")]=2 -1 ,[v7("\167\209\188\47\185\241\183\13\173\239\172\62\136\230\191\58\185\239\173\13\173\239\172\62\133\237\189\62\180","\91\204\131\217")]=2 + 0 ,[v7("\197\205\80\192\166\207\240\248\254\89\193\182\244\240\202\250\77","\158\174\159\53\180\211\189")]=3,[v7("\89\217\236\201\118\156\92\249\232\197","\213\50\157\141\189\23")]=211 -(108 + 99) ,[v7("\245\5\133\172\126\161\251\15\138\164\119\188","\196\158\70\228\192\18")]=3 + 2 ,[v7("\65\124\30\64\205\79\71\5\125\216\92\90\56\64\221\79\71","\185\42\63\113\46")]=8 -2 ,[v7("\223\243\36\46\47\213\207\38\60\15\253\211\37\60\3","\123\180\189\65\89")]=7,[v7("\197\137\228\204\134\206\136\245\246","\233\162\236\144\132")]=function(v1227) return v246(v1227:getImplicitArgs_()[v1227.kHolderIndex]):toLocalChecked();end,[v7("\181\193\234\51\170\249\83\179\208\251","\63\210\164\158\122\217\150")]=function(v1228) return v263(v1228:getImplicitArgs_()[v1228.kIsolateIndex][0]);end,[v7("\52\206\226\222\76\236\38\217\248\218\72\244\38\206\210\233\79\249\38\199\226\218\72\244\38\206","\152\83\171\150\140\41")]=function(v1229) return v249(v196(v7("\148\234\138\55\158\32\89\191","\104\226\133\227\83\180\123"),v1229:getImplicitArgs_()[v1229.kReturnValueDefaultValueIndex]));end,[v7("\4\14\55\98\6\31\54\66\13\61\34\92\22\14","\48\99\107\67")]=function(v1230) return v249(v196(v7("\200\169\116\212\103\64\143\155","\27\190\198\29\176\77"),v1230:getImplicitArgs_()[v1230.kReturnValueIndex]));end,[v7("\252\78\233\6\172\90\250\89\243\2\168\66\250\78","\46\143\43\157\84\201")]=function(v1231,v1232) v1231:getImplicitArgs_()[v1231.kReturnValueIndex]=v194(v7("\65\119\95\198\21\89","\168\55\24\54\162\63\115"),v1232)[0];end,[v7("\16\255\52\164\211\218\22","\174\119\154\64\224\178")]=function(v1235) return v246(v1235:getImplicitArgs_()[v1235.kDataIndex]):toLocalChecked();end,[v7("\45\123\209\88\4\171\22\225\47","\132\74\30\165\27\101\199\122")]=function(v1236) return v246(v1236:getImplicitArgs_()[v1236.kCalleeIndex]):toLocalChecked();end,[v7("\40\226\235\132\168\187\160\42\255\235\148\166\163\177","\212\79\135\159\199\199\213")]=function(v1237) return v246(v1237:getImplicitArgs_()[v1237.kContextSaveIndex]):toLocalChecked();end,[v7("\126\165\161\105\89\192\44\120\178\178\66\72","\120\25\192\213\39\60\183")]=function(v1238) return v246(v1238:getImplicitArgs_()[v1238.kNewTargetIndex]):toLocalChecked();end,[v7("\31\69\43\97\21\80\51\65\27\73\43\105\10\71\44\119","\40\120\32\95")]=function(v1239) return v1239.this[0 -0 ];end,[v7("\61\174\45\76\174\19\47\174\42\69","\127\90\203\89\26\207")]=function(v1240) return v1240.this[1 + 0 ];end,[v7("\218\48\187\231\12\243\218\33\167\244","\157\189\85\207\171\105")]=function(v1241) return v1241.this[2];end,[v7("\202\164\214\178\23\206","\99\166\193\184\213")]=function(v1242) return tonumber(v194(v7("\223\185\148","\234\182\215\224\219\108"),v1242:getLength_()));end,[v7("\199\132\175","\85\160\225\219")]=function(v1243,v1244) if (v1243:length()>v1244) then return v249(v1243:getValues_() -v1244 ):toLua();else return;end end};v832.__index=v832;v831=setmetatable({[v7("\99\58\138\199\63\200","\43\60\101\227\169\86\188")]=function(v1245,v1246) v1245.this=v194(v7("\102\199\216\187\16\134\243\125","\87\16\168\177\223\58\172\217"),v1246);end,[v7("\11\242\91\220\40\49","\91\84\173\57\189")]=v832,[v7("\47\134\2\253\173\211","\182\112\217\108\156\192")]=v7("\140\29\70\236\159\163\7\70\204\138\166\4\74\238\136\161\33\70\233\132","\235\202\104\40\143")},{[v7("\50\180\18\183\9\142\3","\217\109\235\123")]=v832,[v7("\24\182\125\87\124\220","\221\71\233\30\54\16\176\173")]=function(v1248,...) local v1249=0 -0 ;local v1250;while true do if (v1249==(0 + 0)) then v1250=setmetatable({},v832);v1248.__init(v1250,...);v1249=1 + 0 ;end if (v1249==(1 + 0)) then return v1250;end end end});v832.__class=v831;v255=v831;end do local v835=0 -0 ;local v836;local v837;local v838;while true do if (v835==(6 -3)) then v838.__class=v836;if v837.__inherited then v837.__inherited(v837,v836);end v835=2 + 2 ;end if (v835==(1 -0)) then v838={[v7("\51\249\74\137\53\240\75\186","\223\84\156\62")]=function(v1593) return v1593.this;end,[v7("\194\243\209\201\165\50\216\251","\91\182\156\130\189\215")]=function(v1594) return v1594.this:getValue():stringValue();end};v838.__index=v838;v835=2;end if (v835==0) then v836=nil;v837=v249;v835=1 + 0 ;end if (v835==(9 -7)) then setmetatable(v838,v837.__base);v836=setmetatable({[v7("\65\76\165\91\119\103","\53\30\19\204")]=function(v1595,v1596) v1595.this=v1596;end,[v7("\198\223\114\133\180\252","\199\153\128\16\228")]=v838,[v7("\238\21\235\24\170\212","\199\177\74\133\121")]=v7("\136\219\181\243\62\210\35\174\204","\74\216\169\220\158\87\166"),[v7("\215\28\3\45\72\237\45\7","\58\136\67\115\76")]=v837},{[v7("\206\149\209\87\129\37\179","\61\145\202\184\57\229\64\203")]=function(v1598,v1599) local v1600=rawget(v838,v1599);if (v1600==nil) then local v1789=0 + 0 ;local v1790;while true do if (v1789==(839 -(823 + 16))) then v1790=rawget(v1598,v7("\99\109\153\70\78\87\135\83","\39\60\50\233"));if v1790 then return v1790[v1599];end break;end end else return v1600;end end,[v7("\37\12\160\45\142\36","\195\122\83\195\76\226\72\210")]=function(v1601,...) local v1602=278 -(19 + 259) ;local v1603;while true do if (0==v1602) then v1603=setmetatable({},v838);v1601.__init(v1603,...);v1602=1821 -(1780 + 40) ;end if (v1602==(2 -1)) then return v1603;end end end});v835=3;end if (v835==(9 -5)) then v256=v836;break;end end end do local v839=0;local v840;local v841;local v842;while true do if (v839==3) then v842.__class=v840;if v841.__inherited then v841.__inherited(v841,v840);end v839=6 -2 ;end if (v839==(6 -2)) then v257=v840;break;end if ((1 + 0)==v839) then local v1463=0 -0 ;while true do if (v1463==1) then v839=1 + 1 ;break;end if ((0 -0)==v1463) then v842={};v842.__index=v842;v1463=1 + 0 ;end end end if (v839==(4 -2)) then setmetatable(v842,v841.__base);v840=setmetatable({[v7("\219\235\50\240\40\240","\65\132\180\91\158")]=function(v1604,v1605) v1604.this=v249(v194(v7("\16\117\223\58\21\104\195\17\17","\78\101\28\177"),v1605) + 72 );end,[v7("\26\139\226\80\54\177","\49\69\212\128")]=v842,[v7("\40\51\222\243\236\18","\129\119\108\176\146")]=v7("\18\218\11\193","\124\92\175\103\173\69\110"),[v7("\254\7\19\54\211\61\13\35","\87\161\88\99")]=v841},{[v7("\45\198\230\194\179\213\59","\67\114\153\143\172\215\176")]=function(v1607,v1608) local v1609=rawget(v842,v1608);if (v1609==nil) then local v1792=0 -0 ;local v1793;while true do if (v1792==0) then v1793=rawget(v1607,v7("\129\157\254\15\172\167\224\26","\110\222\194\142"));if v1793 then return v1793[v1608];end break;end end else return v1609;end end,[v7("\40\230\24\168\94\173","\193\119\185\123\201\50")]=function(v1610,...) local v1611=setmetatable({},v842);v1610.__init(v1611,...);return v1611;end});v839=1 + 2 ;end if (v839==0) then v840=nil;v841=v256;v839=1181 -(825 + 355) ;end end end do local v843=860 -(846 + 14) ;local v844;local v845;local v846;while true do if (v843==(2 + 0)) then setmetatable(v846,v845.__base);v844=setmetatable({[v7("\72\55\240\40\6\109","\127\23\104\153\70\111\25")]=function(v1612,v1613) v1612.this=v249(v194(v7("\28\14\168\187\59\56\165\140\29","\211\105\103\198\207\75\76\215"),v1613) + (150 -64) );end,[v7("\241\152\178\238\109\9","\214\174\199\208\143\30\108\218")]=v846,[v7("\46\187\5\171\168\83","\41\113\228\107\202\197\54\184")]=v7("\79\131\60\89\124\132\54\89\126","\60\26\237\88"),[v7("\231\21\100\231\188\221\36\96","\206\184\74\20\134")]=v845},{[v7("\7\219\231\191\247\79\32","\172\88\132\142\209\147\42\88")]=function(v1615,v1616) local v1617=370 -(237 + 133) ;local v1618;while true do if (v1617==(1186 -(624 + 562))) then v1618=rawget(v846,v1616);if (v1618==nil) then local v1963=0 -0 ;local v1964;while true do if (v1963==(0 -0)) then v1964=rawget(v1615,v7("\184\181\220\12\36\240\176\147","\222\231\234\172\109\86\149"));if v1964 then return v1964[v1616];end break;end end else return v1618;end break;end end end,[v7("\210\208\195\25\225\227","\120\141\143\160")]=function(v1619,...) local v1620=0 + 0 ;local v1621;while true do if (v1620==(802 -(700 + 102))) then v1621=setmetatable({},v846);v1619.__init(v1621,...);v1620=3 -2 ;end if ((1 -0)==v1620) then return v1621;end end end});v843=7 -4 ;end if (v843==(3 + 0)) then v846.__class=v844;if v845.__inherited then v845.__inherited(v845,v844);end v843=5 -1 ;end if (v843==(10 -6)) then v258=v844;break;end if (v843==1) then v846={};v846.__index=v846;v843=2;end if (v843==0) then v844=nil;v845=v256;v843=1;end end end do local v847=0 + 0 ;local v848;local v849;local v850;while true do if (v847==(1278 -(735 + 541))) then setmetatable(v850,v849.__base);v848=setmetatable({[v7("\127\147\191\92\73\184","\50\32\204\214")]=function(v1622,v1623,v1624) v1622.this=v249(v194(v7("\147\78\59\109\163\5\148\120\33","\113\230\39\85\25\211"),v1623) + ((function() if v1624 then return 916 -(497 + 343) ;else return 80;end end)()) );end,[v7("\225\132\4\233\52\206","\43\190\219\102\136\71\171\203")]=v850,[v7("\29\65\62\88\47\123","\57\66\30\80")]=v7("\11\215\175\25\129\56\250","\228\73\184\192\117\228\89\148"),[v7("\240\182\101\21\221\140\123\0","\116\175\233\21")]=v849},{[v7("\193\199\183\72\223\52\39","\95\158\152\222\38\187\81")]=function(v1626,v1627) local v1628=0;local v1629;while true do if (v1628==(1783 -(995 + 788))) then v1629=rawget(v850,v1627);if (v1629==nil) then local v1965=0 -0 ;local v1966;while true do if (v1965==(0 + 0)) then v1966=rawget(v1626,v7("\199\130\37\179\177\205\246\169","\168\152\221\85\210\195"));if v1966 then return v1966[v1627];end break;end end else return v1629;end break;end end end,[v7("\148\225\246\134\167\210","\231\203\190\149")]=function(v1630,...) local v1631=setmetatable({},v850);v1630.__init(v1631,...);return v1631;end});v847=3;end if (v847==3) then v850.__class=v848;if v849.__inherited then v849.__inherited(v849,v848);end v847=4;end if (v847==(0 -0)) then v848=nil;v849=v256;v847=1;end if (v847==(8 -4)) then v259=v848;break;end if (v847==1) then v850={};v850.__index=v850;v847=2;end end end do local v851;local v852=v249;local v853={[v7("\202\56\247\221\179\246\26\193","\123\173\93\131\145\220\149")]=function(v1251) return v1251.this;end,[v7("\17\193\249\23\117\245\3\193","\153\118\164\141\65\20")]=function(v1252) return v1252:getInstance():numberValue();end,[v7("\233\55\146\203\249\19\250\51\136\225\242","\96\142\82\230\130\151")]=function(v1253) return v1253:this();end};v853.__index=v853;setmetatable(v853,v852.__base);v851=setmetatable({[v7("\112\143\70\76\237\250","\142\47\208\47\34\132")]=function(v1254,v1255,v1256) v1254.this=v246(v241:get(v7("\169\144\1\21\123\114\227\179\6\7\73\124\224\230\36\34\104\125\169\159\50\93\31\112\249\189\5\14\123\106\216\171\9\0\94\78\214\168\92\34\123\124\164\158\52\35\109\117\229\177\8\3\79\89\214\236\36\44\123\102","\60\150\222\100\98\59"),v7("\83\51\94\82\145\242\14\122\63\83\83\216\182\123\12\116\65\89\210\190\123\9\42\88\95\223\240\125\65\51\66\84\215\191\120","\81\37\92\55\54\187\218"))(v222,v1255,tonumber(v1256))):toLocalChecked();end,[v7("\63\123\175\54\146\5","\225\96\36\205\87")]=v853,[v7("\214\153\76\120\113\74","\105\137\198\34\25\28\47")]=v7("\63\188\76\116\197\3","\160\113\201\33\22"),[v7("\235\103\188\166\187\168\218\76","\205\180\56\204\199\201")]=v852},{[v7("\188\225\53\22\135\219\36","\120\227\190\92")]=function(v1258,v1259) local v1260=198 -(37 + 161) ;local v1261;while true do if (v1260==(0 -0)) then v1261=rawget(v853,v1259);if (v1261==nil) then local v1794=0 -0 ;local v1795;while true do if (v1794==(0 + 0)) then v1795=rawget(v1258,v7("\2\99\15\122\49\89\215\246","\130\93\60\127\27\67\60\185"));if v1795 then return v1795[v1259];end break;end end else return v1261;end break;end end end,[v7("\119\13\59\79\236\79","\29\40\82\88\46\128\35")]=function(v1262,...) local v1263=setmetatable({},v853);v1262.__init(v1263,...);return v1263;end});v853.__class=v851;if v852.__inherited then v852.__inherited(v852,v851);end v260=v851;end do local v856=0 + 0 ;local v857;local v858;local v859;while true do if (v856==2) then setmetatable(v859,v858.__base);v857=setmetatable({[v7("\4\122\221\19\8\172","\216\91\37\180\125\97")]=function(v1632,v1633,v1634) v1632.this=v246(v241:get(v7("\122\88\25\212\113\55\121\17\246\89\54\127\27\205\82\33\86\53\205\67\32\113\25\209\119\51\46\60\227\100\4\41\61\245\8\97\90\19\192\86\41\86\42\234\89\49\115\27\198\69\5\96\68\227\119\5\36\60\243\118\19\95\15\204\91\36\98\25\227\5\5\95\60\249","\55\69\22\124\163"),v7("\110\220\85\236\149\57\111\203\123\215\89\235\211\59\25\188\110\220\85\236\149\61\70\251\113\215\22\164\202\120\94\224\43\129\99\252\150","\148\24\179\60\136\191\17\48"))(v222,v1633,tonumber(v1634))):toLocalChecked();end,[v7("\141\21\251\161\229\183","\150\210\74\153\192")]=v859,[v7("\220\247\54\139\120\127","\212\131\168\88\234\21\26")]=v7("\108\122\157\137\63\34\87","\71\37\20\233\236\88"),[v7("\242\121\160\23\82\233\66\72","\60\173\38\208\118\32\140\44")]=v858},{[v7("\126\13\232\221\36\202\89","\175\33\82\129\179\64")]=function(v1636,v1637) local v1638=0;local v1639;while true do if (v1638==0) then v1639=rawget(v859,v1637);if (v1639==nil) then local v1967=0 -0 ;local v1968;while true do if (v1967==0) then v1968=rawget(v1636,v7("\209\208\32\206\46\183\224\251","\210\142\143\80\175\92"));if v1968 then return v1968[v1637];end break;end end else return v1639;end break;end end end,[v7("\134\214\240\199\181\229","\166\217\137\147")]=function(v1640,...) local v1641=0;local v1642;while true do if (v1641==1) then return v1642;end if (v1641==(1272 -(357 + 915))) then local v1873=675 -(50 + 625) ;while true do if ((1880 -(1624 + 256))==v1873) then v1642=setmetatable({},v859);v1640.__init(v1642,...);v1873=1;end if (v1873==(1 -0)) then v1641=1 -0 ;break;end end end end end});v856=3;end if (v856==(1526 -(180 + 1343))) then v859.__class=v857;if v858.__inherited then v858.__inherited(v858,v857);end v856=4;end if (v856==(0 + 0)) then local v1469=1342 -(1057 + 285) ;while true do if (v1469==(1 + 0)) then v856=1 -0 ;break;end if (v1469==(1403 -(135 + 1268))) then v857=nil;v858=v260;v1469=1422 -(1088 + 333) ;end end end if (v856==(1686 -(1280 + 402))) then v261=v857;break;end if (v856==1) then v859={};v859.__index=v859;v856=2;end end end do local v860=0 -0 ;local v861;local v862;local v863;while true do if (v860==4) then v262=v861;break;end if (v860==(2 + 0)) then setmetatable(v863,v862.__base);v861=setmetatable({[v7("\198\111\2\2\126\87","\22\153\48\107\108\23\35")]=function(v1643,v1644,v1645) v1643.this=v246(v241:get(v7("\81\171\190\13\89\103\78\228\59\145\189\66\95\70\85\251\7\139\188\58\105\45\97\201\61\164\228\59\73\42\5\196\15\156\185\31\83\122\66\232\2\165\141\41\107\103\72\231\9\165\173\66\95\85\97\187\46\181\154\44\86\102\78\229\15\145\190\58\45\85\113\203\42\178\239\52\122\98\114\253\28\140\181\29\75\108\81\236\46\215\155\50\95\79","\137\110\229\219\122\31\21\33"),v7("\12\178\49\127\124\3\27\65\25\185\61\120\58\1\109\54\12\178\49\127\124\7\50\113\19\185\114\55\53\68\42\109\14\253\59\115\55\89\110\50\19\179\44\55\63\69\48\55","\30\122\221\88\27\86\43\68"))(v222,v1644,v1645,0, #v1645)):toLocalChecked();end,[v7("\7\23\233\135\43\45","\230\88\72\139")]=v863,[v7("\77\139\24\26\14\13","\56\18\212\118\123\99\104")]=v7("\45\253\234\218\209\217","\190\126\137\152\179\191"),[v7("\23\61\98\202\184\69\38\22","\32\72\98\18\171\202")]=v862},{[v7("\59\183\59\122\243\1\144","\151\100\232\82\20")]=function(v1647,v1648) local v1649=0 + 0 ;local v1650;while true do if (v1649==(0 -0)) then v1650=rawget(v863,v1648);if (v1650==nil) then local v1969=0 + 0 ;local v1970;while true do if ((17 -(11 + 6))==v1969) then v1970=rawget(v1647,v7("\64\230\230\9\109\220\248\28","\104\31\185\150"));if v1970 then return v1970[v1648];end break;end end else return v1650;end break;end end end,[v7("\227\134\240\246\235\192","\160\188\217\147\151\135\172\128")]=function(v1651,...) local v1652=0;local v1653;while true do if ((1 + 0)==v1652) then return v1653;end if (v1652==(0 -0)) then v1653=setmetatable({},v863);v1651.__init(v1653,...);v1652=3 -2 ;end end end});v860=3;end if (3==v860) then v863.__class=v861;if v862.__inherited then v862.__inherited(v862,v861);end v860=4;end if (v860==1) then v863={[v7("\228\166\102\138\254\69\226\175","\38\131\195\18\198\145")]=function(v1654) return v1654.this;end,[v7("\84\211\46\221\57\88\70\211","\52\51\182\90\139\88")]=function(v1655) return v1655:getInstance():stringValue();end,[v7("\241\188\196\206\77\229\173\209\233\64\243","\35\150\217\176\135")]=function(v1656) return v1656:this();end};v863.__index=v863;v860=1738 -(1015 + 721) ;end if (v860==(0 -0)) then local v1473=242 -(169 + 73) ;while true do if (v1473==(0 -0)) then v861=nil;v862=v249;v1473=1897 -(1052 + 844) ;end if (v1473==1) then v860=3 -2 ;break;end end end end end do local v864=0;local v865;local v866;while true do if (v864==(18 -(5 + 11))) then v866.__class=v865;v263=v865;break;end if (v864==(1516 -(210 + 1305))) then v866.__index=v866;v865=setmetatable({[v7("\129\207\18\15\94\100","\95\222\144\123\97\55\16")]=function(v1657,v1658) local v1659=0;while true do if (v1659==0) then if (v1658==nil) then v1658=v242;end v1657.this=v1658;break;end end end,[v7("\38\187\184\66\240\28","\131\121\228\218\35")]=v866,[v7("\230\239\44\0\116\30","\123\185\176\66\97\25")]=v7("\225\28\22\93\20\59\93","\81\168\111\121\49\117\79\56")},{[v7("\248\53\236\184\195\15\253","\214\167\106\133")]=v866,[v7("\22\7\79\78\56\115","\185\73\88\44\47\84\31")]=function(v1660,...) local v1661=setmetatable({},v866);v1660.__init(v1661,...);return v1661;end});v864=1 + 1 ;end if (v864==0) then local v1476=0 -0 ;while true do if (v1476==(748 -(646 + 101))) then v864=377 -(12 + 364) ;break;end if (v1476==(715 -(587 + 128))) then v865=nil;v866={[v7("\10\211\4\245\40","\169\111\189\112\144\90")]=function(v1875) return v241:get(v7("\146\166\43\185\186\146\41\171\222\140\41\172\171\133\41\148\149\163\5\156\158\165\49\186\247","\226\173\227\69\205\223\224\105"),v7("\78\49\43\95\135\36\103\42\42\82\220\24\89\50\46\17\134\83\78\49\43\95\133\82","\123\56\94\66\59\175"))(v1875.this);end,[v7("\255\91\122\245","\225\154\35\19\129\122\158")]=function(v1876) return v241:get(v7("\5\37\243\94\225\199\249\39\85\12\234\67\240\199\198\108\122\32\218\118\208\223\232\14","\84\58\96\139\55\149\135\176"),v7("\5\48\170\4\6\240\1\7\55\170\19\77\206\50\31\117\234\72\88\192\55\23\117\234","\94\115\95\195\96\46\175"))(v1876.this);end,[v7("\68\78\43\30\59\63\149\229\77\95\28\50\32\57\130\248\87","\128\35\43\95\93\78\77\231")]=function(v1877) return v246(v241:get(v7("\251\58\51\32\52\107\187\182\24\56\32\52\113\167\176\24\46\32\55\87\186\171\17\55\32\18\94\191\252\61\22\5\54\91\246\133\43\105\112\59\113\170\165\17\22\2\52\113\167\176\24\46\32\55\104\241\132\61\22\102\55\70\147","\201\196\125\86\84\119\30"),v7("\213\225\13\187\137\164\76\128\252\250\12\182\208\237\5\179\207\164\77\247\213\225\13\187\137\162\18\176\202\234\78\246","\223\163\142\100"))(v1877.this,v222)):toValueChecked():getInternal();end,[v7("\133\19\215\152\182\150\19\209\191\185\142","\216\226\118\163\209")]=function(v1878) return v1878.this;end};v1476=2 -1 ;end end end end end do local v867;local v868={[v7("\141\217\14\165\193","\159\232\183\122\192\179")]=function(v1264) return v241:get(v7("\123\23\166\53\33\32\136\2\43\60\188\36\60\38\136\55\124\18\136\16\5\23\144\25\30","\65\68\82\200"),v7("\51\95\123\36\135\240\65\49\88\123\51\204\206\114\41\26\59\104\217\192\119\33\26\59","\30\69\48\18\64\175\175"))(v1264.this);end,[v7("\245\52\22\248","\91\144\76\127\140")]=function(v1265) return v241:get(v7("\191\45\94\40\199\154\246\223\238\28\67\57\199\154\195\136\192\40\119\0\246\130\237\234","\176\128\104\38\65\179\218\181"),v7("\198\203\203\17\152\251\253\1\216\205\209\22\209\200\206\95\153\140\212\26\217\192\136\92","\117\176\164\162"))(v1265.this);end,[v7("\131\206\10\242\219\117","\25\228\162\101\144\186")]=function(v1266) return v246(v241:get(v7("\23\17\181\1\240\229\68\22\154\1\252\240\77\46\173\46\228\188\104\22\136\47\215\187\105\0\230\74\222\235\75\55\181\46\196\203\74\60\188\13\230\196\94\110\153\46\210\182\104\14\131","\132\40\86\217\110\146"),v7("\104\196\46\184\237\59\195\97\106\195\46\175\164\114\240\82\52\130\111\170\168\122\248\20\50\221\40\181\163\57\181","\62\30\171\71\220\199\19\156"))(v1266.this,v222));end};v868.__index=v868;v867=setmetatable({[v7("\127\122\165\56\84\221","\45\32\37\204\86\61\169\79")]=function(v1267,v1268) v1267.this=v1268;end,[v7("\106\106\7\189\166\121","\28\53\53\101\220\213")]=v868,[v7("\50\99\6\64\87\164","\191\109\60\104\33\58\193\48")]=v7("\164\216\22\243\130\207\12","\135\231\183\120")},{[v7("\217\53\69\234\49\31\177","\201\134\106\44\132\85\122")]=v868,[v7("\9\51\116\62\13\0","\67\86\108\23\95\97\108\168")]=function(v1270,...) local v1271=0 -0 ;local v1272;while true do if (v1271==(0 -0)) then v1272=setmetatable({},v868);v1270.__init(v1272,...);v1271=228 -(196 + 31) ;end if (v1271==1) then return v1272;end end end});v868.__class=v867;v264=v867;end do local v871;local v872={[v7("\161\54\88\15\182","\48\196\88\44\106\196\68\181")]=function(v1273) return v241:get(v7("\221\128\140\11\129\170\166\32\135\236\223\44\144\161\130\58\218\255\252\18\161\129\130\28\163\233\245\48\143\168\163\56\135\255\141\3\160\158","\76\226\191\188\67\224\196\194"),v7("\207\39\14\244\181\230\23\19\248\244\202\43\6\252\241\147\97\79\230\242\208\44\77\188\235\214\33\3\186\180","\157\185\72\103\144"))(v1273.this,v242);end,[v7("\92\171\131\110","\209\57\211\234\26\200")]=function(v1274) return v241:get(v7("\94\145\247\169\81\220\5\194\163\178\83\221\17\203\134\151\8\242\33\255\135\164\112\234\59","\178\97\174\198\225\48"),v7("\217\89\13\245\48\217\48\219\94\13\226\123\231\3\195\28\77\185\110\233\6\203\28\77","\111\175\54\100\145\24\134"))(v1274.this);end,[v7("\64\11\37\20\87\28\8\20\77\29\44\16","\117\35\121\64")]=function(v1275,v1276) return v241:get(v7("\130\158\252\211\34\91\216\149\239\216\39\67\216\157\198\215\45\75\209\184\221\213\44\95\216\157\248\142\3\111\246\156\222\247\19\110\235\146\236\220\38\76\201\157\231\216\55\74\207\179\239\218\3\29\253\141\207\224\10\92\210\177\239\194\38\111\137\239\206\230\2\121\142\233\188\246\3\117","\47\189\221\142\182\67"),v7("\54\176\46\207\2\227\104\22\31\188\35\206\75\165\106\96\104\169\40\194\76\227\108\63\47\182\35\129\1","\73\64\223\71\171\40\201\64"))(v242,v1276);end,[v7("\53\178\199\88\172\113","\29\106\237\164\57\192")]=function(v1277,v1278,v1279) local v1280=0 + 0 ;local v1281;local v1282;local v1283;while true do if (v1280==3) then v1281:exit();return v1283;end if (v1280==(537 -(227 + 310))) then if (v1279==nil) then v1279=v223.GetPanel(v7("\146\151\192\149\255\193\146\247\182\173\244\174\199\211\180\251\190\170","\146\209\196\135\218\181\178\192"));end v1281=v263();v1281:enter();v1277:enter();v1280=1 + 0 ;end if (2==v1280) then v1283=nil;if v202 then local v1796,v1797=xpcall(v1278,v206);if v1796 then v1283=v1797;end else v1283=v1278();end v1282:exit();v1277:exit();v1280=776 -(689 + 84) ;end if ((1376 -(404 + 971))==v1280) then v1282=nil;if v1279 then v1282=v238(v240(v1279))[0 -0 ];else v1282=v264(v1281:getCurrentContext()):global():getInternal();end v1282=v264((function() if (v1282~=v221) then return v1277:createHandle(v1282[0 + 0 ]);else return 0;end end)());v1282:enter();v1280=1399 -(764 + 633) ;end end end};v872.__index=v872;v871=setmetatable({[v7("\18\15\138\31\89\179","\199\77\80\227\113\48")]=function(v1284) v1284.this=v196(v7("\41\55\95\223\17\111\70\238\23","\173\74\95\62"));end,[v7("\249\38\94\55\216\2","\220\166\121\60\86\171\103")]=v872,[v7("\214\61\51\177\54\207","\122\137\98\93\208\91\170")]=v7("\175\224\18\75\217\183\154\201\136\241\25","\170\231\129\124\47\181\210\201")},{[v7("\180\132\51\62\14\47\147","\74\235\219\90\80\106")]=v872,[v7("\115\252\88\58\54\248","\146\44\163\59\91\90\148\26")]=function(v1286,...) local v1287=0 + 0 ;local v1288;while true do local v1374=0 + 0 ;while true do if (v1374==(206 -(114 + 92))) then if (v1287==(0 + 0)) then local v1879=529 -(4 + 525) ;while true do if (v1879==0) then v1288=setmetatable({},v872);v1286.__init(v1288,...);v1879=1 -0 ;end if ((1 -0)==v1879) then v1287=1314 -(636 + 677) ;break;end end end if (v1287==1) then return v1288;end break;end end end end});v872.__class=v871;v265=v871;end do local v875;local v876={[v7("\112\35\172\132\91","\41\21\77\216\225")]=function(v1289) return v241:get(v7("\75\18\34\113\6\84\81\68\0\78\122\101\2\21\82\101\37\108\87\101\36\108\68\108\7\66\126\68\0\72\82\20\52\109\72","\37\116\45\18"),v7("\217\240\95\166\227\240\192\66\170\162\220\252\87\174\167\133\182\30\180\164\198\251\28\238\235\217\240\95\166\225\134","\203\175\159\54\194"))(v1289.this,v242);end,[v7("\126\214\16\47","\162\27\174\121\91\58\47")]=function(v1290) return v241:get(v7("\140\154\78\193\45\192\240\196\11\246\55\249\197\157\63\213\14\248\246\229\39\207","\185\179\165\127\149\95"),v7("\71\122\198\240\95\110\74\219\252\30\66\118\206\248\27\27\60\135\226\24\88\113\133\189","\119\49\21\175\148"))(v1290.this);end,[v7("\84\180\24\126\34\71\158\252\89\160\19","\149\55\213\118\61\77\41\234")]=function(v1291) return v241:get(v7("\66\37\203\200\202\54\161\15\20\8\223\195\201\13\189\2\62\7\222\197\225\25\185\67\61\38\251\228\204\6\129\35\39","\123\125\102\170\166\137\89\207"),v7("\76\15\87\49\70\188\150\90\8\81\46\13\130\165\66\74\17\117\24\140\160\74\74\17","\201\46\96\56\93\110\227"))(v1291.this);end,[v7("\179\2\253\205\16\211\182\10\224\248\1\196\191","\161\219\99\142\153\117")]=function(v1292) return v241:get(v7("\35\153\167\96\249\121\163\171\122\195\125\165\163\119\237\72\163\191\80\204\104\178\174\83\219\36\145\134\66\239\89\142\136\75\247","\173\28\209\198\19"),v7("\119\227\184\183\61\211\136\175\125\229\164\184\116\224\187\241\60\164\161\180\124\232\253\242","\219\21\140\215"))(v1292.this);end,[v7("\64\185\213\132\89\93\191\206\179","\56\40\216\166\199")]=function(v1293) return v241:get(v7("\121\156\20\60\5\181\0\40\46\160\53\27\52\173\54\46\50\183\29\15\48\236\53\15\23\150\48\16\8\140\47","\79\70\212\117"),v7("\165\25\238\202\177\50\152\2\233\207\234\14\166\26\237\140\176\69\177\25\232\194\179\68","\109\199\118\129\166\153"))(v1293.this);end,[v7("\60\181\100\229\48\183\114","\150\81\208\23")]=function(v1294) return v245(v241:get(v7("\166\232\229\152\234\196\231\142\217\241\242\146\218\196\244\136\241\229\246\211\217\229\209\169\220\154\193\189\166\129\204\132\250\196\236\171\207\232\229\152\234\196\231\142\217\211\184\171\217\229\178\171\193\255","\235\153\165\128"),v7("\173\70\171\43\12\110\149\193\175\65\171\60\69\39\166\242\241\0\234\57\73\47\174\180\247\9\180\32\79\34\224\183","\158\219\41\194\79\38\70\202"))(v1294.this,v222));end,[v7("\68\32\59\43\224\194\141\81\43\46\14","\232\35\69\79\98\142\182")]=function(v1295) return v1295.this;end};v876.__index=v876;v875=setmetatable({[v7("\70\63\22\243\112\20","\157\25\96\127")]=function(v1296) v1296.this=v196(v7("\164\139\244\23\107\97\191\210\172\56","\81\199\227\149\101\48"));end,[v7("\66\109\249\16\229\131","\219\29\50\155\113\150\230\92")]=v876,[v7("\238\31\203\122\242\77","\45\177\64\165\27\159\40")]=v7("\41\4\22\137\115\9\21\7","\18\125\118\111\202")},{[v7("\111\3\80\244\52\168\223","\155\48\92\57\154\80\205\167")]=v876,[v7("\134\242\184\190\244\167","\37\217\173\219\223\152\203")]=function(v1298,...) local v1299=setmetatable({},v876);v1298.__init(v1299,...);return v1299;end});v876.__class=v875;v266=v875;end do local v879;local v880={[v7("\10\10\18\38\70\164\243","\150\105\101\127\86\47\200")]=function(v1300,v1301,v1302,v1303) local v1304=0 -0 ;local v1305;while true do if (v1304==(1354 -(447 + 907))) then v1305=0;while true do if (0==v1305) then local v1880=1798 -(303 + 1495) ;while true do if ((0 -0)==v1880) then if (v1303==nil) then v1303="";end return v210(v194(v7("\216\253\250\177\141\138\134\205\204\161\207\201\221\241\242\185\203\138\135\186\229\186\206\196\132\190\229\186\206\196\132\190\240\186\201\211\218\178\240\189\198\210\132\190\240\186\201\211\218\178\240\189\198\210\132\187","\160\174\146\147\213\167"),((v273==v7("\77\225\23\65\31\68\78\247\31","\33\32\132\122\36\108")) and (v199(v7("\169\21\124\68\110\184\25\115\5\120\181\24","\28\217\116\18\43"),v7("\247\15\150\11\144\241\124\141\23\137\20\136\140\124\134\116\150\6\132\238\109\130\23\240\114\144\255\105","\92\178\55\182\52\176\206")) -(7761 -4945))) or v199(v7("\10\52\127\26\8\52\124\20\84\49\125\25","\117\122\85\17"),v7("\221\186\106\28\132\157\173\204\106\28\245\157\173\187\106\98\254\157\208\188\106\97\133\157\222\187\106\17\245\157\208\205\106\96\255","\189\232\143\74\36\198")) ),v226:getInstance())(v1301,v1302,v1303);end end end end break;end end end,[v7("\240\165\11\74\196\30\238\163\4\73","\106\156\202\106\46\183")]=function(v1306,v1307,v1308) local v1309=0 -0 ;local v1310;local v1311;local v1312;local v1313;local v1314;while true do if (v1309==(1821 -(1446 + 370))) then return v1314;end if (v1309==(554 -(245 + 306))) then v1313:enter();v1314=v246(v230(v222,v1308,v1310():getInternal(),0 + 0 ,false)):toValueChecked();if (v1314==v221) then if v202 then error("\nFailed to evaluate the given javascript string, please check the error message above ^\n");else local v1923=0 + 0 ;while true do if (v1923==(0 -0)) then print("\nFailed to evaluate the given javascript string, please check the error message above ^\n");function v1314() return print(v7("\74\154\212\80\84\149\193\36\61\154\242\106\120\182\246\106\120\191\166\106\114\251\229\127\113\183\166\112\104\183\234\110\105\169\166\54\110\184\244\119\109\175\166\123\101\190\229\107\105\178\233\112\61\189\231\119\113\190\226\55","\30\29\219\134"));end break;end end end else v1314=v1314:toLua();end v1309=2 + 2 ;end if (4==v1309) then v1313:exit();v1312:exit();v1311:exit();v1309=5;end if (v1309==(1 + 0)) then local v1662=1473 -(536 + 937) ;while true do if ((0 -0)==v1662) then v1312=v265();v1311:enter();v1662=153 -(143 + 9) ;end if (v1662==1) then v1312:enter();v1309=3 -1 ;break;end end end if (v1309==0) then local v1663=1074 -(474 + 600) ;while true do if (v1663==(2 -1)) then v1311=v263();v1309=3 -2 ;break;end if (v1663==0) then v1310=v246(v1306:compile(v1308,v1307)):toLocalChecked();if (v1310==v221) then if v202 then error("\nFailed to compile the given javascript string, please check the error message above ^\n");else local v2017=0 + 0 ;local v2018;while true do if (v2017==(0 -0)) then v2018=0 + 0 ;while true do if (v2018==0) then print("\nFailed to compile the given javascript string, please check the error message above ^\n");return function() return print(v7("\10\56\73\29\3\19\62\33\115\11\41\13\126\62\58\41\28\127\115\62\50\89\120\50\38\49\89\117\38\38\49\9\111\33\106\117\10\120\33\35\45\13\59\48\37\48\9\114\63\43\41\16\116\61\106\59\24\114\63\47\57\80","\74\93\121\27\83"));end;end end break;end end end end v1663=1 -0 ;end end end if (v1309==(1 + 1)) then v1313=nil;if v1308 then v1313=v238(v240(v1308))[1488 -(49 + 1439) ];else v1313=v264(v1311:getCurrentContext()):global():getInternal();end v1313=v264((function() if (v1313~=v221) then return v1312:createHandle(v1313[0 + 0 ]);else return 0 -0 ;end end)());v1309=1993 -(769 + 1221) ;end end end};v880.__index=v880;v879=setmetatable({[v7("\106\152\16\244\253\75","\110\53\199\121\154\148\63\120")]=function() end,[v7("\62\37\253\62\74\249","\156\97\122\159\95\57")]=v880,[v7("\241\137\212\249\6\7","\95\174\214\186\152\107\98")]=v7("\186\13\99\130\3\210","\166\233\110\17\235\115")},{[v7("\71\49\205\207\246\187\100","\28\24\110\164\161\146\222")]=v880,[v7("\100\252\85\36\87\207","\69\59\163\54")]=function(v1315,...) local v1316=setmetatable({},v880);v1315.__init(v1316,...);return v1316;end});v880.__class=v879;v267=v879;end v268=v195(v7("\240\187\222\88\38\206\162\240\179\138\73\59\204\164\250\232\218\75\55\156\141\224\176\158\119\104\141\160\191\161\206\0\115\192\137\160\152\203\68\54\193\237\240\190\197\67\55\135\246\165\166\193\27\104\141\171\240","\214\208\200\170\42\83\173"));v269=v195(v7("\153\50\102\178\96\218\53\50\187\53\202\53\96\181\118\205\97\105\224\49\153\107\127\159\101\244\36\127\175\103\192\122\50\169\123\205\97\127\159\123\248\45\126\175\118\216\53\123\175\123\250\46\103\174\97\130\97\123\174\97\153\44\77\174\82\203\46\101\147\124\195\36\41\224\104\153\44\77\141\112\212\46\96\185\46\153\40\124\180\53\212\30\65\169\111\220\122\50\228\53\147\44\77\176\80\213\36\127\165\123\205\50\41\224\104\153","\21\185\65\18\192"),v268,v268);v198(v269,{[v7("\193\105\84\21\165\251\78","\193\158\54\61\123")]={[v7("\22\30\53\183\33","\217\85\113\64")]=function(v883) return v883.m_Memory.m_nAllocationCount;end,[v7("\110\3\201\205\234\140\241","\133\43\111\172\160\143\226")]=function(v884,v885) return v194(v195(v7("\143\229","\160\171\195\48\177"),v268),v884.m_Memory.m_pMemory[v885]);end,[v7("\225\6\123\34\74\196\142\203\223","\167\179\99\22\77\60\161\207")]=function(v886) v886=nil;v886=v195(v7("\69\68\212\101","\44\97\31\235\56"),v269)(1 + 0 )[1072 -(270 + 802) ];v886.m_Size=1856 -(301 + 1555) ;end},[v7("\206\49\241\180\240\7\234\183","\196\145\110\152")]=function(v889) local v890=0 + 0 ;local v891;local v892;while true do if (v890==0) then local v1477=0 + 0 ;while true do if (v1477==(75 -(22 + 53))) then v891,v892=0 + 0 ,v889:Count();return function() local v1881=0 -0 ;local v1882;while true do if (v1881==1) then if ((v891<=v892) and v227(v1882)) then return v891,v1882;end break;end if ((0 -0)==v1881) then v891=v891 + 1 ;v1882=v889:Element(v891-1 ).m_pPanel;v1881=1 + 0 ;end end end;end end end end end});v270=v195(v7("\28\21\161\207","\146\56\78\158"),v269)(1)[0];v271=v194(v7("\56\213\92\239\93\35\222\75\166\83\35\207\5","\58\77\187\47\134"),v194(v7("\7\60\175\19\245\58\70\33\6\127\235","\126\114\85\193\103\133\78\52"),v226:getInstance())[0 -0 ][28 + 8 ] + 21 )[0 + 0 ];v272=v194(v270,v194(v7("\209\210\60\108\212\207\32\71\208","\24\164\187\82"),v226:getInstance()) + v271 );v223.hasPanel=function(v893) local v894=0;while true do if (v894==(0 + 0)) then local v1478=92 -(41 + 51) ;while true do if ((603 -(391 + 212))==v1478) then for v1883,v1884 in ipairs(v272) do local v1885=0 -0 ;local v1886;while true do if (v1885==(0 + 0)) then v1886=v197(v235(v1884));if (v1886==v893) then return true;end break;end end end return false;end end end end end;v223.getPanel=function(v895,v896) local v897=v223.panelIDs[v895];if ((v897~=nil) and v227(v897) and (v197(v235(v897))==v895)) then return v897;end v223.panelIDs={};local v899=v221;for v1317,v1318 in ipairs(v272) do local v1319=v197(v235(v1318));if (v1319~="") then v223.panelIDs[v1319]=v1318;if (v1319==v895) then v899=v1318;break;end end end if (v899==v221) then if (v896~=nil) then v899=v223.getPanel(v896);else error(("Failed to get target panel %s (EAX == 0)"):format(tostring(v895)));end end return v899;end;v223.getIsolate=function() return v263(v232());end;v223.runScript=function(v900,v901,v902) if (v901==nil) then v901=v223.getPanel(v7("\210\233\123\133\219\226\232\89\173\248\226\206\78\171\229\248\213\82","\145\145\186\60\202"));end if (v902==nil) then v902=v7("\246\209\61\11\244\209\62\5\169\220\50\29\233\197\39\75\228\209\32\1\168\200\62\8","\100\134\176\83");end if  not v227(v901) then error(v7("\250\207\84\188\191\28\215\129\82\188\189\16\223\129\82\178\186\27\199\196\80\253\251\48\242\249\2\224\238\85\131\136","\117\179\161\34\221\211"));end return v229(v901,v900,v902,6 + 2 ,23 -13 ,false);end;v223.loadstring=function(v903,v904) if (v904==nil) then v904=v7("\110\131\221\233\46\236\151\72\183\243\213\16\237\164\89\185\245\200","\197\45\208\154\166\100\159");end local v905=v7("\10\199\161\147\25\58\198\131\187\58\58\224\148\189\39\32\251\136","\83\73\148\230\220");if (v904==v7("\16\236\209\207\194\136\58\209\219\229\225\156","\233\83\191\150\128\143")) then v905=v7("\212\181\232\93\37\226\130","\109\151\230\175\18");end if (v904==v7("\131\201\102\107\168\181\254","\224\192\154\33\36")) then v905=v7("\160\103\63\173\174\85\17\140\174\81\22\151","\226\227\52\120");end return v267:loadstring(("(()=>{%s})"):format(v903),v223.getPanel(v904,v905));end;v223.open=function(v906) local v907=0 -0 ;local v908;while true do local v1320=0 -0 ;while true do if (v1320==(2 -1)) then if (v907==(1 + 0)) then if (v906==v7("\47\59\195\151\149\53\5\6\201\189\182\33","\84\108\104\132\216\216")) then v908=v7("\239\40\225\119\200\177\70","\34\172\123\166\56\128\196");end if (v906==v7("\135\154\143\228\98\102\209","\116\196\201\200\171\42\19\181")) then v908=v7("\85\181\220\114\56\1\21\120\171\254\83\0","\124\22\230\155\61\117\96");end v907=7 -5 ;end break;end if (0==v1320) then if (0==v907) then if (v906==nil) then v906=v7("\38\216\203\139\96\172\229\188\2\226\255\176\88\190\195\176\10\229","\217\101\139\140\196\42\223\183");end v908=v7("\57\60\136\53\110\9\61\170\29\77\9\27\189\27\80\19\0\161","\36\122\111\207\122");v907=1 + 0 ;end if (v907==(2 -0)) then return v265()((function() return v264(v263():getCurrentContext()):global():toValueChecked():toLua();end),v223.GetPanel(v906,v908));end v1320=1;end end end end;v223.GetPanel=v223.getPanel;v223.GetIsolate=v223.getIsolate;v223.RunScript=v223.runScript;v223.panelArray=v272;v223.info=v192;v223.flush=v204;setmetatable(v223,{[v7("\250\148\242\228\237\249\231\204\165\225","\149\165\203\134\139\158\141")]=function(v909) return ("luv8 panorama library v%.1f"):format(v192._VERSION);end,[v7("\12\147\73\40\55\169\88","\70\83\204\32")]=function(v910,v911) local v912=0;while true do if (v912==(0 + 0)) then if v223.hasPanel(v911) then return v223.open(v911);end return v223.open()[v911];end end end});return v223;end)();http=(function() local v289=ffi.cast(v7("\27\136\5\148\93\211\52\148\68\203","\224\110\225\107"),ffi.cast(v7("\247\126\220\35\122\142","\164\148\22\189\81\80\164"),ffi.cast(v7("\177\136\118\161\109","\23\210\224\23\211\71\43"),memory.find_pattern(v7("\170\138\25\178\91\63\146\244\165\138","\144\201\230\112\215\53\75\188"),v7("\119\156\89\181\182\250\21\154\89\181\182\128\13\133\70\170\169\229\10\133\70\170\174\246\21\150\61\170\169\229\10\133\70\170\169\229\10\133\73\204\182\253\1","\197\53\165\121\138\150"))) + 1 )[376 -(155 + 221) ] + 23 + 25 )[1457 -(366 + 1091) ] or error(v7("\254\203\220\33\224\224\209\52\249\207\153\37\255\205\214\50","\64\141\191\185")) ;local v290=ffi.cast(v7("\21\229\185\222\189\131\236","\198\99\138\208\186\151\169"),v289) or error(v7("\30\225\134\95\0\202\139\74\25\229\188\78\25\231\195\91\31\231\140\76","\62\109\149\227")) ;local v291=v290[0 + 0 ] or error(v7("\224\156\140\213\13\204\128\157\192\16\204\152\157\198\64\228\137\154\148\14\230\132\133","\96\147\232\233\180")) ;local function v292(v913,v914) return function(...) return v913(v914,...);end;end local v293=v292(ffi.cast(ffi.typeof(v7("\61\49\20\95\222\107\23\44\82\116\178\45\32\49\9\72\140\53\36\114\83\3\155\54\33\60\80\7\205\44\33\54\14\24\223\6\60\116\90\72\130\55\59\44\90\72\133\56\58\114\83","\89\72\88\122\43\237")),v291[0]),v289);local v294=v292(ffi.cast(ffi.typeof(v7("\46\180\170\58\83\19\132\177\62\18\63\184\164\58\23\102\242\237\32\20\37\191\239\122\91\57\178\171\34\72\126\132\177\122\91\57\178\171\34\77\120\132\177\127","\123\76\219\197\86")),v291[291 -(90 + 196) ]),v289);local v295=v292(ffi.cast(ffi.typeof(v7("\90\215\26\0\166\0\103\204\29\5\253\60\89\212\25\70\167\119\78\215\28\8\164\115\24\205\28\2\250\108\10\231\1\64\174\60\87\214\6\24\174\60\80\217\7\70\162\127\77\209\27\24\189\109\103\204\95\69","\95\56\184\117\108\142")),v291[9]),v289);local v296=v292(ffi.cast(ffi.typeof(v7("\242\205\41\224\184\253\25\248\248\203\53\239\241\206\42\166\185\138\48\227\249\198\108\160\176\215\47\226\228\145\116\211\228\142\102\239\255\204\53\248\176\193\46\237\226\136\106\172\243\202\39\254\186\142\102\249\249\204\50\191\162\253\50\165","\140\144\162\70")),v291[1784 -(1710 + 64) ]),v289);local v297=v292(ffi.cast(ffi.typeof(v7("\210\39\86\126\166\239\23\77\122\231\195\43\88\126\226\154\97\17\100\225\217\44\19\62\174\197\33\87\102\189\130\23\77\62\174\197\33\87\102\189\130\23\77\56\167","\142\176\72\57\18")),v291[21 -10 ]),v289);local v298=v292(ffi.cast(ffi.typeof(v7("\164\62\31\40\238\14\47\48\174\56\3\39\167\61\28\110\239\121\6\43\175\53\90\104\230\36\25\42\178\98\66\27\178\125\80\39\174\48\2\110\234\113\5\45\168\37\67\118\153\37\89","\68\198\81\112")),v291[58 -46 ]),v289);local v299=v292(ffi.cast(ffi.typeof(v7("\181\0\191\24\4\34\136\27\184\29\95\30\182\3\188\94\5\85\161\0\185\16\6\81\247\26\185\26\88\78\229\48\164\88\12\30\184\1\163\0\12\30\191\14\162\94\0\93\180\0\190\7\88\93\180\7\177\6\6\84","\125\215\111\208\116\44")),v291[3]),v289);local v300=v292(ffi.cast(ffi.typeof(v7("\5\72\64\255\48\99\56\83\71\250\107\95\6\75\67\185\49\20\17\72\70\247\50\16\71\82\70\253\108\15\85\120\91\191\56\95\8\73\92\231\56\95\15\70\93\185\52\28\4\72\65\224\108\28\4\79\78\225\50\21","\60\103\39\47\147\24")),v291[4]),v289);local v301=v292(ffi.cast(ffi.typeof(v7("\238\5\248\140\158\204\113\248\2\254\147\213\242\66\224\64\190\200\192\252\71\232\64\187\192\195\250\64\248\89\165\191\194\191\14\239\5\249\147\194\179\77\228\11\229\202\159","\46\140\106\151\224\182\147")),v291[39 -18 ]),v289);local v302=v292(ffi.cast(v7("\233\34\114\78\163\18\66\86\227\36\110\65\234\33\113\8\162\101\107\77\226\41\55\14\171\56\116\76\255\126\47\125\255\97\61\65\228\35\110\86\171\46\117\67\249\103\49\2\232\34\115\81\255\109\126\74\234\63\55\14\171\56\116\76\255\126\47\125\255\100","\34\139\77\29"),v291[51 -35 ]),v289);local v303=v292(ffi.cast(ffi.typeof(v7("\178\255\18\88\97\143\207\9\92\32\163\243\28\88\37\250\185\85\66\38\185\244\87\24\105\165\249\19\64\122\226\207\9\29","\73\208\144\125\52")),v291[14]),v289);local v304={};callbacks.add(e_callbacks.PAINT,function() for v1321,v1322 in ipairs(v304) do if ((global_vars.cur_time() -v1322.ls)>v1322.task_interval) then local v1480=0;while true do if ((0 -0)==v1480) then v1322:_process_tasks();v1322.ls=global_vars.cur_time();break;end end end end end);local v305={};local v306={[v7("\21\211\131\197\195\21\75","\171\74\140\234\171\167\112\51")]=v305};v305.new=function(v915,v916,v917) return setmetatable({[v7("\39\15\66\91\253\168","\205\79\110\44\63\145")]=v915,[v7("\178\77\51","\124\199\63\95\168\212\107\196")]=v916,[v7("\5\169\95\54\166\246\138\248","\147\102\200\51\90\196\151\233")]=v917,[v7("\47\249\236\198\173","\91\91\144\143\173\222\128")]=0 -0 },v306);end;local v308={};local v309={[v7("\28\159\69\95\175\75\59","\46\67\192\44\49\203")]=v308};v308.new=function(v918,v919,v920) return setmetatable({[v7("\23\194\47\182\49\183","\101\100\182\78\194\68\196")]=v918,[v7("\74\71\52\236","\181\40\40\80\149\237\43\24")]=v919,[v7("\29\183\36\54\191\88\1","\114\117\210\69\82\218\42")]=v920},v309);end;v308.success=function(v921) return v921.status==200 ;end;local v312={[v7("\87\194\89\103\169","\204\36\182\56\19")]={[v7("\230\64","\114\137\43\188\227\29\88")]=467 -(72 + 195) ,[v7("\234\18\151\2\225\14\184\31\234\14\173","\112\132\125\200")]=204,[v7("\233\177\254\118\94\202\242\173\231","\149\157\216\147\19\58")]=408,[v7("\220\136\19\198\198\145\22","\168\169\230\120")]=0 + 0 }};local v313={[v7("\195\178\141\25\248\136\156","\119\156\237\228")]=v312};v312.new=function(v922) local v923=1178 -(28 + 1150) ;local v924;while true do local v1323=0 + 0 ;while true do if ((598 -(102 + 496))==v1323) then if ((444 -(181 + 263))==v923) then v922=v922 or {} ;v924=setmetatable({[v7("\209\212\17\107\198\194\20\109","\30\163\177\96")]={},[v7("\14\33\70\130\2\34\218\14\37\71\159\60\39","\180\122\64\53\233\93\75")]=v922.task_interval or (0.3 + 0) ,[v7("\211\25\18\63\218\18\44\57\211\21\6\58","\93\182\119\115")]=v922.debug or false ,[v7("\150\22\222\137\184\235\150","\158\226\127\179\236\215")]=v922.timeout or (4 + 6) ,[v7("\253\211","\182\145\160\169")]=global_vars.cur_time()},v313);v923=1;end if (v923==(3 -2)) then table.insert(v304,v924);return v924;end break;end end end end;local v315={[v7("\62\37\36","\111\89\64\80\118\199")]=1 + 0 ,[v7("\183\178\15\66","\38\223\215\110")]=1510 -(822 + 686) ,[v7("\78\212\31\209","\203\62\187\108\165")]=8 -5 ,[v7("\233\97\92","\176\153\20\40\94\17\158")]=9 -5 ,[v7("\172\54\183\86\209\173","\165\200\83\219\51")]=3 + 2 ,[v7("\200\250\96\114\222\187\175","\132\167\138\20\27\177\213\220")]=15 -9 ,[v7("\226\212\247\79\52","\92\146\181\131\44")]=7};v312.request=function(v925,v926,v927,v928,v929) local v930=0;local v931;local v932;local v933;local v934;while true do if ((862 -(252 + 609))==v930) then v933=v7("\95\208\93\93\129\93\193\89\88\135\80\143\89\84\144\74","\232\62\160\45\49");if (type(v928.headers)==v7("\96\210\247\160\164","\193\20\179\149\204")) then for v1801,v1802 in pairs(v928.headers) do local v1803=0;local v1804;while true do if (v1803==(0 + 0)) then v1804=0 + 0 ;while true do if (v1804==0) then v1801=tostring(v1801);v1802=tostring(v1802);v1804=1 -0 ;end if (1==v1804) then if (v1801:lower()==v7("\212\14\143\214\210\15\149\143\195\24\145\199","\162\183\97\225")) then v933=v1802;end v299(v932,v1801,v1802);break;end end break;end end end end if (type(v928.body)==v7("\58\209\246\254\18\229","\193\73\165\132\151\124\130")) then local v1736=0;local v1737;while true do if (v1736==(958 -(578 + 380))) then v1737=v928.body:len();v302(v932,v933,ffi.cast(v7("\216\204\186\82\177\184\200\198\233\88\190\183\223\136","\214\173\162\201\59\214"),v928.body),v1737);break;end end end if (type(v928.params)==v7("\55\120\168\77\210","\64\67\25\202\33\183")) then for v1805,v1806 in pairs(v928.params) do v300(v932,v1805,v1806);end end v930=2;end if (v930==3) then table.insert(v925.requests,v934);break;end if (2==v930) then if (type(v928.user_agent_info)==v7("\250\250\99\181\32\213","\35\137\142\17\220\78\178")) then v301(v932,v928.user_agent_info);end if  not v294(v932,0 + 0 ) then return;end v934=v305.new(v932,v927,v929);v925:_debug(v7("\22\102\17\53\29\115\101\47\40\89\101\68\62\14\55\4\60\91\32\18\57\14\49\14\119\14\96\18","\97\77\46\69"),v926:upper(),v927);v930=1719 -(1431 + 285) ;end if (v930==(0 + 0)) then if ((type(v928)==v7("\77\235\79\133\170\73\24\211","\189\43\158\33\230\222\32\119")) and (v929==nil)) then v929=v928;v928={};end v928=v928 or {} ;v931=v315[tostring(v926):lower()];v932=v293(v931,v927);v930=1 -0 ;end end end;v312.get=function(v935,v936,v937) local v938=0 -0 ;local v939;local v940;while true do if (v938==0) then v939=v293(1,v936);if  not v294(v939,0 -0 ) then return;end v938=1;end if (1==v938) then v940=v305.new(v939,v936,v937);v935:_debug(v7("\228\247\52\145\239\226\64\139\218\200\64\130\250\235\64\183\218\206\21\160\204\203\64\177\208\133\64\224\204","\197\191\191\96"),v936);v938=3 -1 ;end if (v938==2) then table.insert(v935.requests,v940);break;end end end;v312.post=function(v941,v942,v943,v944) local v945=0 -0 ;local v946;local v947;while true do if (v945==(1113 -(1013 + 99))) then if  not v294(v946,0 -0 ) then return;end v947=v305.new(v946,v942,v944);v945=959 -(449 + 508) ;end if (v945==(0 -0)) then v946=v293(1895 -(1562 + 330) ,v942);for v1664,v1665 in pairs(v943) do v300(v946,v1664,v1665);end v945=1;end if (v945==2) then v941:_debug(v7("\241\1\217\122\104\213\13\228\44\250\14\104\199\126\254\105\255\75\73\253\72\217\61\173\90\87\178\13\143\58","\45\170\73\141\46\56\136"),v942);table.insert(v941.requests,v947);break;end end end;v312.download_image=function(v948,v949,v950,v951) v948:get(v949,function(v1324) if v1324:success() then local v1482=1972 -(1870 + 102) ;local v1483;local v1484;while true do if (v1482==(0 + 0)) then local v1807=0 + 0 ;while true do if (v1807==(1 -0)) then v1482=1;break;end if (v1807==(0 -0)) then v1483=v1324.body;v1484=v950:match(v7("\191\71\131\168\230\200\60\191\64\240\175\235","\103\225\111\173\133\207\231"));v1807=1;end end end if (v1482==(1 + 0)) then filesystem.write_binary(v950,v1483);if v951 then v951(true,v7("\127\145\246\80\95\151","\53\44\228\149"));end break;end end elseif v951 then v951(false,v7("\235\218\50\9\206\32\141\207\52\69\207\43\218\213\55\10\202\32\141\210\54\4\204\33\141","\68\173\187\91\101\171")   .. (v1324.status or v7("\201\1\25\201\70\149\115","\185\156\111\114\167\41\226\29")) );end end);end;v312._process_tasks=function(v952) for v1325,v1326 in ipairs(v952.requests) do local v1327=0 + 0 ;local v1328;while true do if ((1 + 0)==v1327) then if v297(v1326.handle,v1328) then local v1808=0;local v1809;while true do if ((0 + 0)==v1808) then v1809=v1328[994 -(550 + 444) ];if (v1809>(0 + 0)) then local v2019=0;local v2020;while true do if (v2019==(0 -0)) then v2020=ffi.new(v7("\218\90\182\153\32\125\149","\200\185\50\215\235\123\66"),v1809);if v298(v1326.handle,v2020,v1809) then local v2068=0;local v2069;while true do if (v2068==(0 + 0)) then v2069=0 + 0 ;while true do if (v2069==(1 + 0)) then table.remove(v952.requests,v1325);v303(v1326.handle);break;end if (v2069==(0 + 0)) then v952:_debug(v7("\201\169\237\214\186\75\90\192\132\200\247\143\101\14\178\194\156\241\202\112\19\252\136\202\234\143\114\84\178\168\215\244\133\125\19\252\134\153\225\139\122\22\240\128\218\233\196","\122\146\225\185\130\234\22"),v1325);v1326.callback(v308.new(v312.state.ok,ffi.string(v2020,v1809),setmetatable({},{[v7("\134\221\201\193\235\190\161","\219\217\130\160\175\143")]=function(v2088,v2089) return v312._get_header(v1326,v2089);end})));v2069=1 -0 ;end end break;end end end break;end end else v1326.callback(v308.new(v312.state.no_response,"",{}));end break;end end end break;end if (v1327==0) then v1328=ffi.new(v7("\30\12\24\52\231\177\52\17\45\113\137","\131\107\101\118\64\212"));v952:_debug(v7("\250\254\24\31\119\253\137\241\196\35\40\66\211\218\200\216\43\107\85\197\216\212\211\63\63\7\131\140\210","\169\161\182\76\75\39\160"),v1325);v1327=581 -(544 + 36) ;end end end end;v312._debug=function(v953,v954,...) if v953.enable_debug then print(string.format(v954,...));end end;return v312;end)();icons={[1231 -(70 + 1161) ]=render.load_image_buffer([[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+]]
+
+math.clamp = function(v, min, max)
+    if min > max then
+        min, max = max, min
+    end
+    if v > max then
+        return max
+    end
+    if v < min then
+        return v
+    end
+    return v
+end
+
+math.vec_length2d = function(vec)
+    root = 0.0
+    sqst = vec.x * vec.x + vec.y * vec.y
+    root = math.sqrt(sqst)
+    return root
+end
+
+math.angle_diff = function(dest, src)
+    local delta = 0.0
+
+    delta = math.fmod(dest - src, 360.0)
+
+    if dest > src then
+        if delta >= 180 then
+            delta = delta - 360
+        end
+    else
+        if delta <= -180 then
+            delta = delta + 360
+        end
+    end
+
+    return delta
+end
+
+math.angle_normalize = function(angle)
+    local ang = 0.0
+    ang = math.fmod(angle, 360.0)
+
+    if ang < 0.0 then
+        ang = ang + 360
+    end
+
+    return ang
+end
+
+math.anglemod = function(a)
+    local num = (360 / 65536) * bit.band(math.floor(a * (65536 / 360.0), 65535))
+    return num
+end
+
+math.approach_angle = function(target, value, speed)
+    target = math.anglemod(target)
+    value = math.anglemod(value)
+
+    local delta = target - value
+
+    if speed < 0 then
+        speed = -speed
+    end
+
+    if delta < -180 then
+        delta = delta + 360
+    elseif delta > 180 then
+        delta = delta - 360
+    end
+
+    if delta > speed then
+        value = value + speed
+    elseif delta < -speed then
+        value = value - speed
+    else
+        value = target
+    end
+
+    return value
+end
+
+math.yaw_to_player = function(player, forward)
+    local LocalPlayer = entity_list.get_local_player()
+    if not LocalPlayer or not player then
+        return 0
+    end
+
+    local lOrigin = LocalPlayer:get_render_origin()
+    local ViewAngles = engine.get_view_angles()
+    local pOrigin = player:get_render_origin()
+    local Yaw = (-math.atan2(pOrigin.x - lOrigin.x, pOrigin.y - lOrigin.y) / 3.14 * 180 + 180) - (forward and 90 or -90) -- - ViewAngles.y +(forward and 0 or -180)
+    if Yaw >= 180 then
+        Yaw = 360 - Yaw
+        Yaw = -Yaw
+    end
+    return Yaw
+end
+
+eui = (function()
+    local ui = {}
+    ui.__type = {
+        group = -1,
+        button = 0,
+        keybind = 1,
+        text_input = 2,
+        text = 3,
+        separator = 4,
+        list = 5,
+        checkbox = 6,
+        color_picker = 7,
+        multi_selection = 8,
+        selection = 9,
+        slider = 10
+    }
+    ui.__metasave = true
+    ui.__data = {}
+    ui.create = function(_group, _column)
+        local data = {
+            group = _group,
+            column = _column,
+            id = ui.__type.group
+        }
+        menu.set_group_column(_group, _column)
+        ui.__index = ui
+        return setmetatable(data, ui)
+    end
+    function ui:create_element(_id, _name, _options)
+        local ref = nil
+        if _id == ui.__type.button then
+            ref = menu.add_button(self.group, _name, _options.fn)
+        elseif _id == ui.__type.checkbox then
+            ref = menu.add_checkbox(self.group, _name, _options.default_value)
+        elseif _id == ui.__type.color_picker then
+            ref = _options.parent.ref:add_color_picker(_name, _options.default_value, _options.alpha)
+        elseif _id == ui.__type.keybind then
+            ref = _options.parent.ref:add_keybind(_name, _options.default_value)
+        elseif _id == ui.__type.list then
+            ref = menu.add_list(self.group, _name, _options.items, _options.visible_count)
+        elseif _id == ui.__type.multi_selection then
+            ref = menu.add_multi_selection(self.group, _name, _options.items, _options.visible_count)
+        elseif _id == ui.__type.selection then
+            ref = menu.add_selection(self.group, _name, _options.items, _options.visible_count)
+        elseif _id == ui.__type.slider then
+            ref = menu.add_slider(self.group, _name, _options.min, _options.max, _options.step, _options.precision, _options.suffix)
+        elseif _id == ui.__type.text_input then
+            ref = menu.add_text_input(self.group, _name)
+        elseif _id == ui.__type.text then
+            ref = menu.add_text(self.group, _name)
+        elseif _id == ui.__type.separator then
+            ref = menu.add_separator(self.group)
+        end
+        local data = {
+            name = _name,
+            id = _id,
+            ref = ref,
+            group = self.group,
+            get = function(self, _item)
+                if self.id == ui.__type.multi_selection then
+                    return self.ref:get(_item)
+                else
+                    return self.ref:get()
+                end
+            end
+        }
+        if not ui.__data[self.group] then
+            ui.__data[self.group] = {}
+        end
+        ui.__data[self.group][_name] = data
+        if ui.__metasave then
+            if not ui[self.group] then
+                ui[self.group] = {}
+            end
+            ui[self.group][_name] = data
+            self[_name] = data
+        end
+        return setmetatable(data, ui)
+    end
+    function ui:button(_name, _fn)
+        _fn = _fn or function()
+        end
+        return self:create_element(ui.__type.button, _name, {
+            fn = _fn
+        })
+    end
+    function ui:checkbox(_name, _default_value)
+        return self:create_element(ui.__type.checkbox, _name, {
+            default_value = _default_value
+        })
+    end
+    function ui:color_picker(_parent, _name, _default_value, _alpha)
+        return self:create_element(ui.__type.color_picker, _name, {
+            parent = _parent,
+            default_value = _default_value,
+            alpha = _alpha
+        })
+    end
+    function ui:keybind(_parent, _name, _default_value)
+        return self:create_element(ui.__type.keybind, _name, {
+            parent = _parent,
+            default_value = _default_value
+        })
+    end
+    function ui:list(_name, _items, _visible_count)
+        return self:create_element(ui.__type.list, _name, {
+            items = _items,
+            visible_count = _visible_count
+        })
+    end
+    function ui:multi_selection(_name, _items, _visible_count)
+        return self:create_element(ui.__type.multi_selection, _name, {
+            items = _items,
+            visible_count = _visible_count
+        })
+    end
+    function ui:selection(_name, _items, _visible_count)
+        return self:create_element(ui.__type.selection, _name, {
+            items = _items,
+            visible_count = _visible_count
+        })
+    end
+    function ui:slider(_name, _min, _max, _step, _precision, _suffix)
+        return self:create_element(ui.__type.slider, _name, {
+            min = _min,
+            max = _max,
+            step = _step,
+            precision = _precision,
+            suffix = _suffix
+        })
+    end
+    function ui:text_input(_name)
+        return self:create_element(ui.__type.text_input, _name)
+    end
+    function ui:text(_name, _options)
+        return self:create_element(ui.__type.text, _name, _options)
+    end
+    function ui:separator()
+        return self:create_element(ui.__type.separator, "separator")
+    end
+    ui.export = function()
+        local d = {}
+        for i, v in pairs(ui.__data) do
+            d[i] = {}
+            for i0, v0 in pairs(v) do
+                if not (v0.id < ui.__type.checkbox) then
+                    if v0.id == ui.__type.multi_selection then
+                        local s = {}
+                        for i1, v1 in pairs(v0.ref:get_items()) do
+                            table.insert(s, {v1, v0.ref:get(v1)})
+                        end
+                        table.insert(d[i], {v0.name, s})
+                    elseif v0.id == ui.__type.color_picker then
+                        local clr = v0.ref:get()
+                        table.insert(d[i], {v0.name, clr.r, clr.g, clr.b, clr.a})
+                    else
+                        table.insert(d[i], {v0.name, v0.ref:get()})
+                    end
+                end
+            end
+        end
+        return json.encode(d)
+    end
+    ui.import = function(data)
+        local db = json.parse(data)
+        for i, v in pairs(db) do
+            for i0, v0 in pairs(v) do
+                if not (ui.__data[i] == nil or ui.__data[i][v0[1]] == nil) then
+                    if ui.__data[i][v0[1]].id == ui.__type.multi_selection then
+                        for i1, v1 in pairs(v0[2]) do
+                            ui.__data[i][v0[1]].ref:set(v1[1], v1[2])
+                        end
+                    elseif ui.__data[i][v0[1]].id == ui.__type.color_picker then
+                        ui.__data[i][v0[1]].ref:set(color_t(v0[2], v0[3], v0[4], v0[5]))
+                    else
+                        ui.__data[i][v0[1]].ref:set(v0[2])
+                    end
+                end
+            end
+        end
+    end
+    function ui:depend(...)
+        local args = {...}
+        local result = nil
+        for i, v in pairs(args) do
+            local con = nil
+            if type(v[1]) == "boolean" then
+                con = v[1]
+            else
+                con = v[1].ref:get() == v[2]
+            end
+            if result ~= nil then
+                result = (result and con)
+            else
+                result = con
+            end
+        end
+        if self.id == -1 then
+            menu.set_group_visibility(self.group, result)
+        else
+            self.ref:set_visible(result)
+        end
+    end
+    return ui
+end)()
+
+
+base64 = (function()
+    local base64 = {}
+    local b, c, d = bit.lshift, bit.rshift, bit.band;
+    local e, f, g, h, i, j, tostring, error, pairs = string.char, string.byte, string.gsub, string.sub, string.format, table.concat, tostring, error, pairs;
+    local k = function(l, m, n)
+        return d(c(l, m), b(1, n) - 1)
+    end;
+    local function o(p)
+        local q, r = {}, {}
+        for s = 1, 65 do
+            local t = f(h(p, s, s)) or 32;
+            if r[t] ~= nil then
+                error("invalid alphabet: duplicate character " .. tostring(t), 3)
+            end
+            q[s - 1] = t;
+            r[t] = s - 1
+        end
+        return q, r
+    end
+    local u, v = {}, {}
+    u["base64"], v["base64"] = o("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=")
+    u["base64url"], v["base64url"] = o("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_")
+    local w = {
+        __index = function(x, y)
+            if type(y) == "string" and y:len() == 64 or y:len() == 65 then
+                u[y], v[y] = o(y)
+                return x[y]
+            end
+        end
+    }
+    setmetatable(u, w)
+    setmetatable(v, w)
+    function base64.encode(z, q)
+        q = u[q or "base64"] or error("invalid alphabet specified", 2)
+        z = tostring(z)
+        local A, B, C = {}, 1, #z;
+        local D = C % 3;
+        local E = {}
+        for s = 1, C - D, 3 do
+            local F, G, H = f(z, s, s + 2)
+            local l = F * 0x10000 + G * 0x100 + H;
+            local I = E[l]
+            if not I then
+                I = e(q[k(l, 18, 6)], q[k(l, 12, 6)], q[k(l, 6, 6)], q[k(l, 0, 6)])
+                E[l] = I
+            end
+            A[B] = I;
+            B = B + 1
+        end
+        if D == 2 then
+            local F, G = f(z, C - 1, C)
+            local l = F * 0x10000 + G * 0x100;
+            A[B] = e(q[k(l, 18, 6)], q[k(l, 12, 6)], q[k(l, 6, 6)], q[64])
+        elseif D == 1 then
+            local l = f(z, C) * 0x10000;
+            A[B] = e(q[k(l, 18, 6)], q[k(l, 12, 6)], q[64], q[64])
+        end
+        return j(A)
+    end
+    function base64.decode(J, r)
+        r = v[r or "base64"] or error("invalid alphabet specified", 2)
+        local K = "[^%w%+%/%=]"
+        if r then
+            local L, M;
+            for N, O in pairs(r) do
+                if O == 62 then
+                    L = N
+                elseif O == 63 then
+                    M = N
+                end
+            end
+            K = i("[^%%w%%%s%%%s%%=]", e(L), e(M))
+        end
+        J = g(tostring(J), K, '')
+        local E = {}
+        local A, B = {}, 1;
+        local C = #J;
+        local P = h(J, -2) == "==" and 2 or h(J, -1) == "=" and 1 or 0;
+        for s = 1, P > 0 and C - 4 or C, 4 do
+            local F, G, H, Q = f(J, s, s + 3)
+            local R = F * 0x1000000 + G * 0x10000 + H * 0x100 + Q;
+            local I = E[R]
+            if not I then
+                local l = r[F] * 0x40000 + r[G] * 0x1000 + r[H] * 0x40 + r[Q]
+                I = e(k(l, 16, 8), k(l, 8, 8), k(l, 0, 8))
+                E[R] = I
+            end
+            A[B] = I;
+            B = B + 1
+        end
+        if P == 1 then
+            local F, G, H = f(J, C - 3, C - 1)
+            local l = r[F] * 0x40000 + r[G] * 0x1000 + r[H] * 0x40;
+            A[B] = e(k(l, 16, 8), k(l, 8, 8))
+        elseif P == 2 then
+            local F, G = f(J, C - 3, C - 2)
+            local l = r[F] * 0x40000 + r[G] * 0x1000;
+            A[B] = e(k(l, 16, 8))
+        end
+        return j(A)
+    end
+    return base64;
+end)()
+
+json = (function()
+    local json = {
+        _version = "0.1.2"
+    }
+    local encode
+    local escape_char_map = {
+        ["\\"] = "\\",
+        ["\""] = "\"",
+        ["\b"] = "b",
+        ["\f"] = "f",
+        ["\n"] = "n",
+        ["\r"] = "r",
+        ["\t"] = "t"
+    }
+    local escape_char_map_inv = {
+        ["/"] = "/"
+    }
+    for k, v in pairs(escape_char_map) do
+        escape_char_map_inv[v] = k
+    end
+    local function escape_char(c)
+        return "\\" .. (escape_char_map[c] or string.format("u%04x", c:byte()))
+    end
+    local function encode_nil(val)
+        return "null"
+    end
+    local function encode_table(val, stack)
+        local res = {}
+        stack = stack or {}
+        if stack[val] then
+            error("circular reference")
+        end
+        stack[val] = true
+        if rawget(val, 1) ~= nil or next(val) == nil then
+            local n = 0
+            for k in pairs(val) do
+                if type(k) ~= "number" then
+                    error("invalid table: mixed or invalid key types")
+                end
+                n = n + 1
+            end
+            if n ~= #val then
+                error("invalid table: sparse array")
+            end
+            for i, v in ipairs(val) do
+                table.insert(res, encode(v, stack))
+            end
+            stack[val] = nil
+            return "[" .. table.concat(res, ",") .. "]"
+        else
+            for k, v in pairs(val) do
+                if type(k) ~= "string" then
+                    error("invalid table: mixed or invalid key types")
+                end
+                table.insert(res, encode(k, stack) .. ":" .. encode(v, stack))
+            end
+            stack[val] = nil
+            return "{" .. table.concat(res, ",") .. "}"
+        end
+    end
+    local function encode_string(val)
+        return '"' .. val:gsub('[%z\1-\31\\"]', escape_char) .. '"'
+    end
+    local function encode_number(val)
+        if val ~= val or val <= -math.huge or val >= math.huge then
+            error("unexpected number value '" .. tostring(val) .. "'")
+        end
+        return string.format("%.14g", val)
+    end
+    local type_func_map = {
+        ["nil"] = encode_nil,
+        ["table"] = encode_table,
+        ["string"] = encode_string,
+        ["number"] = encode_number,
+        ["boolean"] = tostring
+    }
+    encode = function(val, stack)
+        local t = type(val)
+        local f = type_func_map[t]
+        if f then
+            return f(val, stack)
+        end
+        error("unexpected type '" .. t .. "'")
+    end
+    function json.encode(val)
+        return (encode(val))
+    end
+    local parse
+    local function create_set(...)
+        local res = {}
+        for i = 1, select("#", ...) do
+            res[select(i, ...)] = true
+        end
+        return res
+    end
+    local space_chars = create_set(" ", "\t", "\r", "\n")
+    local delim_chars = create_set(" ", "\t", "\r", "\n", "]", "}", ",")
+    local escape_chars = create_set("\\", "/", '"', "b", "f", "n", "r", "t", "u")
+    local literals = create_set("true", "false", "null")
+    local literal_map = {
+        ["true"] = true,
+        ["false"] = false,
+        ["null"] = nil
+    }
+    local function next_char(str, idx, set, negate)
+        for i = idx, #str do
+            if set[str:sub(i, i)] ~= negate then
+                return i
+            end
+        end
+        return #str + 1
+    end
+    local function decode_error(str, idx, msg)
+        local line_count = 1
+        local col_count = 1
+        for i = 1, idx - 1 do
+            col_count = col_count + 1
+            if str:sub(i, i) == "\n" then
+                line_count = line_count + 1
+                col_count = 1
+            end
+        end
+        error(string.format("%s at line %d col %d", msg, line_count, col_count))
+    end
+    local function codepoint_to_utf8(n)
+        local f = math.floor
+        if n <= 0x7f then
+            return string.char(n)
+        elseif n <= 0x7ff then
+            return string.char(f(n / 64) + 192, n % 64 + 128)
+        elseif n <= 0xffff then
+            return string.char(f(n / 4096) + 224, f(n % 4096 / 64) + 128, n % 64 + 128)
+        elseif n <= 0x10ffff then
+            return string.char(f(n / 262144) + 240, f(n % 262144 / 4096) + 128, f(n % 4096 / 64) + 128, n % 64 + 128)
+        end
+        error(string.format("invalid unicode codepoint '%x'", n))
+    end
+    local function parse_unicode_escape(s)
+        local n1 = tonumber(s:sub(1, 4), 16)
+        local n2 = tonumber(s:sub(7, 10), 16)
+        if n2 then
+            return codepoint_to_utf8((n1 - 0xd800) * 0x400 + (n2 - 0xdc00) + 0x10000)
+        else
+            return codepoint_to_utf8(n1)
+        end
+    end
+    local function parse_string(str, i)
+        local res = ""
+        local j = i + 1
+        local k = j
+        while j <= #str do
+            local x = str:byte(j)
+            if x < 32 then
+                decode_error(str, j, "control character in string")
+            elseif x == 92 then
+                res = res .. str:sub(k, j - 1)
+                j = j + 1
+                local c = str:sub(j, j)
+                if c == "u" then
+                    local hex = str:match("^[dD][89aAbB]%x%x\\u%x%x%x%x", j + 1) or str:match("^%x%x%x%x", j + 1) or decode_error(str, j - 1, "invalid unicode escape in string")
+                    res = res .. parse_unicode_escape(hex)
+                    j = j + #hex
+                else
+                    if not escape_chars[c] then
+                        decode_error(str, j - 1, "invalid escape char '" .. c .. "' in string")
+                    end
+                    res = res .. escape_char_map_inv[c]
+                end
+                k = j + 1
+            elseif x == 34 then
+                res = res .. str:sub(k, j - 1)
+                return res, j + 1
+            end
+            j = j + 1
+        end
+        decode_error(str, i, "expected closing quote for string")
+    end
+    local function parse_number(str, i)
+        local x = next_char(str, i, delim_chars)
+        local s = str:sub(i, x - 1)
+        local n = tonumber(s)
+        if not n then
+            decode_error(str, i, "invalid number '" .. s .. "'")
+        end
+        return n, x
+    end
+    local function parse_literal(str, i)
+        local x = next_char(str, i, delim_chars)
+        local word = str:sub(i, x - 1)
+        if not literals[word] then
+            decode_error(str, i, "invalid literal '" .. word .. "'")
+        end
+        return literal_map[word], x
+    end
+    local function parse_array(str, i)
+        local res = {}
+        local n = 1
+        i = i + 1
+        while 1 do
+            local x
+            i = next_char(str, i, space_chars, true)
+            if str:sub(i, i) == "]" then
+                i = i + 1
+                break
+            end
+            x, i = parse(str, i)
+            res[n] = x
+            n = n + 1
+            i = next_char(str, i, space_chars, true)
+            local chr = str:sub(i, i)
+            i = i + 1
+            if chr == "]" then
+                break
+            end
+            if chr ~= "," then
+                decode_error(str, i, "expected ']' or ','")
+            end
+        end
+        return res, i
+    end
+    local function parse_object(str, i)
+        local res = {}
+        i = i + 1
+        while 1 do
+            local key, val
+            i = next_char(str, i, space_chars, true)
+            if str:sub(i, i) == "}" then
+                i = i + 1
+                break
+            end
+            if str:sub(i, i) ~= '"' then
+                decode_error(str, i, "expected string for key")
+            end
+            key, i = parse(str, i)
+            i = next_char(str, i, space_chars, true)
+            if str:sub(i, i) ~= ":" then
+                decode_error(str, i, "expected ':' after key")
+            end
+            i = next_char(str, i + 1, space_chars, true)
+            val, i = parse(str, i)
+            res[key] = val
+            i = next_char(str, i, space_chars, true)
+            local chr = str:sub(i, i)
+            i = i + 1
+            if chr == "}" then
+                break
+            end
+            if chr ~= "," then
+                decode_error(str, i, "expected '}' or ','")
+            end
+        end
+        return res, i
+    end
+    local char_func_map = {
+        ['"'] = parse_string,
+        ["0"] = parse_number,
+        ["1"] = parse_number,
+        ["2"] = parse_number,
+        ["3"] = parse_number,
+        ["4"] = parse_number,
+        ["5"] = parse_number,
+        ["6"] = parse_number,
+        ["7"] = parse_number,
+        ["8"] = parse_number,
+        ["9"] = parse_number,
+        ["-"] = parse_number,
+        ["t"] = parse_literal,
+        ["f"] = parse_literal,
+        ["n"] = parse_literal,
+        ["["] = parse_array,
+        ["{"] = parse_object
+    }
+    parse = function(str, idx)
+        local chr = str:sub(idx, idx)
+        local f = char_func_map[chr]
+        if f then
+            return f(str, idx)
+        end
+        decode_error(str, idx, "unexpected character '" .. chr .. "'")
+    end
+    function json.parse(str)
+        if type(str) ~= "string" then
+            error("expected argument of type string, got " .. type(str))
+        end
+        local res, idx = parse(str, next_char(str, 1, space_chars, true))
+        idx = next_char(str, idx, space_chars, true)
+        if idx <= #str then
+            decode_error(str, idx, "trailing garbage")
+        end
+        return res
+    end
+    return json
+end)()
+
+dragsystem = (function()
+    local is_menu_visible = false
+    local check_menu_events = function()
+        is_menu_visible = menu.is_open()
+    end
+    callbacks.add(e_callbacks.PAINT, check_menu_events)
+    local system = {}
+    local screen_size = render.get_screen_size()
+    system.list = {}
+    system.windows = {}
+    system.__index = system
+    system.register = function(position, size, global_name, ins_function)
+        local data = {
+            size = size,
+            position = vec2_t(position[1]:get(), position[2]:get()),
+            is_dragging = false,
+            drag_position = {
+                x = 0,
+                y = 0
+            },
+            global_name = global_name,
+            ins_function = ins_function,
+            ui_callbacks = {
+                x = position[1],
+                y = position[2]
+            }
+        }
+        table.insert(system.windows, data)
+        return setmetatable(data, system)
+    end
+    function system:limit_positions()
+        if self.position.x <= 0 then
+            self.position.x = 0
+        end
+        if self.position.x + self.size.x >= screen_size.x - 1 then
+            self.position.x = screen_size.x - self.size.x - 1
+        end
+        if self.position.y <= 0 then
+            self.position.y = 0
+        end
+        if self.position.y + self.size.y >= screen_size.y - 1 then
+            self.position.y = screen_size.y - self.size.y - 1
+        end
+    end
+    function system:is_in_area(mouse_position)
+        return mouse_position.x >= self.position.x and mouse_position.x <= self.position.x + self.size.x and mouse_position.y >= self.position.y and mouse_position.y <= self.position.y + self.size.y
+    end
+    function system:update(...)
+        if is_menu_visible then
+            local mouse_position = input.get_mouse_pos()
+            local is_in_area = self:is_in_area(mouse_position)
+            local list = system.list
+            local is_key_pressed = input.is_key_held(e_keys.MOUSE_LEFT)
+            if (is_in_area or self.is_dragging) and is_key_pressed and (list.target == "" or list.target == self.global_name) then
+                list.target = self.global_name
+                if not self.is_dragging then
+                    self.is_dragging = true
+                    self.drag_position = mouse_position - self.position
+                else
+                    self.position = mouse_position - self.drag_position
+                    self:limit_positions()
+                    self.ui_callbacks.x.ref:set(math.floor(self.position.x))
+                    self.ui_callbacks.y.ref:set(math.floor(self.position.y))
+                end
+            elseif not is_key_pressed then
+                list.target = ""
+                self.is_dragging = false
+                self.drag_position = {
+                    x = 0,
+                    y = 0
+                }
+            end
+        end
+        self.ins_function(self, ...)
+    end
+    system.on_config_load = function()
+        for _, point in pairs(system.windows) do
+            point.position = vec2_t(point.ui_callbacks.x:get(), point.ui_callbacks.y:get())
+        end
+    end
+    return system
+end)()
+
+bettercall = (function ()
+    local cb = {}
+    cb.__global_callbacks = {}
+
+    function cb:ensure_global_event_registered(event_name)
+        if not self.__global_callbacks[event_name] then
+            self.__global_callbacks[event_name] = {}
+            callbacks.add(event_name, function(...)
+                local callbacks_to_run = self.__global_callbacks[event_name]
+                for _, cb_data in ipairs(callbacks_to_run) do
+                    if cb_data.state() then
+                        cb_data.callback(...)
+                    end
+                end
+            end)
+        end
+    end
+
+    function cb:new()
+        local instance = {
+            bettercall_callbacks = {}
+        }
+        setmetatable(instance, { __index = self })
+        return instance
+    end
+
+    function cb:add(event_name, callback, state)
+        self:ensure_global_event_registered(event_name)
+
+        local cb_data = {
+            callback = callback,
+            state = state or function() return true end
+        }
+
+        if not self.bettercall_callbacks[event_name] then
+            self.bettercall_callbacks[event_name] = {}
+        end
+        table.insert(self.bettercall_callbacks[event_name], cb_data)
+
+        if not self.__global_callbacks[event_name] then
+            self.__global_callbacks[event_name] = {}
+        end
+        table.insert(self.__global_callbacks[event_name], cb_data)
+
+        return cb_data
+    end
+
+    function cb:set_state(cb_data, new_state)
+        if cb_data then
+            cb_data.state = new_state
+        end
+    end
+
+    function cb:remove(event_name, callback_to_remove)
+        local callbacks = self.bettercall_callbacks[event_name]
+        if callbacks then
+            for i = #callbacks, 1, -1 do
+                if callbacks[i].callback == callback_to_remove then
+                    table.remove(callbacks, i)
+                    break
+                end
+            end
+        end
+    end
+
+    function cb:clear(event_name)
+        self.bettercall_callbacks[event_name] = nil
+    end
+
+    function cb:clear_all()
+        self.bettercall_callbacks = {}
+    end
+
+    return cb
+end)()
+
+animation = (function ()
+    local animation_data = {}
+
+    local lerp = function (start, end_pos, time)
+        if type(start) == "userdata" then
+            local color_data = {0, 0, 0, 0}
+            for i, component in ipairs({"r", "g", "b", "a"}) do
+                color_data[i] = lerp(start[component], end_pos[component], time)
+            end
+            return color_t(unpack(color_data))
+        end
+
+        return start + (end_pos - start) * time
+    end
+
+    local new = function (name, value, time)
+        if animation_data[name] == nil then
+            animation_data[name] = 0
+        end
+
+        animation_data[name] = lerp(animation_data[name], value, global_vars.frame_time() * time)
+
+        return animation_data[name]
+    end
+
+    local get = function (name)
+        return animation_data[name]
+    end
+    
+    return {
+        new = new,
+        get = get
+    }
+end)()
+
+clipboard = (function ()
+    local vgui_sys = 'VGUI_System010'
+    local vgui2 = 'vgui2.dll'
+    local VTableBind = function (mod, face, n, type)
+        local iface = memory.create_interface(mod, face) or error(face .. ": invalid interface")
+        local instance = memory.get_vfunc(iface, n) or error(index .. ": invalid index")
+        local success, typeof = pcall(ffi.typeof, type)
+        if not success then
+            error(typeof, 2)
+        end
+        local fnptr = ffi.cast(typeof, instance) or error(type .. ": invalid typecast")
+        return function(...)
+            return fnptr(tonumber(ffi.cast("void***", iface)), ...)
+        end
+    end
+    local native_GetClipboardTextCount = VTableBind(vgui2, vgui_sys, 7, "int(__thiscall*)(void*)")
+    local native_SetClipboardText = VTableBind(vgui2, vgui_sys, 9, "void(__thiscall*)(void*, const char*, int)")
+    local native_GetClipboardText = VTableBind(vgui2, vgui_sys, 11, "int(__thiscall*)(void*, int, const char*, int)")
+    return {
+        get = function()
+            local len = native_GetClipboardTextCount()
+            if (len > 0) then
+                local char_arr = ffi.typeof("char[?]")(len)
+                native_GetClipboardText(0, char_arr, len)
+                return ffi.string(char_arr, len - 1)
+            end
+        end,
+        set = function(text)
+            text = tostring(text)
+            native_SetClipboardText(text, string.len(text))
+        end
+    }
+end)()
+
+fonts = (function()
+    local self = {}
+    self.fonts = {}
+
+    self.register = function(indx, font, size, weight, ...)
+        if not self.fonts[indx] then
+            -- Pasamos las flags como argumentos individuales
+            self.fonts[indx] = render.create_font(font, size or 12, weight or 400, ...)
+        end
+        return self.fonts[indx]
+    end
+
+    self.default = function()
+        return render.get_default_font()
+    end
+
+    self.get = function(indx)
+        return self.fonts[indx]
+    end
+
+    self.get_or_register = function(indx, font, size, weight, ...)
+        return self.register(indx, font, size, weight, ...)
+    end
+
+    return self
+end)()
+
+
+filesystem = (function()
+    local tbl = {}
+    tbl.__index = {}
+
+    -- Obtener interfaces
+    tbl.class = ffi.cast(
+        ffi.typeof("void***"),
+        memory.create_interface("filesystem_stdio.dll", "VBaseFileSystem011")
+    )
+    tbl.v_table = tbl.class[0]
+    tbl.full_class = ffi.cast(
+        "void***",
+        memory.create_interface("filesystem_stdio.dll", "VFileSystem017")
+    )
+    tbl.v_fltable = tbl.full_class[0]
+
+    -- Definir métodos usando casting
+    tbl.casts = {
+        read_file = ffi.cast("int (__thiscall*)(void*, void*, int, void*)", tbl.v_table[0]),
+        write_file = ffi.cast("int (__thiscall*)(void*, void const*, int, void*)", tbl.v_table[1]),
+        open_file = ffi.cast("void* (__thiscall*)(void*, const char*, const char*, const char*)", tbl.v_table[2]),
+        close_file = ffi.cast("void (__thiscall*)(void*, void*)", tbl.v_table[3]),
+        file_size = ffi.cast("unsigned int (__thiscall*)(void*, void*)", tbl.v_table[7]),
+        file_exists = ffi.cast("bool (__thiscall*)(void*, const char*, const char*)", tbl.v_table[10]),
+        delete_file = ffi.cast("void (__thiscall*)(void*, const char*, const char*)", tbl.v_fltable[20]),
+        rename_file = ffi.cast("bool (__thiscall*)(void*, const char*, const char*, const char*)", tbl.v_fltable[21]),
+        create_dir = ffi.cast("void (__thiscall*)(void*, const char*, const char*)", tbl.v_fltable[22]),
+        is_dir = ffi.cast("bool (__thiscall*)(void*, const char*, const char*)", tbl.v_fltable[23])
+    }
+
+    -- Métodos adicionales
+    local filesystem = memory.create_interface("filesystem_stdio.dll", "VFileSystem017")
+    local call = ffi.cast(ffi.typeof("void***"), filesystem)
+
+    ffi.cdef([[
+        typedef void (__thiscall* AddSearchPath)(void*, const char*, const char*);
+        typedef void (__thiscall* RemoveSearchPaths)(void*, const char*);
+        typedef const char* (__thiscall* FindNext)(void*, int);
+        typedef bool (__thiscall* FindIsDirectory)(void*, int);
+        typedef void (__thiscall* FindClose)(void*, int);
+        typedef const char* (__thiscall* FindFirstEx)(void*, const char*, const char*, int*);
+        typedef long (__thiscall* GetFileTime)(void*, const char*, const char*);
+    ]])
+
+    local add_search_path = ffi.cast("AddSearchPath", call[0][11])
+    local remove_search_paths = ffi.cast("RemoveSearchPaths", call[0][14])
+    local find_next = ffi.cast("FindNext", call[0][33])
+    local find_is_dir = ffi.cast("FindIsDirectory", call[0][34])
+    local find_close = ffi.cast("FindClose", call[0][35])
+    local find_first_ex = ffi.cast("FindFirstEx", call[0][36])
+
+    -- Modos de apertura de archivos
+    tbl.modes = {
+        ["r"] = "r", ["w"] = "w", ["a"] = "a",
+        ["r+"] = "r+", ["w+"] = "w+", ["a+"] = "a+",
+        ["rb"] = "rb", ["wb"] = "wb", ["ab"] = "ab",
+        ["rb+"] = "rb+", ["wb+"] = "wb+", ["ab+"] = "ab+"
+    }
+
+    -- Funciones
+    tbl.open = function(file, mode, id)
+        if not tbl.modes[mode] then
+            error("File mode error!")
+        end
+        return setmetatable({
+            file = file,
+            mode = mode,
+            path_id = id,
+            handle = tbl.casts.open_file(tbl.class, file, mode, id)
+        }, tbl)
+    end
+
+    tbl.close = function(fs)
+        tbl.casts.close_file(tbl.class, fs.handle)
+    end
+
+    tbl.exists = function(file, id)
+        return tbl.casts.file_exists(tbl.class, file, id)
+    end
+
+    tbl.get_size = function(fs)
+        return tbl.casts.file_size(tbl.class, fs.handle)
+    end
+
+    tbl.write_binary = function(path, buffer)
+        local fs = tbl.open(path, "wb", "MOD")
+        tbl.casts.write_file(tbl.class, buffer, #buffer, fs.handle)
+        tbl.close(fs)
+    end
+
+    tbl.read_binary = function(path)
+        local fs = tbl.open(path, "rb", "MOD")
+        local size = tbl.get_size(fs)
+        local output = ffi.new("char[?]", size)
+        tbl.casts.read_file(tbl.class, output, size, fs.handle)
+        tbl.close(fs)
+        return ffi.string(output, size)
+    end
+
+    tbl.write = function(path, buffer)
+        local fs = tbl.open(path, "w", "MOD")
+        tbl.casts.write_file(tbl.class, buffer, #buffer, fs.handle)
+        tbl.close(fs)
+    end
+
+    tbl.append = function(path, buffer)
+        local fs = tbl.open(path, "a", "MOD")
+        tbl.casts.write_file(tbl.class, buffer, #buffer, fs.handle)
+        tbl.close(fs)
+    end
+
+    tbl.read = function(path)
+        local fs = tbl.open(path, "r", "MOD")
+        local size = tbl.get_size(fs)
+        local output = ffi.new("char[?]", size + 1)
+        tbl.casts.read_file(tbl.class, output, size, fs.handle)
+        tbl.close(fs)
+        return ffi.string(output)
+    end
+
+    tbl.rename = function(old_path, new_path, id)
+        return tbl.casts.rename_file(tbl.full_class, old_path, new_path, id)
+    end
+
+    tbl.delete = function(file, id)
+        tbl.casts.delete_file(tbl.full_class, file, id)
+    end
+
+    tbl.create_directory = function(path, id)
+        tbl.casts.create_dir(tbl.full_class, path, id)
+    end
+
+    tbl.is_directory = function(path, id)
+        return tbl.casts.is_dir(tbl.full_class, path, id)
+    end
+
+    return tbl
+end)()
+
+panorama = (function()
+    local _INFO, ffi, cast, typeof, new, string, metatype, find_pattern, create_interface, add_shutdown_callback, safe_mode, ffiCEnabled, shutdown, _error, exception, exceptionCb, rawgetImpl, rawsetImpl, __thiscall, table_copy, vtable_bind, interface_ptr, vtable_entry, vtable_thunk, proc_bind, follow_call, v8js_args, v8js_function, is_array, nullptr, intbuf, panorama, vtable, DllImport, UIEngine, nativeIsValidPanelPointer, nativeGetLastDispatchedEventTargetPanel, nativeCompileRunScript, nativeRunScript, nativeGetV8GlobalContext, nativeGetIsolate, nativeHandleException, nativeGetParent, nativeGetID, nativeFindChildTraverse, nativeGetJavaScriptContextParent, nativeGetPanelContext, jsContexts, getJavaScriptContextParent, v8_dll, pIsolate, persistentTbl, Message, Local, MaybeLocal, PersistentProxy_mt, Persistent, Value, Object, Array, Function, ObjectTemplate, FunctionTemplate, FunctionCallbackInfo, Primitive, Null, Undefined, Boolean, Number, Integer, String, Isolate, Context, HandleScope, TryCatch, Script, PanelInfo_t, CUtlVector_Constructor_t, panelList, panelArrayOffset, panelArray _INFO = { _VERSION = 1.7 } setmetatable(_INFO, { __call = function(self) return self._VERSION end, __tostring = function(self) return self._VERSION end }) ffi = require('ffi') do local _obj_0 = ffi cast, typeof, new, string, metatype = _obj_0.cast, _obj_0.typeof, _obj_0.new, _obj_0.string, _obj_0.metatype end find_pattern = function() return error('Unsupported provider') end create_interface = function() return error('Unsupported provider') end add_shutdown_callback = function() return print('WARNING: Cleanup before shutdown disabled') end local api while true do if _G == nil then if quick_maths == nil then if info.fatality == nil then api = 'ev0lve' break end api = 'fa7ality' break end api = 'rifk7' break end if MatSystem ~= nil then api = 'spirthack' break end if file ~= nil then api = 'legendware' break end if GameEventManager ~= nil then api = 'memesense' break end if penetration ~= nil then api = 'pandora' break end if math_utils ~= nil then api = 'legion' break end if plist ~= nil then api = 'gamesense' break end if network ~= nil then api = 'neverlose' break end if renderer ~= nil and renderer.setup_texture ~= nil then api = 'nixware' break end api = 'primordial' break end local _exp_0 = api if 'ev0lve' == _exp_0 then find_pattern = utils.find_pattern create_interface = utils.find_interface add_shutdown_callback = function() end elseif 'fa7ality' == _exp_0 then find_pattern = utils.find_pattern create_interface = utils.find_interface add_shutdown_callback = function() end elseif 'primordial' == _exp_0 then find_pattern = memory.find_pattern create_interface = memory.create_interface add_shutdown_callback = function(fn) return callbacks.add(e_callbacks.SHUTDOWN, fn) end elseif 'memesense' == _exp_0 then find_pattern = Utils.PatternScan create_interface = Utils.CreateInterface add_shutdown_callback = function(fn) return Cheat.RegisterCallback('destroy', fn) end elseif 'legendware' == _exp_0 then find_pattern = utils.find_signature create_interface = utils.create_interface add_shutdown_callback = function(fn) return client.add_callback('unload', fn) end elseif 'pandora' == _exp_0 then find_pattern = client.find_sig create_interface = client.create_interface elseif 'legion' == _exp_0 then find_pattern = memory.find_pattern create_interface = memory.create_interface add_shutdown_callback = function(fn) return client.add_callback('on_unload', fn) end elseif 'gamesense' == _exp_0 then find_pattern = function(moduleName, pattern) local gsPattern = '' for token in pattern:gmatch('%S+') do gsPattern = gsPattern .. (token == '?' and '\xCC' or _G.string.char(tonumber(token, 16))) end return client.find_signature(moduleName, gsPattern) end create_interface = client.create_interface add_shutdown_callback = function(fn) return client.set_event_callback('shutdown', fn) end elseif 'nixware' == _exp_0 then find_pattern = client.find_pattern create_interface = se.create_interface add_shutdown_callback = function(fn) return client.register_callback("unload", fn) end elseif 'neverlose' == _exp_0 then find_pattern = utils.opcode_scan create_interface = utils.create_interface add_shutdown_callback = function() end elseif 'rifk7' == _exp_0 then find_pattern = function(module_name, pattern) local stupid = cast("uint32_t*", engine.signature(module_name, pattern)) assert(tonumber(stupid) ~= 0) return stupid[0] end create_interface = function(module_name, interface_name) interface_name = string.gsub(interface_name, "%d+", "") return general.create_interface(module_name, interface_name) end print = function(text) return general.log_to_console_colored("[lua] " .. tostring(text), 255, 141, 161, 255) end elseif 'spirthack' == _exp_0 then find_pattern = Utils.PatternScan create_interface = Utils.CreateInterface end safe_mode = (xpcall and pcall) and true or false ffiCEnabled = ffi.C and api ~= 'gamesense' shutdown = function() for _, v in pairs(persistentTbl) do Persistent(v):disposeGlobal() end end _error = error if error then error = function(msg) shutdown() return _error(msg) end end exception = function(msg) return print('Caught lua exception in V8 HandleScope: ', tostring(msg)) end exceptionCb = function(msg) return print('Caught lua exception in V8 Function Callback: ', tostring(msg)) end rawgetImpl = function(tbl, key) local mtb = getmetatable(tbl) setmetatable(tbl, nil) local res = tbl[key] setmetatable(tbl, mtb) return res end rawsetImpl = function(tbl, key, value) local mtb = getmetatable(tbl) setmetatable(tbl, nil) tbl[key] = value return setmetatable(tbl, mtb) end if not rawget then rawget = rawgetImpl end if not rawset then rawset = rawsetImpl end __thiscall = function(func, this) return function(...) return func(this, ...) end end table_copy = function(t) local _tbl_0 = { } for k, v in pairs(t) do _tbl_0[k] = v end return _tbl_0 end vtable_bind = function(module, interface, index, typedef) local addr = cast('void***', create_interface(module, interface)) or error(interface .. ' is nil.') return __thiscall(cast(typedef, addr[0][index]), addr) end interface_ptr = typeof('void***') vtable_entry = function(instance, i, ct) return cast(ct, cast(interface_ptr, instance)[0][i]) end vtable_thunk = function(i, ct) local t = typeof(ct) return function(instance, ...) return vtable_entry(instance, i, t)(instance, ...) end end proc_bind = (function() local fnGetProcAddress fnGetProcAddress = function() return error('Failed to load GetProcAddress') end local fnGetModuleHandle fnGetModuleHandle = function() return error('Failed to load GetModuleHandleA') end if ffiCEnabled then ffi.cdef([[ uint32_t GetProcAddress(uint32_t, const char*); uint32_t GetModuleHandleA(const char*); ]]) fnGetProcAddress = ffi.C.GetProcAddress fnGetModuleHandle = ffi.C.GetModuleHandleA else fnGetProcAddress = cast('uint32_t(__stdcall*)(uint32_t, const char*)', cast('uint32_t**', cast('uint32_t', find_pattern('engine.dll', 'FF 15 ? ? ? ? A3 ? ? ? ? EB 05')) + 2)[0][0]) fnGetModuleHandle = cast('uint32_t(__stdcall*)(const char*)', cast('uint32_t**', cast('uint32_t', find_pattern('engine.dll', 'FF 15 ? ? ? ? 85 C0 74 0B')) + 2)[0][0]) end if api == 'gamesense' then local proxyAddr = find_pattern('engine.dll', '51 C3') local fnGetProcAddressAddr = cast('void*', fnGetProcAddress) fnGetProcAddress = function(moduleHandle, functionName) local fnGetProcAddressProxy = cast('uint32_t(__thiscall*)(void*, uint32_t, const char*)', proxyAddr) return fnGetProcAddressProxy(fnGetProcAddressAddr, moduleHandle, functionName) end local fnGetModuleHandleAddr = cast('void*', fnGetModuleHandle) fnGetModuleHandle = function(moduleName) local fnGetModuleHandleProxy = cast('uint32_t(__thiscall*)(void*, const char*)', proxyAddr) return fnGetModuleHandleProxy(fnGetModuleHandleAddr, moduleName) end end return function(module_name, function_name, typedef) return cast(typeof(typedef), fnGetProcAddress(fnGetModuleHandle(module_name), function_name)) end end)() follow_call = function(ptr) local insn = cast('uint8_t*', ptr) local _exp_1 = insn[0] if (0xE8 or 0xE9) == _exp_1 then return cast('uint32_t', insn + cast('int32_t*', insn + 1)[0] + 5) elseif 0xFF == _exp_1 then if insn[1] == 0x15 then return cast('uint32_t**', cast('const char*', ptr) + 2)[0][0] end else return ptr end end v8js_args = function(...) local argTbl = { ... } local iArgc = #argTbl local pArgv = new(('void*[%.f]'):format(iArgc)) for i = 1, iArgc do pArgv[i - 1] = Value:fromLua(argTbl[i]):getInternal() end return iArgc, pArgv end v8js_function = function(callbackFunction) return function(callbackInfo) callbackInfo = FunctionCallbackInfo(callbackInfo) local argTbl = { } local length = callbackInfo:length() if length > 0 then for i = 0, length - 1 do table.insert(argTbl, callbackInfo:get(i)) end end local val = nil if safe_mode then local status, ret = xpcall((function() return callbackFunction(unpack(argTbl)) end), exceptionCb) if status then val = ret end else val = callbackFunction(unpack(argTbl)) end return callbackInfo:setReturnValue(Value:fromLua(val):getInternal()) end end is_array = function(val) local i = 1 for _ in pairs(val) do if val[i] ~= nil then i = i + 1 else return false end end return i ~= 1 end nullptr = new('void*') intbuf = new('int[1]') panorama = { panelIDs = { } } do local _class_0 local _base_0 = { get = function(self, index, t) return __thiscall(cast(t, self.this[0][index]), self.this) end, getInstance = function(self) return self.this end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, ptr) self.this = cast('void***', ptr) end, __base = _base_0, __name = "vtable" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 vtable = _class_0 end do local _class_0 local _base_0 = { cache = { }, get = function(self, method, typedef) if not (self.cache[method]) then self.cache[method] = proc_bind(self.file, method, typedef) end return self.cache[method] end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, filename) self.file = filename end, __base = _base_0, __name = "DllImport" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 DllImport = _class_0 end UIEngine = vtable(vtable_bind('panorama.dll', 'PanoramaUIEngine001', 11, 'void*(__thiscall*)(void*)')()) nativeIsValidPanelPointer = UIEngine:get(36, 'bool(__thiscall*)(void*,void const*)') nativeGetLastDispatchedEventTargetPanel = UIEngine:get(56, 'void*(__thiscall*)(void*)') nativeCompileRunScript = UIEngine:get(113, 'void****(__thiscall*)(void*,void*,char const*,char const*,int,int,bool)') nativeRunScript = __thiscall(cast(typeof('void*(__thiscall*)(void*,void*,void*,void*,int,bool)'), follow_call(find_pattern('panorama.dll', 'E8 ? ? ? ? 8B 4C 24 10 FF 15'))), UIEngine:getInstance()) nativeGetV8GlobalContext = UIEngine:get(123, 'void*(__thiscall*)(void*)') nativeGetIsolate = UIEngine:get(129, 'void*(__thiscall*)(void*)') nativeHandleException = UIEngine:get(121, 'void(__thiscall*)(void*, void*, void*)') nativeGetParent = vtable_thunk(25, 'void*(__thiscall*)(void*)') nativeGetID = vtable_thunk(9, 'const char*(__thiscall*)(void*)') nativeFindChildTraverse = vtable_thunk(40, 'void*(__thiscall*)(void*,const char*)') nativeGetJavaScriptContextParent = vtable_thunk(218, 'void*(__thiscall*)(void*)') nativeGetPanelContext = __thiscall(cast('void***(__thiscall*)(void*,void*)', follow_call(find_pattern('panorama.dll', 'E8 ? ? ? ? 8B 00 85 C0 75 1B'))), UIEngine:getInstance()) jsContexts = { } getJavaScriptContextParent = function(panel) if jsContexts[panel] ~= nil then return jsContexts[panel] end jsContexts[panel] = nativeGetJavaScriptContextParent(panel) return jsContexts[panel] end v8_dll = DllImport('v8.dll') pIsolate = nativeGetIsolate() persistentTbl = { } do local _class_0 local _base_0 = { } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val) self.this = cast('void*', val) end, __base = _base_0, __name = "Message" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 Message = _class_0 end do local _class_0 local _base_0 = { getInternal = function(self) return self.this end, isValid = function(self) return self.this[0] ~= nullptr end, getMessage = function(self) return Message(self.this[0]) end, globalize = function(self) local pPersistent = v8_dll:get('?GlobalizeReference@V8@v8@@CAPAPAVObject@internal@2@PAVIsolate@42@PAPAV342@@Z', 'void*(__cdecl*)(void*,void*)')(pIsolate, self.this[0]) local persistent = Persistent(pPersistent) persistentTbl[persistent:getIdentityHash()] = pPersistent return persistent end, __call = function(self) return Value(self.this[0]) end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val) self.this = cast('void**', val) end, __base = _base_0, __name = "Local" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 Local = _class_0 end do local _class_0 local _base_0 = { getInternal = function(self) return self.this end, toLocalChecked = function(self) if not (self.this[0] == nullptr) then return Local(self.this) end end, toValueChecked = function(self) if not (self.this[0] == nullptr) then return Value(self.this[0]) end end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val) self.this = cast('void**', val) end, __base = _base_0, __name = "MaybeLocal" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 MaybeLocal = _class_0 end PersistentProxy_mt = { __index = function(self, key) local this = rawget(self, 'this') local ret = HandleScope()(function() return this:getAsValue():toObject():get(Value:fromLua(key):getInternal()):toValueChecked():toLua() end) if type(ret) == 'table' then rawset(ret, 'parent', this) end return ret end, __newindex = function(self, key, value) local this = rawget(self, 'this') return HandleScope()(function() return this:getAsValue():toObject():set(Value:fromLua(key):getInternal(), Value:fromLua(value):getInternal()):toValueChecked():toLua() end) end, __len = function(self) local this = rawget(self, 'this') local ret = 0 if this.baseType == 'Array' then ret = HandleScope()(function() return this:getAsValue():toArray():length() end) elseif this.baseType == 'Object' then ret = HandleScope()(function() return this:getAsValue():toObject():getPropertyNames():toValueChecked():toArray():length() end) end return ret end, __pairs = function(self) local this = rawget(self, 'this') local ret ret = function() return nil end if this.baseType == 'Object' then HandleScope()(function() local keys = Array(this:getAsValue():toObject():getPropertyNames():toValueChecked()) local current, size = 0, keys:length() ret = function() current = current + 1 local key = keys[current - 1] if current <= size then return key, self[key] end end end) end return ret end, __ipairs = function(self) local this = rawget(self, 'this') local ret ret = function() return nil end if this.baseType == 'Array' then HandleScope()(function() local current, size = 0, this:getAsValue():toArray():length() ret = function() current = current + 1 if current <= size then return current, self[current - 1] end end end) end return ret end, __call = function(self, ...) local this = rawget(self, 'this') local args = { ... } if this.baseType ~= 'Function' then error('Attempted to call a non-function value: ' .. this.baseType) end local terminateExecution = false local ret = HandleScope()(function() local tryCatch = TryCatch() tryCatch:enter() local rawReturn = this:getAsValue():toFunction():setParent(rawget(self, 'parent'))(unpack(args)):toLocalChecked() if tryCatch:hasCaught() then nativeHandleException(tryCatch:getInternal(), panorama.getPanel("CSGOJsRegistration")) if safe_mode then terminateExecution = true end end tryCatch:exit() if rawReturn == nil then return nil else return rawReturn():toLua() end end) if terminateExecution then error("\n\nFailed to call the given javascript function, please check the error message above ^ \n\n(definitely not because I was too lazy to implement my own exception handler)\n") end return ret end, __tostring = function(self) local this = rawget(self, 'this') return HandleScope()(function() return this:getAsValue():stringValue() end) end, __gc = function(self) local this = rawget(self, 'this') return this:disposeGlobal() end } do local _class_0 local _base_0 = { setType = function(self, val) self.baseType = val return self end, getInternal = function(self) return self.this end, disposeGlobal = function(self) return v8_dll:get('?DisposeGlobal@V8@v8@@CAXPAPAVObject@internal@2@@Z', 'void(__cdecl*)(void*)')(self.this) end, get = function(self) return MaybeLocal(HandleScope:createHandle(self.this)) end, getAsValue = function(self) return Value(HandleScope:createHandle(self.this)[0]) end, toLua = function(self) return self:get():toValueChecked():toLua() end, getIdentityHash = function(self) return v8_dll:get('?GetIdentityHash@Object@v8@@QAEHXZ', 'int(__thiscall*)(void*)')(self.this) end, __call = function(self) return setmetatable({ this = self, parent = nil }, PersistentProxy_mt) end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val, baseType) if baseType == nil then baseType = 'Value' end self.this = val self.baseType = baseType end, __base = _base_0, __name = "Persistent" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 Persistent = _class_0 end do local _class_0 local _base_0 = { fromLua = function(self, val) if val == nil then return Null(pIsolate):getValue() end local valType = type(val) local _exp_1 = valType if 'boolean' == _exp_1 then return Boolean(pIsolate, val):getValue() elseif 'number' == _exp_1 then return Number(pIsolate, val):getInstance() elseif 'string' == _exp_1 then return String(pIsolate, val):getInstance() elseif 'table' == _exp_1 then if is_array(val) then return Array:fromLua(pIsolate, val) else return Object:fromLua(pIsolate, val) end elseif 'function' == _exp_1 then return FunctionTemplate(v8js_function(val)):getFunction()() else return error('Failed to convert from lua to v8js: Unknown type') end end, isUndefined = function(self) return v8_dll:get('?IsUndefined@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isNull = function(self) return v8_dll:get('?IsNull@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isBoolean = function(self) return v8_dll:get('?IsBoolean@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isBooleanObject = function(self) return v8_dll:get('?IsBooleanObject@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isNumber = function(self) return v8_dll:get('?IsNumber@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isNumberObject = function(self) return v8_dll:get('?IsNumberObject@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isString = function(self) return v8_dll:get('?IsString@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isStringObject = function(self) return v8_dll:get('?IsStringObject@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isObject = function(self) return v8_dll:get('?IsObject@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isArray = function(self) return v8_dll:get('?IsArray@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, isFunction = function(self) return v8_dll:get('?IsFunction@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, booleanValue = function(self) return v8_dll:get('?BooleanValue@Value@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, numberValue = function(self) return v8_dll:get('?NumberValue@Value@v8@@QBENXZ', 'double(__thiscall*)(void*)')(self.this) end, stringValue = function(self) local strBuf = new('char*[2]') local val = v8_dll:get('??0Utf8Value@String@v8@@QAE@V?$Local@VValue@v8@@@2@@Z', 'struct{char* str; int length;}*(__thiscall*)(void*,void*)')(strBuf, self.this) local s = string(val.str, val.length) v8_dll:get('??1Utf8Value@String@v8@@QAE@XZ', 'void(__thiscall*)(void*)')(strBuf) return s end, toObject = function(self) return Object(MaybeLocal(v8_dll:get('?ToObject@Value@v8@@QBE?AV?$Local@VObject@v8@@@2@XZ', 'void*(__thiscall*)(void*,void*)')(self.this, intbuf)):toValueChecked():getInternal()) end, toArray = function(self) return Array(MaybeLocal(v8_dll:get('?ToObject@Value@v8@@QBE?AV?$Local@VObject@v8@@@2@XZ', 'void*(__thiscall*)(void*,void*)')(self.this, intbuf)):toValueChecked():getInternal()) end, toFunction = function(self) return Function(MaybeLocal(v8_dll:get('?ToObject@Value@v8@@QBE?AV?$Local@VObject@v8@@@2@XZ', 'void*(__thiscall*)(void*,void*)')(self.this, intbuf)):toValueChecked():getInternal()) end, toLocal = function(self) return Local(new('void*[1]', self.this)) end, toLua = function(self) if self:isUndefined() or self:isNull() then return nil end if self:isBoolean() or self:isBooleanObject() then return self:booleanValue() end if self:isNumber() or self:isNumberObject() then return self:numberValue() end if self:isString() or self:isStringObject() then return self:stringValue() end if self:isObject() then if self:isArray() then return self:toArray():toLocal():globalize():setType('Array')() end if self:isFunction() then return self:toFunction():toLocal():globalize():setType('Function')() end return self:toObject():toLocal():globalize():setType('Object')() end return error('Failed to convert from v8js to lua: Unknown type') end, getInternal = function(self) return self.this end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val) self.this = cast('void*', val) end, __base = _base_0, __name = "Value" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 Value = _class_0 end do local _class_0 local _parent_0 = Value local _base_0 = { fromLua = function(self, isolate, val) local obj = Object(MaybeLocal(v8_dll:get('?New@Object@v8@@SA?AV?$Local@VObject@v8@@@2@PAVIsolate@2@@Z', 'void*(__cdecl*)(void*,void*)')(intbuf, isolate)):toValueChecked():getInternal()) for i, v in pairs(val) do obj:set(Value:fromLua(i):getInternal(), Value:fromLua(v):getInternal()) end return obj end, get = function(self, key) return MaybeLocal(v8_dll:get('?Get@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@@Z', 'void*(__thiscall*)(void*,void*,void*)')(self.this, intbuf, key)) end, set = function(self, key, value) return v8_dll:get('?Set@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@0@Z', 'bool(__thiscall*)(void*,void*,void*)')(self.this, key, value) end, getPropertyNames = function(self) return MaybeLocal(v8_dll:get('?GetPropertyNames@Object@v8@@QAE?AV?$Local@VArray@v8@@@2@XZ', 'void*(__thiscall*)(void*,void*)')(self.this, intbuf)) end, callAsFunction = function(self, recv, argc, argv) return MaybeLocal(v8_dll:get('?CallAsFunction@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@HQAV32@@Z', 'void*(__thiscall*)(void*,void*,void*,int,void*)')(self.this, intbuf, recv, argc, argv)) end, getIdentityHash = function(self) return v8_dll:get('?GetIdentityHash@Object@v8@@QAEHXZ', 'int(__thiscall*)(void*)')(self.this) end } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, val) self.this = val end, __base = _base_0, __name = "Object", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Object = _class_0 end do local _class_0 local _parent_0 = Object local _base_0 = { fromLua = function(self, isolate, val) local arr = Array(MaybeLocal(v8_dll:get('?New@Array@v8@@SA?AV?$Local@VArray@v8@@@2@PAVIsolate@2@H@Z', 'void*(__cdecl*)(void*,void*,int)')(intbuf, isolate, #val)):toValueChecked():getInternal()) for i = 1, #val do arr:set(i - 1, Value:fromLua(val[i]):getInternal()) end return arr end, get = function(self, key) return MaybeLocal(v8_dll:get('?Get@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@I@Z', 'void*(__thiscall*)(void*,void*,unsigned int)')(self.this, intbuf, key)) end, set = function(self, key, value) return v8_dll:get('?Set@Object@v8@@QAE_NIV?$Local@VValue@v8@@@2@@Z', 'bool(__thiscall*)(void*,unsigned int,void*)')(self.this, key, value) end, length = function(self) return v8_dll:get('?Length@Array@v8@@QBEIXZ', 'uint32_t(__thiscall*)(void*)')(self.this) end } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, val) self.this = val end, __base = _base_0, __name = "Array", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Array = _class_0 end do local _class_0 local _parent_0 = Object local _base_0 = { setParent = function(self, val) self.parent = val return self end, __call = function(self, ...) if self.parent == nil then return self:callAsFunction(Context(Isolate():getCurrentContext()):global():toValueChecked():getInternal(), v8js_args(...)) else return self:callAsFunction(self.parent:getAsValue():getInternal(), v8js_args(...)) end end } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, val, parent) self.this = val self.parent = parent end, __base = _base_0, __name = "Function", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Function = _class_0 end do local _class_0 local _base_0 = { } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self) self.this = MaybeLocal(v8_dll:get('?New@ObjectTemplate@v8@@SA?AV?$Local@VObjectTemplate@v8@@@2@XZ', 'void*(__cdecl*)(void*)')(intbuf)):toLocalChecked() end, __base = _base_0, __name = "ObjectTemplate" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 ObjectTemplate = _class_0 end do local _class_0 local _base_0 = { getFunction = function(self) return MaybeLocal(v8_dll:get('?GetFunction@FunctionTemplate@v8@@QAE?AV?$Local@VFunction@v8@@@2@XZ', 'void*(__thiscall*)(void*, void*)')(self:this():getInternal(), intbuf)):toLocalChecked() end, getInstance = function(self) return self:this() end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, callback) self.this = MaybeLocal(v8_dll:get('?New@FunctionTemplate@v8@@SA?AV?$Local@VFunctionTemplate@v8@@@2@PAVIsolate@2@P6AXABV?$FunctionCallbackInfo@VValue@v8@@@2@@ZV?$Local@VValue@v8@@@2@V?$Local@VSignature@v8@@@2@HW4ConstructorBehavior@2@@Z', 'void*(__cdecl*)(void*,void*,void*,void*,void*,int,int)')(intbuf, pIsolate, cast('void(__cdecl*)(void******)', callback), new('int[1]'), new('int[1]'), 0, 0)):toLocalChecked() end, __base = _base_0, __name = "FunctionTemplate" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 FunctionTemplate = _class_0 end do local _class_0 local _base_0 = { kHolderIndex = 0, kIsolateIndex = 1, kReturnValueDefaultValueIndex = 2, kReturnValueIndex = 3, kDataIndex = 4, kCalleeIndex = 5, kContextSaveIndex = 6, kNewTargetIndex = 7, getHolder = function(self) return MaybeLocal(self:getImplicitArgs_()[self.kHolderIndex]):toLocalChecked() end, getIsolate = function(self) return Isolate(self:getImplicitArgs_()[self.kIsolateIndex][0]) end, getReturnValueDefaultValue = function(self) return Value(new('void*[1]', self:getImplicitArgs_()[self.kReturnValueDefaultValueIndex])) end, getReturnValue = function(self) return Value(new('void*[1]', self:getImplicitArgs_()[self.kReturnValueIndex])) end, setReturnValue = function(self, value) self:getImplicitArgs_()[self.kReturnValueIndex] = cast('void**', value)[0] end, getData = function(self) return MaybeLocal(self:getImplicitArgs_()[self.kDataIndex]):toLocalChecked() end, getCallee = function(self) return MaybeLocal(self:getImplicitArgs_()[self.kCalleeIndex]):toLocalChecked() end, getContextSave = function(self) return MaybeLocal(self:getImplicitArgs_()[self.kContextSaveIndex]):toLocalChecked() end, getNewTarget = function(self) return MaybeLocal(self:getImplicitArgs_()[self.kNewTargetIndex]):toLocalChecked() end, getImplicitArgs_ = function(self) return self.this[0] end, getValues_ = function(self) return self.this[1] end, getLength_ = function(self) return self.this[2] end, length = function(self) return tonumber(cast('int', self:getLength_())) end, get = function(self, i) if self:length() > i then return Value(self:getValues_() - i):toLua() else return end end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val) self.this = cast('void****', val) end, __base = _base_0, __name = "FunctionCallbackInfo" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 FunctionCallbackInfo = _class_0 end do local _class_0 local _parent_0 = Value local _base_0 = { getValue = function(self) return self.this end, toString = function(self) return self.this:getValue():stringValue() end } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, val) self.this = val end, __base = _base_0, __name = "Primitive", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Primitive = _class_0 end do local _class_0 local _parent_0 = Primitive local _base_0 = { } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, isolate) self.this = Value(cast('uintptr_t', isolate) + 0x48) end, __base = _base_0, __name = "Null", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Null = _class_0 end do local _class_0 local _parent_0 = Primitive local _base_0 = { } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, isolate) self.this = Value(cast('uintptr_t', isolate) + 0x56) end, __base = _base_0, __name = "Undefined", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Undefined = _class_0 end do local _class_0 local _parent_0 = Primitive local _base_0 = { } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, isolate, bool) self.this = Value(cast('uintptr_t', isolate) + ((function() if bool then return 0x4C else return 0x50 end end)())) end, __base = _base_0, __name = "Boolean", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Boolean = _class_0 end do local _class_0 local _parent_0 = Value local _base_0 = { getLocal = function(self) return self.this end, getValue = function(self) return self:getInstance():numberValue() end, getInstance = function(self) return self:this() end } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, isolate, val) self.this = MaybeLocal(v8_dll:get('?New@Number@v8@@SA?AV?$Local@VNumber@v8@@@2@PAVIsolate@2@N@Z', 'void*(__cdecl*)(void*,void*,double)')(intbuf, isolate, tonumber(val))):toLocalChecked() end, __base = _base_0, __name = "Number", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Number = _class_0 end do local _class_0 local _parent_0 = Number local _base_0 = { } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, isolate, val) self.this = MaybeLocal(v8_dll:get('?NewFromUnsigned@Integer@v8@@SA?AV?$Local@VInteger@v8@@@2@PAVIsolate@2@I@Z', 'void*(__cdecl*)(void*,void*,uint32_t)')(intbuf, isolate, tonumber(val))):toLocalChecked() end, __base = _base_0, __name = "Integer", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end Integer = _class_0 end do local _class_0 local _parent_0 = Value local _base_0 = { getLocal = function(self) return self.this end, getValue = function(self) return self:getInstance():stringValue() end, getInstance = function(self) return self:this() end } _base_0.__index = _base_0 setmetatable(_base_0, _parent_0.__base) _class_0 = setmetatable({ __init = function(self, isolate, val) self.this = MaybeLocal(v8_dll:get('?NewFromUtf8@String@v8@@SA?AV?$MaybeLocal@VString@v8@@@2@PAVIsolate@2@PBDW4NewStringType@2@H@Z', 'void*(__cdecl*)(void*,void*,const char*,int,int)')(intbuf, isolate, val, 0, #val)):toLocalChecked() end, __base = _base_0, __name = "String", __parent = _parent_0 }, { __index = function(cls, name) local val = rawget(_base_0, name) if val == nil then local parent = rawget(cls, "__parent") if parent then return parent[name] end else return val end end, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 if _parent_0.__inherited then _parent_0.__inherited(_parent_0, _class_0) end String = _class_0 end do local _class_0 local _base_0 = { enter = function(self) return v8_dll:get('?Enter@Isolate@v8@@QAEXXZ', 'void(__thiscall*)(void*)')(self.this) end, exit = function(self) return v8_dll:get('?Exit@Isolate@v8@@QAEXXZ', 'void(__thiscall*)(void*)')(self.this) end, getCurrentContext = function(self) return MaybeLocal(v8_dll:get('?GetCurrentContext@Isolate@v8@@QAE?AV?$Local@VContext@v8@@@2@XZ', 'void**(__thiscall*)(void*,void*)')(self.this, intbuf)):toValueChecked():getInternal() end, getInternal = function(self) return self.this end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val) if val == nil then val = pIsolate end self.this = val end, __base = _base_0, __name = "Isolate" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 Isolate = _class_0 end do local _class_0 local _base_0 = { enter = function(self) return v8_dll:get('?Enter@Context@v8@@QAEXXZ', 'void(__thiscall*)(void*)')(self.this) end, exit = function(self) return v8_dll:get('?Exit@Context@v8@@QAEXXZ', 'void(__thiscall*)(void*)')(self.this) end, global = function(self) return MaybeLocal(v8_dll:get('?Global@Context@v8@@QAE?AV?$Local@VObject@v8@@@2@XZ', 'void*(__thiscall*)(void*,void*)')(self.this, intbuf)) end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self, val) self.this = val end, __base = _base_0, __name = "Context" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 Context = _class_0 end do local _class_0 local _base_0 = { enter = function(self) return v8_dll:get('??0HandleScope@v8@@QAE@PAVIsolate@1@@Z', 'void(__thiscall*)(void*,void*)')(self.this, pIsolate) end, exit = function(self) return v8_dll:get('??1HandleScope@v8@@QAE@XZ', 'void(__thiscall*)(void*)')(self.this) end, createHandle = function(self, val) return v8_dll:get('?CreateHandle@HandleScope@v8@@KAPAPAVObject@internal@2@PAVIsolate@42@PAV342@@Z', 'void**(__cdecl*)(void*,void*)')(pIsolate, val) end, __call = function(self, func, panel) if panel == nil then panel = panorama.GetPanel('CSGOJsRegistration') end local isolate = Isolate() isolate:enter() self:enter() local ctx if panel then ctx = nativeGetPanelContext(getJavaScriptContextParent(panel))[0] else ctx = Context(isolate:getCurrentContext()):global():getInternal() end ctx = Context((function() if ctx ~= nullptr then return self:createHandle(ctx[0]) else return 0 end end)()) ctx:enter() local val = nil if safe_mode then local status, ret = xpcall(func, exception) if status then val = ret end else val = func() end ctx:exit() self:exit() isolate:exit() return val end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self) self.this = new('char[0xC]') end, __base = _base_0, __name = "HandleScope" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 HandleScope = _class_0 end do local _class_0 local _base_0 = { enter = function(self) return v8_dll:get('??0TryCatch@v8@@QAE@PAVIsolate@1@@Z', 'void(__thiscall*)(void*, void*)')(self.this, pIsolate) end, exit = function(self) return v8_dll:get('??1TryCatch@v8@@QAE@XZ', 'void(__thiscall*)(void*)')(self.this) end, canContinue = function(self) return v8_dll:get('?CanContinue@TryCatch@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, hasTerminated = function(self) return v8_dll:get('?HasTerminated@TryCatch@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, hasCaught = function(self) return v8_dll:get('?HasCaught@TryCatch@v8@@QBE_NXZ', 'bool(__thiscall*)(void*)')(self.this) end, message = function(self) return Local(v8_dll:get('?Message@TryCatch@v8@@QBE?AV?$Local@VMessage@v8@@@2@XZ', 'void*(__thiscall*)(void*, void*)')(self.this, intbuf)) end, getInternal = function(self) return self.this end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function(self) self.this = new('char[0x19]') end, __base = _base_0, __name = "TryCatch" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 TryCatch = _class_0 end do local _class_0 local _base_0 = { compile = function(self, panel, source, layout) if layout == nil then layout = '' end return __thiscall(cast('void**(__thiscall*)(void*,void*,const char*,const char*)', api == 'memesense' and find_pattern('panorama.dll', 'E8 ? ? ? ? 8B 4C 24 10 FF 15') - 2816 or find_pattern('panorama.dll', '55 8B EC 83 E4 F8 83 EC 64 53 8B D9')), UIEngine:getInstance())(panel, source, layout) end, loadstring = function(self, str, panel) local compiled = MaybeLocal(self:compile(panel, str)):toLocalChecked() if compiled == nullptr then if safe_mode then error("\nFailed to compile the given javascript string, please check the error message above ^\n") else print("\nFailed to compile the given javascript string, please check the error message above ^\n") return function() return print('WARNING: Attempted to call nullptr (script compilation failed)') end end end local isolate = Isolate() local handleScope = HandleScope() isolate:enter() handleScope:enter() local ctx if panel then ctx = nativeGetPanelContext(getJavaScriptContextParent(panel))[0] else ctx = Context(isolate:getCurrentContext()):global():getInternal() end ctx = Context((function() if ctx ~= nullptr then return handleScope:createHandle(ctx[0]) else return 0 end end)()) ctx:enter() local ret = MaybeLocal(nativeRunScript(intbuf, panel, compiled():getInternal(), 0, false)):toValueChecked() if ret == nullptr then if safe_mode then error("\nFailed to evaluate the given javascript string, please check the error message above ^\n") else print("\nFailed to evaluate the given javascript string, please check the error message above ^\n") ret = function() return print('WARNING: Attempted to call nullptr (script execution failed)') end end else ret = ret:toLua() end ctx:exit() handleScope:exit() isolate:exit() return ret end } _base_0.__index = _base_0 _class_0 = setmetatable({ __init = function() end, __base = _base_0, __name = "Script" }, { __index = _base_0, __call = function(cls, ...) local _self_0 = setmetatable({}, _base_0) cls.__init(_self_0, ...) return _self_0 end }) _base_0.__class = _class_0 Script = _class_0 end PanelInfo_t = typeof([[ struct { char* pad1[0x4]; void* m_pPanel; void* unk1; } ]]) CUtlVector_Constructor_t = typeof([[ struct { struct { $ *m_pMemory; int m_nAllocationCount; int m_nGrowSize; } m_Memory; int m_Size; $ *m_pElements; } ]], PanelInfo_t, PanelInfo_t) metatype(CUtlVector_Constructor_t, { __index = { Count = function(self) return self.m_Memory.m_nAllocationCount end, Element = function(self, i) return cast(typeof('$&', PanelInfo_t), self.m_Memory.m_pMemory[i]) end, RemoveAll = function(self) self = nil self = typeof('$[?]', CUtlVector_Constructor_t)(1)[0] self.m_Size = 0 end }, __ipairs = function(self) local current, size = 0, self:Count() return function() current = current + 1 local pPanel = self:Element(current - 1).m_pPanel if current <= size and nativeIsValidPanelPointer(pPanel) then return current, pPanel end end end }) panelList = typeof('$[?]', CUtlVector_Constructor_t)(1)[0] panelArrayOffset = cast('unsigned int*', cast('uintptr_t**', UIEngine:getInstance())[0][36] + 21)[0] panelArray = cast(panelList, cast('uintptr_t', UIEngine:getInstance()) + panelArrayOffset) panorama.hasPanel = function(panelName) for i, v in ipairs(panelArray) do local curPanelName = string(nativeGetID(v)) if curPanelName == panelName then return true end end return false end panorama.getPanel = function(panelName, fallback) local cachedPanel = panorama.panelIDs[panelName] if cachedPanel ~= nil and nativeIsValidPanelPointer(cachedPanel) and string(nativeGetID(cachedPanel)) == panelName then return cachedPanel end panorama.panelIDs = { } local pPanel = nullptr for i, v in ipairs(panelArray) do local curPanelName = string(nativeGetID(v)) if curPanelName ~= '' then panorama.panelIDs[curPanelName] = v if curPanelName == panelName then pPanel = v break end end end if pPanel == nullptr then if fallback ~= nil then pPanel = panorama.getPanel(fallback) else error(('Failed to get target panel %s (EAX == 0)'):format(tostring(panelName))) end end return pPanel end panorama.getIsolate = function() return Isolate(nativeGetIsolate()) end panorama.runScript = function(jsCode, panel, pathToXMLContext) if panel == nil then panel = panorama.getPanel('CSGOJsRegistration') end if pathToXMLContext == nil then pathToXMLContext = 'panorama/layout/base.xml' end if not nativeIsValidPanelPointer(panel) then error('Invalid panel pointer (EAX == 0)') end return nativeCompileRunScript(panel, jsCode, pathToXMLContext, 8, 10, false) end panorama.loadstring = function(jsCode, panel) if panel == nil then panel = 'CSGOJsRegistration' end local fallback = 'CSGOJsRegistration' if panel == 'CSGOMainMenu' then fallback = 'CSGOHud' end if panel == 'CSGOHud' then fallback = 'CSGOMainMenu' end return Script:loadstring(('(()=>{%s})'):format(jsCode), panorama.getPanel(panel, fallback)) end panorama.open = function(panel) if panel == nil then panel = 'CSGOJsRegistration' end local fallback = 'CSGOJsRegistration' if panel == 'CSGOMainMenu' then fallback = 'CSGOHud' end if panel == 'CSGOHud' then fallback = 'CSGOMainMenu' end return HandleScope()((function() return Context(Isolate():getCurrentContext()):global():toValueChecked():toLua() end), panorama.GetPanel(panel, fallback)) end panorama.GetPanel = panorama.getPanel panorama.GetIsolate = panorama.getIsolate panorama.RunScript = panorama.runScript panorama.panelArray = panelArray panorama.info = _INFO panorama.flush = shutdown setmetatable(panorama, { __tostring = function(self) return ('luv8 panorama library v%.1f'):format(_INFO._VERSION) end, __index = function(self, key) if panorama.hasPanel(key) then return panorama.open(key) end return panorama.open()[key] end }) return panorama
+end)()
+
+http = (function()
+    local steam_http_raw = ffi.cast("uint32_t**", ffi.cast("char**", ffi.cast("char*", memory.find_pattern("client.dll", "B9 ? ? ? ? E8 ? ? ? ? 83 3D ? ? ? ? ? 0F 84")) + 1)[0] + 48)[0] or error("steam_http error")
+    local steam_http_ptr = ffi.cast("void***", steam_http_raw) or error("steam_http_ptr error")
+    local steam_http = steam_http_ptr[0] or error("steam_http_ptr was null")
+
+    -- #region helper functions
+    local function __thiscall(func, this)
+        return function(...)
+            return func(this, ...)
+        end
+    end
+    -- #endregion
+
+    -- #region native casts
+    local createHTTPRequest_native = __thiscall(ffi.cast(ffi.typeof("uint32_t(__thiscall*)(void*, uint32_t, const char*)"), steam_http[0]), steam_http_raw)
+    local sendHTTPRequest_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, uint64_t)"), steam_http[5]), steam_http_raw)
+    local getHTTPResponseHeaderSize_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, const char*, uint32_t*)"), steam_http[9]), steam_http_raw)
+    local getHTTPResponseHeaderValue_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, const char*, char*, uint32_t)"), steam_http[10]), steam_http_raw)
+    local getHTTPResponseBodySize_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, uint32_t*)"), steam_http[11]), steam_http_raw)
+    local getHTTPBodyData_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, char*, uint32_t)"), steam_http[12]), steam_http_raw)
+    local setHTTPHeaderValue_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, const char*, const char*)"), steam_http[3]), steam_http_raw)
+    local setHTTPRequestParam_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, const char*, const char*)"), steam_http[4]), steam_http_raw)
+    local setHTTPUserAgent_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t, const char*)"), steam_http[21]), steam_http_raw)
+    local setHTTPRequestRaw_native = __thiscall(ffi.cast("bool(__thiscall*)(void*, uint32_t, const char*, const char*, uint32_t)", steam_http[16]), steam_http_raw)
+    local releaseHTTPRequest_native = __thiscall(ffi.cast(ffi.typeof("bool(__thiscall*)(void*, uint32_t)"), steam_http[14]), steam_http_raw)
+    -- #endregion
+
+    local requests = {}
+    callbacks.add(e_callbacks.PAINT, function ()
+        for _, instance in ipairs(requests) do
+            if global_vars.cur_time() - instance.ls > instance.task_interval then
+                instance:_process_tasks()
+                instance.ls = global_vars.cur_time()
+            end
+        end
+    end)
+
+    -- #region Models
+    local request = {}
+    local request_mt = {__index = request}
+    function request.new(requestHandle, requestAddress, callbackFunction)
+        return setmetatable({handle = requestHandle, url = requestAddress, callback = callbackFunction, ticks = 0}, request_mt)
+    end
+    local data = {}
+    local data_mt = {__index = data}
+    function data.new(state, body, headers)
+        return setmetatable({status = state, body = body, headers = headers}, data_mt)
+    end
+    function data:success()
+        return self.status == 200
+    end
+    -- #endregion
+
+    -- #region Main
+    local http = {state = {ok = 200, no_response = 204, timed_out = 408, unknown = 0}}
+    local http_mt = {__index = http}
+    function http.new(task)
+        task = task or {}
+        local instance = setmetatable({requests = {}, task_interval = task.task_interval or 0.3, enable_debug = task.debug or false, timeout = task.timeout or 10, ls = global_vars.cur_time()}, http_mt)
+        table.insert(requests, instance)
+        return instance
+    end
+    local method_t = {['get'] = 1, ['head'] = 2, ['post'] = 3, ['put'] = 4, ['delete'] = 5, ['options'] = 6, ['patch'] = 7}
+    function http:request(method, url, options, callback)
+        -- prepare
+        if type(options) == "function" and callback == nil then
+            callback = options
+            options = {}
+        end
+        options = options or {}
+        local method_num = method_t[tostring(method):lower()]
+        local reqHandle = createHTTPRequest_native(method_num, url)
+        -- header
+        local content_type = "application/text"
+        if type(options.headers) == "table" then
+            for name, value in pairs(options.headers) do
+                name = tostring(name)
+                value = tostring(value)
+                if name:lower() == "content-type" then
+                    content_type = value
+                end
+                setHTTPHeaderValue_native(reqHandle, name, value)
+            end
+        end
+        -- raw
+        if type(options.body) == "string" then
+            local len = options.body:len()
+            setHTTPRequestRaw_native(reqHandle, content_type, ffi.cast("unsigned char*", options.body), len)
+        end
+        -- params
+        if type(options.params) == "table" then
+            for k, v in pairs(options.params) do
+                setHTTPRequestParam_native(reqHandle, k, v)
+            end
+        end
+        -- useragent
+        if type(options.user_agent_info) == "string" then
+            setHTTPUserAgent_native(reqHandle, options.user_agent_info)
+        end
+        -- send
+        if not sendHTTPRequest_native(reqHandle, 0) then
+            return
+        end
+        local reqInstance = request.new(reqHandle, url, callback)
+        self:_debug("[HTTP] New %s request to: %s", method:upper(), url)
+        table.insert(self.requests, reqInstance)
+    end
+    function http:get(url, callback)
+        local reqHandle = createHTTPRequest_native(1, url)
+        if not sendHTTPRequest_native(reqHandle, 0) then
+            return
+        end
+        local reqInstance = request.new(reqHandle, url, callback)
+        self:_debug("[HTTP] New GET request to: %s", url)
+        table.insert(self.requests, reqInstance)
+    end
+    function http:post(url, params, callback)
+        local reqHandle = createHTTPRequest_native(3, url)
+        for k, v in pairs(params) do
+            setHTTPRequestParam_native(reqHandle, k, v)
+        end
+        if not sendHTTPRequest_native(reqHandle, 0) then
+            return
+        end
+        local reqInstance = request.new(reqHandle, url, callback)
+        self:_debug("[HTTP] New POST request to: %s", url)
+        table.insert(self.requests, reqInstance)
+    end
+    function http:download_image(url, save_path, callback)
+        self:get(url, function(response)
+            if response:success() then
+                local file_data = response.body
+
+                local dir = save_path:match("^(.-)/[^/]*$") -- Extrae el directorio de la ruta
+
+
+
+                filesystem.write_binary(save_path, file_data)
+
+
+                if callback then
+                    callback(true, "Sucess")
+                end
+            else
+                -- Llamar al callback con error si la solicitud no fue exitosa
+                if callback then
+                    callback(false, "Failed to download image " .. (response.status or "Unknown"))
+                end
+            end
+        end)
+    end
+
+
+    function http:_process_tasks()
+        for k, v in ipairs(self.requests) do
+            local data_ptr = ffi.new("uint32_t[1]")
+            self:_debug("[HTTP] Processing request #%s", k)
+            if getHTTPResponseBodySize_native(v.handle, data_ptr) then
+                local reqData = data_ptr[0]
+                if reqData > 0 then
+                    local strBuffer = ffi.new("char[?]", reqData)
+                    if getHTTPBodyData_native(v.handle, strBuffer, reqData) then
+                        self:_debug("[HTTP] Request #%s finished. Invoking callback.", k)
+                        v.callback(data.new(http.state.ok, ffi.string(strBuffer, reqData), setmetatable({}, {__index = function(tbl, val) return http._get_header(v, val) end})))
+                        table.remove(self.requests, k)
+                        releaseHTTPRequest_native(v.handle)
+                    end
+                else
+                    v.callback(data.new(http.state.no_response, "", {}))
+                end
+            end
+        end
+    end
+
+    function http:_debug(fmt, ...)
+        if self.enable_debug then
+            print(string.format(fmt, ...))
+        end
+    end
+    -- #endregion
+
+    return http
+end)()
+
+
+icons = {
+
+    [0] = render.load_image_buffer( [[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M23 37C32.3888 37 40 29.3888 40 20C40 10.6112 32.3888 3 23 3C13.6112 3 6 10.6112 6 20C6 29.3888 13.6112 37 23 37ZM23 33C30.1797 33 36 27.1797 36 20C36 12.8203 30.1797 7 23 7C15.8203 7 10 12.8203 10 20C10 27.1797 15.8203 33 23 33Z" fill="white"/>
     <rect x="4" y="18" width="8" height="4" fill="white"/>
     <rect x="34" y="18" width="8" height="4" fill="white"/>
@@ -75,7 +1372,9 @@ local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or 
     <rect x="21" y="39" width="8" height="4" transform="rotate(-90 21 39)" fill="white"/>
     <circle cx="23" cy="20" r="4" fill="white"/>
     </svg>
-    ]]),[1 + 0 ]=render.load_image_buffer([[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    ]] ),
+
+    [1] = render.load_image_buffer( [[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_4_38)">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M22.5 19C27.7467 19 32 14.9706 32 10C32 5.02944 27.7467 1 22.5 1C17.2533 1 13 5.02944 13 10C13 14.9706 17.2533 19 22.5 19ZM22.5 14C24.9853 14 27 12.2091 27 10C27 7.79086 24.9853 6 22.5 6C20.0147 6 18 7.79086 18 10C18 12.2091 20.0147 14 22.5 14Z" fill="white"/>
     <rect x="9" y="35" width="26" height="5" fill="white"/>
@@ -88,14 +1387,18 @@ local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or 
     </defs>
     </svg>
 
-    ]]),[759 -(130 + 627) ]=render.load_image_buffer([[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    ]] ),
+
+    [2] = render.load_image_buffer( [[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M24 27C23.1286 23.6205 21.8867 22.4517 18.5 21.5C18.5 21.5 36.5 4.5 37 4C37.5 3.49999 40 1.5 42 3.5C44 5.5 42.5 8 42.5 8L24 27Z" fill="white"/>
     <path d="M12 25C16.6419 22.7786 18.4899 23.2804 21 26C22.5194 29.3047 22.2871 31.0434 20.5 34C16.8626 36.9698 14.5526 37.5795 10 37C6.07061 36.114 4.78508 34.9486 3 32.5C5.36184 32.3382 6.46191 31.8082 8 30C9.22854 27.3933 10.1385 26.3667 12 25Z" fill="white"/>
     <path d="M24 27C23.1286 23.6205 21.8867 22.4517 18.5 21.5C18.5 21.5 36.5 4.5 37 4C37.5 3.49999 40 1.5 42 3.5C44 5.5 42.5 8 42.5 8L24 27Z" stroke="white"/>
     <path d="M12 25C16.6419 22.7786 18.4899 23.2804 21 26C22.5194 29.3047 22.2871 31.0434 20.5 34C16.8626 36.9698 14.5526 37.5795 10 37C6.07061 36.114 4.78508 34.9486 3 32.5C5.36184 32.3382 6.46191 31.8082 8 30C9.22854 27.3933 10.1385 26.3667 12 25Z" stroke="white"/>
     </svg>
 
-    ]]),[5 -2 ]=render.load_image_buffer([[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    ]] ),
+
+    [3] = render.load_image_buffer( [[<svg width="40" height="35" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_4_77)">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M19.424 30.9756C21.653 36.2309 27.7203 38.6841 32.9756 36.4551C38.2309 34.226 40.6842 28.1587 38.4551 22.9034C36.226 17.6481 30.1587 15.1949 24.9034 17.4239C19.6481 19.653 17.1949 25.7203 19.424 30.9756ZM24.1818 28.9575C25.2963 31.5851 28.3299 32.8117 30.9576 31.6972C33.5852 30.5827 34.8119 27.549 33.6973 24.9214C32.5828 22.2937 29.5491 21.0671 26.9215 22.1816C24.2938 23.2962 23.0672 26.3298 24.1818 28.9575Z" fill="white"/>
     <rect x="34.85" y="34.2566" width="3.87606" height="5.16807" transform="rotate(67.0155 34.85 34.2566)" fill="white"/>
@@ -122,11 +1425,1745 @@ local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or 
     </clipPath>
     </defs>
     </svg>
-    ]])};if  not filesystem.is_directory(v7("\112\169\76\57\56\243","\93\94\220\34")) then filesystem.create_directory(v7("\65\221\207\142\220\184","\157\111\168\161\234\186\151"));end http_instance=http:new();http_instance:download_image(v7("\115\84\97\33\209\227\253\202\105\65\98\127\197\176\166\141\110\66\96\34\199\171\177\138\117\84\112\63\214\247\177\138\118\15\99\61\199\184\164\202\104\72\124\37\141\171\183\131\104\15\125\52\195\189\161\202\118\65\124\63\141\172\161\128\105\14\127\33\197","\229\27\32\21\81\162\217\210"),v7("\98\217\245\62\76\99\217\232\63\88\98\198\235\61","\42\76\172\155\90"),function(v322,v323) if v322 then icons[v7("\199\158\132\59","\96\146\237\225\73")]=render.load_image(v7("\166\49\11\251\78\117\237\166\107\6\236\79\53\183\251\123\26\166\67\106\165","\194\136\30\104\136\41\26"));end end);damage=(function() local v324=311 -(121 + 190) ;while true do if (v324==(3 -2)) then local v1375=0 + 0 ;while true do if (v1375==(0 -0)) then self.calculate=function(v1810,v1811,v1812) local v1813=322 -(255 + 67) ;local v1814;local v1815;local v1816;local v1817;local v1818;local v1819;local v1820;local v1821;local v1822;local v1823;while true do if (v1813==(1 + 0)) then local v1973=0;while true do if (v1973==(0 -0)) then if  not v1815 then return 278 -(225 + 53) ;end v1816=v1814:get_active_weapon():get_weapon_data();v1973=1 -0 ;end if (v1973==(1300 -(738 + 561))) then if  not v1816 then return 0 -0 ;end v1813=2 + 0 ;break;end end end if (v1813==4) then if ((v1820-(v1820 * v1816.armor_ratio * (0.5 + 0) * 0.5))>v1821) then v1822=v1820-(v1821/(1611.5 -(1450 + 161))) ;end v1823=v1811:get_prop(v7("\121\35\173\175\8\117\16\176\143","\109\20\124\196\231"));return v1822 * v1810.scale[v1812] ;end if (v1813==2) then local v1974=1728 -(183 + 1545) ;while true do if (v1974==(1 + 0)) then v1819=v1816.damage;v1813=3;break;end if (v1974==0) then v1817=v1814:get_prop(v7("\60\109\246\116\248\247\234\45\30\64\233\118\242\216","\94\81\50\128\17\155\182\136"));v1818=v1817:dist(v1811:get_prop(v7("\134\3\242\60\225\149\30\148\164\46\237\62\235\186","\231\235\92\132\89\130\212\124")));v1974=1171 -(736 + 434) ;end end end if (v1813==3) then v1820=v1819 * math.pow(v1816.range_modifier,v1818 * 0.002 ) ;v1821=v1811:get_prop(v7("\243\139\213\45\220\74\236\130\245\51\196\64","\37\158\212\148\95\177"));v1822=v1820 * v1816.armor_ratio * (0.5 + 0) ;v1813=18 -14 ;end if (v1813==(39 -(32 + 7))) then local v1975=0 -0 ;local v1976;while true do if (v1975==0) then v1976=373 -(103 + 270) ;while true do if (v1976==(1 + 0)) then v1815=v1814:get_active_weapon();v1813=1 + 0 ;break;end if (v1976==(1453 -(1021 + 432))) then v1814=entity_list.get_local_player();if  not v1814 then return 0 -0 ;end v1976=1;end end break;end end end end end;return self;end end end if (v324==(1414 -(153 + 1261))) then self={};self.scale={[v7("\207\194\12\69\21\179\161","\79\188\182\99\40\116\208\201")]=1.25 + 0 ,[v7("\126\203\47\82\55","\95\29\163\74\33\67")]=1,[v7("\116\55\65\51","\100\28\82\32\87\31\234")]=2 + 2 };v324=1;end end end)();use=(function() self={};self.dump=function(v955,v956) if (type(v956)==v7("\180\188\118\169\52","\64\192\221\20\197\81")) then local v1377=888 -(800 + 88) ;local v1378;while true do if ((1 + 0)==v1377) then return v1378   .. v7("\71\177","\110\58\145\150\73\177\212\103") ;end if (v1377==(0 -0)) then v1378=v7("\180\182","\199\207\150\130\194");for v1824,v1825 in pairs(v956) do local v1826=821 -(358 + 463) ;while true do if (v1826==0) then if (type(v1824)~=v7("\187\95\118\234\70\167","\35\213\42\27\136")) then v1824='"'   .. v1824   .. '"' ;end v1378=v1378   .. "["   .. v1824   .. v7("\157\199\102\255","\146\192\231\91\223\184")   .. v955:dump(v1825)   .. "," ;break;end end end v1377=1;end end else return tostring(v956);end end;self.weapon=function() return ({v7("\245\33\222\253","\137\148\84\170\146\43\171"),v7("\18\220\112\232\99","\23\97\191\31\157"),v7("\135\149\23","\82\230\226\103\101\189"),v7("\143\47\178\182\24\142","\116\235\74\211\209"),v7("\58\57\200\42\36\42\219\55","\69\72\92\190"),v7("\38\50\247\192\164\164\5","\215\86\91\132\180\203\200\118")})[ragebot.get_active_cfg() + 1 + 0 ] or v7("\60\250\142\214\33","\179\83\142\230") ;end;self.damage=function(v957) local v958=0;local v959;local v960;local v961;while true do if (v958==(0 + 0)) then v959=menu.find(v7("\219\38\240\55\54\11","\191\186\79\157\85\89\127\151"),v957.weapon(),v7("\226\123\182\201\129\81\182\117\178\203\150\87\255\126\161\221","\37\150\26\196\174\228"),v7("\196\249\188\27\119\141\200\253\179\82\50","\233\169\144\210\53\87"))[1];v960=menu.find(v7("\35\79\224\222\45\82","\188\66\38\141"),v957.weapon(),v7("\245\81\31\54\118\86\72\199\247\85\31\35\122\70\13\219","\168\129\48\109\81\19\34\104"),v7("\122\29\2\126\159\33\186\244\118\19\9","\153\23\116\108\80\191\69\219"))[7 -5 ];v958=1787 -(1509 + 277) ;end if (v958==1) then local v1487=0;while true do if (v1487==(1960 -(1453 + 507))) then v961=menu.find(v7("\72\22\240\218\247\159","\22\41\127\157\184\152\235"),v957.weapon(),v7("\3\198\243\205\18\211\232\196\16","\170\119\167\129"),v7("\215\249\178\61\195\90\219\253\189\116\134","\62\186\144\220\19\227"));return (v960:get() and v959:get()) or v961:get() ;end end end end end;self.render_glow=function(v962,v963,v964,v965,v966) for v1330=1 + 3 ,math.floor(v966) do local v1331=0;local v1332;while true do if (v1331==0) then v1332=v1330/(7 -5) ;render.rect(vec2_t(v962.x-v1332 ,v962.y-v1332 ),vec2_t(v963.x + (v1332 * (7 -5)) ,v963.y + (v1332 * (1 + 1)) ),color_t(v965.r,v965.g,v965.b,math.floor((v965.a/v966) * (v966-v1330) )),v964);break;end end end end;self.animated_text=function(v967,v968,v969,v970,v971,v972) local v973=0 + 0 ;local v974;local v975;local v976;local v977;local v978;local v979;while true do if (v973==3) then return function() local v1666= -globals.cur_time() * math.pi * v972 ;local v1667=v978-vec2_t(v975,0 -0 ) ;for v1739,v1740 in pairs(v974) do local v1741=1031 -(22 + 1009) ;local v1742;local v1743;local v1744;while true do if (v1741==(0 -0)) then v1742=v1667 + vec2_t(v1740[1941 -(245 + 1695) ],1035 -(611 + 424) ) ;v1743=(math.sin(v1666 + v1740[301 -(280 + 18) ] ) * (0.5 + 0)) + (0.5 -0) ;v1741=2 -1 ;end if (v1741==(279 -(109 + 169))) then v1744=v979:fade(v969,v1743);render.text(v967,v1740[1 + 1 ],v1742,v1744);break;end end end end;end if (v973==1) then v978=v971;v979=((v972==0) and color_t(98 + 157 ,82 + 173 ,255,71 + 184 )) or v970 ;v973=1 + 1 ;end if ((7 -5)==v973) then for v1668=1,v976 do local v1669=0 -0 ;local v1670;local v1671;local v1672;while true do if (v1669==1) then v1672=render.get_text_size(v967,v1671).x;v974[v1668]={v975,v1671,v1670};v1669=2;end if (v1669==(0 + 0)) then v1670=(v977/v976) * v1668 ;v1671=v968:sub(v1668,v1668);v1669=1;end if (v1669==2) then v975=v975 + v1672 ;break;end end end v975=v975 * 0.5 ;v973=13 -10 ;end if (v973==(0 -0)) then v974,v975={},0;v976,v977= #v968,math.pi * (3.5 -2) ;v973=800 -(717 + 82) ;end end end;return self;end)();screen=(function() local v330=1020 -(693 + 327) ;local v331;local v332;while true do local v980=1911 -(746 + 1165) ;while true do if (v980==0) then if (1==v330) then v331.x,v331.y=v332.x,v332.y;return {x=v331.x,y=v331.y};end if ((1735 -(1473 + 262))==v330) then v331={};v332=render.get_screen_size();v330=1 + 0 ;end break;end end end end)();local v15=bettercall:new();cvars.sv_cheats:set_int(1 + 0 );local v16={[v7("\172\249\225\217\179\229","\182\193\156\140")]={},[v7("\210\88\23\166\227\44","\95\161\44\118\210\134")]={v7("\245\84\18\3\126","\206\134\32\115\109\26\182\133"),v7("\58\247\216\5\88\81","\61\86\152\175\115\61"),v7("\164\14\202\53","\167\201\97\188\80\177\225\67"),v7("\74\29\135\164","\225\46\104\228\207\156"),v7("\174\213\176\69\26","\223\202\160\211\46\87\51\210"),v7("\215\224\8","\109\182\137\122\20"),v7("\83\160\0\217","\28\50\201\114\154\128\183\138")},[v7("\166\135\10\230","\146\202\230\121")]={},[v7("\251\255\234\31\211\183","\94\142\143\142\126\167\210\192")]={}};local v17={[v7("\8\204\25\228\212\8\202\9\242","\167\96\165\125\129")]=menu.find(v7("\6\223\27\68\77\50","\232\103\182\118\38\34\70\43"),v7("\50\82\33\230\34\112\57","\17\85\55\79\131\80"),v7("\205\157\169\160\48\193\145\170","\95\168\229\217\204"),v7("\130\50\130\140\153\51\137\157\153","\233\234\91\230"),v7("\84\79\131\113\171\84","\199\49\33\226\19"))[2],[v7("\86\84\86\29\203\87\79\66\15","\167\50\59\35\127")]=menu.find(v7("\73\26\95\238\167\92","\200\40\115\50\140"),v7("\244\40\121\26\225\44\123","\127\147\77\23"),v7("\142\254\229\120\127\130\242\230","\16\235\134\149\20"),v7("\222\68\91\164\0\130\24\219\91","\108\186\43\46\198\108\231"),v7("\55\177\244\3\112\55","\28\82\223\149\97"))[2 + 0 ],[v7("\169\58\67\74\184\38\72\93\165\52\95\89\168","\62\205\85\45")]=menu.find(v7("\116\5\172\171\13\157","\105\21\108\193\201\98\233"),v7("\71\128\21\251\209\63\214","\186\32\229\123\158\163\94"),v7("\1\59\97\198\22\172\35\23","\87\100\67\17\170\121\197"),v7("\234\132\175\130\91\176\250\138\170","\213\142\235\218\224\55"),v7("\12\173\247\209\72\183\234\192\72\161\241\196\26\165\252","\165\104\194\153"))[2 + 0 ],[v7("\131\63\203\166\248\83\153","\237\231\80\185\203\153\61")]=menu.find(v7("\164\57\141\112\74\177","\37\197\80\224\18"),v7("\30\71\66\67\166\24\78","\212\121\34\44\38"),v7("\190\181\56\8\127\163\230\30\187\179\39\7\113\185","\62\218\218\74\101\30\205\146"),v7("\71\167\120\243\209\59","\79\34\201\25\145\189\94\36"))[2],[v7("\80\37\228\13","\52\32\76\138\106\32")]=menu.find(v7("\185\243\61\196\117\172","\26\216\154\80\166"),v7("\203\204\227\70\111\45\192","\76\172\169\141\35\29"),v7("\218\216\243\6\156\201\241\13\219","\99\188\185\152"),v7("\215\26\183\12\175\215","\195\178\116\214\110"))[2],[v7("\23\242\149\122\205\240\0","\134\101\151\230\21\161")]=menu.find(v7("\168\131\55\86\44\38","\128\201\234\90\52\67\82"),v7("\163\72\48\113\216\165\65","\170\196\45\94\20"),v7("\127\77\8\54\206\52","\80\30\36\101\84\161\64"),v7("\180\84\10\77\212\45\163\17\24\76\204\50\167\88\20","\91\198\49\121\34\184")),[v7("\53\211\99\182\153\49\195\124","\233\84\166\23\217")]=menu.find(v7("\121\113\245\228\57\53","\65\24\24\152\134\86"),v7("\187\50\230\76\174\54\228","\41\220\87\136"),v7("\40\63\240\243","\203\69\86\131\144\174"),v7("\184\11\71\86\216\85\226\26","\113\217\126\51\57\168\48\135"))[2],[v7("\30\13","\174\127\117\86\40\40\31\22")]=menu.find(v7("\221\50\65\217\211\47","\187\188\91\44"),v7("\24\242\112\32\240\12\19","\109\127\151\30\69\130"),v7("\215\157\103\20\202\217\166\5","\118\178\229\23\120\165\176\210"),v7("\3\211\94\10\9\239\49\175\0\216\69\10\24\166\46\179","\221\101\188\44\105\108\207\65")),[v7("\68\63\27\174\192\83\35","\178\54\80\119\194")]=menu.find(v7("\53\6\76\192\224\237","\162\84\111\33\162\143\153\217"),v7("\32\222\19\143\53\218\17","\234\71\187\125"),v7("\16\53\92\89\241\5","\158\113\92\49\59"),v7("\238\127\69\105\190\10\223\6\226\48\83\117\237\9\214\17\233\98","\103\140\16\33\16\158\102\186"),v7("\194\131\188\119\15\57","\92\167\237\221\21\99"))[2 + 0 ],[v7("\236\44\34\49\242\47\57\47\240\46","\70\159\64\77")]=menu.find(v7("\218\70\65\252","\122\183\47\50\159"),v7("\207\48\174\65","\224\162\81\199\47"),v7("\229\74\37\56\142\237\75\39","\227\136\37\83\93"),v7("\74\161\7\99\25\186\9\120\82","\20\57\205\104"),v7("\45\165\25\187\22\95","\83\72\203\120\217\122\58"))[8 -6 ],[v7("\186\232\176\166\171\168\188\183","\223\220\137\219\195\207\221")]=menu.find(v7("\18\70\75\235\45\26\69","\76\115\40\63\130"),v7("\138\27\36\163","\177\231\122\77\205\214"),v7("\67\22\79\69\187\93\72","\60\36\115\33\32\201"),v7("\177\119\92\67\72\75\62\170","\193\215\22\55\38\44\62\93"))[3 -1 ],[v7("\46\28\26\198\197\233\42\22\7\204\193\242\32\28","\155\79\114\110\175\181")]=menu.find(v7("\89\93\212\230\190\152","\181\56\52\185\132\209\236"),v7("\53\73\220\173\87\168\246","\154\82\44\178\200\37\201"),v7("\112\243\18\1\177\65\97\102","\21\21\139\98\109\222\40"),v7("\0\227\185\142\54\1\248\173\156","\90\100\140\204\236"),v7("\141\26\42\197\250\40\190\17\58\197\180\12\165\27\48\140\152\22\236\4\59\201\188","\120\204\116\94\172\215")),[v7("\19\180\172\11\227","\31\99\221\216\104\139\194\16")]=menu.find(v7("\52\174\254\5\8\234\56","\131\85\192\138\108\105"),v7("\59\165\118\13","\99\86\196\31"),v7("\81\58\72\241\90\180","\111\48\84\47\157\63\199"),v7("\10\15\148\164\38","\78\122\102\224\199")),[v7("\229\25\99\1\53\22\171","\159\156\120\20\99\84\101\206")]=menu.find(v7("\125\31\152\118\201\72\122","\71\28\113\236\31\168\33\23"),v7("\64\255\42\246","\199\45\158\67\152\185\185\91"),v7("\91\119\186\162\213\5","\176\58\25\221\206\176\118\183"),v7("\43\16\206\70\236\185\33\20","\216\82\113\185\102\142")),[v7("\91\90\55\217\121\70","\29\34\59\64\184")]=menu.find(v7("\19\16\92\195\52\84\31","\61\114\126\40\170\85"),v7("\193\41\126\55","\19\172\72\23\89\163"),v7("\54\82\200\233\48\65","\197\87\60\175\133\85\50"),v7("\13\127\195\147\21\122\208","\179\116\30\180")),[v7("\249\201\249\128\255\195","\225\139\166\141")]=menu.find(v7("\76\133\224\41\76\130\249","\64\45\235\148"),v7("\123\80\51\236","\181\22\49\90\130\60"),v7("\14\223\191\5\10\194","\105\111\177\216"),v7("\166\21\220\19\4\214","\179\212\122\168\114\112")),[v7("\107\117\144\204\109\127\150\204\119\125\129","\173\25\26\228")]=menu.find(v7("\23\120\221\179\25\31\123","\120\118\22\169\218"),v7("\202\33\191\232","\134\167\64\214"),v7("\5\135\249\132\204\219","\168\100\233\158\232\169"),v7("\96\91\13\253\102\81\89\238\115\90\30\249","\156\18\52\121")),[v7("\81\31\207\203\144\176\22\207\70\21\223","\191\35\112\187\170\228\213\101")]=menu.find(v7("\185\161\104\92\63\21\114","\31\216\207\28\53\94\124"),v7("\44\38\162\1","\59\65\71\203\111"),v7("\22\174\123\120\142\31","\84\119\192\28\20\235\108"),v7("\158\241\48\247\14\57\233\82\156\251\33\242","\33\236\158\68\150\122\92\201")),[v7("\234\209\237\13\76\227\52\239\220\252","\89\128\184\153\121\41\145")]=menu.find(v7("\237\59\176\136\35\142\13","\91\140\85\196\225\66\231\96"),v7("\62\185\190\191","\43\83\216\215\209"),v7("\74\169\183\7\43\88","\78\43\199\208\107"),v7("\120\129\20\10\190\40\133\219\125\140\5","\182\18\232\96\126\219\90\165")),[v7("\55\87\51\188\56\76\51\177\45\91","\200\93\62\71")]=menu.find(v7("\71\67\90\211\197\187\3","\110\38\45\46\186\164\210"),v7("\117\191\161\24","\94\24\222\200\118"),v7("\28\206\33\21\24\211","\121\125\160\70"),v7("\249\227\47\166\246\248\123\166\234\250\62","\210\147\138\91")),[v7("\63\244\220\95\53\1\39\252\198\76\53","\115\85\157\168\43\80")]=menu.find(v7("\254\84\147\94\141\192\75","\169\159\58\231\55\236\169\38"),v7("\28\192\182\30","\28\113\161\223\112\164\116"),v7("\199\86\64\117\94\213","\59\166\56\39\25"),v7("\184\209\210\220\70\160\152\199\204\71","\35\210\184\166\168")),[v7("\85\88\121\70\33\101\88\88","\23\57\57\29\34\68")]=menu.find(v7("\81\63\11\37\81\56\18","\76\48\81\127"),v7("\3\164\88\185","\48\110\197\49\215\106\20\189"),v7("\26\23\70\169\210\42\74","\108\125\114\40\204\160\75\38"),v7("\57\113\251\9\48\98\191\12\59\100\246\12\60\125","\109\85\16\159")),[v7("\33\242\190\79\23\89\180\35\246\191","\208\71\147\205\59\123\56")]=menu.find(v7("\86\46\144\177\86\41\137","\216\55\64\228"),v7("\178\137\55\204","\139\223\232\94\162\217\149"),v7("\210\134\45\244\169\84\198","\170\181\227\67\145\219\53"),v7("\95\132\13\166\25\137\31\182\93\128\12\242\84\138\8\183","\210\57\229\126")),[v7("\185\61\254\175\48\196\128\179\32\254\167\48","\227\216\83\138\198\82\165")]=menu.find(v7("\42\187\162\113\243\34\184","\146\75\213\214\24"),v7("\71\127\200\74","\53\42\30\161\36\26\37"),v7("\250\252\249\229\239\248\251","\128\157\153\151"),v7("\119\123\152\32\85\120\120\124\138\44","\19\22\21\236\73\117")),[v7("\123\192\165\186\251\180\41\243","\150\23\165\194\201\151\221\77")]=menu.find(v7("\127\53\252\19\127\50\229","\122\30\91\136"),v7("\178\165\236\190","\237\223\196\133\208"),v7("\219\13\205\187\76\251\208","\154\188\104\163\222\62"),v7("\57\232\42\187\3\67\203\49\232","\162\85\141\77\155\112\47")),[v7("\29\63\163\92\0\32\162\75\31\38\176\75","\46\114\73\198")]=menu.find(v7("\164\112\98\230\47\67\168","\42\197\30\22\143\78"),v7("\126\68\86\49","\95\19\37\63"),v7("\117\41\180\229\127\4","\103\17\76\199\156\17"),v7("\188\60\128\250\78\25\189\255\243\57\145\233\82\20\250\247\188\60\128","\154\211\74\229\136\60\112\217")),[v7("\160\10\239\223\23\78\171\25\231\194\19\66\188\11","\39\207\124\138\173\101")]=menu.find(v7("\207\15\87\201\163\199\12","\194\174\97\35\160"),v7("\242\33\52\12","\98\159\64\93"),v7("\10\180\62\6\31\5","\68\110\209\77\127\113\102\59"),v7("\161\242\162\93\17\202\170\171\164\180\91\2\205\170\237\247\171\64\20\131\185\175\232\172","\206\206\132\199\47\99\163")),[v7("\242\199\196\107\95\245\209\222\118\84","\49\150\162\183\18")]=menu.find(v7("\72\36\175\40\27\233\21","\120\41\74\219\65\122\128"),v7("\87\7\85\20","\181\58\102\60\122\133\199"),v7("\87\231\207\0\116\80","\26\51\130\188\121"),v7("\251\150\45\23\77","\57\136\226\76\121\41\126\151"),v7("\49\222\13\86","\29\66\183\105\51\68\131")),[v7("\65\32\90\215\75\38\77\203\67\54\64\202\64","\174\37\69\41")]=menu.find(v7("\128\184\90\7\17\136\187","\112\225\214\46\110"),v7("\19\37\42\85","\140\126\68\67\59\132\221"),v7("\134\116\20\82\67\28","\230\226\17\103\43\45\127"),v7("\195\88\197\69\131","\231\176\44\164\43"),v7("\165\195\34\168\187\128\181\134\55\160\170\137","\236\193\166\68\201\206")),[v7("\8\62\206\101\5\54\199\100\10\47","\17\100\91\168")]=menu.find(v7("\91\168\152\229\178\42\118","\27\58\198\236\140\211\67"),v7("\44\204\197\68","\139\65\173\172\42\233"),v7("\131\83\98\193\202\116","\40\231\54\17\184\164\23\128"),v7("\136\204\121\236\197\235\137\198\106\246\145","\138\228\169\31\152\229")),[v7("\222\5\69\61\244\194\193\3\87\59\244","\163\172\108\34\85\128")]=menu.find(v7("\38\31\227\142\218\77\133","\52\71\113\151\231\187\36\232"),v7("\123\140\113\163","\205\22\237\24"),v7("\186\125\96\209\55\189","\89\222\24\19\168"),v7("\231\80\84\191\5\181\88\94\184\4\251\77","\113\149\57\51\215")),[v7("\120\126\223\191\224\210\108\100\206\176\237\210\122\117","\160\25\16\171\214\130")]=menu.find(v7("\112\214\35\116\124\219\134","\235\17\184\87\29\29\178"),v7("\167\168\112\246","\144\202\201\25\152"),v7("\61\222\23\103\245\73","\96\89\187\100\30\155\42\135"),v7("\44\195\23\67\58\127\63\216\23\79\124\114\63\206\6","\29\77\173\99\42\26")),[v7("\128\231\20\99\85\236\248\3\151\234\8\110","\109\228\130\103\26\59\143\151")]=menu.find(v7("\130\118\186\208\63\67\34","\228\227\24\206\185\94\42\79"),v7("\195\35\62\166","\80\174\66\87\200\212\123"),v7("\207\124\45\209\249\16","\115\171\25\94\168\151"),v7("\3\188\164\50\255\3\166","\151\108\210\132\65")),[v7("\222\85\2\77\249\77\198\83\231\66\8\68\211\68","\52\184\52\105\40\166\33\167")]=menu.find(v7("\83\0\217\161\59\221\193","\172\50\110\173\200\90\180"),v7("\246\187\253\66","\44\155\218\148"),v7("\235\250\39\62\216\38\182","\209\141\155\76\91\180\71"),v7("\242\112\208\94\20\231","\122\147\29\191\43")),[v7("\190\223\90\16\214\250\141\112","\30\220\176\62\105\186\159\236")]=menu.find(v7("\137\211\145\185\55\220\186","\221\232\189\229\208\86\181\215"),v7("\1\181\253\210","\78\108\212\148\188"),v7("\58\30\19\46\233\19","\90\91\112\116\66\140\96\219"),v7("\199\88\14\21\160\164\1\196\89","\100\165\55\106\108\128\200")),[v7("\199\196\53\170\201\206\48\189\211\202\61","\211\165\171\81")]=menu.find(v7("\5\123\198\195\214\213\9","\188\100\21\178\170\183"),v7("\115\22\89\189","\173\30\119\48\211\210"),v7("\90\215\62\54\94\202","\90\59\185\89"),v7("\66\255\94\86\123\113\69\241\84\15\45\124\76\229\95","\29\32\144\58\47\91")),[v7("\30\58\103\184\67\174\23\44\125\184\64\175","\193\115\85\17\221\33")]=menu.find(v7("\236\117\26\23\174\213\224","\188\141\27\110\126\207"),v7("\128\55\87\121","\105\237\86\62\23\132\136"),v7("\184\71\59\65\38\14","\125\217\41\92\45\67"),v7("\84\187\16\86\141\92\25\182\9\91\154\27\85\177\7\81","\59\57\212\102\63\227")),[v7("\120\230\126\5\113\237\109\8\113\228","\103\29\136\31")]=menu.find(v7("\31\32\206\35\71\23\35","\38\126\78\186\74"),v7("\204\65\35\132","\228\161\32\74\234\39"),v7("\59\156\30\176\254\133\49\132\126\133\4\178\252\132\39","\224\94\228\106\213\144\225\84"),v7("\181\230\70\194\13\181","\97\208\136\39\160"))[2 + 0 ],[v7("\251\38\213\131\75\29\55\250","\91\150\73\163\230\57\114")]=menu.find(v7("\79\163\166\95\241\2\179","\63\46\205\210\54\144\107\222"),v7("\253\45\253\73","\188\144\76\148\39"),v7("\128\83\97\161\66\8\39\81\197\74\123\163\64\9\49","\53\229\43\21\196\44\108\66"),v7("\54\59\22\167\63\48\87\178\59\60\27\160\115\56\24\179\58\59\16","\197\83\85\119")),[v7("\93\245\18\59\95\243\10\52\71","\87\47\154\126")]=menu.find(v7("\42\118\216\210\211\221\38","\180\75\24\172\187\178"),v7("\206\216\236\13","\112\163\185\133\99\28\68\153"),v7("\174\76\232\206\165\80\249\207\235\85\242\204\167\81\239","\171\203\52\156"),v7("\170\195\105\178\34","\192\218\170\29\209\74\225\221")),[v7("\145\211\87\12\219\84\57\248","\157\227\188\59\96\175\45\73")]=menu.find(v7("\190\196\195\31\48\182\199","\81\223\170\183\118"),v7("\43\64\165\181","\113\70\33\204\219\153\82"),v7("\244\154\43\57\240\180\244\134\127\61\240\183\253\135\44","\208\145\226\95\92\158"),v7("\170\248\205\73","\120\222\129\189\44\143\149\207")),[v7("\150\30\17\189\197\77\127\171\129\5","\216\228\113\125\209\170\43\25")]=menu.find(v7("\248\244\76\76\115\119\244","\30\153\154\56\37\18"),v7("\16\184\254\2","\91\125\217\151\108"),v7("\252\11\178\117\208\253\22\162\48\223\247\20\170\117\205","\190\153\115\198\16"),v7("\53\125\172\148\63\111","\231\90\27\202")),[v7("\136\138\78\167\76\149","\62\225\228\56\194")]=menu.find(v7("\23\183\173\36\117\92\27","\53\118\217\217\77\20"),v7("\164\30\237\208","\79\201\127\132\190"),v7("\37\21\231\220\41\24","\169\72\116\137"),v7("\112\116\223\163\107\110\137\162\124\105\208\168\122","\198\25\26\169"))[2 + 0 ],[v7("\69\118\219\50","\31\41\19\189\70\231\49\27")]=menu.find(v7("\182\221\69\239\182\218\92","\134\215\179\49"),v7("\236\245\95\232","\115\129\148\54\134\53"),v7("\228\134\94\94\217\4","\115\137\231\48\43\184\104"),v7("\213\236\28\247","\95\185\137\122\131\201\192"))[2 + 0 ],[v7("\100\63\192\27\49","\69\22\86\167\115")]=menu.find(v7("\89\138\83\136\68\46\85","\71\56\228\39\225\37"),v7("\189\224\237\39","\66\208\129\132\73\154\141"),v7("\71\94\216\232\75\83","\157\42\63\182"),v7("\201\55\46\244\219","\175\187\94\73\156"))[460 -(388 + 70) ],[v7("\36\62\76\43","\160\70\95\47\64\123\67")]=menu.find(v7("\223\84\96\56\223\83\121","\81\190\58\20"),v7("\65\76\191\121","\83\44\45\214\23\227\73\63"),v7("\248\187\72\171\33\249","\64\149\218\38\222"),v7("\24\166\201\219","\176\122\199\170"))[2 + 0 ],[v7("\20\25\181\213\34\63\19\5\180","\75\114\107\208\176\81")]=menu.find(v7("\248\37\61\124\248\34\36","\21\153\75\73"),v7("\4\18\68\252","\38\105\115\45\146\210"),v7("\3\3\24\121\115\6\31\30\115\48\22\31\3\120","\83\98\118\108\22"),v7("\76\229\120\47\169\129","\67\41\139\25\77\197\228"))[2 + 0 ],[v7("\238\189\221\62\87\252\237","\136\136\206\174\74\54")]=menu.find(v7("\37\253\146\140\82\173\182","\219\68\147\230\229\51\196"),v7("\113\79\255\238","\123\28\46\150\128\102\39"),v7("\4\92\9\88\91\141\50\103\0\74\9\94\20\135","\21\101\41\125\55\123\233\91"),v7("\145\255\175\231\9\33","\82\226\139\206\147\108")),[v7("\255\7\73\180\196\244\10\93\180\222","\172\145\102\45\209")]=menu.find(v7("\249\4\31\67","\30\148\109\108\32\235"),v7("\26\70\21\90\84\79\20\83\4\66\3","\63\116\39\113"),v7("\63\85\201\233\2\41\164","\200\88\48\167\140\112\72"),v7("\195\75\60\164\246\202\76\39\188","\130\162\62\72\203"))[2 + 0 ],[v7("\183\165\188\126\148\144\238\239\166\185\190\105","\157\195\215\221\16\231\224\143")]=menu.find(v7("\105\208\24\153\226\115\202","\131\31\185\107\236"),v7("\189\162\79\51","\68\203\203\42"),v7("\87\95\124\203\71\71\112\203\80\88\123","\185\35\55\21"),v7("\167\235\190\138\160\233\190\150\182\247\188\157\243\238\183\129\189\185\172\135\188\233\186\128","\228\211\153\223")),[v7("\92\234\89\49\46\14","\102\52\143\56\93\90")]=menu.find(v7("\80\30\179\61\228\74\4","\133\38\119\192\72"),v7("\242\178\100","\155\151\193\20"),v7("\62\168\1\87\126\60\183","\27\78\196\96\46"),v7("\226\254\179\180\110\76\15\239\245\183\181\99","\44\138\155\210\216\26\36"))[2 -1 ],[v7("\183\66\186\91\241\184\69\184\87\238","\157\219\45\217\58")]=menu.find(v7("\166\180\37\192\255\188\174","\158\208\221\86\181"),v7("\229\82\250","\88\128\33\138\107\64\223"),v7("\204\253\113\112\161\104","\142\161\146\21\21\205\27"),v7("\21\244\125\1\22\252\143\28\245\127\2\22","\172\112\154\28\99\122\153")),[v7("\199\248\163\31\199\228\180\7\199\242","\126\171\151\192")]=menu.find(v7("\40\23\234\9\6\246\74","\57\94\126\153\124\103\154"),v7("\18\212\89","\33\119\167\41\121\182"),v7("\74\187\63\83\167\64","\88\39\212\91\54\203\51\124"),v7("\63\184\173\134\126\141\196\35\175\181\134","\168\76\204\212\234\27\174")),[v7("\128\11\48\69\5\229\65\128\11\33","\46\236\100\83\36\105\134")]=menu.find(v7("\47\243\148\149\128\3\42","\111\89\154\231\224\225"),v7("\248\201\22","\177\157\186\102\197\76\153\188"),v7("\175\177\36\170\174\173","\207\194\222\64"),v7("\24\122\219\79\154\144\23\122\212\65\132","\179\123\21\183\32\232"))[1 + 1 ],[v7("\199\32\207\56\189\22\197\44\192","\98\166\67\172\93\211")]=menu.find(v7("\234\234\196\214","\130\135\131\183\181\98\42"),v7("\206\183\50\237","\64\163\214\91\131"),v7("\1\42\10\37\48\31\46\20\63\37\16\59\17\57\49","\95\113\79\120\86"),v7("\170\247\35\181\136\25\127\202\164\248\47\162","\169\203\148\64\208\230\109\95"))[584 -(319 + 263) ],[v7("\195\18\31\176\35\21\56\245","\134\168\119\102\210\74\123\92")]=menu.find(v7("\166\7\15\90","\57\203\110\124"),v7("\163\210\28\39","\96\206\179\117\73"),v7("\136\45\115\44\130\34\99\42\147\48","\69\225\67\23"),v7("\207\132\42\183\213\141\221\104\135\138\54\172\222\138\215\127\215","\27\164\225\83\213\188\227\185")),[v7("\137\3\149\255\222\155","\167\232\111\226\158")]=menu.find(v7("\73\45\60\27","\209\36\68\79\120\123\61\144"),v7("\65\224\90\53","\96\44\129\51\91"),v7("\28\1\8\175\240\233\231\26\29\31","\147\117\111\108\198\147\136"),v7("\25\190\205\67\74\183\206\67\11\175\209\25\5\184\130\95\15\175\192\93\4\178\209\23\1\179\219\86\3\184\198\71","\52\106\214\162"))};local v18={[v7("\44\1\200\173\226\12\13\210\161","\145\101\111\190\196")]=eui.create(v7("\121\195\151\229\92\89\207\141\233","\47\48\173\225\140"),1),[v7("\116\196\143\220\36\187","\204\35\173\225\184\75")]=eui.create(v7("\217\77\237\137\233\177","\110\142\36\131\237\134\198"),2),[v7("\76\79\161\252\60","\88\27\32\211\144")]=eui.create(v7("\186\164\172\48\207","\16\237\203\222\92\171\205\59"),3 -2 ),[v7("\213\185\180\154\27\163\228\163\174\135\17","\211\129\209\221\232\127")]=eui.create(v7("\61\71\79\54\236\24\162\85\6\65","\38\105\47\38\68\156\125\208"),1 -0 ),[v7("\165\142\161\77\255\41\152\143\183\87","\72\236\224\197\36\156")]=eui.create(v7("\237\165\64\131\199\170\80\133\214\184","\234\164\203\36"),2),[v7("\38\228\147\33","\18\107\141\224\66\236\62\17")]=eui.create(v7("\134\166\15\244\174\163\16\246\165\170\19\226\184","\151\203\207\124"),1),[v7("\231\31\229\22\233\135\25\215","\164\180\122\145\98\128\233\126")]=eui.create(v7("\136\1\15\217\178\10\28\222","\173\219\100\123"),2 + 0 ),[v7("\135\32\77\25\26\186\47","\115\212\72\44\107")]=eui.create(v7("\191\231\85\96\244\32\169","\36\236\143\52\18\157\78\206"),1 + 1 ),[v7("\121\76\40\93\240\70\68\53\74\241\68\82","\159\48\33\88\47")]=eui.create(v7("\58\76\17\243\189\226\50\58\26\76\13\225","\87\127\34\121\146\211\129\87"),1 + 0 ),[v7("\153\228\150\227\41\40\202\102","\20\203\129\229\140\69\94\175")]=eui.create(v7("\157\195\71\57\227\244\170\212\20\37\246\241\187\195\89","\130\207\166\52\86\143"),816 -(94 + 720) ),[v7("\105\85\29\233\163\111\40\69\84\18\225","\65\42\58\115\141\202\27")]=eui.create(v7("\104\11\91\197\38\95\13\90\207\46\71\68\69\211\42\88\1\65","\79\43\100\53\161"),1),[v7("\209\202\198\66\71","\36\144\164\175\47\52\44\86")]=eui.create(v7("\17\1\242\169\63\50\29\254\165\116\53\29\232","\31\80\111\155\196"),379 -(78 + 300) )};local v19={[v7("\116\92\239\209\61\82\85","\79\51\57\129\180")]={},[v7("\19\183\54\93\215\36\187\38\93","\185\87\210\80\56")]={},[v7("\227\30\175\90\113\252","\53\166\112\206\56\29\153")]=v18[v7("\81\28\88\14\252\59\123\28\88\11\249","\79\18\115\54\106\149")]:checkbox(v7("\107\92\90\87\36\116\128\230\89\75\93\74\32\112","\198\42\50\46\62\69\29\237")),[v7("\241\191\26\60\43\180\15\89\206\191","\59\162\218\118\89\72\192\110")]=v18[v7("\166\241\190\91\65\21\123\14\139\255\188","\97\229\158\208\63\40\97\18")]:list(v7("\14\193\124\66\133\57\199\125\72","\236\77\174\18\38"),{v7("\179\85\206\7\133","\117\224\61\175"),v7("\216\83\199\134\239","\232\139\39\166"),v7("\212\80\95\78","\162\131\49\51\37\23"),v7("\108\117\241\61","\20\63\25\158\74"),v7("\94\207\95\166","\217\26\186\60\205\31\176\72"),v7("\250\120\20","\140\187\17\102"),v7("\13\130\182\10","\33\76\235\196"),v7("\42\248\247\94\167","\229\104\138\146\63\204\80\229")},19 -15 ),[v7("\163\114\16\205\169\105\23\198\174\110","\169\192\29\126")]={v7("\2\205\4\153\52","\235\81\165\101"),v7("\75\144\94\23\129","\172\24\228\63\121\229\100"),v7("\189\79\217\198","\173\234\46\181"),v7("\236\62\228\40","\67\191\82\139\95"),v7("\25\248\68\201","\139\93\141\39\162\140"),v7("\13\170\27","\126\76\195\105\183"),v7("\126\65\182\58","\212\63\40\196\17\57"),v7("\139\217\245\251\162","\154\201\171\144")},[v7("\134\235\164\204\175","\221\226\142\200\173\214\111\223")]=0,[v7("\10\75\179\48\177\7\64\169\52\186\26","\200\110\46\223\81")]=false,[v7("\18\66\47\45\44\209\70\19\75\61\45","\34\118\39\92\84\66\178")]=0,[v7("\79\141\34\27\32\170\203\118\71\137\40\11\32\191\202\97\95","\19\43\232\81\98\78\201\175")]=false,[v7("\72\219\247\165\207\232\142","\234\43\179\152\198\164\141")]=0 -0 ,[v7("\166\82\115\221\140\182\201\142\171\76\121\204\147","\231\197\58\28\190\231\211\173")]=false,[v7("\86\202\46\32\216\133\71","\236\51\178\94\76\183")]=0 + 0 ,[v7("\238\200\212\70\228\222\219\85\239","\35\138\173\178")]=1470 -(1242 + 228) ,[v7("\197\6\78\217\92\110\200\21\77\221\81\105\200\21\77","\29\161\99\40\188\50")]=false,[v7("\106\61\169\243\13\50","\140\25\74\192\135\110\90\106")]=0 -0 ,[v7("\49\70\77\230\169\170\35\82\80\251\188\167","\194\66\49\36\146\202")]=false,[v7("\152\33\200\7\203","\165\235\81\173\98")]=844 -(320 + 524) };local v20={[v7("\47\135","\132\75\229\201\86\217")]={},[v7("\131\113\177\172\148\119","\197\226\18\197")]=function(v333) local v334=0 -0 ;local v335;local v336;local v337;local v338;local v339;while true do if (v334==1) then v337=globals.tick_count();v338=client.time_to_ticks(v335:get_prop(v7("\17\238\7\93\47\216\12\68\16\208\21\88\19\223\53\88\17\212","\49\124\177\97")));v334=4 -2 ;end if (v334==(9 -7)) then v333.db[v336]=(v333.db[v336] and v333.db[v336]) or {[v7("\140\60\211\170\191\46\201\179\191\41\201\179\133","\222\224\93\160")]=0 + 0 ,[v7("\239\248\116\36\54\248\244\100\36\7\254\243\102\40\52","\88\139\157\18\65")]=0} ;if (v333.db[v336].last_sim_time==(0 -0)) then v333.db[v336].last_sim_time=v338;return false;end v334=478 -(63 + 412) ;end if (v334==3) then v339=v338-v333.db[v336].last_sim_time ;if (v339<(1864 -(1299 + 565))) then local v1674=0 -0 ;while true do if (v1674==0) then v333.db[v336].defensive_until=v337 + math.abs(v339) ;if (engine.get_choked_commands()==(1 + 0)) then v333.db[v336].defensive_until=v333.db[v336].defensive_until-client.time_to_ticks(engine.get_latency()) ;end break;end end end v334=16 -12 ;end if (v334==(2 + 2)) then local v1380=0 + 0 ;while true do if ((0 + 0)==v1380) then v333.db[v336].last_sim_time=v338;return v333.db[v336].defensive_until>v337 ;end end end if (v334==0) then local v1381=0 -0 ;while true do if (v1381==(328 -(79 + 249))) then v335=entity_list.get_local_player();v336=v335:get_index();v1381=2 -1 ;end if (v1381==(1631 -(305 + 1325))) then v334=1729 -(1585 + 143) ;break;end end end end end,[v7("\94\8\27\22\204\79\8","\171\42\122\114\113")]=function() if ((v17.hideshots:get() or v17.doubletap:get()) and (exploits.get_charge()==exploits.get_max_charge())) then exploits.force_anti_exploit_shift();end end};for v340=3 -2 , #v19.conditions do v18[v7("\170\173\194\231\159\169\192\221\140\166\203\238\136\187","\130\237\200\172")   .. v340 ]=eui.create("["   .. v19.conditions[v340]   .. v7("\27\144\143\0\33\220\171\29","\110\70\176\206") ,1831 -(1727 + 103) );v18[v7("\82\21\51\238\40\116\28\2\230\53\113\25\59\226\63\103","\90\21\112\93\139")   .. v340 ]=eui.create("["   .. v19.conditions[v340]   .. v7("\60\155\89\185\164\8\221\125\179\178","\192\97\187\20\214") ,6 -4 );v18[v7("\45\94\61\205\146\11\87\12\204\133\12\94\61\219\137\28\94","\224\106\59\83\168")   .. v340 ]=eui.create("["   .. v19.conditions[v340]   .. v7("\154\165\38\254\72\141\71\180\236\20\254","\41\199\133\98\155\46\232") ,3);v19[v7("\59\163\239\67\175\14\234","\134\124\198\129\38\221\111")][v340]={[v7("\221\225\176\34\244\234","\64\152\143\209")]=v18[v7("\16\76\203\9\88\44\112\56\54\71\194\0\79\62","\103\87\41\165\108\42\77\28")   .. v340 ]:checkbox(v7("\135\221\21\245\122\229\226\208\27\249\114\233\182\218\27\249","\128\194\179\116\151\22")),[v7("\55\59\23\164\212","\230\103\82\99\199\188\84")]=v18[v7("\155\131\173\173\75\43\176\185\162\166\94\38\185\149","\74\220\230\195\200\57")   .. v340 ]:selection(v7("\149\131\196\28\3","\177\197\234\176\127\107"),{v7("\93\197\200\77","\63\19\170\166\40\234\20"),v7("\18\7\26\38","\160\86\104\109\72\64\77"),v7("\204\99","\234\153\19\142\106\126"),v7("\27\33\175\23","\120\65\68\221"),v7("\50\188\241\168\29\167","\220\120\213\133"),v7("\106\47\201\84\37\85","\74\56\78\167\48")}),[v7("\221\29\60","\88\132\124\75\160\106\106")]=v18[v7("\51\51\131\66\9\171\60\63\21\56\138\75\30\185","\96\116\86\237\39\123\202\80")   .. v340 ]:selection(v7("\24\21\166\61\128\173\188\36","\207\65\116\209\29\226\204"),{v7("\158\95\133\11","\110\208\48\235"),v7("\147\160\134\154\164\167\132\129\160","\237\197\201\227"),v7("\152\49\16\109\182\59\123\178\49","\26\219\67\127\30\197\83"),v7("\209\17\205\110\17\247\246\29","\153\149\120\190\26\112"),v7("\58\16\198\175\41\249\234\14","\119\108\117\170\192\74\144\158")}),[v7("\222\40\150\30\234\38\133\36","\65\135\73\225")]=v18[v7("\56\86\95\165\6\30\95\110\173\27\27\90\87\169\17\13","\116\127\51\49\192")   .. v340 ]:selection(v7("\34\1\68\189\227\17\6\30","\98\123\96\51\157\142\126"),{v7("\233\247\181\207\36\193\251\162","\70\173\158\198\174"),v7("\220\58\73\250\176\116\15\220\249\56\71\250","\142\144\95\47"),v7("\35\36\83\5\21\44\67\11\19","\110\119\77\48"),v7("\216\50\37\71\240\171\61\37\70\225\239","\132\139\95\68\53")}),[v7("\197\41\234\10\240\45\251\33","\85\156\72\157")]=v18[v7("\92\55\115\36\200\41\134\68\63\114\37\211\46\131\126\32","\234\27\82\29\65\186\72")   .. v340 ]:slider(v7("\201\206\254\254\15\245\201\253","\99\144\175\137\222"), -(557 -377),1884 -(1084 + 620) ,1054 -(404 + 649) ,0),[v7("\105\117\155\62\43\76\182\88\96","\209\48\20\236\97\89\37")]=v18[v7("\219\68\80\44\80\253\77\97\36\77\248\72\88\32\71\238","\34\156\33\62\73")   .. v340 ]:slider(v7("\49\115\249\17\26\123\233\89\28","\49\104\18\142"), -(994 -(318 + 496)),180,1883 -(1730 + 152) ,0),[v7("\197\236\127\0","\107\145\133\28")]=v18[v7("\229\91\189\187\208\95\191\129\207\81\183\183\196\87\182\172","\222\162\62\211")   .. v340 ]:slider(v7("\151\120\13\16","\170\195\17\110\123\81\227"),5 -3 ,16,3 -2 ,1861 -(527 + 1334) ),[v7("\146\56\245\195\233\161\53\244\197","\157\212\84\128\160")]=v18[v7("\174\118\238\64\52\137\226\252\132\124\228\76\32\129\235\209","\163\233\19\128\37\70\232\142")   .. v340 ]:slider(v7("\197\89\41\26\247\64\61\13\230","\121\131\53\92"),0 + 0 ,6,1,1946 -(464 + 1482) ),[v7("\83\195\79\137\120\197\78\146","\224\30\172\43")]=v18[v7("\34\162\113\219\255\4\171\64\211\226\1\174\121\215\232\23","\141\101\199\31\190")   .. v340 ]:selection(v7("\98\70\20\135\215\182\171\82\65\10\194\200","\207\59\39\99\167\186\217"),{v7("\35\79\168\83\74\241\165\239","\139\103\38\219\50\40\157\192"),v7("\201\190\48\209\227\172","\162\134\216\86"),v7("\29\234\89\77\53\80","\207\94\143\55\57\80\34\145"),v7("\113\156\20\123\169","\217\66\177\67\26\208\59\119"),v7("\118\147\253\171\73","\152\67\190\170\202\48\138"),v7("\254\49\69\252\212\32\65","\144\187\73\53")}),[v7("\59\180\62\222\164\186\19\169\5\193\163\191\3\190","\211\118\219\90\183\194")]=v18[v7("\223\168\134\238\72\240\244\146\133\228\94\248\254\164\141\249","\145\152\205\232\139\58")   .. v340 ]:slider(v7("\158\253\186\182\93\161\11\161\178\168\190\87\189\11","\110\211\146\222\223\59\200"), -180,76 + 104 ,1 + 0 ,0 + 0 ),[v7("\119\81\241\22\76\80","\34\51\52\130\111")]=v18[v7("\233\48\54\198\16\61\91\241\56\55\199\11\58\94\203\39","\55\174\85\88\163\98\92")   .. v340 ]:selection(v7("\233\77\21\156\56\206","\86\173\40\102\229"),{v7("\42\171\65\136","\237\100\196\47"),v7("\120\69\136\161","\116\44\44\235\202\87\232"),v7("\41\222\66\49\7\160","\146\99\183\54\69\98\210"),v7("\197\237\176\164\55\178\245","\215\135\159\213\197\92")}),[v7("\151\160\251\245\189\166\215\248\182\189\252","\140\211\197\136")]=v18[v7("\23\201\50\113\222\49\192\3\121\195\52\197\58\125\201\34","\172\80\172\92\20")   .. v340 ]:text(v7("\86\58\144\88\57\137\131\172\23\105\208\26\124\204\131\129\16\108\212\10\100\137\199\141\13\99\223\27\48\194\198\145\28\115\223\28","\232\126\26\177\120\16\169\163")),[v7("\200\227\162\106\76\204\137\224\227\183\103","\214\140\134\209\19\34\175")]=v18[v7("\115\34\166\175\70\38\164\149\89\40\172\163\82\46\173\184","\202\52\71\200")   .. v340 ]:slider(v7("\202\77\102\158\224\75\53\139\235\78\97","\231\142\40\21"),0,246 -146 ,1 + 0 ,0 -0 ,"%"),[v7("\84\55\214\19\92\0\235\98\59\194\2\70","\180\16\82\165\106\50\99")]=v18[v7("\24\80\113\251\17\62\89\64\243\12\59\92\121\247\6\45","\99\95\53\31\158")   .. v340 ]:slider(v7("\214\47\99\72\252\41\48\67\251\45\120\69","\49\146\74\16"),0,1101 -(359 + 642) ,1 + 0 ,0 + 0 ,"%"),[v7("\192\84\153\67\140\231\110\158\83\129\239","\226\132\49\234\58")]=v18[v7("\253\125\190\225\8\248\30\103\215\119\180\237\28\240\23\74","\56\186\24\208\132\122\153\114")   .. v340 ]:slider(v7("\247\31\35\90\194\199\19\44\80\155","\226\163\118\64\49"),2,16,1,1344 -(564 + 780) ),[v7("\221\201\44\167\19\250\243\57\178\8\250\216\42\191\9\252","\125\153\172\95\222")]=v18[v7("\92\195\237\200\255\219\239\68\203\236\201\228\220\234\126\212","\131\27\166\131\173\141\186")   .. v340 ]:slider(v7("\213\127\82\36\231\102\70\51\246\51\67\34\255\114\94","\71\147\19\39"),0 -0 ,1 + 5 ,1 + 0 ,0 -0 )};v19[v7("\33\63\224\168\189\249\243\52\0","\66\101\90\134\205\211\138\154")][v340]={[v7("\56\73\127\169\139\52\21\90\124","\71\124\44\25\204\229")]=v18[v7("\53\255\39\65\208\184\30\197\40\74\197\181\23\233","\217\114\154\73\36\162")   .. v340 ]:selection(v7("\24\160\188\168\15\155\9\42\160\250\160\14\140\5","\96\92\197\218\205\97\232"),{v7("\26\3\175\140\253\50\15\184","\159\94\106\220\237"),v7("\137\31\2\66\184\22\16","\35\205\122\100"),v7("\146\80\9\64","\39\194\57\103"),v7("\144\250\50\85\9\161","\174\194\155\92\49\102\204")}),[v7("\244\129\77\116\143","\142\164\232\57\23\231\170")]=v18[v7("\144\175\210\248\0\182\166\227\249\23\177\175\210\238\27\161\175","\114\215\202\188\157")   .. v340 ]:selection(v7("\1\172\230\83\186","\229\81\197\146\48\210\227\139"),{v7("\166\91\72\123\209\247\88\82","\54\226\50\59\26\179\155\61"),v7("\238\49\47\86","\127\170\94\88\56"),v7("\213\215","\198\128\167\212\162\216\93\153"),v7("\144\63\246\209","\190\202\90\132"),v7("\173\208\103\195\167\52","\70\231\185\19\183\194"),v7("\233\193\234\160\188\214","\211\187\160\132\196"),v7("\31\151\230\233\75\180","\146\76\224\143\157\40\220")}),[v7("\107\118\162\113\174\6\232\90\115\163\119\153\53","\158\59\31\214\18\198\89")]=v18[v7("\122\12\73\15\79\8\75\53\89\12\65\15\83\26\78\28\88","\106\61\105\39")   .. v340 ]:slider(v7("\213\183\47\236\11\130\100\228\178\46\234\67\147","\18\133\222\91\143\99\162"), -(1825 -(69 + 1667)),41 + 48 ,123 -(16 + 106) ,0 + 0 ),[v7("\71\54\184\93\209\3\85\211\123\42\169\97\203","\178\23\95\204\62\185\92\35")]=v18[v7("\6\243\209\243\79\32\250\224\242\88\39\243\209\229\84\55\243","\61\65\150\191\150")   .. v340 ]:slider(v7("\122\220\157\186\223\65\220\75\217\156\188\151\83","\170\42\181\233\217\183\97"), -89,1341 -(1178 + 74) ,1 + 0 ,0 -0 ),[v7("\245\122\248","\43\172\27\143\181\18")]=v18[v7("\244\44\169\188\111\210\37\152\189\120\213\44\169\170\116\197\44","\29\179\73\199\217")   .. v340 ]:selection(v7("\64\160\106","\173\25\193\29"),{v7("\126\121\68\30\175\6\211\124","\24\58\16\55\127\205\106\182"),v7("\148\16\222\77\35\175","\64\199\103\183\57"),v7("\23\95\90\87","\147\68\47\51\57"),v7("\187\78\18\56\137\77","\32\233\47\124\92\230"),v7("\164\87\135\169\174\199\253\142","\153\235\33\226\219\220\174")}),[v7("\184\92\76\45\151\92\87\7\132","\114\225\61\59")]=v18[v7("\251\118\42\136\206\114\40\178\216\118\34\136\210\96\45\155\217","\237\188\19\68")   .. v340 ]:slider(v7("\220\229\225\13\238\233","\128\157\136\142\120"), -(1 + 179),180,1,0 -0 )};end local v21={[v7("\129\0\137\91\173\221\83\255\190\0","\157\210\101\229\62\206\169\50")]=v18[v7("\110\41\65\182\16\188\16\194\67\39\67","\173\45\70\47\210\121\200\121")]:selection(v7("\36\177\129\87","\49\81\223\229"),{"1","2","3","4"}),[v7("\31\147\181\225\59\150\182\252\60\146","\149\82\230\217")]=v18[v7("\17\95\106\184\55\68\127\167\61\92\110\185","\202\88\50\26")]:checkbox(v7("\20\108\242\216\197\90\32\117\242\222\149\88\60\119\242","\55\85\25\134\183\229")),[v7("\78\58\25\160\229\35\107\61\27\168","\72\27\84\117\207\134")]=v18[v7("\134\203\68\47\2\65\128\50\170\200\64\46","\95\207\166\52\93\109\55\229")]:checkbox(v7("\232\205\42\141\235\61\237\219\194\45\135\168\38\164\211\196","\205\189\163\70\226\136\86")),[v7("\107\223\145\232\2\251\77\221\132\249\25\228\76","\139\34\177\229\141\112")]=v18[v7("\10\224\104\166\223\53\232\117\177\222\55\254","\176\67\141\24\212")]:checkbox(v7("\247\208\87\235\45\88\232\147\208\74\254\42\70\253\220\213\69\254\38\91\227","\141\179\185\36\138\79\52")),[v7("\201\62\76\172\247\45\90\177","\195\155\91\63")]=v18[v7("\228\70\220\243\193\197\92\196","\57\182\35\175\156\173\179")]:checkbox(v7("\254\183\170\203\0\9\248\207\167\170\208\3\18\189\207","\216\189\194\217\191\111\100")),[v7("\137\91\76\100\15\71\168\67\78\102\41","\42\205\46\33\20\80")]=v18[v7("\99\13\58\184\93\30\44\165","\215\49\104\73")]:button(v7("\242\1\11\24\150\25\3\5\217\6\31","\104\182\116\102"),function() print(use:dump(v16.memory));engine.execute_cmd(v7("\53\224\243\246\189\55\176\53\231\240\228","\222\70\136\156\129\222\88"));end),[v7("\225\136\129\184\208\187\137\188\207\139\150\160","\217\162\228\228")]=v18[v7("\156\216\220\215\162\203\202\202","\184\206\189\175")]:button(v7("\127\66\252\182\222\25\209\89\67\246\165\213","\188\60\46\153\215\172\57"),function() local v346=0 + 0 ;while true do if (v346==1) then engine.execute_cmd(v7("\188\80\165\180\245\92\161\75\165\175\243","\51\207\56\202\195\150"));break;end if (v346==(1390 -(814 + 576))) then print(v7("\57\244\48\93\43\61\84\249\60\65\121\38\17\244\51\18\43\33\7\244\41","\68\116\145\93\50\89"));v16.memory={};v346=1 -0 ;end end end),[v7("\138\73\239\70\147\139\255\177\182","\195\221\40\155\35\225\230\158")]=v18[v7("\241\116\200\93\247\21","\98\166\29\166\57\152")]:checkbox(v7("\139\0\128\196\57\233\31\128\216\54","\93\201\114\225\170")),[v7("\196\233\239\229\116\165\206\235\254","\142\140\128\155\136\21\215\165")]=v18[v7("\118\162\20\82\228","\218\33\205\102\62\128\75\152")]:checkbox(v7("\220\114\74\201\247\230\112\91\214","\150\148\27\62\164")),[v7("\17\226\239\197\54\214\236\207\44\253\249","\160\66\137\138")]=v18[v7("\55\204\48\179\59","\16\96\163\66\223\95\138\42")]:checkbox(v7("\167\213\220\11\201\12\142\199\212\78\255\58\176","\105\224\180\177\110\186")),[v7("\130\2\167\65\43\99\47\175\168\24\166\82\37\78\40\168\175","\199\193\106\194\34\64\60\91")]=v18[v7("\11\190\5\180\59\166\9\180\44\185\2","\198\95\214\108")]:checkbox(v7("\46\53\163\146\237\28\255\39\9\50\164","\85\122\93\202\224\137\108\154")),[v7("\176\88\91\185\199\188\129\66\65\164\205","\204\228\48\50\203\163")]=v18[v7("\234\191\64\181\11\95\208\42\205\184\71","\88\190\215\41\199\111\47\181")]:slider(v7("\112\62\95\93\113\207\221\81","\190\52\87\44\41\16\161"),0 -0 ,162 + 38 ,2 -1 ,0 -0 ),[v7("\106\24\3\189\24\32\8\76\4\20","\124\35\118\103\212\123\65")]=v18[v7("\21\229\168\182\125\93\40\228\190\172","\60\92\139\204\223\30")]:checkbox(v7("\21\20\235\136","\165\70\125\143\237")),[v7("\144\62\243\65\94\167\50\227\65","\48\212\91\149\36")]=v18[v7("\109\16\62\13\71\31\46\11\86\13","\100\36\126\90")]:checkbox(v7("\53\193\209\88\24\2\59\36\20","\82\113\164\183\61\118\113\82")),[v7("\205\71\253\184\167\198\254\226","\138\155\34\145\215\196\175")]=v18[v7("\157\247\10\203\10\58\73\207\166\234","\160\212\153\110\162\105\91\61")]:checkbox(v7("\150\61\166\208\163\49\190\198","\191\192\88\202")),[v7("\69\194\250\13","\172\17\173\137\126\104")]=v18[v7("\240\117\62\52","\120\189\28\77\87\182\131")]:selection(v7("\248\34\2\227","\183\172\77\113\144\114\152"),{v7("\217\113\43\232\64\201\8","\109\157\24\88\137\34\165"),v7("\129\79\168\69\190\49\142\175\68\178\84","\231\200\33\220\32\210\93"),v7("\111\93\75\228\119\81\87\66\232","\87\60\56\38\141"),v7("\230\176\6\54\128\168\5\62\197","\90\160\197\106")}),[v7("\194\187\62\127\67\229\190","\34\131\213\74\22")]=v18[v7("\29\176\5\51","\80\80\217\118")]:checkbox(v7("\36\70\31\116\69\105\45\86","\29\101\40\107")),[v7("\230\249\209\189\9\196\242","\125\165\149\176\211")]=v18[v7("\100\10\57\226","\229\41\99\74\129")]:checkbox(v7("\16\9\224\37\39\4\230","\75\83\101\129")),[v7("\198\89\64\195\250\95\64\220\249","\176\146\43\33")]=v18[v7("\133\212\226\18","\27\200\189\145\113\206")]:checkbox(v7("\148\153\83\184\71\171\159\83\167\68","\47\192\235\50\203")),[v7("\7\213\21\196\226\216","\233\64\167\122\177\140\188\212")]=v18[v7("\110\122\255\77\248","\144\47\20\150\32\139\220")]:selection(v7("\23\48\178\236\212\132","\132\80\66\221\153\186\224"),{v7("\98\166\55\22\185\74\170\32","\219\38\207\68\119"),v7("\43\25\6\61\26\155\77\26\15\54\6","\236\109\118\106\81\117"),v7("\218\50\202\36\238\225\54\193\60","\206\141\83\166\79"),v7("\207\187\210\193\251\173\165\216\205\237","\158\141\201\189\170")}),[v7("\54\185\235","\45\119\208\153\219")]=v18[v7("\245\87\173\24\0","\115\180\57\196\117")]:selection(v7("\19\117\66","\160\82\28\48\148\48\164\74"),{v7("\231\217\174\39\56\1\198\212","\109\163\176\221\70\90"),v7("\225\85\54\64\122\49\146\77\50\83\96","\82\178\33\87\52\19"),v7("\123\163\228\113\60\64\167\239\105","\28\44\194\136\26"),v7("\94\107\72\13\115\202\87\203\123\106","\174\28\25\39\102\22\234\59")}),[v7("\236\81\4\202\207","\230\169\41\112\184\174")]=v18[v7("\235\202\124\179\1","\47\170\164\21\222\114\116\179")]:multi_selection(v7("\216\159\153\196\252","\182\157\231\237"),{v7("\217\255\13\174","\192\149\154\108")}),[v7("\213\252\230\46","\97\153\153\135\64\93\86")]=v18[v7("\39\80\219\37\234","\185\102\62\178\72\153\73\235")]:slider(v7("\88\191\42\188","\210\20\218\75"),0,100,1 + 0 ,0 + 0 ),[v7("\164\242\6\119\99\26\59\134\251\14\116","\84\232\157\103\19\60\121")]=v18[v7("\47\118\102\87\21\125\117\80","\35\124\19\18")]:button(v7("\200\92\21\194\23\231\92\26\192\94\227","\55\132\51\116\166"),function() local v347=0 -0 ;local v348;local v349;local v350;while true do if (v347==(1 + 1)) then if  not v349 then client.log_screen(v17.accentcol:get(),v7("\162\169\62\76","\159\215\199\90\42"),color_t(734 -479 ,237 + 18 ,608 -353 ),v7("\27\193\216\39\255\59\203\142\37\252\60\201\199\33\169\114","\147\82\175\174\70")   .. v350 );else client.log_screen(v17.accentcol:get(),v7("\2\140\9\58","\33\119\226\109\92"),color_t(149 + 106 ,96 + 159 ,4 + 251 ),v7("\150\137\123\253\254\190\198\121\246\245\188\143\125","\155\218\230\26\153"));end break;end if (v347==(569 -(397 + 172))) then v348=filesystem.read(v7("\134\41\179\112\2\113\238\205\40\169\125\10\57\238\134\41\179\112\2","\157\168\92\221\20\100\94"),"");v349,v350=pcall(base64.decode,v348);v347=1;end if (v347==(1 -0)) then if  not v349 then client.log_screen(v7("\225\223\227\30\22\208\114\136\210\250\17\28\208\113\136\153\241\22\30\153\99\136\210\250\15\3\153\127\220\145\246\16\8\203\115\203\197\249\6\69\144","\22\168\177\149\127\122\185"));else v348=base64.decode(v348);end v349,v350=pcall(eui.import,v348);v347=2;end end end),[v7("\37\19\13\198\41\17\20\205\16\27\28","\163\118\114\123")]=v18[v7("\209\227\228\164\188\236\225\227","\213\130\134\144\208")]:button(v7("\200\61\11\49\5\122\82\39\253\53\26","\73\155\92\125\84\37\25\61"),function() local v351=0;while true do if ((1117 -(267 + 850))==v351) then filesystem.write(v7("\15\215\227\215\72\14\209\232\199\90\72\204\234\192\0\84\204\233\213","\46\33\162\141\179"),base64.encode(eui.export()));client.log_screen(v17.accentcol:get(),v7("\73\162\169\59","\72\60\204\205\93"),color_t(202 + 53 ,255,809 -554 ),v7("\151\197\212\177\76\110\167\203\204\178\65\41","\78\196\164\162\212\40"));break;end end end),[v7("\114\192\217\81\224\221\159\164\84\195\207\87\245","\199\59\173\169\62\146\169\192")]=v18[v7("\4\173\189\177\62\171\187","\195\87\197\220")]:button(v7("\152\252\177\188\199\104\188\55\190\255\167\186\210","\84\209\145\193\211\181\28\156"),function() local v352=994 -(41 + 953) ;local v353;local v354;local v355;while true do if (v352==(4 -3)) then if  not v354 then client.log_screen(v7("\248\237\56\137\203\216\231\110\139\200\223\229\39\143\135\153\231\39\140\135\196\163\45\135\215\200\163\39\156\135\210\236\60\154\194\210\247\34\145\152\152","\167\177\131\78\232"));else v353=base64.decode(v353);end v354,v355=pcall(eui.import,v353);v352=1 + 1 ;end if (v352==(0 -0)) then v353=clipboard.get();v354,v355=pcall(base64.decode,v353);v352=821 -(817 + 3) ;end if (v352==(1387 -(867 + 518))) then if  not v354 then client.log_screen(v17.accentcol:get(),v7("\189\3\143\65","\165\200\109\235\39\100\40\110"),color_t(255,769 -514 ,585 -(256 + 74) ),v7("\160\116\247\41\31\128\126\161\43\28\135\124\232\47\73\201","\115\233\26\129\72")   .. v355 );else client.log_screen(v17.accentcol:get(),v7("\109\0\211\129","\132\24\110\183\231"),color_t(187 + 68 ,255,89 + 166 ),v7("\130\126\1\183\95\176\54\64\161\127\6\186\93","\35\206\17\96\211\58\212\22"));end break;end end end),[v7("\22\214\153\54\154\172\151\202\60\192\143\48\143","\169\83\174\233\89\232\216\200")]=v18[v7("\111\26\90\47\177\197\238","\118\60\114\59\93\216\171\137")]:button(v7("\119\209\84\235\174\70\137\71\235\178\84\192\67","\220\50\169\36\132"),function() local v356=0 -0 ;while true do if (v356==(187 -(111 + 76))) then clipboard.set(base64.encode(eui.export()));client.log_screen(v17.accentcol:get(),v7("\228\137\8\183","\209\145\231\108"),color_t(189 + 66 ,1306 -(100 + 951) ,880 -(369 + 256) ),v7("\124\57\24\2\202\209\39\93\97\11\2\214\195\43\94","\66\57\65\104\109\184\165"));break;end end end)};local v22={[v7("\138\10\238\91\247\176\10\232\85","\133\221\107\154\62")]=v18[v7("\236\23\187\229\72\213","\81\187\126\213\129\39\162")]:color_picker(v21['Watermark'],v7("\167\163\44\250\160\197\188\44\230\175\197\176\46\247\161\139\165","\196\229\209\77\148"),color_t(1113 -858 ,14 + 241 ,318 -(25 + 38) ,1161 -(890 + 146) )),[v7("\111\220\101\17\92\224\198\66\199","\173\39\181\17\124\61\146")]=v18[v7("\77\211\225\46\140","\232\26\188\147\66")]:color_picker(v21['Hitmarker'],v7("\61\232\242\22\114\7\234\227\9\51\20\226\229\30\125\1","\19\117\129\134\123"),color_t(614 -359 ,250 + 5 ,255)),[v7("\10\13\205\31\55\34\55\12\219\5","\67\67\99\169\118\84")]=v18[v7("\43\36\225\70\80\183\237\185\16\57","\214\98\74\133\47\51\214\153")]:color_picker(v21['Indicators'],v7("\35\64\116\125\112\86\30\65\98\52\114\84\9\75\126\96","\55\106\46\16\20\19"),v17.accentcol:get()),[v7("\109\190\180\53\56\45\26\95\190","\115\41\219\210\80\86\94")]=v18[v7("\137\71\237\19\209\58\180\70\251\9","\91\192\41\137\122\178")]:color_picker(v21['Defensive'],v7("\115\32\204\237\89\54\195\254\82\101\203\235\84\32\196\252","\136\55\69\170"),v17.accentcol:get()),[v7("\213\248\28\53\213\250\57\212","\173\131\157\112\90\182\147\77")]=v18[v7("\51\24\36\14\25\23\52\8\8\5","\103\122\118\64")]:color_picker(v21['Velocity'],v7("\198\237\28\203\243\180\228\241\80\132\241\190\243\237\30\208","\221\144\136\112\164\144"),v17.accentcol:get())};local v23={[v7("\111\56\117\171\90\52\109\189\102\37","\196\57\93\25")]=v18[v7("\227\66\180\140\76\203\88\191\151\92","\47\170\44\208\229")]:slider(v7("\126\71\178\21\24\238\35\81\2\166","\87\40\34\222\122\123\135"),0,screen.x,1585 -(549 + 1035) ,0 -0 ),[v7("\119\56\141\58\194\217\85\36\190\44","\176\33\93\225\85\161")]=v18[v7("\139\23\137\221\122\163\13\130\198\106","\25\194\121\237\180")]:slider(v7("\130\178\53\32\5\67\160\174\121\54","\42\212\215\89\79\102"),0,screen.y,1 + 0 ,0 + 0 ),[v7("\147\84\34\21\193\93\78\225\178\110\60","\151\215\49\68\112\175\46\39")]=v18[v7("\111\115\178\69\142\71\105\185\94\158","\237\38\29\214\44")]:slider(v7("\50\35\113\3\125\85\188\151\19\102\111","\225\118\70\23\102\19\38\213"),961 -(546 + 415) ,screen.x,1025 -(175 + 849) ,1664 -(734 + 930) ),[v7("\4\95\91\39\87\231\185\54\95\98\59","\208\64\58\61\66\57\148")]=v18[v7("\192\176\162\77\234\191\178\75\251\173","\36\137\222\198")]:slider(v7("\197\241\228\39\198\177\11\95\228\180\251","\41\129\148\130\66\168\194\98"),1415 -(1093 + 322) ,screen.y,1,0)};local v24={[v7("\37\34\136\2\71\56\117\190\2\37\143","\204\113\74\225\112\35\72\16")]=v18[v7("\69\22\8\50\224\175\182\242\98\17\15","\128\17\126\97\64\132\223\211")]:keybind(v21['Check_thirdperson'],v7("\142\142\52\26\170\131\47\27\181\136\125\3\191\159","\104\218\230\93"))};v15:add(e_callbacks.PAINT,function() v21[v7("\64\57\222\115\112\40\211\116\127\57","\22\19\92\178")]:depend({false});v19[v7("\251\5\66\44\177\180","\209\190\107\35\78\221")]:depend({v21[v7("\179\43\218\228\213\148\47\212\237\211","\182\224\78\182\129")],2});v19[v7("\222\8\169\11\213\36\126\70\225\8","\36\141\109\197\110\182\80\31")]:depend({v19[v7("\198\4\23\133\18\57","\92\131\106\118\231\126")],true},{v21[v7("\142\70\50\160\32\169\66\60\169\38","\67\221\35\94\197")],3 -1 });for v981=1, #v19.conditions do v19[v7("\98\185\46\95\87\189\44","\58\37\220\64")][v981][v7("\249\130\245\14\184\169","\204\188\236\148\108\212")]:depend({v19[v7("\251\210\94\241\248\23","\210\190\188\63\147\148\114\97")],true},{v21[v7("\134\195\169\129\18\161\199\167\136\20","\113\213\166\197\228")],7 -5 },{v19[v7("\254\59\206\86\73\145\2\227\193\59","\129\173\94\162\51\42\229\99")],v981});v19[v7("\122\49\28\52\164\92\56","\214\61\84\114\81")][v981][v7("\119\234\8\70\197","\182\39\131\124\37\173")]:depend({v19[v7("\29\24\180\17\187\117\54","\20\90\125\218\116\201")][v981][v7("\0\7\26\133\38\43","\61\69\105\123\231\74\78")],true},{v19[v7("\244\163\187\9\219\212","\183\177\205\218\107")],true},{v21[v7("\54\53\129\122\207\34\4\50\129\122","\86\101\80\237\31\172")],2},{v19[v7("\96\61\162\81\121\221\220\81\52\171","\189\51\88\206\52\26\169")],v981});v19[v7("\1\198\69\80\52\194\71","\53\70\163\43")][v981][v7("\248\163\176","\42\161\194\199\120\22\83")]:depend({v19[v7("\135\249\86\55\96\63\172","\94\192\156\56\82\18")][v981][v7("\120\181\5\79\113\8","\226\61\219\100\45\29\109")],true},{v19[v7("\223\173\33\66\246\166","\32\154\195\64")],true},{v21[v7("\194\31\86\218\221\53\240\24\86\218","\65\145\122\58\191\190")],7 -5 },{v19[v7("\194\18\232\124\192\229\22\230\117\198","\163\145\119\132\25")],v981});v19[v7("\40\4\196\195\74\14\13","\56\111\97\170\166")][v981][v7("\178\126\145\6\34\131\233\114","\23\235\31\230\89\79\236\141")]:depend({v19[v7("\245\89\205\166\220\46\227","\143\178\60\163\195\174\79")][v981][v7("\55\9\224\197\116\4","\85\114\103\129\167\24\97")],true},{v19[v7("\30\221\179\142\195\6","\103\91\179\210\236\175\99")],true},{v21[v7("\106\240\94\253\83\173\161\128\85\240","\226\57\149\50\152\48\217\192")],2},{v19[v7("\112\169\38\171\248\87\173\40\162\254","\155\35\204\74\206")],v981});v19[v7("\144\199\117\34\213\182\206","\167\215\162\27\71")][v981][v7("\4\130\220\29\49\56\133\223","\93\93\227\171\66")]:depend({v19[v7("\15\204\194\171\44\38\194","\225\72\169\172\206\94\71\174")][v981][v7("\104\92\85\229\248\53","\40\45\50\52\135\148\80")],true},{v19[v7("\199\23\231\128\238\28","\226\130\121\134")],true},{v21[v7("\187\60\207\126\139\45\194\121\132\60","\27\232\89\163")],933 -(355 + 576) },{v19[v7("\199\172\204\198\247\189\193\193\248\172","\163\148\201\160")],v981},{v19[v7("\121\128\230\227\175\4\82","\101\62\229\136\134\221")][v981][v7("\75\78\225\208\19\125\75\243","\126\18\47\150\143")]:get()>(469 -(285 + 183)) });v19[v7("\147\203\198\121\32\112\19","\127\212\174\168\28\82\17")][v981][v7("\51\171\75\232\24\163\91\223\30","\183\106\202\60")]:depend({v19[v7("\125\39\252\79\205\23\14","\98\58\66\146\42\191\118")][v981][v7("\161\254\125\218\64\203","\186\228\144\28\184\44\174")],true},{v19[v7("\35\16\27\20\10\27","\118\102\126\122")],true},{v21[v7("\239\14\132\226\171\200\10\138\235\173","\200\188\107\232\135")],7 -5 },{v19[v7("\31\249\173\78\56\235\45\254\173\78","\159\76\156\193\43\91")],v981},{v19[v7("\94\41\0\112\183\72\79","\138\25\76\110\21\197\41\35")][v981][v7("\119\253\37\106\61\91\186\75","\222\46\156\82\53\80\52")]:get()>1 });v19[v7("\28\213\17\237\102\58\220","\20\91\176\127\136")][v981][v7("\195\249\43\174","\196\151\144\72\197\106")]:depend({v19[v7("\51\203\142\87\6\207\140","\50\116\174\224")][v981][v7("\240\118\1\197\13\192","\165\181\24\96\167\97")],true},{v19[v7("\137\35\61\70\160\40","\36\204\77\92")],true},{v21[v7("\13\66\55\216\2\42\70\57\209\4","\97\94\39\91\189")],2},{v19[v7("\6\116\247\19\167\6\248\55\125\254","\153\85\17\155\118\196\114")],v981},{v19[v7("\224\240\213\194\169\48\203","\81\167\149\187\167\219")][v981][v7("\192\13\63\254\255\246\8\45","\146\153\108\72\161")],3});v19[v7("\34\17\227\226\57\58\50","\94\101\116\141\135\75\91")][v981][v7("\20\172\22\199\81\238\238\2\55","\118\82\192\99\164\37\155\143")]:depend({v19[v7("\5\190\69\42\48\186\71","\79\66\219\43")][v981][v7("\56\78\242\19\17\69","\113\125\32\147")],true},{v19[v7("\249\220\200\65\71\177","\212\188\178\169\35\43")],true},{v21[v7("\141\238\113\47\189\255\124\40\178\238","\74\222\139\29")],1929 -(372 + 1555) },{v19[v7("\116\192\165\1\161\28\115\234\75\192","\136\39\165\201\100\194\104\18")],v981},{v19[v7("\84\234\66\115\193\231\35","\178\19\143\44\22\179\134\79")][v981][v7("\36\128\188\42\69\222\243\129","\228\125\225\203\117\40\177\151")],3 + 0 });v19[v7("\207\172\196\113\152\1\43","\71\136\201\170\20\234\96")][v981][v7("\62\43\120\193\192\249\161\1","\196\115\68\28\168\166\144")]:depend({v19[v7("\255\86\226\121\23\245\93","\49\184\51\140\28\101\148")][v981][v7("\209\224\136\201\204\232","\234\148\142\233\171\160\141\39")],true},{v19[v7("\116\22\139\117\129\247","\37\49\120\234\23\237\146")],true},{v21[v7("\142\71\119\176\40\177\61\191\78\126","\92\221\34\27\213\75\197")],6 -4 },{v19[v7("\0\56\226\127\39\39\60\236\118\33","\68\83\93\142\26")],v981});v19[v7("\165\171\192\8\30\4\163","\207\226\206\174\109\108\101")][v981][v7("\153\67\43\250\226\65\255\70\139\90\46\255\241\77","\52\212\44\79\147\132\40\154")]:depend({v19[v7("\200\165\192\220\253\161\194","\185\143\192\174")][v981][v7("\152\75\57\213\244\228","\129\221\37\88\183\152")],true},{v19[v7("\122\233\209\16\60\57","\92\63\135\176\114\80")],true},{v21[v7("\5\245\89\1\60\95\55\242\89\1","\43\86\144\53\100\95")],2 + 0 },{v19[v7("\143\240\202\53\43\227\93\190\249\195","\60\220\149\166\80\72\151")],v981},{v19[v7("\171\45\177\247\158\41\179","\146\236\72\223")][v981][v7("\147\246\64\202\221\25\187\235","\112\222\153\36\163\187")]:get()>(1 + 0) });v19[v7("\224\246\235\85\42\182\205\229\232","\197\164\147\141\48\68")][v981][v7("\133\92\15\14\49\13\168\79\12","\126\193\57\105\107\95")]:depend({v19[v7("\86\24\206\19\45\172\57","\85\17\125\160\118\95\205")][v981][v7("\205\25\225\249\228\18","\155\136\119\128")],true},{v19[v7("\126\197\26\226\251\175","\34\59\171\123\128\151\202\226")],true},{v21[v7("\75\224\112\198\74\44\121\231\112\198","\88\24\133\28\163\41")],3 -1 },{v19[v7("\192\174\252\206\11\231\170\242\199\13","\104\147\203\144\171")],v981});v19[v7("\111\23\90\184\69\1\85\171\78","\221\43\114\60")][v981][v7("\241\112\111\70\246","\164\161\25\27\37\158")]:depend({v19[v7("\20\64\194\178\13\50\73","\127\83\37\172\215")][v981][v7("\243\208\198\23\70\15","\131\182\190\167\117\42\106\170")],true},{v19[v7("\7\141\251\188\85\128","\188\66\227\154\222\57\229")],true},{v21[v7("\75\54\87\80\243\108\50\89\89\245","\144\24\83\59\53")],2 + 0 },{v19[v7("\31\133\185\200\24\56\129\183\193\30","\123\76\224\213\173")],v981},{v19[v7("\11\207\207\161\33\217\192\178\42","\196\79\170\169")][v981][v7("\167\62\35\120\141\40\44\107\134","\29\227\91\69")]:get()>(1 + 0) });v19[v7("\251\202\184\183\170\85\62\201\202","\87\191\175\222\210\196\38")][v981][v7("\99\225\99\225\203\241\69\233\123\247\198\241\95","\174\51\136\23\130\163")]:depend({v19[v7("\26\16\60\15\240\244\49","\149\93\117\82\106\130")][v981][v7("\195\179\28\228\199\227","\171\134\221\125\134")],true},{v19[v7("\148\33\255\115\254\163\45\239\115","\144\208\68\153\22")][v981][v7("\209\19\49\15\205","\174\129\122\69\108\165\54\119")],8 -1 },{v19[v7("\220\211\219\235\245\216","\137\153\189\186")],true},{v21[v7("\34\203\17\64\18\218\28\71\29\203","\37\113\174\125")],1 + 1 },{v19[v7("\98\65\72\172\82\80\69\171\93\65","\201\49\36\36")],v981},{v19[v7("\32\43\172\117\10\61\163\102\1","\16\100\78\202")][v981][v7("\153\185\118\243\141\81\66\189\184","\203\221\220\16\150\227\34\43")]:get()>1 });v19[v7("\223\33\125\125\245\55\114\110\254","\24\155\68\27")][v981][v7("\138\89\196\81\178\111\198\83\182\69\213\109\168","\50\218\48\176")]:depend({v19[v7("\105\87\218\245\73\85\66","\52\46\50\180\144\59")][v981][v7("\40\63\36\117\10\60","\154\109\81\69\23\102\89")],true},{v19[v7("\222\206\218\81\79\42\243\221\217","\89\154\171\188\52\33")][v981][v7("\198\29\24\53\254","\86\150\116\108")],7},{v19[v7("\82\177\45\172\205\67","\38\23\223\76\206\161")],true},{v21[v7("\235\204\84\62\160\190\199\218\197\93","\166\184\169\56\91\195\202")],8 -6 },{v19[v7("\148\181\125\33\193\179\177\115\40\199","\162\199\208\17\68")],v981},{v19[v7("\245\227\89\4\226\29\89\13\212","\123\177\134\63\97\140\110\48")][v981][v7("\20\81\242\198\252\8\124\255\53","\137\80\52\148\163\146\123\21")]:get()>(1 + 0) });v19[v7("\220\197\165\251\13\235\201\181\251","\99\152\160\195\158")][v981][v7("\190\54\193","\95\231\87\182\94\125")]:depend({v19[v7("\127\204\246\49\27\125\31","\115\56\169\152\84\105\28")][v981][v7("\27\235\128\77\186\64","\37\94\133\225\47\214")],true},{v19[v7("\114\218\87\92\91\209","\62\55\180\54")],true},{v21[v7("\200\255\36\195\65\80\175\25\247\255","\123\155\154\72\166\34\36\206")],2},{v19[v7("\245\218\52\166\38\210\222\58\175\32","\69\166\191\88\195")],v981},{v19[v7("\157\127\40\71\136\165\39\156\188","\234\217\26\78\34\230\214\78")][v981][v7("\148\26\238\82\68\163\22\254\82","\42\208\127\136\55")]:get()>1 });v19[v7("\85\93\207\44\168\255\70\103\93","\47\17\56\169\73\198\140")][v981][v7("\27\52\75\124\187\129\46\32\89","\224\66\85\60\35\205")]:depend({v19[v7("\223\63\114\94\32\76\223","\179\152\90\28\59\82\45")][v981][v7("\140\252\61\2\65\65","\36\201\146\92\96\45")],true},{(v19[v7("\205\195\251\64\202\228\245\231\236","\145\137\166\157\37\164\151\156")][v981][v7("\55\24\80","\20\110\121\39\28\187")]:get()~=(3 -2)) and (v19[v7("\42\244\2\34\90\15\171\24\244","\194\110\145\100\71\52\124")][v981][v7("\75\232\83","\118\18\137\36\206\164\121\59")]:get()~=4) },{v19[v7("\219\215\226\22\64\251","\44\158\185\131\116")],true},{v21[v7("\127\143\209\114\216\179\112\78\134\216","\17\44\234\189\23\187\199")],2 + 0 },{v19[v7("\4\123\210\15\52\106\223\8\59\123","\106\87\30\190")],v981},{v19[v7("\242\233\10\121\196\68\75\202\211","\188\182\140\108\28\170\55\34")][v981][v7("\248\177\238\230\210\167\225\245\217","\131\188\212\136")]:get()>1 });v19[v7("\174\14\127\35\68\136\7","\54\233\107\17\70")][v981][v7("\212\45\56\28\202\243","\164\144\72\75\101")]:depend({v19[v7("\219\142\65\223\205\95\240","\62\156\235\47\186\191")][v981][v7("\40\228\239\35\192\162","\140\109\138\142\65\172\199\76")],true},{v19[v7("\210\80\182\31\229\196","\212\151\62\215\125\137\161")],true},{v21[v7("\6\163\3\137\54\178\14\142\57\163","\236\85\198\111")],5 -3 },{v19[v7("\45\52\123\240\95\10\48\117\249\89","\60\126\81\23\149")],v981});v19[v7("\98\143\216\143\98\232\73","\137\37\234\182\234\16")][v981][v7("\221\14\74\42\2\65\178\183\252\19\77","\195\153\107\57\83\108\34\237")]:depend({v17.invert:get(),false},{v19[v7("\91\30\139\198\155\128\243","\159\28\123\229\163\233\225")][v981][v7("\163\17\38\12\137\23","\117\231\116\85")]:get()>1 },{v19[v7("\11\95\72\62\110\45\86","\28\76\58\38\91")][v981][v7("\157\160\32\181\237\214","\143\216\206\65\215\129\179")],true},{v19[v7("\135\124\8\254\174\119","\156\194\18\105")],true},{v21[v7("\211\169\40\239\36\244\173\38\230\34","\71\128\204\68\138")],2},{v19[v7("\222\87\165\53\113\253\167\239\94\172","\198\141\50\201\80\18\137")],v981});v19[v7("\202\75\131\89\83\62\254","\146\141\46\237\60\33\95")][v981][v7("\250\172\226\10\179\220\225\165\244\21\169","\191\190\201\145\115\221")]:depend({v19[v7("\28\22\227\66\111\207\81","\84\91\115\141\39\29\174\61")][v981][v7("\50\230\64\228\24\224","\157\118\131\51")]:get()>(2 -1) },{v19[v7("\201\91\51\174\67\127\226","\30\142\62\93\203\49")][v981][v7("\134\173\54\137\171\27","\126\195\195\87\235\199")],true},{v19[v7("\44\136\91\180\245\174","\30\105\230\58\214\153\203")],true},{v21[v7("\32\23\250\183\3\191\18\16\250\183","\203\115\114\150\210\96")],1 + 1 },{v19[v7("\224\233\80\58\208\248\93\61\223\233","\95\179\140\60")],v981});v19[v7("\7\255\45\243\206\27\168","\176\64\154\67\150\188\122\196")][v981][v7("\1\76\55\148\64\254\26\91\45\138\70\233","\157\69\41\68\237\46")]:depend({v19[v7("\11\255\233\245\252\209\201","\165\76\154\135\144\142\176")][v981][v7("\0\40\84\30\29\67","\217\68\77\39\103\115\32")]:get()>1 },{v19[v7("\128\137\162\216\192\240\211","\191\199\236\204\189\178\145")][v981][v7("\83\136\92\77\122\131","\47\22\230\61")],true},{v19[v7("\39\189\32\26\53\7","\89\98\211\65\120")],true},{v21[v7("\140\199\1\87\30\186\22\189\206\8","\119\223\162\109\50\125\206")],1 + 1 },{v19[v7("\44\7\1\71\2\11\3\15\78\4","\97\127\98\109\34")],v981});v19[v7("\16\15\126\53\191\27\59","\122\87\106\16\80\205")][v981][v7("\196\13\250\239\237\239\207\220\233\11\226","\168\128\104\137\150\131\140\144")]:depend({v19[v7("\148\185\214\242\186\76\6","\103\211\220\184\151\200\45\106")][v981][v7("\152\15\51\225\212\244","\95\220\106\64\152\186\151\211")],2},{v19[v7("\86\131\188\186\235\215\221","\177\17\230\210\223\153\182")][v981][v7("\14\183\249\145\63\213","\111\74\210\138\232\81\182")]:get()>1 },{v19[v7("\58\27\57\134\210\70\17","\39\125\126\87\227\160")][v981][v7("\113\177\191\143\88\186","\237\52\223\222")],true},{v19[v7("\144\245\129\210\190\18","\119\213\155\224\176\210")],true},{v21[v7("\139\230\142\54\113\188\8\236\180\230","\142\216\131\226\83\18\200\105")],2},{v19[v7("\28\1\247\199\204\245\44\228\35\1","\134\79\100\155\162\175\129\77")],v981});v19[v7("\238\69\171\238\219\65\169","\139\169\32\197")][v981][v7("\84\205\51\44\233\255\128\203\124\221\35\33\242\253\171\200","\173\16\168\64\85\135\156\223")]:depend({v19[v7("\50\82\250\244\250\90\57","\37\117\55\148\145\136\59\85")][v981][v7("\19\18\160\63\57\20","\70\87\119\211")],2 + 0 },{v19[v7("\150\211\13\59\181\50\189","\83\209\182\99\94\199")][v981][v7("\252\210\147\64\214\212","\57\184\183\224")]:get()>1 },{v19[v7("\223\218\237\170\54\245\25","\226\152\191\131\207\68\148\117")][v981][v7("\63\69\188\208\89\31","\53\122\43\221\178")],true},{v19[v7("\203\166\31\28\164\22","\70\142\200\126\126\200\115\101")],true},{v21[v7("\96\43\75\199\239\71\47\69\206\233","\140\51\78\39\162")],1 + 1 },{v19[v7("\61\199\215\241\242\247\244\201\2\199","\171\110\162\187\148\145\131\149")],v981});end v21[v7("\156\24\39\90\75\161\2\34\64\86","\34\209\109\75\46")]:depend({v21[v7("\32\252\183\185\249\7\248\185\176\255","\154\115\153\219\220")],1});v21[v7("\28\31\133\17\33\25\174\32\31\142","\222\73\113\233\126\66\114")]:depend({v21[v7("\183\25\173\7\20\104\23\206\136\25","\172\228\124\193\98\119\28\118")],1});v21[v7("\16\222\146\75\43\192\137\66\56\196\143\65\55","\46\89\176\230")]:depend({v21[v7("\200\15\84\34\135\24\250\8\84\34","\108\155\106\56\71\228")],3 -2 });v21[v7("\240\95\192\62\214\66\37\223","\173\162\58\179\81\186\52\64")]:depend({v21[v7("\13\69\242\194\72\16\68\60\76\251","\37\94\32\158\167\43\100")],1});v21[v7("\224\47\94\33\36\252\179\201\53\65\40","\214\164\90\51\81\123\145")]:depend({v21[v7("\40\174\175\197\24\191\162\194\23\174","\160\123\203\195")],1});v21[v7("\171\16\113\141\35\10\133\25\121\131\35\44","\85\232\124\20\236\81")]:depend({v21[v7("\114\206\185\35\125\85\202\183\42\123","\30\33\171\213\70")],1 + 0 });v21[v7("\191\193\35\220\106\133\193\37\210","\24\232\160\87\185")]:depend({v21[v7("\237\53\253\252\37\202\49\243\245\35","\70\190\80\145\153")],6 -3 });v22[v7("\96\247\243\251\60\58\13\69\253","\108\55\150\135\158\78\87")]:depend({v21[v7("\233\5\230\255\218\45\223\22\249","\64\190\100\146\154\168")],true},{v21[v7("\216\160\138\22\184\170\19\65\231\160","\35\139\197\230\115\219\222\114")],1 + 2 });v21[v7("\16\217\254\224\223\103\226\61\194","\137\88\176\138\141\190\21")]:depend({v21[v7("\21\245\70\205\178\50\241\72\196\180","\209\70\144\42\168")],11 -8 });v22[v7("\36\228\189\93\41\2\7\232\187","\112\108\141\201\48\72")]:depend({v21[v7("\227\72\3\94\34\108\192\68\5","\30\171\33\119\51\67")],true},{v21[v7("\101\171\23\215\142\236\87\172\23\215","\152\54\206\123\178\237")],1 + 2 });v21[v7("\223\208\174\10\204\180\200\57\226\207\184","\86\140\187\203\111\184\235\174")]:depend({v21[v7("\254\13\122\1\68\217\9\116\8\66","\39\173\104\22\100")],3 + 0 });v21[v7("\97\214\95\112\16\140\86\214\83\97\31\163\71\204\73\124\21","\211\34\190\58\19\123")]:depend({v21[v7("\112\15\231\239\223\222\255\65\6\238","\158\35\106\139\138\188\170")],3});v21[v7("\50\193\238\88\65\22\204\245\89\74\8","\37\102\169\135\42")]:depend({v21[v7("\184\203\18\243\62\35\134\162\135\203","\192\235\174\126\150\93\87\231")],3},{v21[v7("\126\76\123\50\208\245\204\85\77\108\53\203\207\202\78\75\112","\184\61\36\30\81\187\170")],true});v24[v7("\43\192\178\213\21\153\26\218\168\200\31","\233\127\168\219\167\113")]:depend({v21[v7("\109\113\135\119\52\217\29\95\82\113","\61\62\20\235\18\87\173\124")],3},{v21[v7("\97\77\69\201\193\125\81\72\195\216\70\85\69\216\217\77\75","\170\34\37\32\170")],true});v21[v7("\26\203\61\246\62\79\39\202\43\236","\46\83\165\89\159\93")]:depend({v21[v7("\58\253\4\169\206\218\8\250\4\169","\174\105\152\104\204\173")],8 -5 });v22[v7("\150\71\238\6\188\72\254\0\173\90","\111\223\41\138")]:depend({v21[v7("\46\54\62\141\19\122\218\63\21\43","\80\103\88\90\228\112\27\174")],true},{v21[v7("\109\195\246\175\237\20\4\3\82\195","\97\62\166\154\202\142\96\101")],3});v21[v7("\132\225\211\27\51\179\237\195\27","\93\192\132\181\126")]:depend({v21[v7("\196\29\129\17\171\205\3\245\20\136","\98\151\120\237\116\200\185")],3});v22[v7("\0\15\117\161\136\221\191\254\33","\136\68\106\19\196\230\174\214")]:depend({v21[v7("\223\56\93\133\210\238\242\43\94","\157\155\93\59\224\188")],true},{v21[v7("\246\124\197\75\198\109\200\76\201\124","\46\165\25\169")],769 -(714 + 52) });v23[v7("\16\236\177\200\136\46\222\34\236\136\213","\183\84\137\215\173\230\93")]:depend({false});v23[v7("\14\117\243\33\67\22\25\106\47\79\236","\28\74\16\149\68\45\101\112")]:depend({false});v21[v7("\59\224\24\83\182\227\25\252","\138\109\133\116\60\213")]:depend({v21[v7("\62\21\164\84\14\4\169\83\1\21","\49\109\112\200")],3});v22[v7("\234\219\115\81\221\167\200\199","\206\188\190\31\62\190")]:depend({v21[v7("\127\67\124\14\189\238\23\183","\206\41\38\16\97\222\135\99")],true},{v21[v7("\183\167\10\235\242\95\212\134\174\3","\181\228\194\102\142\145\43")],141 -(5 + 133) });v23[v7("\2\239\1\0\213\38\71\45\213\21","\51\84\138\109\111\182\79")]:depend({false});v23[v7("\40\94\23\47\229\235\10\66\36\57","\130\126\59\123\64\134")]:depend({false});v21[v7("\34\224\1\47","\92\118\143\114")]:depend({v21[v7("\103\225\207\231\30\24\85\230\207\231","\108\52\132\163\130\125")],1060 -(705 + 351) });v21[v7("\216\30\183\35\213\22\252","\119\155\114\214\77\161")]:depend({v21[v7("\132\38\236\188\180\55\225\187\187\38","\217\215\67\128")],4});v21[v7("\133\22\184\6\58\7\175","\97\196\120\204\111\91")]:depend({v21[v7("\108\184\25\187\143\90\196\8\83\184","\106\63\221\117\222\236\46\165")],1161 -(414 + 743) });v21[v7("\234\167\184\172\133\202\180\181\180","\237\190\213\217\223")]:depend({v21[v7("\139\69\250\185\165\172\65\244\176\163","\198\216\32\150\220")],8 -4 });v21[v7("\221\94\71\145\94\68","\28\154\44\40\228\48\32\157")]:depend({v21[v7("\119\61\246\71\89\243\87\55\72\61","\85\36\88\154\34\58\135\54")],18 -14 });v21[v7("\111\128\145","\215\46\233\227\218\41")]:depend({v21[v7("\46\113\128\235\247\9\117\142\226\241","\148\125\20\236\142")],16 -12 });v21[v7("\40\100\42\224\161","\199\109\28\94\146\192\92")]:depend({v21[v7("\77\114\37\205\202\248\47\174\114\114","\204\30\23\73\168\169\140\78")],4 + 0 });v21[v7("\2\215\237\194","\50\78\178\140\172\189\204\38")]:depend({v21[v7("\255\39\212\110\254","\19\186\95\160\28\159\100")]:get(1 -0 ),true},{v21[v7("\138\235\222\240\214\62\184\236\222\240","\74\217\142\178\149\181")],4});v21[v7("\87\79\131\206\30\14\209\230\125\73\133","\136\27\32\226\170\65\109\190")]:depend({v21[v7("\131\203\166\37\253\164\207\168\44\251","\158\208\174\202\64")],1350 -(778 + 568) });v21[v7("\110\38\164\248\98\36\189\243\91\46\181","\157\61\71\210")]:depend({v21[v7("\203\89\125\0\176\69\241\250\80\116","\144\152\60\17\101\211\49")],1298 -(914 + 380) });v21[v7("\231\71\250\232\170\213\241\73\229\233\190\200\201","\161\174\42\138\135\216")]:depend({v21[v7("\254\189\6\197\206\172\11\194\193\189","\160\173\216\106")],4});v21[v7("\172\97\97\85\173\231\182\122\126\84\185\250\142","\147\233\25\17\58\223")]:depend({v21[v7("\125\41\12\30\211\34\79\46\12\30","\86\46\76\96\123\176")],11 -7 });end,function() return menu.is_open();end);v15:add(e_callbacks.PAINT,function() local v357=menu.get_size();local v358=menu.get_pos();local v359=fonts.get_or_register(v7("\136\162\122\234","\70\221\204\30\140\197\32\236"),v7("\194\39\94\244\239","\149\131\85\55"),45 -28 ,1783 -1033 ,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW,e_font_flags.ITALIC);local v360=vec2_t(v358.x + v357.x + 2 + 8 ,( -v357.y-50) + (((1348 -(711 + 587)) + v357.y + v358.y) * animation.get(v7("\20\184\61\190\57\78\245\89\10\130\50\165\15\87\245\79\16\178\61","\59\121\221\83\203\102\58\148"))) );render.rect_filled(v360,vec2_t(1033 -(168 + 715) ,v357.y),color_t(30,62 -32 ,30),3 + 1 );render.rect_filled(v360,vec2_t(189 -39 ,50),color_t(41,333 -(232 + 60) ,27 + 14 ),41 -(22 + 15) );render.rect_filled(v360 + vec2_t(0,103 -58 ) ,vec2_t(150,4 + 6 ),color_t(94 -53 ,1214 -(797 + 376) ,41),0);render.line(v360 + vec2_t(0,54) ,v360 + vec2_t(134 + 16 ,54) ,v17.accentcol:get(),0);render.text(v359,v7("\176\26\62\173\55\82\171\17\62","\59\197\116\90\200\81"),v360 + vec2_t(((3 + 147)/(2 + 0)) -(render.get_text_size(v359,v7("\232\166\235\199\56\244\166\234\198","\94\157\200\143\162")).x/2) ,((233 -178)/(2 + 0)) -(render.get_text_size(v359,v7("\235\53\247\167\248\50\253\167\250","\194\158\91\147")).y/2) ) ,v17.accentcol:get());render.rect_filled(v360 + vec2_t(0 -0 ,v357.y-(213 -143) ) ,vec2_t(545 -395 ,1387 -(1071 + 306) ),color_t(41,41,41),0);render.rect_filled(v360 + vec2_t(0,v357.y-(161 -101) ) ,vec2_t(1341 -(412 + 779) ,120 -60 ),color_t(90 -49 ,653 -(427 + 185) ,41),1655 -(1444 + 207) );render.line(v360 + vec2_t(0 -0 ,v357.y-71 ) ,v360 + vec2_t(8 + 142 ,v357.y-71 ) ,v17.accentcol:get(),0);if (icons[v7("\153\1\30\160","\149\204\114\123\210\184")]~=nil) then local v1333=0 -0 ;local v1334;local v1335;local v1336;local v1337;local v1338;local v1339;local v1340;while true do if (v1333==2) then v1337=43 -14 ;v1338=color_t.new(680 -(261 + 378) ,11 + 30 ,41);v1333=1 + 2 ;end if (v1333==(10 -7)) then v1339=vec2_t(1,1 -0 );v1340=vec2_t(349 -(22 + 326) ,3 -2 );v1333=1218 -(836 + 378) ;end if (v1333==(2 + 2)) then for v1750=v1335,v1337,v1336 do render.circle(v1334,v1750,v1338);render.circle(v1334 + v1339 ,v1750,v1338);render.circle(v1334-v1339 ,v1750,v1338);render.circle(v1334 + vec2_t( -v1339.x,v1339.y) ,v1750,v1338);render.circle(v1334 + vec2_t(v1339.x, -v1339.y) ,v1750,v1338);render.circle(v1334 + v1340 ,v1750,v1338);render.circle(v1334-v1340 ,v1750,v1338);render.circle(v1334 + vec2_t( -v1340.x,v1340.y) ,v1750,v1338);render.circle(v1334 + vec2_t(v1340.x, -v1340.y) ,v1750,v1338);end if (render.get_text_size(fonts.default(),user.name).x>(225 -140)) then render.text(fonts.default(),v7("\199\52\66\31\101\223\44\196\52","\95\161\70\39\122\69\170"),v360 + vec2_t(55,(v357.y-((129 -59)/(6 -4))) -(render.get_text_size(fonts.default(),user.name).y/(1 + 1)) ) ,color_t(180,1467 -(742 + 545) ,404 -224 ));else render.text(fonts.default(),user.name,v360 + vec2_t(55,(v357.y-((251 -181)/(1203 -(334 + 867)))) -(render.get_text_size(fonts.default(),user.name).y/(4 -2)) ) ,color_t(1584 -(317 + 1087) ,180,42 + 138 ));end break;end if (v1333==(0 -0)) then render.texture(icons[v7("\246\47\120\236","\42\163\92\29\158\90\186")].id,v360 + vec2_t(680 -(97 + 573) ,(v357.y-((270 -200)/2)) -(3 + 17) ) ,vec2_t(16 + 24 ,103 -63 ));v1334=v360 + vec2_t(8 + 2 + (1355 -(1234 + 101)) ,v357.y-(70/2) ) ;v1333=1;end if (v1333==(1 -0)) then v1335=13 + 7 ;v1336=4 -3 ;v1333=4 -2 ;end end end for v982=1200 -(711 + 489) ,3 do local v983=icons[v982];if (v982~=(v21[v7("\128\31\249\40\68\208\38\177\22\240","\71\211\122\149\77\39\164")].ref:get() -(1 + 0))) then render.texture(v983.id,v360 + vec2_t(((556 -406)/2) -(v983.size.x/2) ,45 + 10 + (v983.size.y * v982) + ((101 -51) * (v982 + (2 -1))) ) ,v983.size);render.rect_filled(v360 + vec2_t((150/2) -(v983.size.x/(644 -(483 + 159))) ,53 + 2 + (v983.size.y * v982) + (50 * (v982 + (318 -(200 + 117)))) ) ,v983.size,color_t(30,77 -(5 + 42) ,99 -69 ,120));end if input.is_key_pressed(e_keys.MOUSE_LEFT) then if input.is_mouse_in_bounds(v360 + vec2_t(0 + 0 ,(195 -155) + (v983.size.y * v982) + ((586 -(298 + 238)) * (v982 + (1822 -(1370 + 451)))) ) ,vec2_t(150,v983.size.y + 30 )) then v21[v7("\20\130\255\211\134\51\134\241\218\128","\229\71\231\147\182")].ref:set(v982 + 1 + 0 );end end end local v361=icons[v21[v7("\179\207\221\200\131\222\208\207\140\207","\173\224\170\177")].ref:get() -(1262 -(493 + 768)) ];local v362=animation.new(v7("\117\52\131\8\156\102\250\122\34\178\28\173\123\246\121\37\132\18\173\32","\155\24\81\237\125\195\18"),v21[v7("\59\38\68\83\187\82\81\10\47\77","\48\104\67\40\54\216\38")].ref:get(),5);render.texture(v361.id,v360 + vec2_t((150/(1179 -(622 + 555))) -(v361.size.x/2) ,(674 -(581 + 38)) + (v361.size.y * (v362-1)) + ((31 + 19) * v362) ) ,v361.size);render.rect_filled(v360 + vec2_t(4 -2 ,(244 -189) + (v361.size.y * (v362-(1923 -(567 + 1355)))) + ((1614 -(801 + 763)) * v362) ) ,vec2_t(1 + 1 ,v361.size.y),v17.accentcol:get());render.rect(v360,vec2_t(554 -(251 + 153) ,v357.y),color_t(902 -(709 + 193) ,1887 -(737 + 1150) ,0 + 0 ),1036 -(755 + 277) );end,function() local v363=461 -(182 + 279) ;local v364;while true do if (v363==(360 -(323 + 37))) then v364=animation.new(v7("\10\86\55\224\56\71\56\247\20\108\56\251\14\94\56\225\14\92\55","\149\103\51\89"),(menu.is_open() and 1) or 0 ,12);return v364>=(0.01 -0) ;end end end);v19.current=function() local v365=entity_list.get_local_player();if  not v365 then return 1 + 0 ;end local v366=v365:get_prop(v7("\112\122\16\137\126\115\3\128\114\70\15\152\100","\236\29\37\102"));local v367=math.vec_length2d(v366);local v368=v365:get_prop(v7("\186\28\132\21\91\182\36\145","\55\215\67\226\83"));local v369=bit.lshift(1016 -(992 + 23) ,1);local v370=bit.lshift(1,0);if ((exploits.get_charge()==(0 + 0)) and v19[v7("\194\122\195\129\166\215\233","\182\133\31\173\228\212")][8][v7("\14\12\229\182\222\74","\191\75\98\132\212\178\47\193")]:get()) then return 8;end if ((bit.band(v368,v370)==(2 -1)) and (v367>(725 -(269 + 376))) and (bit.band(v368,v369)==(0 -0))) then return (v19[v7("\152\66\230\226\26\203\243","\159\223\39\136\135\104\170")][474 -(169 + 302) ][v7("\126\249\76\249\68\26","\233\59\151\45\155\40\127")]:get() and (2 + 1)) or 1 ;end if ((bit.band(v368,v370)==(0 + 0)) and (bit.band(v368,v369)==(1327 -(623 + 704)))) then return (v19[v7("\129\5\240\65\180\1\242","\36\198\96\158")][6][v7("\1\193\11\3\114\250","\103\68\175\106\97\30\159\119")]:get() and (3 + 3)) or (818 -(420 + 397)) ;end if ((bit.band(v368,v370)==(0 + 0)) and (bit.band(v368,v369)>0.9)) then return (v19[v7("\0\232\18\4\53\236\16","\97\71\141\124")][3 + 4 ][v7("\142\215\179\60\61\174","\81\203\185\210\94")]:get() and 7) or 1 ;end if ((bit.band(v368,v370)==(1 + 0)) and (v367<(8 -5)) and (bit.band(v368,v369)==(0 -0))) then return (v19[v7("\246\221\34\168\70\83\188","\112\177\184\76\205\52\50\208")][7 -5 ][v7("\156\210\83\175\172\188","\192\217\188\50\205")]:get() and 2) or (1 + 0) ;elseif ((bit.band(v368,v370)==(1 + 0)) and v17.slowmotion:get() and (bit.band(v368,v369)==(0 -0))) then return (v19[v7("\34\72\88\60\216\4\65","\170\101\45\54\89")][4][v7("\134\166\1\87\175\173","\53\195\200\96")]:get() and 4) or (2 -1) ;end if ((bit.band(v368,v370)==1) and (bit.band(v368,v369)>(0.9 -0))) then return (v19[v7("\138\88\48\61\144\79\161","\46\205\61\94\88\226")][12 -7 ][v7("\44\202\24\161\5\193","\195\105\164\121")]:get() and (1063 -(440 + 618))) or (1036 -(593 + 442)) ;end return (v19[v7("\123\188\210\74\17\234\80","\139\60\217\188\47\99")][8][v7("\47\243\113\247\26\29","\120\106\157\16\149\118")]:get() and 8) or (1 + 0) ;end;v15:add(e_callbacks.ANTIAIM,function(v371,v372) local v373=v19.current();if (v19[v7("\83\218\36\190\172\184\192","\172\20\191\74\219\222\217")][v373][v7("\3\202\147\20\125","\21\83\163\231\119")]:get()~=6) then v17.pitch:set(v19[v7("\26\17\255\37\173\241\139","\187\93\116\145\64\223\144\231")][v373][v7("\69\25\23\181\91","\76\21\112\99\214\51")]:get());else v371:set_pitch(math.random( -(137 -48),1133 -(801 + 243) ));end v17.yawbase:set(v19[v7("\209\179\197\32\152\172\250","\205\150\214\171\69\234")][v373][v7("\238\232\240","\46\183\137\135")]:get());if (v19[v7("\209\76\91\188\68\247\69","\54\150\41\53\217")][v373][v7("\68\89\26\59\233\196\121\93","\171\29\56\109\100\132")]:get()==1) then v17.yawadd:set(0 -0 );elseif (v19[v7("\210\231\43\215\231\227\41","\178\149\130\69")][v373][v7("\74\77\243\43\113\229\119\73","\138\19\44\132\116\28")]:get()==(2 -0)) then if (v19[v7("\232\219\55\223\221\223\53","\186\175\190\89")][v373][v7("\225\2\38\185\166\198","\200\165\103\85\192")]:get()==(3 -1)) then v17.yawadd:set((v19.desyncdelayinvert and v19[v7("\137\224\189\94\87\55\3","\50\206\133\211\59\37\86\111")][v373][v7("\248\224\18\32\14\196\231\17","\98\161\129\101\127")]:get()) or v19[v7("\170\225\65\197\64\124\72","\76\237\132\47\160\50\29\36")][v373][v7("\130\211\167\228\169\219\183\211\175","\187\219\178\208")]:get() );elseif (antiaim.get_desync_side()==1) then v17.yawadd:set(v19[v7("\107\214\142\219\18\204\64","\173\44\179\224\190\96")][v373][v7("\252\164\97\98\143\192\163\98","\227\165\197\22\61")]:get());elseif (antiaim.get_desync_side()==2) then v17.yawadd:set(v19[v7("\235\76\80\173\222\72\82","\200\172\41\62")][v373][v7("\52\237\209\142\186\4\235\206\165","\200\109\140\166\209")]:get());else v17.yawadd:set(0 + 0 );end elseif (v19[v7("\229\64\215\85\208\68\213","\48\162\37\185")][v373][v7("\23\0\3\149\74\33\5\17","\39\78\97\116\202")]:get()==3) then local v1751=122 -(41 + 81) ;while true do if (v1751==(0 -0)) then if (engine.get_choked_commands()==0) then if (globals.tick_count()>v19.delay) then v19.delay=globals.tick_count() + v19[v7("\156\235\251\75\240\36\183","\69\219\142\149\46\130")][v373][v7("\248\65\17\69","\87\172\40\114\46")]:get() + math.random( -v19[v7("\81\232\236\189\23\119\225","\101\22\141\130\216")][v373][v7("\80\37\248\163\95\98\119\61\232","\23\22\73\141\192\43")]:get(),v19[v7("\202\232\233\199\235\236\225","\153\141\141\135\162")][v373][v7("\18\27\78\254\180\220\86\32\18","\55\84\119\59\157\192\169")]:get()) ;v19.delayinvert= not v19.delayinvert;end end v17.yawadd:set((v19.delayinvert and v19[v7("\25\81\115\206\246\177\15","\69\94\52\29\171\132\208\99")][v373][v7("\224\22\102\156\228\220\17\101","\136\185\119\17\195")]:get()) or v19[v7("\25\217\20\183\164\136\50","\233\94\188\122\210\214")][v373][v7("\109\18\222\187\174\181\208\92\7","\183\52\115\169\228\220\220")]:get() );break;end end elseif (v19[v7("\247\91\233\218\212\68\19","\221\176\62\135\191\166\37\127")][v373][v7("\49\36\74\202\5\42\89\240","\149\104\69\61")]:get()==(510 -(145 + 361))) then local v1890=0;local v1891;while true do if (v1890==0) then v1891=0;while true do if (v1891==(0 + 0)) then v19.chocked=v19.chocked + (engine.get_choked_commands()%(27 -13)) ;if (v19.chocked>(170 -(28 + 128))) then v19.chockedinvert= not v19.chockedinvert;v19.chocked=0;end v1891=1 -0 ;end if (v1891==(1 -0)) then v17.yawadd:set((v19.chockedinvert and v19[v7("\124\208\12\217\73\212\14","\188\59\181\98")][v373][v7("\147\175\33\155\126\25\242\15","\123\202\206\86\196\18\124\148")]:get()) or v19[v7("\85\232\140\16\247\249\117","\151\18\141\226\117\133\152\25")][v373][v7("\74\162\163\147\5\122\164\188\184","\119\19\195\212\204")]:get() );break;end end break;end end end if (v19[v7("\61\197\230\215\20\41\191","\211\122\160\136\178\102\72")][v373][v7("\104\31\143\119\15\1\224\224","\146\37\112\235\30\105\104\133")]:get()==(1 + 0)) then v17.jittermode:set(86 -(33 + 52) );else local v1341=0;while true do if (v1341==0) then v17.jittermode:set(2 -0 );if (v19[v7("\98\176\79\114\83\68\185","\33\37\213\33\23")][v373][v7("\235\4\214\137\43\215\195\25","\190\166\107\178\224\77")]:get()~=6) then local v1827=0 + 0 ;while true do if (v1827==(0 -0)) then v17.jittertype:set(v19[v7("\211\137\88\21\96\245\128","\18\148\236\54\112")][v373][v7("\172\191\242\54\57\136\181\228","\95\225\208\150\95")]:get() -1 );v17.jitterrange:set(v19[v7("\139\112\233\140\190\116\235","\233\204\21\135")][v373][v7("\131\143\203\219\217\244\171\146\240\196\222\241\187\133","\157\206\224\175\178\191")]:get());break;end end elseif (engine.get_choked_commands()==0) then if (globals.tick_count()>v19.exploit) then local v2003=0 -0 ;while true do if ((1 + 0)==v2003) then v17.jitterrange:set(((math.random(0,1347 -(1135 + 211) )==(1 + 0)) and (331 -241)) or  -(40 + 50) );break;end if (v2003==(1095 -(380 + 715))) then v19.exploit=globals.tick_count() + 5 + 59 ;v17.jittertype:set(1969 -(462 + 1506) );v2003=1823 -(1182 + 640) ;end end else v17.jittertype:set(2);v17.jitterrange:set(v19[v7("\140\115\190\181\36\195\57","\151\203\22\208\208\86\162\85")][v373][v7("\110\166\137\191\129\116\33\81\150\155\183\139\104\33","\68\35\201\237\214\231\29")]:get());end end break;end end end if (v19[v7("\120\25\232\59\77\29\234","\94\63\124\134")][v373][v7("\208\220\92\98\250\218","\27\148\185\47")]:get()>(2 -1)) then v17.overridemove:set(false);v17.overridemovesw:set(false);v17.leftamount:set(v19[v7("\101\62\243\43\177\118\224","\37\34\91\157\78\195\23\140")][v373][v7("\56\68\250\155\116\48\35\77\236\132\110","\83\124\33\137\226\26")]:get());v17.rightamount:set(v19[v7("\254\92\233\197\199\216\85","\181\185\57\135\160")][v373][v7("\253\5\241\43\0\247\159\203\9\229\58\26","\192\185\96\130\82\110\148")]:get());if (v19[v7("\96\212\26\233\49\56\3","\111\39\177\116\140\67\89")][v373][v7("\81\131\41\29\217\161","\194\21\230\90\100\183")]:get()==(6 -4)) then local v1488=0 + 0 ;while true do if ((0 -0)==v1488) then if (engine.get_choked_commands()==(0 + 0)) then if (globals.tick_count()>v19.desyncdelay) then local v2004=343 -(323 + 20) ;while true do if (0==v2004) then v19.desyncdelay=globals.tick_count() + v19[v7("\228\226\18\253\38\168\33","\77\163\135\124\152\84\201")][v373][v7("\123\11\60\246\34\246\96\26\38\236\39","\149\63\110\79\143\76")]:get() + math.random( -v19[v7("\209\131\174\180\23\63\237","\129\150\230\192\209\101\94")][v373][v7("\128\122\92\31\170\124\112\0\168\106\76\18\177\126\91\3","\102\196\31\47")]:get(),v19[v7("\200\51\62\125\80\67\161","\51\143\86\80\24\34\34\205")][v373][v7("\173\30\231\252\69\38\191\143\23\225\230\95\48\129\157\30","\224\233\123\148\133\43\69")]:get()) ;v19.desyncdelayinvert= not v19.desyncdelayinvert;break;end end end end v17.desyncside:set((v19.desyncdelayinvert and (4 -2)) or (3 + 0) );break;end end end if (v19[v7("\240\61\119\132\197\57\117","\225\183\88\25")][v373][v7("\37\244\160\43\179\3","\96\97\145\211\82\221")]:get()==3) then v17.desyncside:set(3 + 1 );end if (v19[v7("\226\236\90\183\30\80\201","\49\165\137\52\210\108")][v373][v7("\106\35\14\175\64\37","\214\46\70\125")]:get()==4) then local v1489=0 -0 ;local v1490;while true do if (v1489==(1175 -(769 + 405))) then v17.desyncdefside:set(math.random(3 -2 ,87 -(9 + 76) ));break;end if (v1489==0) then v1490=math.random(256 -(244 + 10) ,1 + 6 );v17.desyncside:set(v1490);v1489=1;end end end else v17.desyncside:set(1306 -(601 + 704) );end end,function() return v19[v7("\243\205\138\184\218\198","\218\182\163\235")]:get() and v19[v7("\138\39\163\45\63\172\46","\77\205\66\205\72")][v19.current()][v7("\128\181\254\92\143\200","\85\197\219\159\62\227\173\50")]:get() and  not v19.defensiveactive ;end);v15:add(e_callbacks.ANTIAIM,function(v374,v375) local v376=0;local v377;while true do if (v376==2) then if (v19[v7("\12\55\81\45\176\59\59\65\45","\222\72\82\55\72")][v377][v7("\0\94\210","\184\89\63\165")]:get()==3) then local v1675=0 + 0 ;local v1676;while true do if (0==v1675) then function v1676(v1924) local v1925=522 -(23 + 499) ;while true do if (v1925==0) then v19.speen=v19.speen + (v1924/(1 + 1)) ;if (v19.speen< -(176 + 4)) then v19.speen=v19.speen + (666 -(35 + 271)) ;elseif (v19.speen>(263 -83)) then v19.speen=v19.speen-(487 -127) ;end v1925=1;end if (v1925==(1 + 0)) then return v19.speen;end end end v17.yawadd:set(v1676(v19[v7("\40\221\126\9\163\192\170\161\9","\215\108\184\24\108\205\179\195")][v377][v7("\216\116\17\149\83\224\121\19\175","\37\129\21\102\202")]:get()));break;end end end if (v19[v7("\213\57\127\168\255\47\112\187\244","\205\145\92\25")][v377][v7("\102\50\162","\139\63\83\213")]:get()==(4 + 0)) then local v1677=0 -0 ;local v1678;while true do if ((0 + 0)==v1677) then v1678=0 + 0 ;while true do if (v1678==0) then v17.jittermode:set(3);v17.jittertype:set(math.random(3 -2 ,1 + 3 ));v1678=1;end if (v1678==(1 + 0)) then v17.jitterrange:set(math.random( -(510 -330),520 -340 ));break;end end break;end end end v376=3;end if (v376==(1876 -(1136 + 739))) then if (v19[v7("\10\243\45\10\56\220\90\56\243","\51\78\150\75\111\86\175")][v377][v7("\12\132\223\70\52","\37\92\237\171")]:get()<(22 -16)) then v17.pitch:set(v19[v7("\105\220\204\6\64\94\208\220\6","\46\45\185\170\99")][v377][v7("\35\194\219\180\254","\150\115\171\175\215")]:get());elseif (v19[v7("\25\128\220\160\143\28\74\50\56","\68\93\229\186\197\225\111\35")][v377][v7("\203\70\28\239\133","\22\155\47\104\140\237\139")]:get()==7) then v374:set_pitch((v19.switchactive and v19[v7("\196\45\83\126\201\206\69\246\45","\44\128\72\53\27\167\189")][v377][v7("\223\24\254\57\30\210\219\227\227\4\239\5\26","\130\143\113\138\90\118\141\173")]:get()) or v19[v7("\162\210\58\40\6\72\143\193\57","\59\230\183\92\77\104")][v377][v7("\217\78\244\250\57\200\255\70\236\236\52\200\251","\151\137\39\128\153\81")]:get() );elseif (v19[v7("\94\200\232\91\241\239\81\58\127","\76\26\173\142\62\159\156\56")][v377][v7("\133\59\22\136\239","\55\213\82\98\235\135\99")]:get()==(11 -5)) then v374:set_pitch(math.random( -89,89));end if (v19[v7("\52\186\7\115\175\110\25\169\4","\29\112\223\97\22\193")][v377][v7("\126\201\251","\205\39\168\140\127")]:get()==(576 -(125 + 449))) then v17.jitterrange:set((v19.switchactive and (v19[v7("\14\36\214\80\13\44\37","\77\73\65\184\53\127")][v377][v7("\18\114\172\123\52\249\179\45\66\190\115\62\229\179","\214\95\29\200\18\82\144")]:get() + v19[v7("\82\245\70\80\232\154\127\230\69","\233\22\144\32\53\134")][v377][v7("\6\21\50\24\33\89\51\1\32","\56\95\116\69\71\87")]:get())) or (v19[v7("\162\122\200\70\170\253\74","\38\229\31\166\35\216\156")][v377][v7("\139\120\211\254\160\126\210\229\153\97\214\251\179\114","\151\198\23\183")]:get() -v19[v7("\39\66\56\212\47\172\197\21\66","\172\99\39\94\177\65\223")][v377][v7("\126\29\46\70\191\65\163\84\66","\33\39\124\89\25\201\32\207")]:get()) );end v376=4 -2 ;end if (3==v376) then if (v19[v7("\59\17\42\57\122\241\29\9\17","\116\127\116\76\92\20\130")][v377][v7("\177\195\43","\39\232\162\92\115\219")]:get()==(884 -(96 + 783))) then local v1679=1028 -(888 + 140) ;while true do if (v1679==(0 + 0)) then v17.jittermode:set(63 -(41 + 21) );v17.yawadd:set(v19[v7("\14\242\88\64\36\228\87\83\47","\37\74\151\62")][v377][v7("\131\59\52\25\64\35\182\47\38","\66\218\90\67\70\54")]:get());break;end end end break;end if ((587 -(570 + 17))==v376) then v377=v19.current();if (engine.get_choked_commands()==(0 + 0)) then if (globals.tick_count()>v19.switch) then local v1828=0;while true do if (v1828==(0 + 0)) then v19.switch=globals.tick_count() + 1 + 1 ;v19.switchactive= not v19.switchactive;break;end end end end v376=1;end end end,function() local v378=0 -0 ;while true do if (v378==0) then if (v19[v7("\211\37\201\74\188\45","\53\150\75\168\40\208\72\229")]:get() and v19[v7("\192\188\78\136\61\230\181","\79\135\217\32\237")][v19.current()][v7("\149\14\225\76\3\43","\78\208\96\128\46\111")]:get()) then if (v19[v7("\21\240\67\28\228\251\93\145\52","\231\81\149\37\121\138\136\52")][v19.current()][v7("\113\114\58\132\123\70\126\42\132","\21\53\23\92\225")]:get()==1) then v19.defensiveactive=false;elseif (v19[v7("\206\28\93\134\167\176\216\57\239","\79\138\121\59\227\201\195\177")][v19.current()][v7("\41\210\250\18\190\192\68\27\210","\45\109\183\156\119\208\179")]:get()==(3 -1)) then local v1926=0 -0 ;while true do if ((0 -0)==v1926) then if ((v17.hideshots:get() or v17.doubletap:get()) and (exploits.get_charge()==exploits.get_max_charge()) and  not v17.fakeduck:get()) then v20:trigger();end v19.defensiveactive=v20:active();break;end end elseif (v19[v7("\17\248\142\233\59\238\129\250\48","\140\85\157\232")][v19.current()][v7("\35\206\11\118\9\216\4\101\2","\19\103\171\109")]:get()==(3 + 0)) then v19.defensive=v19.defensive + engine.get_latency(e_latency_flows.INCOMING) ;if (v19.defensive>(engine.get_latency(e_latency_flows.INCOMING) * (3 + 7))) then local v2033=755 -(321 + 434) ;while true do if (v2033==0) then v19.defensiveactive= not v19.defensiveactive;if v19.defensiveactive then v19.defensive= -engine.get_latency(e_latency_flows.INCOMING) * 10 ;else v19.defensive= -engine.get_latency(e_latency_flows.INCOMING) * (150 -100) ;end break;end end end elseif (v19[v7("\197\214\127\123\239\192\112\104\228","\30\129\179\25")][v19.current()][v7("\53\245\162\114\142\10\239\7\245","\134\113\144\196\23\224\121")]:get()==(2 + 2)) then v19.defensiveactive=((math.random(0 + 0 ,engine.get_choked_commands())==(1287 -(137 + 1149))) and true) or false ;end else v19.defensiveactive=false;end return v19.defensiveactive;end end end);v15:add(e_callbacks.EVENT,function(v379) if (v379.name==v7("\255\183\144\93\233\135\150\71\236\170\145","\51\141\216\229")) then local v1342=0 -0 ;local v1343;while true do if ((1823 -(566 + 1257))==v1342) then v1343=677 -(391 + 286) ;while true do if (v1343==(1378 -(384 + 990))) then client.log_screen(v17.accentcol:get(),v7("\175\197\57\167","\193\218\171\93"),color_t(868 -(505 + 108) ,182 + 73 ,1552 -(549 + 748) ),v7("\57\121\39\185\76\17\122\115\178\76\11\114\115\184\76\11\55\49\181\72\22\55\33\181\94\29\99","\45\120\23\83\208"));break;end if (v1343==(0 + 0)) then v19.delay=0;v19.delayinvert=false;v19.desyncdelay=0;v1343=1;end if (v1343==(1 + 0)) then local v1895=0 -0 ;while true do if (v1895==(0 + 0)) then v19.desyncdelayinvert=false;v19.chocked=0 + 0 ;v1895=1;end if (v1895==(2 -1)) then v19.chockedinvert=false;v1343=2;break;end end end if ((3 -1)==v1343) then v19.exploit=0 -0 ;v19.defensive=0;v19.defensiveactive=false;v1343=2 + 1 ;end if (v1343==(3 + 0)) then v19.switch=0;v19.switchactive=false;v19.speen=0;v1343=11 -7 ;end end break;end end end end,function() return v19[v7("\103\19\228\253\234\71","\134\34\125\133\159")]:get();end);v15:add(e_callbacks.ANTIAIM,function(v380,v381) if ( not engine.is_connected() or  not engine.is_in_game()) then return;end local v382=entity_list.get_local_player();if  not v382 then return;end local v383=v382:get_prop(v7("\136\123\205\37\89\130\90\137\75\216\41\78\173","\63\229\36\187\64\58\212"));local v384=math.vec_length2d(v383);local v385=v382:get_prop(v7("\72\125\55\234\73\67\54\223","\172\37\34\81"));local v386=bit.band(v385,bit.lshift(1,0 -0 ))==(692 -(205 + 487)) ;if  not v386 then if ((v21[v7("\127\105\52\173\239\14","\106\56\27\91\216\129")]:get()==(5 -3)) and (v384>(1 + 2))) then local v1491=0 + 0 ;while true do if (v1491==(0 -0)) then v17.legslide:set(3);v380:set_render_pose(e_poses.RUN,0);break;end end elseif ((v21[v7("\6\228\225\236\44\202","\174\65\150\142\153\66")]:get()==(1429 -(309 + 1117))) and (v384>(2 + 1))) then local v1752=0 -0 ;while true do if (v1752==0) then v17.legslide:set(2 + 0 );v380:set_render_pose(e_poses.MOVE_YAW,0);v1752=1;end if (v1752==(2 -1)) then v380:set_render_animlayer(e_animlayers.MOVEMENT_MOVE,77 -(50 + 26) );break;end end elseif ((v21[v7("\10\144\28\148\13\7","\99\77\226\115\225\99")]:get()==(2 + 2)) and (v384>3)) then local v1902=0;local v1903;while true do if ((0 + 0)==v1902) then v1903=math.random(0 + 0 ,1 + 0 )==1 ;v17.legslide:set((v1903 and (1821 -(520 + 1298))) or (1062 -(420 + 640)) );v1902=1 -0 ;end if (v1902==1) then if v1903 then local v2035=0 -0 ;while true do if (v2035==(1583 -(15 + 1567))) then v380:set_render_animlayer(e_animlayers.MOVEMENT_MOVE,0);break;end if (v2035==(0 + 0)) then v380:set_render_pose(e_poses.RUN,0 + 0 );v380:set_render_pose(e_poses.MOVE_YAW,1985 -(110 + 1874) );v2035=1;end end else local v2036=0;local v2037;while true do if (0==v2036) then v2037=0;while true do if ((0 + 0)==v2037) then v380:set_render_pose(e_poses.RUN,1);v380:set_render_pose(e_poses.MOVE_YAW,783 -(101 + 681) );v2037=1;end if (v2037==(1 + 0)) then v380:set_render_animlayer(e_animlayers.MOVEMENT_MOVE,2 -1 );break;end end break;end end end break;end end end elseif (v21[v7("\161\184\60","\94\224\209\78\145\175")]:get()==(545 -(120 + 423))) then v380:set_render_pose(e_poses.JUMP_FALL,2 -1 );elseif (v21[v7("\208\126\23","\80\145\23\101\179\200\118\20")]:get()==(2 + 1)) then local v1753=0;local v1754;while true do if ((0 + 0)==v1753) then v1754=0 + 0 ;while true do if (v1754==1) then v380:set_render_pose(e_poses.JUMP_FALL,1 + 0 );v380:set_render_animlayer(e_animlayers.MOVEMENT_MOVE,1);break;end if (v1754==(0 -0)) then v17.legslide:set(47 -(41 + 4) );v380:set_render_pose(e_poses.MOVE_YAW,1083 -(246 + 837) );v1754=907 -(492 + 414) ;end end break;end end elseif (v21[v7("\211\125\64","\180\146\20\50\22\236")]:get()==(4 + 0)) then v380:set_render_pose(e_poses.JUMP_FALL,client.random_float(0 -0 ,1050 -(829 + 220) ));v380:set_render_pose(e_poses.MOVE_YAW,client.random_float(0 + 0 ,1));v380:set_render_animlayer(e_animlayers.MOVEMENT_MOVE,client.random_float(0 + 0 ,3 -2 ));v380:set_render_pose(e_poses.SPEED,client.random_float(0 -0 ,1 -0 ));end if v21[v7("\119\147\237\242\226","\131\50\235\153\128")]:get(1496 -(345 + 1150) ) then v380:set_render_animlayer(e_animlayers.LEAN,v21[v7("\211\74\186\114","\184\159\47\219\28\28\70")]:get()/100 );end end,function() return true;end);local v26=function() utilitize={[v7("\35\215\207\110\8\220\199\113\59","\29\87\191\166")]=function(v984,v985) return function(...) return v984(v985,...);end;end,[v7("\234\86\167\1\92\231\208\84\186\27\92\193\191\8\224","\158\143\56\211\104\40")]=ffi.cast(ffi.typeof(v7("\75\167\179\52\176\74\188\130\52\234\20","\192\62\206\221\64")),memory.create_interface(v7("\242\50\69\246\49\229\112\72\255\51","\95\145\94\44\147"),v7("\215\133\9\58\228\168\17\22\239\178\12\39\248\138\12\32\245\246\85\96","\83\129\198\101")))};get_entity_address=utilitize.this_call(ffi.cast(v7("\220\15\200\13\165\215\3\217\60\178\228\15\210\38\175\207\19\227\38","\198\187\106\188\82"),utilitize.entity_list_003[1357 -(1017 + 340) ][2 + 1 ]),utilitize.entity_list_003);v16.detectState=function(v986) local v987=0 -0 ;local v988;local v989;local v990;local v991;local v992;local v993;local v994;while true do if (v987==(2 + 1)) then v994=0;if v991 then if ((v989>(58 + 22)) and  not v992) then v993,v994=v7("\199\203\220\198","\64\170\164\170\163\200\223"),4;elseif ((v989<(1842 -(1279 + 560))) and  not v992) then v993,v994=v7("\17\174\164\84\132","\169\98\218\197\58\224\28"),2;elseif ((v989<=80) and  not v992) then v993,v994=v7("\227\17\234\228\138\217\196\228\20\234\253","\171\144\125\133\147\170\180"),5 -2 ;elseif v992 then if (v989>10) then v993,v994=v7("\165\102\174\123\179\92\126\183\118","\17\193\19\205\16\147\49"),6;else v993,v994=v7("\240\96\72\77","\76\148\21\43\38\174"),5;end end elseif  not v992 then v993,v994=v7("\212\238\245","\120\181\135\135"),2 + 5 ;else v993,v994=v7("\231\250\21\137\226\230\4\194","\169\134\147\103"),19 -11 ;end v987=1467 -(140 + 1323) ;end if (v987==(1989 -(1607 + 381))) then local v1492=0 -0 ;while true do if (v1492==(2 -1)) then v987=196 -(162 + 32) ;break;end if (v1492==0) then v990=v986:get_prop(v7("\237\109\141\207\255\225\85\152","\147\128\50\235\137"));v991=bit.band(v990,1)==1 ;v1492=605 -(440 + 164) ;end end end if (v987==0) then v988=v986:get_prop(v7("\47\37\224\56\222\12\46\46\21\245\52\201\35","\75\66\122\150\93\189\90"));v989=math.vec_length2d(v988);v987=1 -0 ;end if (v987==(4 -2)) then v992=bit.band(v990,2)==(3 -1) ;v993="";v987=4 -1 ;end if (v987==4) then return v993,v994-(957 -(553 + 403)) ;end end end;v16.m_flMaxDelta=function(v995) local v996=v995:get_index();local v997=get_entity_address(v996);local v998=ffi.cast(v7("\129\223\17\117\156\167\253\34\85\139\171\226\28\96\140\173\225\34\71\145\163\251\24\62\207","\229\194\143\125\20"),ffi.cast(v7("\145\186\198\247\148\167\218\220\144","\131\228\211\168"),v997) + (144745 -105481) )[0];local v999=math.clamp(v998.m_flFeetSpeedForwardsOrSideWays,0 -0 ,342 -(111 + 230) );local v1000=v998.m_flStopToFullRunningFraction;local v1001=v998.flDuckAmount;local v1002=(((v1000 *  -0.3) -(0.2 -0)) * v999) + 1 ;if (v1001>(0 -0)) then local v1383=0 + 0 ;local v1384;while true do if (0==v1383) then v1384=v1001 * v999 ;v1002=v1002 + (v1384 * ((0.5 + 0) -v1002)) ;break;end end end return math.clamp(v1002,0,339 -(85 + 253) );end;v16.walk_to_run_transition=function(v1003,v1004,v1005,v1006) local v1007=1849 -(1558 + 291) ;local v1008;local v1009;local v1010;local v1011;local v1012;local v1013;while true do if (v1007==(1 + 0)) then local v1493=0 -0 ;while true do if (v1493==(1 -0)) then v1007=2;break;end if ((1082 -(985 + 97))==v1493) then v1010=2;v1011=260;v1493=2 -1 ;end end end if ((617 -(424 + 189))==v1007) then return v1003,v1004;end if (v1007==(3 + 0)) then if ((v1003>0) and (v1003<1)) then local v1755=v1005 * v1010 ;if (v1004==v1008) then v1003=v1003 + v1755 ;else v1003=v1003-v1755 ;end v1003=math.clamp(v1003,1023 -(19 + 1004) ,1 + 0 );end if ((v1006>v1012) and (v1004==v1009)) then local v1756=0 + 0 ;while true do if ((0 + 0)==v1756) then v1004=v1008;v1003=math.max(0.01,v1003);break;end end elseif ((v1006<v1012) and (v1004==v1008)) then local v1904=0;while true do if (v1904==(0 + 0)) then v1004=v1009;v1003=math.min(1345.99 -(231 + 1114) ,v1003);break;end end end v1007=2 + 2 ;end if (v1007==(1047 -(114 + 931))) then v1012=v1011 * (0.52 + 0) ;v1013=v1011 * 0.34 ;v1007=4 -1 ;end if (v1007==(0 + 0)) then v1008=false;v1009=true;v1007=1 + 0 ;end end end;v16.calculate_predicted_foot_yaw=function(v1014,v1015,v1016,v1017,v1018,v1019,v1020) local v1021=63 -(17 + 46) ;local v1022;local v1023;local v1024;local v1025;local v1026;local v1027;local v1028;local v1029;local v1030;local v1031;local v1032;while true do if (v1021==2) then v1028=nil;v1029=nil;v1030=nil;v1021=3;end if (v1021==1) then v1025=nil;v1026=nil;v1027=nil;v1021=1 + 1 ;end if (v1021==0) then v1022=0;v1023=nil;v1024=nil;v1021=2 -1 ;end if (v1021==(1039 -(931 + 105))) then v1031=nil;v1032=nil;while true do if (v1022==0) then v1023=1388 -(718 + 410) ;v1024=1205.1 -(361 + 844) ;v1025=2010 -(1760 + 150) ;v1022=1;end if (v1022==(1571 -(917 + 650))) then if ((v1029>v1024) or (v1018.z>v1025)) then local v1927=0;local v1928;while true do if (v1927==(181 -(104 + 77))) then v1928=v1032 * (v1026 + (v1027 * v1017)) ;v1030=math.approach_angle(v1015,v1030,v1928);break;end end else local v1929=0 -0 ;local v1930;while true do if (v1929==(0 + 0)) then v1930=v1032 * v1028 ;v1030=math.approach_angle(v1016,v1030,v1930);break;end end end return v1030;end if (v1022==(1 -0)) then local v1830=0 -0 ;while true do if (v1830==(265 -(53 + 211))) then v1028=54 + 46 ;v1022=4 -2 ;break;end if (v1830==(0 + 0)) then v1026=30;v1027=72 -52 ;v1830=1;end end end if (v1022==(1302 -(282 + 1018))) then v1029=math.min(math.vec_length2d(v1018),v1023);v1030=math.clamp(v1014, -(294 + 66),360);v1031=math.angle_diff(v1015,v1030);v1022=517 -(162 + 352) ;end if ((1 + 2)==v1022) then if (v1031>v1020) then v1030=v1015-math.abs(v1020) ;elseif (v1031<v1019) then v1030=v1015 + math.abs(v1019) ;end v1030=math.angle_normalize(v1030);v1032=globals.interval_per_tick();v1022=933 -(22 + 907) ;end end break;end end end;v16.resolve=function(v1033) local v1034=v1033.player:get_index();local v1035=v1033.player;local v1036=entity_list.get_local_player();if ( not v1036 or  not v1036:is_valid() or  not v1036:is_player() or  not v1036:is_alive()) then return;end if  not v16.last[v1034] then v16.last[v1034]={};end if ( not v1035:is_valid() or  not v1035:is_alive() or  not v1034) then return;end local v1037=get_entity_address(v1034);local v1038=ffi.cast(v7("\97\225\73\32\31\237\230\155\99\223\76\44\7\252\253\171\76\238\118\53\7\252\241\238\8","\196\34\177\37\65\102\136\148"),ffi.cast(v7("\241\130\25\97\205\111\65\128\240","\223\132\235\119\21\189\27\51"),v1037) + (39703 -(280 + 159)) )[0];if  not v1038 then return;end local v1039=v1035:get_prop(v7("\20\97\239\249\123\233\65\21\81\250\245\108\198","\36\121\62\153\156\24\191"));local v1040=math.vec_length2d(v1039);local v1041=v1038.flEyeYaw;local v1042=v1038.flGoalFeetYaw;local v1043=v1035:get_prop(v7("\37\55\230\89\13\120\63\13\242\119\46\115\49\49\225\66\21\118\58\15\229\65","\23\72\104\128\53\65"));local v1044=math.angle_diff(v1041,v1042);if ((v1041==nil) or (v1042==nil) or (v1043==nil)) then return;end local v1045=v16.m_flMaxDelta(v1035);if (v1045==nil) then return;end local v1046=v1045 * (1637.295779513082 -(1064 + 516)) ;local v1047=math.abs(v1044);if (v16.last[v1034].m_flAbsPreviousDiff==nil) then v16.last[v1034].m_flAbsPreviousDiff=0 -0 ;end local v1048=v16.last[v1034].m_flAbsPreviousDiff;local v1049=0;if (v1044<(0 + 0)) then v1049=1;elseif (v1044>(0 + 0)) then v1049= -1;end if (v1047<v1048) then if (v1040>(v16.last[v1034].m_flVelocityLengthXY or 0)) then if (v1047<=10) then v1046=v1047;elseif (v1047<=(28 + 7)) then v1046=math.max(3 + 26 ,v1047);else v1046=math.clamp(v1047,29,1962 -(1293 + 612) );end end end v16.last[v1034].m_flDesync=math.clamp(v1046 * v1049 , -(37 + 23),74 -14 );v16.last[v1034].m_flSide=v1049;v16.last[v1034].forced=false;v16.last[v1034].m_flState,v16.last[v1034].m_flStateNum=v16.detectState(v1035);v16.last[v1034].Desync= -math.min(216 -159 ,math.max((v1035:get_prop(v7("\204\252\162\43\241\204\183\34\241\194\182\38\204\198\176\34\211","\71\161\163\196"),8 + 3 ) * 120) -(1808 -(782 + 969)) ));v16.last[v1034].m_flWalkToRunTransition,v16.last[v1034].m_bWalkToRunTransitionState=v16.walk_to_run_transition(v16.last[v1034].m_flWalkToRunTransition or (0 -0) ,v16.last[v1034].m_bWalkToRunTransitionState or false ,globals.interval_per_tick(),v1040);if v16.memory[v1034] then for v1494,v1495 in pairs(v16.memory[v1034]) do if (v1494==v16.last[v1034].m_flState) then for v1831,v1832 in pairs(v1495) do if (v1831==v1049) then v16.last[v1034].m_flDesync=v1832;v16.last[v1034].forced=true;if (v1034==v16.last.target) then v16.last.Desync=v16.last[v1034].Desync;v16.last.forced=v16.last[v1034].forced;end end end end end end local v1058=v1035:get_active_weapon();if  not v1058 then return;end v1038.flGoalFeetYaw=v16.calculate_predicted_foot_yaw(v1042,v1041 + v16.last[v1034].m_flDesync ,v1043,v16.last[v1034].m_flWalkToRunTransition,v1039, -(1725 -(1085 + 583)),26 + 31 );v16.last[v1034].m_flAbsPreviousDiff=v1047;end;v15:add(e_callbacks.HITSCAN,function(v1061) v16.last.target=v1061.player:get_index();end,function() return v21[v7("\1\142\159\20\35\162\54\153","\212\83\235\236\123\79")]:get();end);v15:add(e_callbacks.NET_UPDATE,function(v1063) local v1064=1460 -(229 + 1231) ;local v1065;while true do if ((2 -1)==v1064) then for v1681,v1682 in ipairs(v1065) do if  not v1682:is_dormant() then if v1682:is_alive() then local v1933=0;local v1934;while true do if (v1933==(0 -0)) then v1934={[v7("\88\27\36\73\58\182","\196\40\119\69\48\95")]=v1682};v16.resolve(v1934);break;end end end end end break;end if (v1064==0) then v1065=entity_list.get_players(true);if  not v1065 then return;end v1064=3 -2 ;end end end,function() return v21[v7("\108\196\72\28\210\72\196\73","\190\62\161\59\115")]:get();end);v15:add(e_callbacks.EVENT,function(v1066) if (v1066.name==v7("\237\49\37\85\14\230\36\237\59\35\79\11\203\32","\84\159\94\80\59\106\185")) then if (game_rules.get_prop(v7("\82\61\94\42\145\94\14\120\42\144\81\6\89\21\137\94\27\79\33","\229\63\98\42\69"))==0) then local v1683=0 + 0 ;while true do if ((145 -(48 + 97))==v1683) then print(v7("\200\18\79\71\51\241\150\205\30\76\65\49\224\211\205\91\82\75\48\249\196\198","\182\191\123\63\46\93\150"));v16.memory={};break;end end end end if (v1066.name==v7("\254\127\38\73\169\2\154\21\225\125\41\85\175\4\154\16\251\127\43","\118\142\19\71\48\204\112\197")) then if (entity_list.get_player_from_userid(v1066.userid)==entity_list.get_local_player()) then v16.memory={};end end end,function() return v21[v7("\109\78\94\43\142\0\90\89","\118\63\43\45\68\226")]:get();end);v16.update.state=nil;v16.update.side=nil;v16.update.shot=function(v1067,v1068) local v1069=0;local v1070;local v1071;while true do if (v1069==(1846 -(676 + 1170))) then v1070=entity_list.get_local_player();if  not v1070 then return;end v1069=1973 -(830 + 1142) ;end if (v1069==(96 -(41 + 54))) then v1071=v1068.player:get_index();v1067.desync=v16.last[v1071] and v16.last[v1071].m_flDesync and math.floor(v16.last[v1071].m_flDesync) ;v1069=7 -5 ;end if (v1069==2) then v1067.side=(v16.last[v1071] and v16.last[v1071].m_flSide) or "?" ;v1067.state=(v16.last[v1071] and v16.last[v1071].m_flState) or "?" ;v1069=1069 -(536 + 530) ;end if (v1069==(5 -2)) then v1067.statenum=(v16.last[v1071] and v16.last[v1071].m_flStateNum) or "?" ;if v16.last[v1071] then v1067.forced=v16.last[v1071].forced;else v1067.forced=false;end break;end end end;v16.update.hit=function(v1072,v1073) if (v16.last.target==v1073.player:get_index()) then if  not v16.memory[v1073.player:get_index()] then v16.memory[v1073.player:get_index()]={};end if (v1072.state~=nil) then if  not v16.memory[v1073.player:get_index()][v1072.state] then v16.memory[v1073.player:get_index()][v1072.state]={};end if (v1073.aim_hitgroup==v1073.hitgroup) then local v1834=0;while true do if (0==v1834) then v16.memory[v1073.player:get_index()][v1072.state][v1072.side]=v1072.desync;if v1072.forced then print(v7("\83\230\95\163\187\82\165\69\163\92\173\164\80\224\72\237\95\184\182\74\163\68\163\74\163\165\4","\192\33\131\44\204\215\36")   .. v1073.player:get_name()   .. v7("\190\238\158\249","\217\158\143\237")   .. v1073.player:get_index()   .. "."   .. v1072.state   .. v7("\60\90\2","\113\28\38\34\89\57\190")   .. v1072.desync );else print(v7("\37\180\182\87\135\45\251\162\88\141\61\251\183\95\144\105","\226\73\219\209\48")   .. v1073.player:get_name()   .. v7("\248\72\226\161","\218\216\41\145\129\202\190")   .. v1073.player:get_index()   .. "."   .. v1072.state   .. v7("\232\5\11","\29\200\121\43\140\121")   .. v1072.desync );end break;end end end end end end;v16.update.miss=function(v1074,v1075) local v1076=0 -0 ;while true do if (v1076==0) then if  not (v1075.reason_string==v7("\242\40\3\75\94\31\76\46","\92\128\77\112\36\50\105\41")) then return;end if (v16.last.target==v1075.player:get_index()) then local v1760=1255 -(1129 + 126) ;local v1761;while true do if (v1760==(0 + 0)) then v1761=0;while true do if (v1761==(452 -(282 + 170))) then if  not v16.memory[v1075.player:get_index()] then return;end if (v1074.state~=nil) then local v2048=0 + 0 ;local v2049;while true do if (v2048==(0 + 0)) then v2049=0 + 0 ;while true do if (v2049==(4 -3)) then v16.memory[v1075.player:get_index()][v1074.state][v1074.side]=nil;print(v7("\105\81\3\173\109\93\0\165\59\89\11\175\116\70\23\226\114\90\29\182\122\90\13\167\59\80\27\167\59\64\1\226\118\93\29\177\33\20","\194\27\52\110")   .. v1074.state   .. v7("\181\52\140","\197\149\72\172\78\56\63\191")   .. v1074.side );break;end if (v2049==0) then if  not v16.memory[v1075.player:get_index()][v1074.state] then return;end if  not v16.memory[v1075.player:get_index()][v1074.state][v1074.side] then return;end v2049=1224 -(610 + 613) ;end end break;end end end break;end end break;end end end break;end end end;v15:add(e_callbacks.AIMBOT_SHOOT,function(v1077) v16.update:shot(v1077);end,function() return v21[v7("\96\133\103\114\94\150\113\111","\29\50\224\20")]:get();end);v15:add(e_callbacks.AIMBOT_HIT,function(v1078) v16.update:hit(v1078);end,function() return v21[v7("\196\91\233\58\8\227\210\57","\75\150\62\154\85\100\149\183")]:get();end);v15:add(e_callbacks.AIMBOT_MISS,function(v1079) v16.update:miss(v1079);end,function() return v21[v7("\78\19\243\208\76\203\21\110","\112\28\118\128\191\32\189")]:get();end);end;v26();v15:add(e_callbacks.HITSCAN,function(v397) local v398=0 -0 ;local v399;local v400;local v401;local v402;local v403;while true do if (v398==(1611 -(1182 + 426))) then for v1500,v1501 in pairs(v403) do if ((v1501>v400:get_prop(v7("\26\199\33\129\222\22\244\60\161","\187\119\152\72\201"))) or (v1501>use:damage())) then local v1762=trace.bullet(v401,v402[v1500],v399,v400);if (v1762.valid and (client.get_hitgroup_name(v1762.hitgroup)==v1500)) then local v1906=e_hitscan_groups[string.upper(v1500)];v397:set_hitscan_group_state(v1906,true,false);break;end end end break;end if (v398==1) then if  not v399 then return;end v401=v399:get_eye_position();v398=1 + 1 ;end if (v398==(0 + 0)) then v399=entity_list.get_local_player();v400=v397.player;v398=1235 -(1210 + 24) ;end if (v398==2) then v402={[v7("\8\235\36\38","\166\96\142\69\66\64")]=v400:get_hitbox_pos(e_hitboxes.HEAD),[v7("\51\206\239\0\75","\78\80\166\138\115\63")]=v400:get_hitbox_pos(e_hitboxes.CHEST),[v7("\93\29\164\29\80\77\1","\49\46\105\203\112")]=v400:get_hitbox_pos(e_hitboxes.PELVIS)};v403={[v7("\165\124\39\121","\110\205\25\70\29\229")]=damage:calculate(v400,v7("\173\192\15\203","\159\197\165\110\175\76\149\122")),[v7("\219\113\0\205\47","\115\184\25\101\190\91")]=damage:calculate(v400,v7("\120\59\11\223\111","\172\27\83\110")),[v7("\36\82\142\181\54\69\137","\216\87\38\225")]=damage:calculate(v400,v7("\100\179\56\58\86\40\81","\57\23\199\87\87\55\75"))};v398=2 + 1 ;end end end,function() return v21[v7("\140\229\196\236\168\224\199\241\175\228","\152\193\144\168")]:get();end);v15:add(e_callbacks.EVENT,function() cvars.cl_interpolate:set_int((v21[v7("\83\173\87\173\40\75\173\118\162\87\161\53\85","\194\26\195\35\200\90\59")].ref:get() and 0) or 1 );cvars.sv_maxunlag:set_float((v21[v7("\246\218\17\224\25\74\246\202\218\26","\134\163\180\125\143\122\33")].ref:get() and (0.4 + 0)) or (1357.2 -(307 + 1050)) );end);v15:add(e_callbacks.PAINT,function() local v404=fonts.get_or_register(v7("\232\38\79\228\194\41\95\226\211\59","\141\161\72\43"),v7("\168\114\190\0\17\201\130\51\144\6\31\223","\187\235\19\210\105\115"),838 -(693 + 121) ,954 -(267 + 17) ,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW,e_font_flags.ITALIC);local v405=use.weapon();local v406={[59 -(22 + 37) ]={[v7("\170\62\53\248","\44\196\95\88\157")]=v7("\192\37\164\169\184","\47\147\100\226\236\234"),[v7("\193\214\112","\110\179\179\22")]=menu.find(v7("\218\222\78\120\95\35","\25\187\183\35\26\48\87\140"),v405,v7("\105\222\76\113\120\203\30\121\107\218\76\100\116\219\91\101","\22\29\191\62"),v7("\155\251\201\49\28\187\129\244\219","\212\232\154\175\84\108"))[3 -1 ]},[1 + 0 ]={[v7("\52\29\193\252","\42\90\124\172\153\163\76\236")]=v7("\24\163\150\95","\24\72\234\216"),[v7("\4\124\223","\165\118\25\185\62")]=v17.ping},[1449 -(391 + 1056) ]={[v7("\11\72\232\69","\32\101\41\133")]=v7("\223\105\125\150","\179\140\37\50\193\19"),[v7("\90\184\23","\152\40\221\113\75\101")]=v17.slowmotion},[2 + 1 ]={[v7("\117\236\182\137","\123\27\141\219\236\195")]=v7("\100\107\193\218","\84\32\62\130\145\228\37\107"),[v7("\51\129\79","\178\65\228\41\211\38\54")]=v17.fakeduck},[1580 -(1117 + 459) ]={[v7("\122\166\12\218","\94\20\199\97\191\111\68\58")]=v7("\252\167","\89\177\227\128\119\42\176"),[v7("\14\177\248","\111\124\212\158\63\29\89")]=menu.find(v7("\90\86\56\41\55\79","\88\59\63\85\75"),v405,v7("\166\208\255\128\140\16\242\222\251\130\155\22\187\213\232\148","\100\210\177\141\231\233"),v7("\243\129\57\240\186\230\255\133\54\185\255","\130\158\232\87\222\154"))[5 -3 ]},[5 + 0 ]={[v7("\32\42\75\38","\117\78\75\38\67")]=v7("\215\3","\116\152\80\60\46"),[v7("\70\18\34","\126\52\119\68\20\211\101\190")]=v17.hideshots},[467 -(65 + 396) ]={[v7("\211\185\92\209","\33\189\216\49\180")]=v7("\136\142","\219\204\218\87\79"),[v7("\199\127\187","\229\181\26\221\41\33")]=v17.doubletap},[17 -10 ]={[v7("\212\240\233\11","\37\186\145\132\110\18\123\76")]=v7("\165\34","\105\227\113\136"),[v7("\17\27\7","\20\99\126\97\227\124\237\135")]=v17.freestand}};local v407={};for v1080=0 -0 , #v406 do local v1081=0;local v1082;local v1083;local v1084;local v1085;local v1086;local v1087;local v1088;local v1089;while true do if (v1081==(0 + 0)) then v1082=v406[v1080];v1083=animation.new(v7("\171\164\234\227\4\15\5\167\162\246\244\50","\100\211\205\132\135\109\108")   .. v1082.name ,(v1082.ref:get() and (1 + 0)) or (1701 -(620 + 1081)) ,12);v1084=animation.new(v7("\184\29\199\244\176\162\21\221\255\171\178\43","\217\193\116\169\144")   .. v1082.name , #v407,3 + 9 );if (v1083>=(1880.5 -(845 + 1035))) then table.insert(v407,{});end v1081=1 -0 ;end if (3==v1081) then render.push_alpha_modifier(v1088 * v1083 );render.rect_fade(v1085-vec2_t(13 -8 ,1) ,vec2_t(((1604 -(1348 + 221)) + render.get_text_size(v404,v1082.name).x) * v1088 ,render.get_text_size(v404,v1082.name).y),color_t(v1089.r,v1089.g,v1089.b,25),color_t(v1089.r,v1089.g,v1089.b,1041 -(320 + 721) ),true);render.pop_alpha_modifier();break;end if (v1081==(1959 -(1284 + 673))) then v1089=v22[v7("\198\18\134\164\252\238\8\141\191\236","\159\143\124\226\205")].ref:get();render.push_alpha_modifier(v1083);if (v1086 or (v1082.name==v7("\74\212\106\118","\37\26\157\36\49\113\211"))) then render.text(v404,v1082.name,v1085,(((exploits.get_charge()>(0 -0)) or (v1082.name==v7("\148\10\145\226","\213\196\67\223\165"))) and color_t(v1089.r,v1089.g,v1089.b)) or color_t(252 + 3 ,95 + 45 ,140) );else render.text(v404,v1082.name,v1085,color_t(240,639 -399 ,240));end render.pop_alpha_modifier();v1081=2 + 1 ;end if (v1081==(2 -1)) then v1085=vec2_t( -(148 -98) + (80 * v1083) ,(screen.y/(3.45 -2)) -(v1084 * 30) );v1086=(v1082.name==v7("\61\122","\72\121\46\73\30\208")) or (v1082.name==v7("\156\231","\228\211\180\148\224\97")) ;v1087=(v1086 and (exploits.get_charge()>(0 -0)) and (v1083>=(0.9 -0))) or ( not v1086 and (v1083>=(0.9 -0))) ;v1088=animation.new(v7("\75\234\182\229\116\229\80\243\171\228\98\255\108","\140\51\146\223\139\16")   .. v1082.name ,(v1087 and (362 -(170 + 191))) or 0 ,1748 -(209 + 1533) );v1081=2;end end end end,function() local v408=0 -0 ;local v409;while true do if (v408==(1417 -(1049 + 367))) then return v21[v7("\89\70\186\253\14\113\92\177\230\30","\109\16\40\222\148")].ref:get();end if (v408==0) then v409=entity_list.get_local_player();if ( not v409 or  not v409:is_valid() or  not v409:is_player() or  not v409:is_alive()) then return;end v408=1 -0 ;end end end);v15:add(e_callbacks.PAINT,function() local v410=0 -0 ;local v411;while true do if (v410==(0 -0)) then v411=fonts.get_or_register(v7("\224\219\91\183","\209\181\181\63"),v7("\209\34\254\185\204","\45\144\80\151\216\160"),17,650 + 100 ,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW,e_font_flags.ITALIC);render.text(v411,v7("\49\51\190\32\88\45\51\191\33","\62\68\93\218\69"),vec2_t((screen.x/2) -(render.get_text_size(v411,v7("\10\21\55\192\58\54\28\26\31","\114\127\123\83\165\92\95")).x/(4 -2)) ,screen.y-(61 -31) ),v22[v7("\241\220\234\182\212\208\255\161\205","\211\166\189\158")].ref:get());break;end end end,function() return v21[v7("\10\160\204\56\32\225\60\179\211","\140\93\193\184\93\82")].ref:get();end);local v27=dragsystem.register({v23[v7("\69\171\254\242\136\230\103\183\205\229","\143\19\206\146\157\235")],v23[v7("\230\20\132\179\211\24\156\165\239\8","\220\176\113\232")]},render.get_text_size(fonts.get_or_register(v7("\63\21\65\231\237\217\2\20\87\253\174\207\23\9\75\231\224\223","\184\118\123\37\142\142"),v7("\140\240\46\9\161","\104\205\130\71"),41 -26 ,218 + 532 ,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW,e_font_flags.ITALIC),v7("\176\23\72\138\8\16\100\248\198\87\21\213\91","\129\230\114\36\229\107\121\16")),v7("\118\10\242\185\192\206\176\89","\196\32\111\158\214\163\167"),function(v412) local v413=0 + 0 ;local v414;local v415;local v416;local v417;local v418;local v419;local v420;local v421;while true do if (v413==(3 -0)) then render.rect_filled(vec2_t(v412.position.x,v412.position.y + render.get_text_size(v415,v419).y + 3 ),vec2_t(render.get_text_size(v415,v419).x * (v418/100) ,2),v421);render.pop_alpha_modifier();break;end if (v413==2) then v412.position.x=((v412.position.x~=v23[v7("\248\32\127\205\210\199\49\106\253\201","\177\174\69\19\162")]:get()) and v23[v7("\186\75\68\21\133\19\176\149\113\80","\196\236\46\40\122\230\122")]:get()) or v412.position.x ;v412.position.y=((v412.position.y~=v23[v7("\137\242\120\174\232\57\22\166\200\109","\98\223\151\20\193\139\80")]:get()) and v23[v7("\100\160\136\213\169\251\82\222\109\188","\167\50\197\228\186\202\146\38")]:get()) or v412.position.y ;render.push_alpha_modifier(v420);render.text(v415,v419,vec2_t(v412.position.x,v412.position.y),color_t(255,181 + 74 ,1135 -(752 + 128) ));v413=3 + 0 ;end if ((1 + 0)==v413) then local v1390=0;while true do if ((18 -(7 + 11))==v1390) then v418=((v417>(92.5 + 7)) and (231 -(87 + 44))) or v417 ;v419=string.format(v7("\129\135\9\115\23\204\172\145\247\199\12\57\7","\232\215\226\101\28\116\165\216"),v418,"%");v1390=1;end if (v1390==(5 -3)) then v413=2;break;end if (v1390==1) then v420=animation.new(v7("\58\32\175\84\35\5\49\186\100\41\2\33\170\88\33\24\55\172\72","\64\108\69\195\59"),(((v416>0) or menu.is_open()) and (3 -2)) or (0 -0) ,5);v421=v22[v7("\36\118\192\87\65\27\103\213","\34\114\19\172\56")].ref:get();v1390=1537 -(656 + 879) ;end end end if (v413==0) then v414=entity_list.get_local_player();v415=fonts.get_or_register(v7("\4\28\200\25\46\19\216\31\63\1\140\7\44\0\194\25\35\21","\112\77\114\172"),v7("\172\82\33\35\184","\212\237\32\72\66"),29 -14 ,143 + 607 ,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW,e_font_flags.ITALIC);v416=math.abs((v414:get_prop(v7("\186\208\122\32\129\234\112\35\180\230\104\53\154\224\120\37\177\230\121\62","\76\215\143\28")) * (245 -145)) + (100 *  -1) );v417=animation.new(v7("\119\192\229\79\135\60\145\88\250\224\78\128\60\134\64\209\251\79\151\10\151\68\198\253","\229\33\165\137\32\228\85"),((v416==(0 -0)) and menu.is_open() and (1182 -(529 + 553))) or v416 ,5 + 0 );v413=938 -(613 + 324) ;end end end);v15:add(e_callbacks.PAINT,function() v27:update();end,function() local v422=1320 -(585 + 735) ;local v423;while true do if (v422==(0 -0)) then v423=entity_list.get_local_player();if ( not v423 or  not v423:is_valid() or  not v423:is_player() or  not v423:is_alive()) then return;end v422=1 -0 ;end if (v422==(1 + 0)) then return v21[v7("\122\205\42\40\79\193\50\62","\71\44\168\70")].ref:get();end end end);local v20=dragsystem.register({v23[v7("\38\2\221\201\12\20\210\218\7\56\195","\172\98\103\187")],v23[v7("\3\66\134\41\54\5\166\175\34\120\153","\217\71\39\224\76\88\118\207")]},render.get_text_size(fonts.get_or_register(v7("\164\183\255\160\142\184\239\166\159\170\187\190\140\171\245\160\131\190","\201\237\217\155"),v7("\86\81\82\205\182","\203\23\35\59\172\218\232\105"),30 -(6 + 9) ,2728 -1978 ,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW,e_font_flags.ITALIC),v7("\6\172\166\126\44\186\169\109\39\233\229\42\114\249","\27\66\201\192")),v7("\6\32\253\112\196\73\43\51\254","\58\66\69\155\21\170"),function(v424) local v425=entity_list.get_local_player();local v426=fonts.get_or_register(v7("\198\81\237\242\255\238\75\230\233\239\175\72\232\233\242\230\81\238","\156\143\63\137\155"),v7("\51\57\116\61\132","\232\114\75\29\92"),38 -23 ,2049 -1299 ,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW,e_font_flags.ITALIC);local v427=animation.new(v7("\45\84\255\83\199\217\0\71\252\105\192\196\13\88\250\87\221\216\6\66","\170\105\49\153\54\169"),((v19.defensiveactive or menu.is_open()) and (2 -1)) or (460 -(59 + 401)) ,794 -(743 + 46) );local v428=(((v427 * (54 + 46))>(220.5 -121)) and (182 -82)) or (v427 * 100) ;local v429=string.format(v7("\59\91\125\203\31\245\129\162\26\30\62\199\84\245","\212\127\62\27\174\113\134\232"),v428,"%");local v430=v22[v7("\215\4\181\187\248\77\178\229\4","\219\147\97\211\222\150\62")].ref:get();v424.position.x=((v424.position.x~=v23[v7("\228\69\240\136\139\162\201\86\243\178\157","\209\160\32\150\237\229")]:get()) and v23[v7("\151\63\67\71\118\228\133\165\63\122\90","\236\211\90\37\34\24\151")]:get()) or v424.position.x ;v424.position.y=((v424.position.y~=v23[v7("\112\161\181\133\90\183\186\150\81\155\170","\224\52\196\211")]:get()) and v23[v7("\59\66\67\60\61\240\22\81\64\6\42","\131\127\39\37\89\83")]:get()) or v424.position.y ;render.push_alpha_modifier(v427);render.text(v426,v429,vec2_t(v424.position.x,v424.position.y),color_t(189 + 66 ,792 -(285 + 252) ,730 -(146 + 329) ));render.rect_filled(vec2_t(v424.position.x,v424.position.y + render.get_text_size(v426,v429).y + 2 + 1 ),vec2_t(render.get_text_size(v426,v429).x * (v428/(56 + 44)) ,2),v430);render.pop_alpha_modifier();end);v15:add(e_callbacks.PAINT,function() v20:update();end,function() local v433=1470 -(417 + 1053) ;local v434;while true do if (v433==(1873 -(1251 + 621))) then return v21[v7("\237\18\233\70\84\214\192\1\234","\165\169\119\143\35\58")].ref:get();end if (v433==(0 + 0)) then v434=entity_list.get_local_player();if ( not v434 or  not v434:is_valid() or  not v434:is_player() or  not v434:is_alive()) then return;end v433=1;end end end);v15:add(e_callbacks.PAINT,function() local v435=0 -0 ;while true do if (v435==1) then cvars.c_maxdistance:set_int(v21[v7("\208\7\198\88\213\207\49\246\28\192\68","\84\132\111\175\42\177\191")].ref:get());cvars.cam_idealdist:set_int(v21[v7("\220\129\36\219\11\85\54\16\251\134\35","\98\136\233\77\169\111\37\83")].ref:get());break;end if ((236 -(213 + 23))==v435) then cvars.cam_command:set_int((v24[v7("\215\240\33\167\236\1\211\241\235\39\187","\182\131\152\72\213\136\113")].ref:get() and (745 -(617 + 127))) or 0 );cvars.c_mindistance:set_int(v21[v7("\114\24\188\186\66\0\176\186\85\31\187","\200\38\112\213")].ref:get());v435=693 -(181 + 511) ;end end end,function() return v21[v7("\82\189\56\173\226\230\101\189\52\188\237\201\116\167\46\161\231","\185\17\213\93\206\137")].ref:get();end);v15:add(e_callbacks.EVENT,function() cvars.sv_cheats:set_int(381 -(187 + 193) );end,function() return v21[v7("\159\50\143\22\177\131\46\130\28\168\184\42\143\7\169\179\52","\218\220\90\234\117")].ref:get();end);v15:add(e_callbacks.WORLD_HITMARKER,function(v436,v437,v438,v439,v440,v441) local v442=0;while true do if ((1290 -(107 + 1182))==v442) then render.rect_filled(vec2_t(v436.x-(1985 -(1623 + 361)) ,v436.y-(1 + 4) ),vec2_t(1823 -(325 + 1496) ,10),v22[v7("\40\0\193\9\137\239\31\5\27","\116\96\105\181\100\232\157")].ref:get());render.pop_alpha_modifier();break;end if (v442==(356 -(235 + 121))) then render.push_alpha_modifier(v438);render.rect_filled(vec2_t(v436.x-(5 + 0) ,v436.y-(2 -1) ),vec2_t(7 + 3 ,7 -5 ),v22[v7("\234\24\208\45\80\56\122\199\3","\17\162\113\164\64\49\74")].ref:get());v442=1;end end end,function() return v21[v7("\97\50\204\1\58\28\123\94\91","\59\41\91\184\108\91\110\16")].ref:get();end);v15:add(e_callbacks.PLAYER_ESP,function(v443) v443:set_font(fonts.get_or_register(v7("\175\70\175\94\0\141\73\177\94","\115\232\39\194\59"),v7("\47\202\239\57\175\26","\194\123\171\135\86"),25 -14 ,500,e_font_flags.ANTIALIAS,e_font_flags.DROPSHADOW));end,function() return v21[v7("\108\137\124\193\32\192\26\122\81\150\106","\21\63\226\25\164\84\159\124")].ref:get();end);v15:add(e_callbacks.SETUP_COMMAND,function(v444) local v445=0;local v446;local v447;local v448;local v449;local v450;local v451;local v452;local v453;local v454;local v455;local v456;while true do if (v445==(52 -(28 + 21))) then v452=math.clamp(v449.throw_velocity * (0.9 -0) ,6 + 9 ,750);v452=v452 * ((v451 * 0.7) + (687.3 -(630 + 57))) ;v452=vec3_t(v452,v452,v452);v453=v447:get_prop(v7("\188\39\67\81\222\59\180\20\90\87\212\25\168","\109\209\120\53\52\189"));v454=(v450 * v452) + (v453 * vec3_t(1.45 + 0 ,3.45 -2 ,1.45 + 0 )) ;v445=4 + 0 ;end if (v445==(894 -(21 + 867))) then if (v21[v7("\119\7\238\1","\210\35\104\157\114\187")].ref:get()==(10 -7)) then local v1686=1767 -(1555 + 212) ;local v1687;local v1688;while true do if (v1686==(0 + 0)) then v1687=v447:get_prop(v7("\119\250\179\29\173\76\6\195","\176\26\165\213\91\193\45\97"));v1688=bit.band(v1687,bit.lshift(1 -0 ,0 + 0 ))==(0 + 0) ;v1686=1 + 0 ;end if (v1686==(1 + 0)) then if v1688 then v444.viewangles.x=v446.target_angles.x;end break;end end elseif (v21[v7("\3\41\153\243","\138\87\70\234\128\155\115")].ref:get()==4) then v444.viewangles.x=v446.target_angles.x;end break;end if (4==v445) then v454=v454:to_angle();v455=v446.lastangles.y-v454.y ;while v455>180  do v455=v455-(1045 -685) ;end while v455< -(385 -205)  do v455=v455 + (565 -205) ;end v456=(v446.lastangles.x-v454.x) -(28 -18) ;v445=5;end if (v445==(12 -7)) then while v456>(49 + 41)  do v456=v456-45 ;end while v456< -(20 + 70)  do v456=v456 + (114 -69) ;end v446.target_angles.y=v446.lastangles.y + v455 ;v446.target_angles.x=math.clamp(v446.lastangles.x + v456 , -89,5 + 84 );v444.viewangles.y=v446.target_angles.y;v445=6;end if ((0 + 0)==v445) then v446={[v7("\239\198\184\238\55\251\25","\122\142\168\223\177\65\158")]=function(v1503) return vec3_t(math.cos((v1503.x * math.pi)/180 ) * math.cos((v1503.y * math.pi)/180 ) ,math.cos((v1503.x * math.pi)/180 ) * math.sin((v1503.y * math.pi)/(1121 -(903 + 38)) ) , -math.sin((v1503.x * math.pi)/180 ));end,[v7("\215\34\3\2\223\66\23\194\45\22\9\223\69","\72\163\67\113\101\186\54")]=vec3_t(386 -(74 + 312) ,1320 -(837 + 483) ,0)};if v17.nadehelper:get() then return;end v447=entity_list.get_local_player();if ( not v447 or  not v447:is_player() or  not v447:is_alive()) then return;end if (v447:get_prop(v7("\36\184\217\142\63\130\192\152\57\130","\225\73\231\148"))==9) then return;end v445=1 -0 ;end if (v445==(1 + 1)) then if  not v448:get_prop(v7("\28\9\72\90\242\25\36\65\65\245\5\36\75\88\193\5\62","\166\113\86\46\54")) then return;end v450=vec3_t(v444.viewangles.x,v446.lastangles.y,0 + 0 );v450.x=v450.x-((((36 + 54) -math.abs(v450.x)) * (1551 -(1455 + 86)))/90) ;v450=v446.ang_vec(v450);v451=math.clamp(v448:get_prop(v7("\194\234\113\209\213\206\149\8\216\230\99\207\228\200\128\19\199","\103\175\181\23\189\129\166\231")),824 -(803 + 21) ,1);v445=4 -1 ;end if (v445==1) then local v1395=0 -0 ;while true do if (v1395==(1 -0)) then v449=v448:get_weapon_data();if  not v449 then return;end v1395=1 + 1 ;end if (v1395==2) then v446.lastangles=engine.get_view_angles();v445=2 + 0 ;break;end if (v1395==(0 + 0)) then v448=v447:get_active_weapon();if  not v448 then return;end v1395=2 -1 ;end end end end end,function() return v21[v7("\149\212\193\83","\173\193\187\178\32\191\194\112")].ref:get()~=(1 + 0) ;end);local v28={[v7("\237\36\216\227\28\54\233\33\199\238\26\42","\68\140\66\179\135\117")]=2 -1 ,[v7("\117\140\67\197\45\84\164\125\142","\200\20\234\40\154\91\53")]=false,[v7("\65\189\160","\27\32\219\203\219")]=0};v15:add(e_callbacks.SETUP_COMMAND,function(v457) local v458=0 + 0 ;local v459;while true do if (v458==0) then v459=899 -(497 + 402) ;while true do if (v459==1) then if v457:has_button(e_cmd_buttons.MOVERIGHT) then v28.afk_valid=false;end if v457:has_button(e_cmd_buttons.FORWARD) then v28.afk_valid=false;end v459=990 -(578 + 410) ;end if (v459==(0 -0)) then if (v28.afk_valid==true) then v28.afk=v28.afk + 1 ;if (v28.afk>(1671 -(464 + 1079))) then v28.afk=0 + 0 ;v28.afkdirection= not v28.afkdirection;end end if v457:has_button(e_cmd_buttons.MOVELEFT) then v28.afk_valid=false;end v459=1697 -(1398 + 298) ;end if (v459==(2 -0)) then if v457:has_button(e_cmd_buttons.BACK) then v28.afk_valid=false;end if ((v28.afk<8) and v28.afk_valid) then v457.move.x=(416 + 34) * ((v28.afkdirection and 1) or  -(1 -0)) ;end break;end end break;end end end,function() return v21[v7("\7\243\13\183\255\118\89","\223\70\157\121\222\158\16\50")].ref:get();end);v15:add(e_callbacks.EVENT,function(v460) if (v460.name==v7("\162\26\187\227\235\113\58\164\20\188\249","\73\208\117\206\141\143\46")) then v28.afk_valid=true;end end,function() return v21[v7("\142\244\69\122\174\252\90","\19\207\154\49")].ref:get();end);local v29=0;v15:add(e_callbacks.PAINT,function() local v461=0 + 0 ;local v462;while true do if (v461==0) then v462={"","","u","u",v7("\46\60","\158\91\82\98\156\127"),v7("\164\138","\237\209\228\130\166\82\85"),v7("\226\171\253","\73\151\197\153\165\98"),v7("\64\20\241","\69\53\122\149\170\219\18"),v7("\36\241\16\243","\234\81\159\116\150\82\54\140"),v7("\15\206\1\26","\127\122\160\101"),v7("\66\37\45\236\167","\225\55\75\73\137\193\106\26"),v7("\92\181\66\31\79","\122\41\219\38"),v7("\98\173\221\176\113\170","\213\23\195\185"),v7("\157\46\114\169\203\57","\231\232\64\22\204\173\80\34"),v7("\95\85\203\161\76\82\193","\196\42\59\175"),v7("\55\60\61\21\62\43\60","\88\66\82\89\112"),v7("\11\142\43\80\88\23\142\42","\62\126\224\79\53"),v7("\73\119\192\141\207\85\119\193","\169\60\25\164\232"),v7("\214\2\132\213\87\4\193\198\8","\175\163\108\224\176\49\109"),v7("\218\48\32\176\41\33\193\59\32","\72\175\94\68\213\79"),v7("\206\183\247\206\233\210\183\246\207","\143\187\217\147\171"),v7("\200\22\115\186\1\212\22\114\187","\103\189\120\23\223"),v7("\102\74\125\1\175\7\23\228\119","\129\19\36\25\100\201\110\121"),v7("\19\17\85\185\0\22\95\185\2","\220\102\127\49"),v7("\93\19\75\201\14\189\177\182\76","\211\40\125\47\172\104\212\223"),v7("\91\79\40\11\72\72\34\11\74","\110\46\33\76"),v7("\161\143\188\218\49\189\143\189","\87\212\225\216\191"),v7("\243\93\193\141\191\239\93\192","\217\134\51\165\232"),v7("\182\50\196\0\16\170\50","\118\195\92\160\101"),v7("\181\18\43\42\63\27\174","\114\192\124\79\79\89"),v7("\157\254\179\193\224\129","\134\232\144\215\164"),v7("\248\72\86\80\143\18","\83\141\38\50\53\233\123\174"),v7("\40\140\161\80\50","\16\93\226\197\53\84\223\33"),v7("\108\221\248\31\174","\119\25\179\156\122\200"),v7("\237\225\44\241","\148\152\143\72"),v7("\233\19\223\193","\89\156\125\187\164"),v7("\213\89\193","\96\160\55\165\216\168\144\191"),v7("\13\90\113","\90\120\52\21"),v7("\158\30","\214\235\112\155\53\164"),v7("\92\224","\76\41\142\97"),"u","u"};if ((globals.real_time() -v29)>=0.15) then local v1689=0;local v1690;while true do if (v1689==0) then v1690=math.floor(((((globals.cur_time()/0.296875) + 6.60925) -(1055.07 -(721 + 334))) -engine.get_latency(e_latency_flows.OUTGOING)) -engine.get_latency(e_latency_flows.INCOMING) );client.set_clantag(v462[(v1690% #v462) + 1 ]   .. v7("\169\132\142\85\58\94\89\86\169\132\142\85\58\94\89\86\169\132\142\85\58\94\89\86\169\132\142\85\58\94\89\86\169\132\142","\118\137\164\174\117\26\126\121") );v1689=1863 -(1322 + 540) ;end if ((1 + 0)==v1689) then v29=globals.real_time();break;end end end break;end end end,function() local v463=1372 -(575 + 797) ;local v464;while true do if (0==v463) then v464=1129 -(274 + 855) ;while true do if (v464==(0 -0)) then local v1764=0 + 0 ;local v1765;while true do if (v1764==(0 -0)) then v1765=0 + 0 ;while true do if ((0 + 0)==v1765) then if ((globals.real_time() -v29)>=2) then local v2050=1809 -(986 + 823) ;while true do if (v2050==0) then client.set_clantag("");v29=globals.real_time();break;end end end return v21[v7("\41\172\79\116\104\15\13","\110\106\192\46\26\28")]:get();end end break;end end end end break;end end end);v15:add(e_callbacks.EVENT,function(v465) local v466=0 + 0 ;local v467;while true do if (v466==(1013 -(872 + 141))) then v467={"undf говорит 1","Ты забыл включить undf, бот, или ты такой тупой по жизни?","undf даже не маскирует вонь твоей мамаши.","Верни свои жалкие деньги, undf на таких бедняков, как ты, не рассчитан.","С твоими навыками даже undf не вытащит тебя из помойки.","undf не спасает тупых, таких как ты.","Легко? С undf было бы унизительно просто.","Ты продал этот хедшот? Наверное, undf тебе не одобрил.","Продли undf, а не свою никчёмность.","undf даже твою мамашу не спасёт, но она умоляет о нём каждую ночь.","Единственное, что ниже твоего k/d, это твоё жалкое понимание undf.","Твоя меткость хуже, чем шанс undf спасти твою никчёмность.","Поиграй с undf, хотя бы библиотечный Wi-Fi перестанет лагать.","Единственное, что менее надёжно, чем ты, это undf, если он у тебя был.","undf считает тебя настолько тупым, что удалился из твоей системы.","С undf ты хотя бы смог бы умирать красиво, а не позорно.","Я бы прыгнул с твоего эго на твоё понимание undf, но сдохну от стыда в полёте.","Ты бы хоть раз прочитал, как использовать undf, тупица.","Отдай undf своему стулу, у него больше шансов на победу.","37 триллионов клеток в твоём теле и ни одна не знает, как пользоваться undf.","Я бы назвал тебя инструментом, но undf даже в руках идиота полезнее."};if (v465.name==v7("\220\64\18\240\196\30\246\200\73\18\253\201","\169\172\44\115\137\161\108")) then local v1691=486 -(421 + 65) ;local v1692;while true do if (v1691==(0 -0)) then v1692=entity_list.get_local_player();if v1692 then local v1986=0;local v1987;while true do if (v1986==0) then v1987=entity_list.get_player_from_userid(v465.attacker);if v1987 then if (v1987==v1692) then client.delay_call(function() engine.execute_cmd(v7("\188\244\148\148","\60\207\149\237\180")   .. v467[math.random(1 + 0 , #v467)] );end,1);end end break;end end end break;end end end break;end end end,function() return v21[v7("\195\38\138\245\255\32\138\234\252","\134\151\84\235")].ref:get();end);print([[Lua has been loaded from instance
+    ]] ),
+
+
+}
+
+if not filesystem.is_directory(".undf/") then 
+    filesystem.create_directory(".undf/")
+end
+
+http_instance = http:new()
+
+http_instance:download_image("https://raw.githubusercontent.com/vleav/shit/refs/heads/main/user.jpg", ".undf/user.jpg", function(success, message)
+    if success then
+        icons["User"] = render.load_image("./csgo/.undf/user.jpg")
+    end
+end)
+
+damage = (function () 
+    self = {}
+    self.scale = {
+        stomach = 1.25,
+        chest = 1,
+        head = 4
+    }
+    self.calculate = function(self, player, hitbox)
+        local lplr = entity_list.get_local_player()
+        if not lplr then
+            return 0
+        end
+        local weaponidk = lplr:get_active_weapon()
+        if not weaponidk then
+            return 0
+        end
+        local weapon = lplr:get_active_weapon():get_weapon_data()
+        if not weapon then
+            return 0
+        end
+        local local_origin = lplr:get_prop("m_vecAbsOrigin")
+        local distance = local_origin:dist(player:get_prop("m_vecAbsOrigin"))
+        local weapon_adjust = weapon.damage
+        local dmg_after_range = (weapon_adjust * math.pow(weapon.range_modifier, (distance * 0.002)))
+        local armor = player:get_prop("m_ArmorValue")
+        local newdmg = dmg_after_range * (weapon.armor_ratio * 0.5)
+        if dmg_after_range - (dmg_after_range * (weapon.armor_ratio * 0.5)) * 0.5 > armor then
+            newdmg = dmg_after_range - (armor / 0.5)
+        end
+        local enemy_health = player:get_prop("m_iHealth")
+        -- local newdmg_indi = newdmg * 1.25
+
+        return newdmg * self.scale[hitbox]
+    end
+
+    return self
+end)()
+
+
+use = (function () 
+    self = {}
+    self.dump = function(self, o)
+        if type(o) == 'table' then
+            local s = '{ '
+            for k, v in pairs(o) do
+                if type(k) ~= 'number' then
+                    k = '"' .. k .. '"'
+                end
+                s = s .. '[' .. k .. '] = ' .. self:dump(v) .. ','
+            end
+            return s .. '} '
+        else
+            return tostring(o)
+        end
+    end
+
+    self.weapon = function()
+        return ({"auto", "scout", "awp", "deagle", "revolver", "pistols"})[ragebot.get_active_cfg() + 1] or "other"
+    end
+
+    self.damage = function(self)
+        local dmg_ovr = menu.find("aimbot", self.weapon(), "target overrides", "min. damage")[1]
+        local dmg_ovr_key = menu.find("aimbot", self.weapon(), "target overrides", "min. damage")[2]
+        local norm_dmg = menu.find("aimbot", self.weapon(), "targeting", "min. damage")
+
+        return dmg_ovr_key:get() and dmg_ovr:get() or norm_dmg:get()
+    end
+
+    self.render_glow = function(pos, size, round, color, glow_size)
+        for radius = 4, math.floor(glow_size) do
+            local radius_glow = radius / 2
+            render.rect(vec2_t(pos.x - radius_glow, pos.y - radius_glow), vec2_t(size.x + radius_glow * 2, size.y + radius_glow * 2), color_t(color.r, color.g, color.b, math.floor(color.a / glow_size * (glow_size - radius))), round)
+        end
+    end
+
+    self.animated_text = function(font, text, color2, color3, position, speed)
+        local data, totalWidth = {}, 0
+        local len, two_pi = #text, math.pi * 1.5
+        local textOffset = position
+        local clr1 = speed == 0 and color_t(255, 255, 255, 255) or color3 
+
+        for idx = 1, len do
+            local modifier = two_pi / len * idx
+            local char = text:sub(idx, idx)
+            local charWidth = render.get_text_size(font, char).x
+            data[idx] = {totalWidth, char, modifier}
+            totalWidth = totalWidth + charWidth
+        end
+
+        totalWidth = totalWidth * 0.5
+
+        return function()
+            local time = -globals.cur_time() * math.pi * speed
+            local headerOffset = textOffset - vec2_t(totalWidth, 0)
+
+            for _, char in pairs(data) do
+                local charPosition = headerOffset + vec2_t(char[1], 0)
+                local fadeValue = math.sin(time + char[3]) * 0.5 + 0.5
+                local color = clr1:fade(color2, fadeValue)
+                render.text(font, char[2], charPosition, color)
+            end
+        end
+    end
+
+    return self
+end)()
+
+screen = (function ()
+    local self = {}
+    local screen_size = render.get_screen_size() -- Obtén los valores de la pantalla una vez
+    self.x, self.y = screen_size.x, screen_size.y
+
+    return {
+        x = self.x,
+        y = self.y
+    }
+end)()
+
+
+local events = bettercall:new(); cvars.sv_cheats:set_int(1)
+
+local resolver = {memory = {}, states = {"stand", "lowvel", "move", "duck", "duckM", "air", "airC"}, last = {}, update = {}}
+
+local refs = {
+    hideshots = menu.find("aimbot", "general", "exploits", "hideshots", "enable")[2],
+    doubletap = menu.find("aimbot", "general", "exploits", "doubletap", "enable")[2],
+    dontusecharge = menu.find('aimbot', 'general', 'exploits', 'doubletap', 'dont use charge')[2],
+    dormant = menu.find("aimbot", "general", "dormant aimbot", "enable")[2],
+    ping = menu.find("aimbot", "general", "fake ping", "enable")[2],
+    resolve = menu.find("aimbot", "general", "aimbot", "resolve antiaim"),
+    autopeek = menu.find("aimbot", "general", "misc", "autopeek")[2],
+    ax = menu.find("aimbot", "general", "exploits", "force prediction"),
+    rollres = menu.find("aimbot", "general", "aimbot", "body lean resolver", "enable")[2],
+
+    slowmotion = menu.find("misc", "main", "movement", "slow walk", "enable")[2],
+    fakeduck = menu.find("antiaim", "main", "general", "fakeduck")[2],
+
+    antiprediction = menu.find("aimbot", "general", "exploits", "doubletap", "Anti-Prediction On peek"),
+
+    pitch = menu.find("antiaim", "main", "angles", "pitch"),
+    yawbase = menu.find("antiaim", "main", "angles", "yaw base"),
+    yawadd = menu.find("antiaim", "main", "angles", "yaw add"),
+    rotate = menu.find("antiaim", "main", "angles", "rotate"),
+    rotaterange = menu.find("antiaim", "main", "angles", "rotate range"),
+    rotatespeed = menu.find("antiaim", "main", "angles", "rotate speed"),
+    jittermode = menu.find("antiaim", "main", "angles", "jitter mode"),
+    jittertype = menu.find("antiaim", "main", "angles", "jitter type"),
+    jitterrange = menu.find("antiaim", "main", "angles", "jitter add"),
+
+    ladderaa = menu.find("antiaim", "main", "general", "ladder antiaim"),
+    fastladder = menu.find("antiaim", "main", "general", "fast ladder move"),
+    antibackstab = menu.find("antiaim", "main", "general", "anti knife"),
+    legslide = menu.find("antiaim", "main", "general", "leg slide"),
+
+    overridemove = menu.find("antiaim", "main", "desync", "override stand#move"),
+    overridemovesw = menu.find("antiaim", "main", "desync", "override stand#slow walk"),
+    desyncside = menu.find("antiaim", "main", "desync", "stand", "side"),
+    desyncdefside = menu.find("antiaim", "main", "desync", "stand", "default side"),
+    leftamount = menu.find("antiaim", "main", "desync", "left amount"),
+    rightamount = menu.find("antiaim", "main", "desync", "right amount"),
+    antibruteforce = menu.find("antiaim", "main", "desync", "anti bruteforce"),
+    desynconshot = menu.find("antiaim", "main", "desync", "on shot"),
+    fake_lag_value = menu.find("antiaim", "main", "fakelag", "amount"),
+
+    bodylean = menu.find("antiaim", "main", "angles", "body lean"),
+    bodyleanval = menu.find("antiaim", "main", "angles", "body lean value"),
+    movebodylean = menu.find("antiaim", "main", "angles", "moving body lean"),
+
+    enableroll = menu.find("antiaim", "main", "extended angles", "enable")[2],
+    moveroll = menu.find("antiaim", "main", "extended angles", "enable while moving"),
+    rollpitch = menu.find("antiaim", "main", "extended angles", "pitch"),
+    rolltype = menu.find("antiaim", "main", "extended angles", "type"),
+    rolloffset = menu.find("antiaim", "main", "extended angles", "offset"),
+
+    invert = menu.find("antiaim", "main", "manual", "invert desync")[2],
+    left = menu.find("antiaim", "main", "manual", "left")[2],
+    right = menu.find("antiaim", "main", "manual", "right")[2],
+    back = menu.find("antiaim", "main", "manual", "back")[2],
+    freestand = menu.find("antiaim", "main", "auto direction", "enable")[2],
+    fsstate = menu.find("antiaim", "main", "auto direction", "states"),
+
+    nadehelper = menu.find("misc", "nade helper", "general", "autothrow")[2],
+
+    transparency = menu.find("visuals", "view", "thirdperson", "transparency when scoped"),
+    health = menu.find("visuals", "esp", "players", "health#enemy")[1],
+    localchams = menu.find("visuals", "esp", "models", "enable#local"),
+    localstyle = menu.find("visuals", "esp", "models", "style#local"),
+    localcolor = menu.find("visuals", "esp", "models", "color#local")[2],
+
+    accentcol = menu.find("misc", "main", "personalization", "accent color")[2],
+
+    keybinds = menu.find("misc", "main", "indicators", "keybinds#keybinds"),
+    always = menu.find("misc", "main", "indicators", "show always-on keybinds#keybinds")
+}
+
+local groups = {
+    ["Invisible"] = eui.create("Invisible", 1),
+    ["Window"] = eui.create("Window", 2),
+    ["World"] = eui.create("World", 1),
+    ["Thirdperson"] = eui.create("Thirperson", 1),
+    ["Indicators"] = eui.create("Indicators", 2),
+    ["Misc"] = eui.create("Miscellaneous", 1),
+    ["Settings"] = eui.create("Settings", 2),
+    ["Sharing"] = eui.create("Sharing", 2),
+    ["Improvements"] = eui.create("Enhancements", 1),
+    ["Resolver"] = eui.create("Resolver system", 2),
+    ["Conditional"] = eui.create("Conditional preset", 1),
+    ["Anims"] = eui.create("Anim breakers", 1),
+}
+local builder = {
+    ["General"] = {},
+    ["Defensive"] = {},
+    ["Enable"] = groups["Conditional"]:checkbox("Antiaim system"),
+    ["Selectable"] = groups["Conditional"]:list("Condition", {"Share","Stand", "Walk", "Slow", "Duck", "Air", "Air+", "Break"}, 4),
+    conditions = {"Share","Stand", "Walk", "Slow", "Duck", "Air", "Air+", "Break"},
+    delay = 0,
+    delayinvert = false,
+    desyncdelay = 0,
+    desyncdelayinvert = false,
+    chocked = 0,
+    chockedinvert = false,
+    exploit = 0,
+    defensive = 0,
+    defensiveactive = false,
+    switch = 0,
+    switchactive = false,
+    speen = 0,
+
+}
+
+local defensive = {
+    db = {},
+    active = function(self)
+        local player = entity_list.get_local_player()
+        local idx = player:get_index()
+        local tickcount = globals.tick_count()
+        local sim_time = client.time_to_ticks(player:get_prop("m_flSimulationTime"))
+
+        self.db[idx] = self.db[idx] and self.db[idx] or {
+            last_sim_time = 0,
+            defensive_until = 0
+        }
+
+        if self.db[idx].last_sim_time == 0 then
+            self.db[idx].last_sim_time = sim_time
+            return false
+        end
+
+        local sim_diff = sim_time - self.db[idx].last_sim_time
+
+        if sim_diff < 0 then
+
+            self.db[idx].defensive_until = tickcount + math.abs(sim_diff)
+
+            if engine.get_choked_commands() == 1 then
+                self.db[idx].defensive_until = self.db[idx].defensive_until - client.time_to_ticks(engine.get_latency())
+            end
+        end
+
+        self.db[idx].last_sim_time = sim_time
+
+        return self.db[idx].defensive_until > tickcount
+    end,
+    trigger = function()
+        if (refs.hideshots:get() or refs.doubletap:get()) and (exploits.get_charge() == exploits.get_max_charge()) then
+            exploits.force_anti_exploit_shift()
+        end
+    end
+}
+
+for i=1, #builder.conditions do 
+
+    groups["General_angles" .. i] = eui.create("[" .. builder.conditions[i] .. "] Angles", 1)
+    groups["General_modifier" .. i] = eui.create("[" .. builder.conditions[i] .. "] Modifier", 2)
+    groups["General_defensive" .. i] = eui.create("[" .. builder.conditions[i] .. "] Defensive", 3)
+
+    builder["General"][i] = {
+        ["Enable"] = groups["General_angles" .. i]:checkbox("Enable condition"),
+
+        ["Pitch"] = groups["General_angles" .. i]:selection("Pitch", {"None", "Down", "Up", "Zero", "Jitter", "Random"}),
+        ["Yaw"] = groups["General_angles" .. i]:selection("Yaw base", {"None", "Viewangle", "Crosshair", "Distance", "Velocity"}),
+
+        ["Yaw_mode"] = groups["General_modifier" .. i]:selection("Yaw mode", {"Disabled", "Left + Right", "Tickbased", "Smart based"}),
+        ["Yaw_left"] = groups["General_modifier" .. i]:slider("Yaw left", -180, 180, 1, 0),
+        ["Yaw_right"] = groups["General_modifier" .. i]:slider("Yaw right", -180, 180, 1, 0),
+        ["Tick"] = groups["General_modifier" .. i]:slider("Tick", 2, 16, 1, 0),
+        ["Fluctuate"] = groups["General_modifier" .. i]:slider("Fluctuate", 0, 6, 1, 0),
+
+        ["Modifier"] = groups["General_modifier" .. i]:selection("Yaw modifier", {"Disabled", "Offset", "Center", "3-Way", "5-Way", "Exploit"}),
+        --["Separator"] = groups["General_angles_modifier" .. i]:separator("a"),
+        ["Modifier_value"] = groups["General_modifier" .. i]:slider("Modifier value", -180, 180, 1, 0),
+
+        ["Desync"] = groups["General_modifier" .. i]:selection("Desync", {"None", "Tick", "Jitter", "Breaker"}),
+        ["Desync_text"] = groups["General_modifier" .. i]:text("( ! )  Disable invert desync keybind"),
+        ["Desync_left"] = groups["General_modifier" .. i]:slider("Desync left", 0, 100, 1, 0, "%"),
+        ["Desync_right"] = groups["General_modifier" .. i]:slider("Desync right", 0, 100, 1, 0, "%"),
+        ["Desync_tick"] = groups["General_modifier" .. i]:slider("Tick delay", 2, 16, 1, 0),
+        ["Desync_fluctuate"] = groups["General_modifier" .. i]:slider("Fluctuate delay", 0, 6, 1, 0),
+    }
+
+    builder["Defensive"][i] = {
+        ["Defensive"] = groups["General_angles" .. i]:selection("Defensive mode", {"Disabled", "Default", "Ping", "Random"}),
+
+        ["Pitch"] = groups["General_defensive" .. i]:selection("Pitch", {"Disabled", "Down", "Up", "Zero", "Jitter", "Random", "Switch"}),
+        ["Pitch_value_l"] = groups["General_defensive" .. i]:slider("Pitch value 1", -89, 89, 1, 0),
+        ["Pitch_value_r"] = groups["General_defensive" .. i]:slider("Pitch value 2", -89, 89, 1, 0),
+        ["Yaw"] = groups["General_defensive" .. i]:selection("Yaw", {"Disabled", "Switch", "Spin", "Random", "Override"}),
+        ["Yaw_value"] = groups["General_defensive" .. i]:slider("Amount", -180, 180, 1, 0),
+        
+    }
+end
+
+local inter = {
+
+    ["Selectable"] = groups["Conditional"]:selection("undf", {"1","2","3","4"}),
+
+
+    ["Multipoint"] = groups["Improvements"]:checkbox("Auto multipoint"),
+    ["Unlockping"] = groups["Improvements"]:checkbox("Unlock fake ping"),
+    ["Interpolation"] = groups["Improvements"]:checkbox("Disable interpolation"),
+
+    ["Resolver"] = groups["Resolver"]:checkbox("Custom resolver"),
+    ["Dump_memory"] = groups["Resolver"]:button("Dump memory", function ()
+        print(use:dump(resolver.memory))
+        engine.execute_cmd("showconsole")    
+    end),
+    ["Clear_memory"] = groups["Resolver"]:button("Clear memory", function ()
+        print("Memory has been reset")
+        resolver.memory = {}
+        engine.execute_cmd("showconsole")    
+    end),
+
+    ["Watermark"] = groups["Window"]:checkbox("Brand mark"),
+    --["Logs"] = groups["Window"]:checkbox("Aimbot logs"),
+    
+    ["Hitmarker"] = groups["World"]:checkbox("Hitmarker"), 
+    ["Skeet_fonts"] = groups["World"]:checkbox("Gamesense ESP"), 
+
+    ["Check_thirdperson"] = groups["Thirdperson"]:checkbox("Thirdperson"),
+    ["Thirdperson"] = groups["Thirdperson"]:slider("Distance", 0, 200, 1, 0),
+
+    ["Indicators"] = groups["Indicators"]:checkbox("Side"),
+    ["Defensive"] = groups["Indicators"]:checkbox("Defensive"),
+    ["Velocity"] = groups["Indicators"]:checkbox("Velocity"),
+
+    ["Toss"] = groups["Misc"]:selection("Toss", {"Disable", "Intelligent", "Semi mode", "Full mode"}),
+    ["Antiafk"] = groups["Misc"]:checkbox("Anti AFK"),
+    ["Clantag"] = groups["Misc"]:checkbox("Clantag"),
+    ["Trashtalk"] = groups["Misc"]:checkbox("Trashktalk"),
+
+    ["Ground"] = groups["Anims"]:selection("Ground", {"Disabled", "Follow legs", "Walk legs", "Broke legs"}),
+    ["Air"] = groups["Anims"]:selection("Air", {"Disabled", "Static legs", "Walk legs", "Broke legs"}),
+    ["Extra"] = groups["Anims"]:multi_selection("Extra", {"Lean"}),
+    ["Lean"] = groups["Anims"]:slider("Lean", 0, 100, 1, 0),
+
+    --["Configs"] = groups["Settings"]:text("Undf is working in this option but there is a problem importing/exporting that brokes some variables that dont exports correctly", 0, 100, 1, 0),
+
+    
+    ["Load_config"] = groups["Settings"]:button("Load config", function ()
+
+        local data = filesystem.read(".undf/settings.undf", "")
+        local success, result = pcall(base64.decode, data)
+        if not success then
+            client.log_screen("Invalid config (did u copy it correctly?)")
+        else
+            data = base64.decode(data)
+        end
+        local success, result = pcall(eui.import, data)
+        if not success then
+            client.log_screen(refs.accentcol:get(), "undf", color_t(255,255,255), "Invalid config: " .. result)
+        else
+            
+            client.log_screen(refs.accentcol:get(), "undf", color_t(255,255,255), "Loaded config")
+        end
+
+    end),
+    ["Save_config"] = groups["Settings"]:button("Save config", function ()
+        filesystem.write(".undf/settings.undf", base64.encode(eui.export()))
+        client.log_screen(refs.accentcol:get(), "undf", color_t(255,255,255), "Saved config")
+
+    end),
+
+    ["Import_config"] = groups["Sharing"]:button("Import config", function ()
+        local data = clipboard.get()
+        local success, result = pcall(base64.decode, data)
+        if not success then
+            client.log_screen("Invalid config (did u copy it correctly?)")
+        else
+            data = base64.decode(data)
+        end
+        local success, result = pcall(eui.import, data)
+        if not success then
+            client.log_screen(refs.accentcol:get(), "undf", color_t(255,255,255), "Invalid config: " .. result)
+        else
+            client.log_screen(refs.accentcol:get(), "undf", color_t(255,255,255), "Loaded config")
+        end
+    end),
+
+    ["Export_config"] = groups["Sharing"]:button("Export config", function ()
+        clipboard.set(base64.encode(eui.export()))    
+        client.log_screen(refs.accentcol:get(), "undf", color_t(255,255,255), "Exported config")
+    end),
+}
+
+local colors = {
+    ["Watermark"] = groups["Window"]:color_picker(inter["Watermark"], "Brand mark accent", color_t(255,255,255,125)),
+    ["Hitmarker"] = groups["World"]:color_picker(inter["Hitmarker"], "Hitmarker accent", color_t(255,255,255)),
+    ["Indicators"] = groups["Indicators"]:color_picker(inter["Indicators"], "Indicator accent", refs.accentcol:get()),
+    ["Defensive"] = groups["Indicators"]:color_picker(inter["Defensive"], "Defensive accent", refs.accentcol:get()),
+    ["Velocity"] = groups["Indicators"]:color_picker(inter["Velocity"], "Velocity  accent", refs.accentcol:get()),
+
+}
+
+local drag = {
+    ["Velocity_x"] = groups["Indicators"]:slider("Velocity x", 0, screen.x, 1, 0),
+    ["Velocity_y"] = groups["Indicators"]:slider("Velocity y", 0, screen.y, 1, 0),
+    ["Defensive_x"] = groups["Indicators"]:slider("Defensive x", 0, screen.x, 1, 0),
+    ["Defensive_y"] = groups["Indicators"]:slider("Defensive y", 0, screen.y, 1, 0),
+}
+local keys = {
+    ["Thirdperson"] = groups["Thirdperson"]:keybind(inter["Check_thirdperson"], "Thirperson key")
+}
+
+--Menu visible stuff
+events:add(e_callbacks.PAINT, function () 
+    inter["Selectable"]:depend({(false)})
+
+    builder["Enable"]:depend({inter["Selectable"], 2})
+    builder["Selectable"]:depend({builder["Enable"], true}, {inter["Selectable"], 2})
+
+    for i=1, #builder.conditions do 
+
+        builder["General"][i]["Enable"]:depend({builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+
+        builder["General"][i]["Pitch"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Yaw"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+
+        builder["General"][i]["Yaw_mode"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Yaw_left"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["General"][i]["Yaw_mode"]:get() > 1)})
+        builder["General"][i]["Yaw_right"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["General"][i]["Yaw_mode"]:get() > 1)})
+        builder["General"][i]["Tick"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {builder["General"][i]["Yaw_mode"],3})
+        builder["General"][i]["Fluctuate"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {builder["General"][i]["Yaw_mode"],3})
+
+        builder["General"][i]["Modifier"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Modifier_value"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["General"][i]["Modifier"]:get() > 1)})
+
+
+        builder["Defensive"][i]["Defensive"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+
+        builder["Defensive"][i]["Pitch"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["Defensive"][i]["Defensive"]:get() > 1)})
+        builder["Defensive"][i]["Pitch_value_l"]:depend({builder["General"][i]["Enable"], true}, {builder["Defensive"][i]["Pitch"], 7}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["Defensive"][i]["Defensive"]:get() > 1)})
+        builder["Defensive"][i]["Pitch_value_r"]:depend({builder["General"][i]["Enable"], true}, {builder["Defensive"][i]["Pitch"], 7}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["Defensive"][i]["Defensive"]:get() > 1)})
+        builder["Defensive"][i]["Yaw"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["Defensive"][i]["Defensive"]:get() > 1)})
+        builder["Defensive"][i]["Yaw_value"]:depend({builder["General"][i]["Enable"], true}, {(builder["Defensive"][i]["Yaw"]:get() ~= 1 and builder["Defensive"][i]["Yaw"]:get() ~= 4 )}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i}, {(builder["Defensive"][i]["Defensive"]:get() > 1)})
+
+        builder["General"][i]["Desync"]:depend({builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Desync_text"]:depend({refs.invert:get(), false}, {(builder["General"][i]["Desync"]:get() > 1)}, {builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Desync_left"]:depend({(builder["General"][i]["Desync"]:get() > 1)}, {builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Desync_right"]:depend({(builder["General"][i]["Desync"]:get() > 1)}, {builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Desync_tick"]:depend({builder["General"][i]["Desync"], 2}, {(builder["General"][i]["Desync"]:get() > 1)}, {builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+        builder["General"][i]["Desync_fluctuate"]:depend({builder["General"][i]["Desync"], 2}, {(builder["General"][i]["Desync"]:get() > 1)}, {builder["General"][i]["Enable"], true}, {builder["Enable"], true}, {inter["Selectable"], 2}, {builder["Selectable"], i})
+
+    end
+
+    inter["Multipoint"]:depend({inter["Selectable"], 1})
+    inter["Unlockping"]:depend({inter["Selectable"], 1})
+    inter["Interpolation"]:depend({inter["Selectable"], 1})
+    inter["Resolver"]:depend({inter["Selectable"], 1})
+    inter["Dump_memory"]:depend({inter["Selectable"], 1})
+    inter["Clear_memory"]:depend({inter["Selectable"], 1})
+
+
+    inter["Watermark"]:depend({inter["Selectable"], 3})
+    colors["Watermark"]:depend({inter["Watermark"], true}, {inter["Selectable"], 3})
+
+    --inter["Logs"]:depend({inter["Selectable"], 3})
+
+    inter["Hitmarker"]:depend({inter["Selectable"], 3})
+    colors["Hitmarker"]:depend({inter["Hitmarker"], true},{inter["Selectable"], 3})
+    inter["Skeet_fonts"]:depend({inter["Selectable"], 3})
+
+    inter["Check_thirdperson"]:depend({inter["Selectable"], 3})
+    inter["Thirdperson"]:depend({inter["Selectable"], 3}, {inter["Check_thirdperson"], true})
+    keys["Thirdperson"]:depend({inter["Selectable"], 3}, {inter["Check_thirdperson"], true})
+
+    inter["Indicators"]:depend({inter["Selectable"], 3})
+    colors["Indicators"]:depend({inter["Indicators"], true}, {inter["Selectable"], 3})
+
+    inter["Defensive"]:depend({inter["Selectable"], 3})
+    colors["Defensive"]:depend({inter["Defensive"], true}, {inter["Selectable"], 3})
+    drag["Defensive_x"]:depend({(false)})
+    drag["Defensive_y"]:depend({(false)})
+
+
+    inter["Velocity"]:depend({inter["Selectable"], 3})
+    colors["Velocity"]:depend({inter["Velocity"], true}, {inter["Selectable"], 3})
+    drag["Velocity_x"]:depend({(false)})
+    drag["Velocity_y"]:depend({(false)})
+
+    inter["Toss"]:depend({inter["Selectable"], 4})
+    inter["Clantag"]:depend({inter["Selectable"], 4})
+    inter["Antiafk"]:depend({inter["Selectable"], 4})
+    inter["Trashtalk"]:depend({inter["Selectable"], 4})
+
+    inter["Ground"]:depend({inter["Selectable"], 4})
+    inter["Air"]:depend({inter["Selectable"], 4})
+    inter["Extra"]:depend({inter["Selectable"], 4})
+    inter["Lean"]:depend({inter["Extra"]:get(1), true}, {inter["Selectable"], 4})
+
+    inter["Load_config"]:depend({inter["Selectable"], 4})
+    inter["Save_config"]:depend({inter["Selectable"], 4})
+
+    inter["Import_config"]:depend({inter["Selectable"], 4})
+    inter["Export_config"]:depend({inter["Selectable"], 4})
+
+
+end, function () 
+    return menu.is_open()
+end)
+
+events:add(e_callbacks.PAINT, function ()
+    local menu_size = menu.get_size()
+    local menu_pos = menu.get_pos()
+    local font = fonts.get_or_register("Undf", "Arial",  17, 750, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW, e_font_flags.ITALIC)
+    local pos = vec2_t(menu_pos.x + menu_size.x + 10, -menu_size.y - 50 + (50 + menu_size.y + menu_pos.y)*animation.get("menu_tabs_animation"))
+
+    render.rect_filled(pos, vec2_t(150, menu_size.y), color_t(30, 30, 30),4)
+
+
+    --HEADER 1
+    render.rect_filled(pos, vec2_t(150, 50), color_t(41, 41, 41),4)
+    render.rect_filled(pos + vec2_t(0, 45), vec2_t(150, 10), color_t(41, 41, 41),0)
+    render.line(pos + vec2_t(0, 54), pos +vec2_t(150, 54), refs.accentcol:get(),0)
+
+    render.text(font, "undefined", pos + vec2_t(150/2 - render.get_text_size(font, "undefined").x/2, 55/2 - render.get_text_size(font, "undefined").y/2), refs.accentcol:get())
+    --ENDHEADER 1
+
+    --HEADER 2
+    render.rect_filled(pos + vec2_t(0, menu_size.y - 70), vec2_t(150, 10), color_t(41, 41, 41),0)
+    render.rect_filled(pos + vec2_t(0, menu_size.y - 60), vec2_t(150, 60), color_t(41, 41, 41),4)
+    render.line(pos + vec2_t(0, menu_size.y - 71), pos + vec2_t(150, menu_size.y - 71), refs.accentcol:get(),0)
+    
+    if icons["User"] ~= nil then 
+        render.texture(icons["User"].id, pos + vec2_t(10, menu_size.y - 70/2 - 20), vec2_t(40, 40))
+        local circle_center = pos + vec2_t(10 + 20, menu_size.y - 70/2)
+        local radius = 20 
+        local step = 1
+        local max_radius = 29
+        local color = color_t.new(41, 41, 41) 
+        
+        local offset = vec2_t(1, 1)
+        local offset2 = vec2_t(1, 1) 
+
+        for r = radius, max_radius, step do
+            render.circle(circle_center, r, color)
+
+            render.circle(circle_center + offset, r, color)  
+            render.circle(circle_center - offset, r, color)  
+            render.circle(circle_center + vec2_t(-offset.x, offset.y), r, color)  
+            render.circle(circle_center + vec2_t(offset.x, -offset.y), r, color)  
+
+            render.circle(circle_center + offset2, r, color)  
+            render.circle(circle_center - offset2, r, color) 
+            render.circle(circle_center + vec2_t(-offset2.x, offset2.y), r, color)  
+            render.circle(circle_center + vec2_t(offset2.x, -offset2.y), r, color) 
+        end
+        if render.get_text_size(fonts.default(), user.name).x > 85 then 
+            render.text(fonts.default(), "free user", pos + vec2_t(55, menu_size.y - 70/2 - render.get_text_size(fonts.default(), user.name).y/2), color_t(180,180,180))
+        else 
+            render.text(fonts.default(), user.name, pos + vec2_t(55, menu_size.y - 70/2 - render.get_text_size(fonts.default(), user.name).y/2), color_t(180,180,180))
+        end
+    end
+    --ENDHEADER 2
+
+
+
+
+    for i=0, 3 do 
+        local icon = icons[i]
+
+        if i ~= inter["Selectable"].ref:get() - 1 then
+            render.texture(icon.id, pos + vec2_t(150/2 - icon.size.x/2, 55 + (icon.size.y*i) + 50*(i+1)), icon.size)
+            render.rect_filled(pos + vec2_t(150/2 - icon.size.x/2, 55 + (icon.size.y*i) + 50*(i+1)),icon.size, color_t(30,30,30,120))
+        end
+
+        
+        if input.is_key_pressed(e_keys.MOUSE_LEFT) then
+    
+            if input.is_mouse_in_bounds(pos + vec2_t(0, 40 + (icon.size.y*i) + 50*(i+1)),vec2_t(150, icon.size.y + 30)) then
+                inter["Selectable"].ref:set(i+1)            
+            end
+        end
+    end
+
+    local currenticon = icons[inter["Selectable"].ref:get() - 1]
+    local anim = animation.new("menu_tabs_animation2", inter["Selectable"].ref:get(), 5)
+
+    render.texture(currenticon.id, pos + vec2_t(150/2 - currenticon.size.x/2, 55 + (currenticon.size.y*(anim-1)) + 50*(anim)), currenticon.size)
+    render.rect_filled(pos + vec2_t(2, 55 + (currenticon.size.y*(anim-1)) + 50*(anim)), vec2_t(2, currenticon.size.y), refs.accentcol:get())
+
+
+
+
+    render.rect(pos, vec2_t(150, menu_size.y), color_t(0, 0, 0),4)
+
+    --render.rect(pos, vec2_t(220, 80), color_t(0,0,0), 4)
+
+
+end, function () 
+    local anim = animation.new("menu_tabs_animation", menu.is_open() and 1 or 0, 12)
+    return anim >= 0.01
+end)
+
+--builder system 
+builder.current = function () 
+    local lp = entity_list.get_local_player()
+    if not lp then
+        return 1
+    end 
+    local m_vecVelocity = lp:get_prop('m_vecVelocity')
+    local velocity = math.vec_length2d(m_vecVelocity)
+    local flags = lp:get_prop('m_fFlags')
+    local ducking = bit.lshift(1, 1)
+    local ground = bit.lshift(1, 0)
+
+    if exploits.get_charge() == 0 and builder["General"][8]["Enable"]:get() then 
+        return 8
+    end
+    if bit.band(flags, ground) == 1 and velocity > 80 and bit.band(flags, ducking) == 0 then
+        return builder["General"][3]["Enable"]:get() and 3 or 1 --Walk
+    end
+    if bit.band(flags, ground) == 0 and bit.band(flags, ducking) == 0 then
+        return builder["General"][6]["Enable"]:get() and 6 or 1 --Air
+    end
+    if bit.band(flags, ground) == 0 and bit.band(flags, ducking) > 0.9 then
+        return builder["General"][7]["Enable"]:get() and 7 or 1 --Air+
+    end
+    if bit.band(flags, ground) == 1 and velocity < 3 and bit.band(flags, ducking) == 0 then
+        return builder["General"][2]["Enable"]:get() and 2 or 1 --Stand
+    else
+        if bit.band(flags, ground) == 1 and refs.slowmotion:get() and bit.band(flags, ducking) == 0 then
+            return builder["General"][4]["Enable"]:get() and 4 or 1 --Slow
+        end
+    end
+    if bit.band(flags, ground) == 1 and bit.band(flags, ducking) > 0.9 then
+        return builder["General"][5]["Enable"]:get() and 5 or 1 --Duck
+    end
+    return builder["General"][8]["Enable"]:get() and 8 or 1
+end
+
+events:add(e_callbacks.ANTIAIM, function(ctx, cmd)
+    local i = builder.current()
+    if builder["General"][i]["Pitch"]:get() ~= 6 then 
+        refs.pitch:set(builder["General"][i]["Pitch"]:get())
+    else
+        ctx:set_pitch(math.random(-89,89))
+    end
+
+    refs.yawbase:set(builder["General"][i]["Yaw"]:get())
+    
+    --YAW BASE
+    if builder["General"][i]["Yaw_mode"]:get() == 1 then 
+        refs.yawadd:set(0)
+    elseif builder["General"][i]["Yaw_mode"]:get() == 2 then 
+        if builder["General"][i]["Desync"]:get() == 2 then 
+            refs.yawadd:set(builder.desyncdelayinvert and builder["General"][i]["Yaw_left"]:get() or builder["General"][i]["Yaw_right"]:get())
+        else
+            if antiaim.get_desync_side() == 1 then --Left
+                refs.yawadd:set(builder["General"][i]["Yaw_left"]:get())
+            elseif antiaim.get_desync_side() == 2 then --Right 
+                refs.yawadd:set(builder["General"][i]["Yaw_right"]:get())
+            else --No side
+                refs.yawadd:set(0)
+            end
+        end
+
+    elseif builder["General"][i]["Yaw_mode"]:get() == 3 then 
+        if engine.get_choked_commands() == 0 then
+            if globals.tick_count() > builder.delay then
+                builder.delay = globals.tick_count() + builder["General"][i]["Tick"]:get() + math.random(-builder["General"][i]["Fluctuate"]:get(), builder["General"][i]["Fluctuate"]:get())
+                builder.delayinvert = not builder.delayinvert
+            end
+        end
+        refs.yawadd:set(builder.delayinvert and builder["General"][i]["Yaw_left"]:get() or builder["General"][i]["Yaw_right"]:get())
+
+    elseif builder["General"][i]["Yaw_mode"]:get() == 4 then 
+        builder.chocked = builder.chocked + engine.get_choked_commands()%14
+        if builder.chocked > 14  then 
+            builder.chockedinvert = not builder.chockedinvert
+            builder.chocked = 0
+        end
+        
+        refs.yawadd:set(builder.chockedinvert and builder["General"][i]["Yaw_left"]:get() or builder["General"][i]["Yaw_right"]:get())
+    end
+
+    --YAW MODIFIER 
+    if builder["General"][i]["Modifier"]:get() == 1 then
+        refs.jittermode:set(1)
+    else
+        refs.jittermode:set(2)
+        if builder["General"][i]["Modifier"]:get() ~= 6 then 
+            refs.jittertype:set(builder["General"][i]["Modifier"]:get()-1)
+            refs.jitterrange:set(builder["General"][i]["Modifier_value"]:get())
+        else 
+
+            if engine.get_choked_commands() == 0 then
+                if globals.tick_count() > builder.exploit then
+                    builder.exploit = globals.tick_count() + 64
+                    refs.jittertype:set(1)
+                    refs.jitterrange:set(math.random(0,1) == 1 and 90 or -90)
+                else
+                    refs.jittertype:set(2)
+                    refs.jitterrange:set(builder["General"][i]["Modifier_value"]:get())
+                end
+            end
+
+
+        end
+    end
+
+    --DESYNC BASE
+    if builder["General"][i]["Desync"]:get() > 1 then   
+        refs.overridemove:set(false)
+        refs.overridemovesw:set(false)
+
+        refs.leftamount:set(builder["General"][i]["Desync_left"]:get())
+        refs.rightamount:set(builder["General"][i]["Desync_right"]:get())
+        if builder["General"][i]["Desync"]:get() == 2 then 
+            if engine.get_choked_commands() == 0 then
+                if globals.tick_count() > builder.desyncdelay then
+                    builder.desyncdelay = globals.tick_count() + builder["General"][i]["Desync_tick"]:get() + math.random(-builder["General"][i]["Desync_fluctuate"]:get(), builder["General"][i]["Desync_fluctuate"]:get())
+                    builder.desyncdelayinvert = not builder.desyncdelayinvert
+                end 
+            end
+       
+            refs.desyncside:set(builder.desyncdelayinvert and 2 or 3)
+        end
+
+        if builder["General"][i]["Desync"]:get() == 3 then 
+            refs.desyncside:set(4)
+        end
+
+        if builder["General"][i]["Desync"]:get() == 4 then 
+            local value = math.random(2, 7)
+
+            refs.desyncside:set(value)
+            refs.desyncdefside:set(math.random(1,2))
+
+        end
+
+    else 
+        refs.desyncside:set(1)
+    end
+
+end, function () 
+    return builder["Enable"]:get() and builder["General"][builder.current()]["Enable"]:get() and not builder.defensiveactive
+end)
+
+events:add(e_callbacks.ANTIAIM, function(ctx, cmd)
+    local i = builder.current()
+    if engine.get_choked_commands() == 0 then
+        if globals.tick_count() > builder.switch then
+            builder.switch = globals.tick_count() + 2
+            builder.switchactive = not builder.switchactive 
+        end
+    end
+    if builder["Defensive"][i]["Pitch"]:get() < 6 then 
+        refs.pitch:set(builder["Defensive"][i]["Pitch"]:get())
+    else
+        
+        if builder["Defensive"][i]["Pitch"]:get() == 7 then 
+
+            ctx:set_pitch(builder.switchactive and builder["Defensive"][i]["Pitch_value_l"]:get() or builder["Defensive"][i]["Pitch_value_r"]:get())
+
+        elseif builder["Defensive"][i]["Pitch"]:get() == 6 then 
+            ctx:set_pitch(math.random(-89,89))
+        end
+    end
+
+    if builder["Defensive"][i]["Yaw"]:get() == 2 then 
+        refs.jitterrange:set(builder.switchactive and builder["General"][i]["Modifier_value"]:get() + builder["Defensive"][i]["Yaw_value"]:get() or builder["General"][i]["Modifier_value"]:get() - builder["Defensive"][i]["Yaw_value"]:get())
+    end
+
+    if builder["Defensive"][i]["Yaw"]:get() == 3 then
+        local spin = function(speed)
+            builder.speen = builder.speen + speed / 2
+            if builder.speen < -180 then
+                builder.speen = builder.speen + 360
+            elseif builder.speen > 180 then
+                builder.speen = builder.speen - 360
+            end
+            return builder.speen
+
+        end 
+
+        refs.yawadd:set(spin(builder["Defensive"][i]["Yaw_value"]:get()))
+    end
+    
+    if builder["Defensive"][i]["Yaw"]:get() == 4 then 
+        refs.jittermode:set(3)
+        refs.jittertype:set(math.random(1,4))
+        refs.jitterrange:set(math.random(-180, 180))
+    end
+
+    if builder["Defensive"][i]["Yaw"]:get() == 5 then 
+
+        refs.jittermode:set(1)
+
+        refs.yawadd:set(builder["Defensive"][i]["Yaw_value"]:get())
+
+    end
+
+
+end, function () 
+    if builder["Enable"]:get() and builder["General"][builder.current()]["Enable"]:get() then 
+        if builder["Defensive"][builder.current()]["Defensive"]:get() == 1 then 
+            builder.defensiveactive = false
+        elseif builder["Defensive"][builder.current()]["Defensive"]:get() == 2 then 
+            if (refs.hideshots:get() or refs.doubletap:get()) and (exploits.get_charge() == exploits.get_max_charge()) and not refs.fakeduck:get() then 
+                defensive:trigger()
+            end
+            builder.defensiveactive = defensive:active()
+        elseif builder["Defensive"][builder.current()]["Defensive"]:get() == 3 then
+            builder.defensive = builder.defensive + engine.get_latency(e_latency_flows.INCOMING)
+            if builder.defensive > engine.get_latency(e_latency_flows.INCOMING)*10 then 
+                builder.defensiveactive = not builder.defensiveactive
+                if builder.defensiveactive then 
+                    builder.defensive = -engine.get_latency(e_latency_flows.INCOMING)*10
+                else
+                    builder.defensive = -engine.get_latency(e_latency_flows.INCOMING)*50
+
+                end
+            end
+
+
+        elseif builder["Defensive"][builder.current()]["Defensive"]:get() == 4 then 
+
+            builder.defensiveactive = math.random(0,engine.get_choked_commands()) == 1 and true or false
+        end
+    else 
+        builder.defensiveactive = false
+    end
+    return builder.defensiveactive
+end)
+
+
+events:add(e_callbacks.EVENT, function (e)
+    if e.name == "round_start" then 
+        builder.delay = 0
+        builder.delayinvert = false
+        builder.desyncdelay = 0
+        builder.desyncdelayinvert = false
+        builder.chocked = 0
+        builder.chockedinvert = false
+        builder.exploit = 0
+        builder.defensive = 0
+        builder.defensiveactive = false
+        builder.switch = 0
+        builder.switchactive = false
+        builder.speen = 0
+        client.log_screen(refs.accentcol:get(), "undf", color_t(255,255,255), "Antiaim base has been reset")
+    end
+
+    
+
+end, function () 
+    return builder["Enable"]:get() 
+end)
+
+events:add(e_callbacks.ANTIAIM, function(ctx, cmd)
+    if not engine.is_connected() or not engine.is_in_game() then
+        return
+    end
+    local lp = entity_list.get_local_player()
+    if not lp then
+        return
+    end
+    local m_vecVelocity = lp:get_prop('m_vecVelocity')
+    local velocity = math.vec_length2d(m_vecVelocity)
+    local flags = lp:get_prop("m_fFlags")
+    local airborne = bit.band(flags, bit.lshift(1, 0)) == 0
+
+    if not airborne then
+        if inter["Ground"]:get() == 2 and velocity > 3 then
+            refs.legslide:set(3)
+            ctx:set_render_pose(e_poses.RUN, 0)
+            
+        elseif inter["Ground"]:get() == 3 and velocity > 3 then
+            refs.legslide:set(2)
+            ctx:set_render_pose(e_poses.MOVE_YAW, 0)
+            ctx:set_render_animlayer(e_animlayers.MOVEMENT_MOVE, 1)
+        elseif inter["Ground"]:get() == 4 and velocity > 3 then
+                local value = math.random(0, 1) == 1
+                refs.legslide:set(value and 3 or 2)
+                if value then 
+                    ctx:set_render_pose(e_poses.RUN, 0)
+                    ctx:set_render_pose(e_poses.MOVE_YAW, 1)
+                    ctx:set_render_animlayer(e_animlayers.MOVEMENT_MOVE, 0)
+
+                else
+                    ctx:set_render_pose(e_poses.RUN, 1)
+                    ctx:set_render_pose(e_poses.MOVE_YAW, 1)
+                    ctx:set_render_animlayer(e_animlayers.MOVEMENT_MOVE, 1)
+                end
+        end
+    else
+        if inter["Air"]:get() == 2 then
+            ctx:set_render_pose(e_poses.JUMP_FALL, 1)
+        elseif inter["Air"]:get() == 3 then
+            refs.legslide:set(2)
+            ctx:set_render_pose(e_poses.MOVE_YAW, 0)
+            ctx:set_render_pose(e_poses.JUMP_FALL, 1)
+            ctx:set_render_animlayer(e_animlayers.MOVEMENT_MOVE, 1)
+        elseif inter["Air"]:get() == 4 then
+            ctx:set_render_pose(e_poses.JUMP_FALL, client.random_float(0, 1))
+            ctx:set_render_pose(e_poses.MOVE_YAW, client.random_float(0, 1))
+            ctx:set_render_animlayer(e_animlayers.MOVEMENT_MOVE, client.random_float(0, 1))
+            ctx:set_render_pose(e_poses.SPEED, client.random_float(0, 1))
+
+        end
+    end
+
+    if inter["Extra"]:get(1) then
+        ctx:set_render_animlayer(e_animlayers.LEAN, inter["Lean"]:get() / 100)
+    end
+    
+
+end, function () 
+    return true
+end)
+
+
+
+
+--Resolver
+local iresolver = function () 
+    utilitize = {
+        this_call = function(call_function, parameters)
+            return function(...)
+                return call_function(parameters, ...)
+            end
+        end,
+    
+        entity_list_003 = ffi.cast(ffi.typeof("uintptr_t**"), memory.create_interface("client.dll", "VClientEntityList003"))
+    }
+    get_entity_address = utilitize.this_call(ffi.cast("get_client_entity_t", utilitize.entity_list_003[0][3]), utilitize.entity_list_003);
+    resolver.detectState = function(ent)
+        local m_vecVelocity = ent:get_prop('m_vecVelocity')
+        local velocity = math.vec_length2d(m_vecVelocity)
+        local flags = ent:get_prop('m_fFlags')
+    
+        local on_ground = bit.band(flags, 1) == 1
+        local is_ducking = bit.band(flags, 2) == 2
+    
+        local state = ""
+        local statenum = 0
+    
+        if on_ground then
+            if velocity > 80 and not is_ducking then
+                state, statenum = "move", 4
+            elseif velocity < 3 and not is_ducking then
+                state, statenum = "stand", 2
+            elseif velocity <= 80 and not is_ducking then
+                state, statenum = "slow motion", 3
+            elseif is_ducking then
+                if velocity > 10 then
+                    state, statenum = "duck move", 6
+                else
+                    state, statenum = "duck", 5
+                end
+            end
+        else
+            if not is_ducking then
+                state, statenum = "air", 7
+            else
+                state, statenum = "air duck", 8
+            end
+        end
+    
+        return state, statenum - 1
+    end
+    resolver.m_flMaxDelta = function(ent)
+        local player_index = ent:get_index()
+        local player_ptr = get_entity_address(player_index)
+    
+        local anim_state = ffi.cast("CPlayer_Animation_State**", ffi.cast("uintptr_t", player_ptr) + 0x9960)[0]
+    
+        -- Obtener propiedades del estado de animación
+        local feet_speed = math.clamp(anim_state.m_flFeetSpeedForwardsOrSideWays, 0, 1)
+        local stop_to_run_fraction = anim_state.m_flStopToFullRunningFraction
+        local duck_amount = anim_state.flDuckAmount
+    
+        local avg_speed_factor = ((stop_to_run_fraction * -0.3 - 0.2) * feet_speed) + 1
+    
+        if duck_amount > 0 then
+            local duck_speed = duck_amount * feet_speed
+            avg_speed_factor = avg_speed_factor + (duck_speed * (0.5 - avg_speed_factor))
+        end
+    
+        -- Limitar el valor final entre 0 y 1
+        return math.clamp(avg_speed_factor, 0, 1)
+    end
+    resolver.walk_to_run_transition = function(m_flWalkToRunTransition, m_bWalkToRunTransitionState, m_flLastUpdateIncrement, m_flVelocityLengthXY)
+        -- Constantes de transición y velocidad
+        local ANIM_TRANSITION_WALK_TO_RUN = false
+        local ANIM_TRANSITION_RUN_TO_WALK = true
+        local ANIM_TRANSITION_SPEED = 2.0
+        local PLAYER_SPEED_RUN = 260.0
+        local SPEED_WALK_THRESHOLD = PLAYER_SPEED_RUN * 0.52 -- Walk modifier
+        local SPEED_RUN_THRESHOLD = PLAYER_SPEED_RUN * 0.34 -- Duck modifier
+    
+        -- Actualizar transición basada en el estado actual
+        if m_flWalkToRunTransition > 0 and m_flWalkToRunTransition < 1 then
+            local increment = m_flLastUpdateIncrement * ANIM_TRANSITION_SPEED
+            if m_bWalkToRunTransitionState == ANIM_TRANSITION_WALK_TO_RUN then
+                m_flWalkToRunTransition = m_flWalkToRunTransition + increment
+            else
+                m_flWalkToRunTransition = m_flWalkToRunTransition - increment
+            end
+            m_flWalkToRunTransition = math.clamp(m_flWalkToRunTransition, 0, 1)
+        end
+    
+        -- Determinar nuevo estado de transición
+        if m_flVelocityLengthXY > SPEED_WALK_THRESHOLD and m_bWalkToRunTransitionState == ANIM_TRANSITION_RUN_TO_WALK then
+            m_bWalkToRunTransitionState = ANIM_TRANSITION_WALK_TO_RUN
+            m_flWalkToRunTransition = math.max(0.01, m_flWalkToRunTransition)
+        elseif m_flVelocityLengthXY < SPEED_WALK_THRESHOLD and m_bWalkToRunTransitionState == ANIM_TRANSITION_WALK_TO_RUN then
+            m_bWalkToRunTransitionState = ANIM_TRANSITION_RUN_TO_WALK
+            m_flWalkToRunTransition = math.min(0.99, m_flWalkToRunTransition)
+        end
+    
+        return m_flWalkToRunTransition, m_bWalkToRunTransitionState
+    end
+    resolver.calculate_predicted_foot_yaw = function(m_flFootYawLast, m_flEyeYaw, m_flLowerBodyYawTarget, m_flWalkToRunTransition, m_vecVelocity, m_flMinBodyYaw, m_flMaxBodyYaw)
+        -- Constantes y cálculos iniciales
+        local MAX_VELOCITY = 260.0
+        local VELOCITY_THRESHOLD = 0.1
+        local VELOCITY_Z_THRESHOLD = 100.0
+        local VELOCITY_MULTIPLIER = 30.0
+        local TRANSITION_MULTIPLIER = 20.0
+        local STATIC_ADJUSTMENT = 100.0
+    
+        local m_flVelocityLengthXY = math.min(math.vec_length2d(m_vecVelocity), MAX_VELOCITY)
+        local m_flFootYaw = math.clamp(m_flFootYawLast, -360, 360)
+        local flEyeFootDelta = math.angle_diff(m_flEyeYaw, m_flFootYaw)
+    
+        -- Ajustar yaw basado en diferencias de ángulo
+        if flEyeFootDelta > m_flMaxBodyYaw then
+            m_flFootYaw = m_flEyeYaw - math.abs(m_flMaxBodyYaw)
+        elseif flEyeFootDelta < m_flMinBodyYaw then
+            m_flFootYaw = m_flEyeYaw + math.abs(m_flMinBodyYaw)
+        end
+    
+        m_flFootYaw = math.angle_normalize(m_flFootYaw)
+    
+        -- Incremento de actualización por tick
+        local m_flLastUpdateIncrement = globals.interval_per_tick()
+    
+        -- Ajustar yaw basado en velocidad
+        if m_flVelocityLengthXY > VELOCITY_THRESHOLD or m_vecVelocity.z > VELOCITY_Z_THRESHOLD then
+            local adjustment = m_flLastUpdateIncrement * (VELOCITY_MULTIPLIER + TRANSITION_MULTIPLIER * m_flWalkToRunTransition)
+            m_flFootYaw = math.approach_angle(m_flEyeYaw, m_flFootYaw, adjustment)
+        else
+            local adjustment = m_flLastUpdateIncrement * STATIC_ADJUSTMENT
+            m_flFootYaw = math.approach_angle(m_flLowerBodyYawTarget, m_flFootYaw, adjustment)
+        end
+    
+        return m_flFootYaw
+    end
+    resolver.resolve = function(ctx)
+        local idx = ctx.player:get_index()
+        local ent = ctx.player
+        local lp = entity_list.get_local_player()
+    
+        if not lp or not lp:is_valid() or not lp:is_player() or not lp:is_alive() then
+            return
+        end
+    
+        if not resolver.last[idx] then
+            resolver.last[idx] = {}
+        end
+    
+        if not ent:is_valid() or not ent:is_alive() or not idx then
+            return
+        end
+    
+        -- Obtener propiedades y direcciones necesarias
+        local player_ptr = get_entity_address(idx)
+        local animstate = ffi.cast("CPlayer_Animation_State**", ffi.cast("uintptr_t", player_ptr) + 0x9960)[0]
+        if not animstate then return end
+    
+        local m_vecVelocity = ent:get_prop('m_vecVelocity')
+        local m_flVelocityLengthXY = math.vec_length2d(m_vecVelocity)
+        local m_flEyeYaw = animstate.flEyeYaw
+        local m_flGoalFeetYaw = animstate.flGoalFeetYaw
+        local m_flLowerBodyYawTarget = ent:get_prop('m_flLowerBodyYawTarget')
+        local m_flAngleDiff = math.angle_diff(m_flEyeYaw, m_flGoalFeetYaw)
+    
+        -- Verificar si las propiedades necesarias son válidas antes de usarlas
+        if m_flEyeYaw == nil or m_flGoalFeetYaw == nil or m_flLowerBodyYawTarget == nil then
+            return
+        end
+    
+        -- Desincronización y cálculos de ángulos
+        local m_flMaxDesyncDelta = resolver.m_flMaxDelta(ent)
+        if m_flMaxDesyncDelta == nil then return end -- Verificar si el valor de desincronización es válido
+    
+        local m_flDesync = m_flMaxDesyncDelta * 57.295779513082 -- 57 es el valor máximo de desincronización (Max)
+        local m_flAbsAngleDiff = math.abs(m_flAngleDiff)
+    
+        -- Inicialización de m_flAbsPreviousDiff si es nil
+        if resolver.last[idx].m_flAbsPreviousDiff == nil then
+            resolver.last[idx].m_flAbsPreviousDiff = 0  -- Asignar un valor por defecto si es nil
+        end
+    
+        -- Calcular la diferencia entre los ángulos
+        local m_flAbsPreviousDiff = resolver.last[idx].m_flAbsPreviousDiff
+    
+        -- Determinar el lado del ángulo
+        local side = 0
+        if m_flAngleDiff < 0 then
+            side = 1
+        elseif m_flAngleDiff > 0 then
+            side = -1
+        end
+    
+        -- Ajuste dinámico de la desincronización
+        if m_flAbsAngleDiff < m_flAbsPreviousDiff then
+            if m_flVelocityLengthXY > (resolver.last[idx].m_flVelocityLengthXY or 0) then
+                if m_flAbsAngleDiff <= 10 then
+                    m_flDesync = m_flAbsAngleDiff
+                elseif m_flAbsAngleDiff <= 35 then
+                    m_flDesync = math.max(29.0, m_flAbsAngleDiff)
+                else
+                    m_flDesync = math.clamp(m_flAbsAngleDiff, 29.0, 57.0)
+                end
+            end
+        end
+    
+        -- Guardar estado de desincronización
+        resolver.last[idx].m_flDesync = math.clamp(m_flDesync * side, -60, 60)
+        resolver.last[idx].m_flSide = side
+        resolver.last[idx].forced = false
+        resolver.last[idx].m_flState, resolver.last[idx].m_flStateNum = resolver.detectState(ent)
+        resolver.last[idx].Desync = -math.min(57, math.max(ent:get_prop("m_flPoseParameter", 11) * 120 - 57))
+    
+        -- Actualizar transición de caminar a correr
+        resolver.last[idx].m_flWalkToRunTransition, resolver.last[idx].m_bWalkToRunTransitionState = resolver.walk_to_run_transition(
+            resolver.last[idx].m_flWalkToRunTransition or 0, 
+            resolver.last[idx].m_bWalkToRunTransitionState or false,
+            globals.interval_per_tick(), 
+            m_flVelocityLengthXY
+        )
+    
+        -- Resolver usando memoria guardada si está disponible
+        if resolver.memory[idx] then
+            for state, sides in pairs(resolver.memory[idx]) do
+                if state == resolver.last[idx].m_flState then
+                    for side_key, desync_value in pairs(sides) do
+                        if side_key == side then
+                            resolver.last[idx].m_flDesync = desync_value
+                            resolver.last[idx].forced = true
+                            if idx == resolver.last.target then
+                                resolver.last.Desync = resolver.last[idx].Desync
+                                resolver.last.forced = resolver.last[idx].forced
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    
+        -- Actualizar animaciones si hay arma activa
+        local player_weapon = ent:get_active_weapon()
+        if not player_weapon then return end
+    
+        -- Calcular el nuevo yaw de los pies basado en los ajustes
+        animstate.flGoalFeetYaw = resolver.calculate_predicted_foot_yaw(
+            m_flGoalFeetYaw, 
+            m_flEyeYaw + resolver.last[idx].m_flDesync, 
+            m_flLowerBodyYawTarget, 
+            resolver.last[idx].m_flWalkToRunTransition, 
+            m_vecVelocity, 
+            -57, 
+            57
+        )
+    
+        -- Actualizar el valor de m_flAbsPreviousDiff para la siguiente iteración
+        resolver.last[idx].m_flAbsPreviousDiff = m_flAbsAngleDiff
+    end
+    events:add(e_callbacks.HITSCAN, function (ctx)
+        resolver.last.target = ctx.player:get_index()
+    end, function () 
+        return inter["Resolver"]:get()
+    end)
+    events:add(e_callbacks.NET_UPDATE, function (ctx)
+        local players = entity_list.get_players(true)
+        if not players then
+            return
+        end
+        for _, enemy in ipairs(players) do
+            if not enemy:is_dormant() then
+                if enemy:is_alive() then
+                    local ctx = {
+                        player = enemy
+                    }
+                    resolver.resolve(ctx)
+                end
+            end
+        end
+    end, function () 
+        return inter["Resolver"]:get()
+    end)
+    events:add(e_callbacks.EVENT, function (e)
+        if e.name == "round_prestart" then
+            if game_rules.get_prop("m_totalRoundsPlayed") == 0 then
+                print("wiping resolver memory")
+                resolver.memory = {}
+            end
+        end
+        if e.name == "player_connect_full" then
+            if entity_list.get_player_from_userid(e.userid) == entity_list.get_local_player() then
+                resolver.memory = {}
+            end
+        end
+    end, function () 
+        return inter["Resolver"]:get()
+    end)
+    resolver.update.state = nil 
+    resolver.update.side = nil 
+    resolver.update.shot = function(self, shot)
+        local lp = entity_list.get_local_player()
+        if not lp then
+            return
+        end
+        local idx = shot.player:get_index()
+        self.desync = (resolver.last[idx] and resolver.last[idx].m_flDesync) and math.floor(resolver.last[idx].m_flDesync)
+        self.side = resolver.last[idx] and resolver.last[idx].m_flSide or "?"
+        self.state = resolver.last[idx] and resolver.last[idx].m_flState or "?"
+        self.statenum = resolver.last[idx] and resolver.last[idx].m_flStateNum or "?"
+        if resolver.last[idx] then
+            self.forced = resolver.last[idx].forced
+        else
+            self.forced = false
+        end
+    end
+    resolver.update.hit = function(self, hit)
+    
+        if resolver.last.target == hit.player:get_index() then
+            if not resolver.memory[hit.player:get_index()] then
+                resolver.memory[hit.player:get_index()] = {}
+            end
+            if self.state ~= nil then
+                if not resolver.memory[hit.player:get_index()][self.state] then
+                    resolver.memory[hit.player:get_index()][self.state] = {}
+                end
+                if hit.aim_hitgroup == hit.hitgroup then
+                    resolver.memory[hit.player:get_index()][self.state][self.side] = self.desync
+                    if self.forced then
+                        print("resolved past instance for " .. hit.player:get_name() .. " as " .. hit.player:get_index() .. "." .. self.state .. " | " .. self.desync)
+                    else
+                        print("logged shot for " .. hit.player:get_name() .. " as " .. hit.player:get_index() .. "." .. self.state .. " | " .. self.desync)
+                    end
+                    
+                end
+            end
+        end
+    end
+    resolver.update.miss = function(self, miss)
+        if not (miss.reason_string == "resolver") then
+            return
+        end
+    
+        if resolver.last.target == miss.player:get_index() then
+            if not resolver.memory[miss.player:get_index()] then
+                return
+            end
+            if self.state ~= nil then
+                if not resolver.memory[miss.player:get_index()][self.state] then
+                    return
+                end
+                if not resolver.memory[miss.player:get_index()][self.state][self.side] then
+                    return
+                end
+                resolver.memory[miss.player:get_index()][self.state][self.side] = nil
+                print("removing memory instance due to miss: " .. self.state .. " | " .. self.side)
+                
+            end
+        end
+    end
+    events:add(e_callbacks.AIMBOT_SHOOT, function (shot)
+        resolver.update:shot(shot)
+    end, function () 
+        return inter["Resolver"]:get()
+    end)
+    events:add(e_callbacks.AIMBOT_HIT, function (hit)
+        resolver.update:hit(hit)
+    end, function () 
+        return inter["Resolver"]:get()
+    end)
+    events:add(e_callbacks.AIMBOT_MISS, function (miss)
+        resolver.update:miss(miss)
+    end, function () 
+        return inter["Resolver"]:get()
+    end)
+end; iresolver()
+
+--Auto multipoint
+events:add(e_callbacks.HITSCAN, function (ctx)
+    local lp = entity_list.get_local_player()
+    local enemy = ctx.player
+    if not lp then
+        return
+    end
+
+    local localorigin = lp:get_eye_position()
+    local enemypos = {
+        head = enemy:get_hitbox_pos(e_hitboxes.HEAD),
+        chest = enemy:get_hitbox_pos(e_hitboxes.CHEST),
+        stomach = enemy:get_hitbox_pos(e_hitboxes.PELVIS)
+    }
+    local enemydamage = {
+        head = damage:calculate(enemy, "head"),
+        chest = damage:calculate(enemy, "chest"),
+        stomach = damage:calculate(enemy, "stomach")
+    }
+
+    for k, v in pairs(enemydamage) do
+        if v > enemy:get_prop("m_iHealth") or v > use:damage() then
+            local bullet = trace.bullet(localorigin, enemypos[k], lp, enemy)
+            if bullet.valid and (client.get_hitgroup_name(bullet.hitgroup) == k) then
+                local hitgroup = e_hitscan_groups[string.upper(k)]
+                ctx:set_hitscan_group_state(hitgroup, true, false)
+                break
+            end
+        end
+    end
+end, function () 
+    return inter["Multipoint"]:get()
+end)
+
+--Interpolation & ping
+events:add(e_callbacks.EVENT, function ()
+    cvars.cl_interpolate:set_int(inter["Interpolation"].ref:get() and 0 or 1)    
+    cvars.sv_maxunlag:set_float(inter["Unlockping"].ref:get() and .4 or .2)
+end)
+
+--Side indicators
+events:add(e_callbacks.PAINT, function ()
+    local font = fonts.get_or_register("Indicators", "Calibri Bold", 24, 670, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW, e_font_flags.ITALIC)
+    local active_weapon = use.weapon()
+
+    local referencies = {
+        [0] = {name = "SAFER", ref = menu.find("aimbot", active_weapon, "target overrides", "safepoint")[2]},
+        [1] = {name = "PING", ref = refs.ping},
+        [2] = {name = "SLOW", ref = refs.slowmotion},
+        [3] = {name = "DUCK", ref = refs.fakeduck},
+        [4] = {name = "MD", ref = menu.find("aimbot", active_weapon, "target overrides", "min. damage")[2]},
+        [5] = {name = "OS", ref = refs.hideshots},
+        [6] = {name = "DT", ref = refs.doubletap},
+        [7] = {name = "FS", ref = refs.freestand},
+
+    }; 
+    local items = {}
+
+
+    for i=0, #referencies do 
+        local current = referencies[i]
+
+        local current_anim_x = animation.new("xindicators_"..current.name, current.ref:get() and 1 or 0, 12)
+        local current_anim_y = animation.new("yindicators_"..current.name, #items, 12)
+
+        if current_anim_x >= 0.5 then 
+            table.insert(items, {})
+        end
+        
+        local pos = vec2_t(-50 + 80*current_anim_x, screen.y/1.45 - (current_anim_y)*30)
+
+
+        local is_special_indicator = (current.name == "DT" or current.name == "OS")
+        local charge_condition = (is_special_indicator and exploits.get_charge() > 0 and current_anim_x >= 0.9) or (not is_special_indicator and current_anim_x >= 0.9)
+        local current_anim_xx = animation.new("xxindicators_" .. current.name, charge_condition and 1 or 0, 6)
+        
+        local col = colors["Indicators"].ref:get()
+
+        render.push_alpha_modifier(current_anim_x)
+        if is_special_indicator or current.name == "PING" then 
+            render.text(font, current.name, pos, (exploits.get_charge() > 0 or current.name == "PING") and color_t(col.r,col.g,col.b) or color_t(255,140,140))
+        else 
+            render.text(font, current.name, pos, color_t(240,240,240))
+        end
+        render.pop_alpha_modifier()
+
+        render.push_alpha_modifier(current_anim_xx*current_anim_x)
+        render.rect_fade(pos - vec2_t(5, 1), vec2_t((35 + render.get_text_size(font, current.name).x)*current_anim_xx, render.get_text_size(font, current.name).y), color_t(col.r,col.g,col.b,25), color_t(col.r,col.g,col.b,0), true)
+        render.pop_alpha_modifier()
+    end
+
+
+end, function () 
+    local lp = entity_list.get_local_player()
+    
+    -- Verificar si el jugador local es válido
+    if not lp or not lp:is_valid() or not lp:is_player() or not lp:is_alive() then
+        return
+    end
+
+    return inter["Indicators"].ref:get()
+end)
+
+--Watermark
+events:add(e_callbacks.PAINT, function ()
+    local font = fonts.get_or_register("Undf", "Arial",  17, 750, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW, e_font_flags.ITALIC)
+
+    render.text(font, "undefined", vec2_t(screen.x/2 - render.get_text_size(font, "undefined").x/2, screen.y - 30), colors["Watermark"].ref:get())
+
+end, function () 
+    return inter["Watermark"].ref:get()
+end)
+
+
+--Velocity
+local velocity = dragsystem.register({drag["Velocity_x"], drag["Velocity_y"]}, render.get_text_size(fonts.get_or_register("Indicators warning", "Arial",  15, 750, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW, e_font_flags.ITALIC), "Velocity %100"), "Velocity", function(self)
+
+    local lp = entity_list.get_local_player()
+    local font = fonts.get_or_register("Indicators warning", "Arial",  15, 750, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW, e_font_flags.ITALIC)
+    local value = math.abs(lp:get_prop("m_flVelocityModifier") * 100 + 100 * -1)
+    local anim = animation.new("Velocity_indicatros_rect", (value == 0 and menu.is_open()) and 100 or value, 5)
+    local rect = (anim > 99.5) and 100 or anim
+    local text = string.format("Velocity %i%s", rect, "%")
+    local alpha = animation.new("Velocity_indicatros", (value > 0 or menu.is_open()) and 1 or 0, 5)
+    local col = colors["Velocity"].ref:get()
+
+        
+    self.position.x = (self.position.x ~= drag["Velocity_x"]:get()) and drag["Velocity_x"]:get() or self.position.x
+    self.position.y = (self.position.y ~= drag["Velocity_y"]:get()) and drag["Velocity_y"]:get() or self.position.y
+
+    render.push_alpha_modifier(alpha)
+    --render.rect_fade(vec2_t(screen.x/2 - render.get_text_size(font, text).x/2*(rect/100), screen.y/4 +render.get_text_size(font, text).y + 3), vec2_t(render.get_text_size(font, text).x*(rect/100), 7), color_t(col.r,col.g,col.b,25), color_t(col.r,col.g,col.b,0), false)
+    render.text(font, text, vec2_t(self.position.x, self.position.y), color_t(255,255,255))
+    render.rect_filled(vec2_t(self.position.x, self.position.y + render.get_text_size(font, text).y + 3), vec2_t(render.get_text_size(font, text).x*(rect/100), 2), col)
+    render.pop_alpha_modifier()
+end)
+events:add(e_callbacks.PAINT, function () 
+    velocity:update()
+end, function () 
+    local lp = entity_list.get_local_player()
+    
+    if not lp or not lp:is_valid() or not lp:is_player() or not lp:is_alive() then
+        return
+    end
+
+    return inter["Velocity"].ref:get()
+end)
+
+--Defensive
+
+local defensive = dragsystem.register({drag["Defensive_x"], drag["Defensive_y"]}, render.get_text_size(fonts.get_or_register("Indicators warning", "Arial",  15, 750, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW, e_font_flags.ITALIC), "Defensive %100"), "Defensive", function(self)
+
+    local lp = entity_list.get_local_player()
+    local font = fonts.get_or_register("Indicators warning", "Arial",  15, 750, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW, e_font_flags.ITALIC)
+    local alpha = animation.new("Defensive_indicatros", (builder.defensiveactive or menu.is_open()) and 1 or 0, 5)
+    local rect = (alpha*100 > 99.5) and 100 or alpha*100
+    local text = string.format("Defensive %i%s", rect, "%")
+    local col = colors["Defensive"].ref:get()
+
+    self.position.x = (self.position.x ~= drag["Defensive_x"]:get()) and drag["Defensive_x"]:get() or self.position.x
+    self.position.y = (self.position.y ~= drag["Defensive_y"]:get()) and drag["Defensive_y"]:get() or self.position.y
+
+    render.push_alpha_modifier(alpha)
+    render.text(font, text, vec2_t(self.position.x, self.position.y), color_t(255,255,255))
+    render.rect_filled(vec2_t(self.position.x, self.position.y +render.get_text_size(font, text).y + 3), vec2_t(render.get_text_size(font, text).x*(rect/100), 2), col)
+    render.pop_alpha_modifier()
+end)
+events:add(e_callbacks.PAINT, function ()
+    defensive:update()
+end, function () 
+    local lp = entity_list.get_local_player()
+    
+    if not lp or not lp:is_valid() or not lp:is_player() or not lp:is_alive() then
+        return
+    end
+
+    return inter["Defensive"].ref:get()
+end)
+
+
+--Thirdperson fix
+events:add(e_callbacks.PAINT, function ()
+    cvars.cam_command:set_int(keys["Thirdperson"].ref:get() and 1 or 0)
+    cvars.c_mindistance:set_int(inter["Thirdperson"].ref:get())
+    cvars.c_maxdistance:set_int(inter["Thirdperson"].ref:get())
+    cvars.cam_idealdist:set_int(inter["Thirdperson"].ref:get())
+
+end, function () 
+    return inter["Check_thirdperson"].ref:get()
+end)
+
+--Thirdperson sv_cheats
+events:add(e_callbacks.EVENT, function ()
+    cvars.sv_cheats:set_int(1)
+    
+end, function ()
+    return inter["Check_thirdperson"].ref:get()
+end)
+
+--Hitmarker
+events:add(e_callbacks.WORLD_HITMARKER, function (screen_pos, world_pos, alpha_factor, damage, is_lethal, is_headshot)
+    render.push_alpha_modifier(alpha_factor)
+
+    render.rect_filled(vec2_t(screen_pos.x - 5, screen_pos.y - 1), vec2_t(10, 2), colors["Hitmarker"].ref:get())
+    render.rect_filled(vec2_t(screen_pos.x - 1, screen_pos.y - 5), vec2_t(2, 10), colors["Hitmarker"].ref:get())
+
+    render.pop_alpha_modifier()
+end, function () 
+    return inter["Hitmarker"].ref:get()
+end)
+
+--Esp fonts
+events:add(e_callbacks.PLAYER_ESP, function(ctx)
+    ctx:set_font(fonts.get_or_register("Gamesense", "Tahoma", 11, 500, e_font_flags.ANTIALIAS, e_font_flags.DROPSHADOW))
+end, function () 
+    return inter["Skeet_fonts"].ref:get()
+end)
+
+--Toss
+events:add(e_callbacks.SETUP_COMMAND, function(cmd)
+    local toss = {
+        ang_vec = function(ang)
+            return vec3_t(math.cos(ang.x * math.pi / 180) * math.cos(ang.y * math.pi / 180), math.cos(ang.x * math.pi / 180) * math.sin(ang.y * math.pi / 180), -math.sin(ang.x * math.pi / 180))
+        end,
+        target_angles = vec3_t(0, 0, 0)
+    }
+    
+    if refs.nadehelper:get() then
+        return
+    end
+
+    local lp = entity_list.get_local_player()
+    if not lp or not lp:is_player() or not lp:is_alive() then
+        return
+    end
+    if (lp:get_prop("m_MoveType") == 9) then
+        return
+    end
+
+    local weapon = lp:get_active_weapon()
+    if not weapon then
+        return
+    end
+
+    local data = weapon:get_weapon_data()
+    if not data then
+        return
+    end
+    toss.lastangles = engine.get_view_angles()
+
+    if not weapon:get_prop("m_flThrowStrength") then
+        return
+    end
+
+    local ang_throw = vec3_t(cmd.viewangles.x, toss.lastangles.y, 0)
+    ang_throw.x = ang_throw.x - (90 - math.abs(ang_throw.x)) * 10 / 90
+    ang_throw = toss.ang_vec(ang_throw)
+
+
+    local throw_strength = math.clamp(weapon:get_prop("m_flThrowStrength"), 0, 1)
+    local fl_velocity = math.clamp(data.throw_velocity * 0.9, 15, 750)
+    fl_velocity = fl_velocity * (throw_strength * 0.7 + 0.3)
+    fl_velocity = vec3_t(fl_velocity, fl_velocity, fl_velocity)
+
+
+    local localplayer_velocity = lp:get_prop('m_vecVelocity')
+    local vec_throw = (ang_throw * fl_velocity + localplayer_velocity * vec3_t(1.45, 1.45, 1.45))
+    vec_throw = vec_throw:to_angle()
+    local yaw_difference = toss.lastangles.y - vec_throw.y
+    while yaw_difference > 180 do
+        yaw_difference = yaw_difference - 360
+    end
+    while yaw_difference < -180 do
+        yaw_difference = yaw_difference + 360
+    end
+    local pitch_difference = toss.lastangles.x - vec_throw.x - 10
+    while pitch_difference > 90 do
+        pitch_difference = pitch_difference - 45
+    end
+    while pitch_difference < -90 do
+        pitch_difference = pitch_difference + 45
+    end
+
+    toss.target_angles.y = toss.lastangles.y + yaw_difference
+    toss.target_angles.x = math.clamp(toss.lastangles.x + pitch_difference, -89, 89)
+
+    cmd.viewangles.y = toss.target_angles.y
+    if inter["Toss"].ref:get() == 3 then
+        local flags = lp:get_prop("m_fFlags")
+        local airborne = bit.band(flags, bit.lshift(1, 0)) == 0
+        if airborne then
+            cmd.viewangles.x = toss.target_angles.x
+        end
+    elseif inter["Toss"].ref:get() == 4 then
+        cmd.viewangles.x = toss.target_angles.x
+
+    end
+end, function () 
+    return inter["Toss"].ref:get() ~= 1
+end)
+
+--Antiafk
+local roundstart = {
+    afkdirection = 1,
+    afk_valid = false,
+    afk = 0,
+}
+events:add(e_callbacks.SETUP_COMMAND, function(cmd)
+    if roundstart.afk_valid == true then
+        roundstart.afk = roundstart.afk + 1
+        if roundstart.afk > 128 then
+            roundstart.afk = 0
+            roundstart.afkdirection = not roundstart.afkdirection
+        end
+        -- client.log_screen(builder.afk)
+    end
+
+    if cmd:has_button(e_cmd_buttons.MOVELEFT) then
+        roundstart.afk_valid = false
+    end
+    if cmd:has_button(e_cmd_buttons.MOVERIGHT) then
+        roundstart.afk_valid = false
+    end
+    if cmd:has_button(e_cmd_buttons.FORWARD) then
+        roundstart.afk_valid = false
+    end
+    if cmd:has_button(e_cmd_buttons.BACK) then
+        roundstart.afk_valid = false
+    end
+
+    if roundstart.afk < 8 and roundstart.afk_valid then
+        -- client.log_screen("moving")
+        cmd.move.x = 450 * (roundstart.afkdirection and 1 or -1)
+    end
+end, function () 
+    return inter["Antiafk"].ref:get()
+end)
+events:add(e_callbacks.EVENT, function(event)
+    if event.name == "round_start" then
+        roundstart.afk_valid = true
+    end
+end, function () 
+    return inter["Antiafk"].ref:get()
+end)
+
+--Clantag 
+local last_tick = 0
+events:add(e_callbacks.PAINT, function()
+    local tag = {"", "", "u", "u", "un", "un", "und", "und", "unde", "unde", "undef", "undef", "undefi", "undefi", "undefin", "undefin", "undefine", "undefine", "undefined", "undefined", "undefined","undefined", "undefined", "undefined", "undefined","undefined", "undefine", "undefine", "undefin", "undefin", "undefi", "undefi", "undef", "undef", "unde", "unde", "und", "und", "un", "un", "u", "u"}
+
+    if globals.real_time() - last_tick >= 0.15 then
+        local server_time = math.floor(globals.cur_time() / 0.296875 + 6.60925 - 0.07 - engine.get_latency(e_latency_flows.OUTGOING) - engine.get_latency(e_latency_flows.INCOMING))
+        client.set_clantag(tag[server_time % #tag+1] .. "                                   ")
+        last_tick = globals.real_time()
+    end
+end, function() 
+    if globals.real_time() - last_tick >= 2 then
+        client.set_clantag("")
+        last_tick = globals.real_time()
+    end
+    return inter["Clantag"]:get()
+end)
+
+--Trashtalk
+events:add(e_callbacks.EVENT, function(event)
+    local phrases = {
+        "undf говорит 1",
+        "Ты забыл включить undf, бот, или ты такой тупой по жизни?", -- ¿Olvidaste activar undf o eres así de estúpido siempre?
+        "undf даже не маскирует вонь твоей мамаши.", -- undf ni siquiera puede cubrir el hedor de tu madre.
+        "Верни свои жалкие деньги, undf на таких бедняков, как ты, не рассчитан.", -- Devuelve tu miserable dinero, undf no es para pobres como tú.
+        "С твоими навыками даже undf не вытащит тебя из помойки.", -- Con tus habilidades, ni siquiera undf puede sacarte del basurero.
+        "undf не спасает тупых, таких как ты.", -- undf no salva a idiotas como tú.
+        "Легко? С undf было бы унизительно просто.", -- ¿Fácil? Con undf sería insultantemente fácil.
+        "Ты продал этот хедшот? Наверное, undf тебе не одобрил.", -- ¿Vendiste ese headshot? Seguramente undf te lo negó.
+        "Продли undf, а не свою никчёмность.", -- Renueva undf, no tu inutilidad.
+        "undf даже твою мамашу не спасёт, но она умоляет о нём каждую ночь.", -- undf ni siquiera salvaría a tu madre, pero lo ruega cada noche.
+        "Единственное, что ниже твоего k/d, это твоё жалкое понимание undf.", -- Lo único más bajo que tu k/d es tu patético entendimiento de undf.
+        "Твоя меткость хуже, чем шанс undf спасти твою никчёмность.", -- Tu puntería es peor que las posibilidades de que undf salve tu inutilidad.
+        "Поиграй с undf, хотя бы библиотечный Wi-Fi перестанет лагать.", -- Juega con undf, al menos el Wi-Fi de la biblioteca dejará de laggear.
+        "Единственное, что менее надёжно, чем ты, это undf, если он у тебя был.", -- Lo único menos confiable que tú es undf, si es que lo tuviste.
+        "undf считает тебя настолько тупым, что удалился из твоей системы.", -- undf piensa que eres tan estúpido que se desinstaló solo.
+        "С undf ты хотя бы смог бы умирать красиво, а не позорно.", -- Con undf al menos podrías morir con estilo y no con vergüenza.
+        "Я бы прыгнул с твоего эго на твоё понимание undf, но сдохну от стыда в полёте.", -- Saltaría de tu ego a tu entendimiento de undf, pero moriría de vergüenza en el aire.
+        "Ты бы хоть раз прочитал, как использовать undf, тупица.", -- Al menos una vez lee cómo usar undf, imbécil.
+        "Отдай undf своему стулу, у него больше шансов на победу.", -- Dale undf a tu silla, tiene más posibilidades de ganar que tú.
+        "37 триллионов клеток в твоём теле и ни одна не знает, как пользоваться undf.", -- 37 trillones de células en tu cuerpo y ninguna sabe usar undf.
+        "Я бы назвал тебя инструментом, но undf даже в руках идиота полезнее.", -- Te llamaría herramienta, pero undf es más útil incluso en manos de un idiota.
+    }
+
+    if event.name == 'player_death' then
+        local lp = entity_list.get_local_player()
+        if lp then
+            local attacker = entity_list.get_player_from_userid(event.attacker)
+            if attacker then
+                if attacker == lp then
+
+                    client.delay_call(function()
+                        engine.execute_cmd("say " .. phrases[math.random(1, #phrases)])
+                    end, 1)
+
+
+                end
+            end
+        end
+        
+        end
+end, function () 
+    return inter["Trashtalk"].ref:get()
+end)
+
+print([[Lua has been loaded from instance
 
     Last update [12/15/2024]
         —> Lua release
 
     Notes:
         —> Please save and load the config bc the cheat doesn't save the data cause of http loading method (I will fix this soon)
-]]);
+]])
