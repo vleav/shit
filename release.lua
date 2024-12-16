@@ -1,3 +1,5 @@
+
+
 ffi = require ("ffi")
 bit = require ("bit")
 
@@ -3157,5 +3159,8 @@ end, function ()
     return inter["Trashtalk"].ref:get()
 end)
 
---filesystem.create_directory("./undf", "")
+print([[
+Last update [12/15/2024]
+    - Lua release
+]])
 
